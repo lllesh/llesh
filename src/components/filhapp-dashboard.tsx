@@ -59,15 +59,15 @@ export function FilhappDashboard() {
             <div className="px-4 pb-4">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" onClick={() => setCollapsed(!collapsed)} className="h-10 w-full justify-center rounded-xl border border-sidebar-border bg-porcelain/60 text-muted-foreground hover:bg-muted hover:text-foreground">
-                    {collapsed ? <ChevronRight /> : <ChevronLeft />}
+                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className="mx-auto flex h-8 w-8 justify-center rounded-lg text-muted-foreground hover:bg-transparent hover:text-foreground">
+                    <ChevronLeft className={cn("transition-transform duration-500", collapsed && "rotate-180")} />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="right">{collapsed ? "Expandir menu" : "Recolher menu"}</TooltipContent>
               </Tooltip>
             </div>
 
-            <nav className="flex-1 space-y-2 px-4" aria-label="Navegação principal">
+            <nav className={cn("flex-1 space-y-2", collapsed ? "px-4" : "px-7")} aria-label="Navegação principal">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const selected = active === item.label;
