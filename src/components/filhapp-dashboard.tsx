@@ -134,7 +134,7 @@ export function FilhappDashboard() {
           </main>
 
           <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-border bg-card/95 px-2 pb-[max(8px,env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl lg:hidden" aria-label="Navegação móvel">
-            {[navItems[0], navItems[1], navItems[2], navItems[3]].map((item) => { const Icon=item.icon; return <Button key={item.label} variant="ghost" onClick={() => setActive(item.label)} className={cn("h-14 flex-col gap-1 rounded-xl px-1 text-[10px]", active===item.label ? "text-primary" : "text-muted-foreground")}><Icon className="size-5"/><span>{item.label.replace("Plano de filhos","Planos")}</span></Button> })}
+            {navItems.slice(0, 4).map((item) => { const Icon=item.icon; return <Button key={item.label} variant="ghost" onClick={() => setActive(item.label)} className={cn("h-14 flex-col gap-1 rounded-xl px-1 text-[10px]", active===item.label ? "text-primary" : "text-muted-foreground")}><Icon className="size-5"/><span>{item.label.replace("Plano de filhos","Planos")}</span></Button> })}
             <Button variant="ghost" className="h-14 flex-col gap-1 rounded-xl px-1 text-[10px] text-muted-foreground"><Menu className="size-5"/><span>Mais</span></Button>
           </nav>
         </div>
