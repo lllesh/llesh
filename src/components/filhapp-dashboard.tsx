@@ -46,26 +46,29 @@ export function FilhappDashboard() {
       <div className="min-h-screen bg-stone p-0 lg:p-5 xl:p-8">
         <div className="mx-auto flex min-h-screen max-w-[1600px] overflow-hidden bg-background shadow-[0_30px_80px_-28px_color-mix(in_oklab,var(--sage)_45%,transparent)] lg:min-h-[calc(100vh-2.5rem)] lg:rounded-3xl lg:border lg:border-porcelain xl:min-h-[calc(100vh-4rem)]">
           <aside className={cn("relative hidden shrink-0 flex-col border-r border-sidebar-border bg-sidebar transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
-            <div className="flex h-24 items-center px-6">
+            <div className={cn("flex h-24 items-center", collapsed ? "justify-center px-3" : "px-6")}>
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--coral)_75%,transparent)]">
                 <Baby className="size-5" />
               </div>
-              <div className={cn("ml-3 overflow-hidden transition-all duration-300", collapsed ? "w-0 opacity-0" : "w-36 opacity-100")}>
-                <div className="font-display text-xl font-bold text-foreground">FILHAPP</div>
+              <div className={cn("ml-3 overflow-hidden transition-all duration-300", collapsed ? "w-0 opacity-0" : "w-40 opacity-100")}>
+                <div className="font-display text-xl font-bold tracking-[0.24em] text-foreground">FILHAPP</div>
                 <div className="whitespace-nowrap text-[10px] font-semibold uppercase text-muted-foreground">Saúde reprodutiva</div>
               </div>
             </div>
 
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="outline" size="icon" onClick={() => setCollapsed(!collapsed)} className="absolute -right-4 top-28 z-10 rounded-full border-stone bg-card shadow-sm hover:bg-porcelain">
-                  {collapsed ? <ChevronRight /> : <ChevronLeft />}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="right">{collapsed ? "Expandir menu" : "Recolher menu"}</TooltipContent>
-            </Tooltip>
+            <div className="px-4 pb-4">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" onClick={() => setCollapsed(!collapsed)} className={cn("h-10 w-full rounded-xl border border-sidebar-border bg-porcelain/60 text-muted-foreground hover:bg-muted hover:text-foreground", collapsed ? "justify-center px-0" : "justify-between px-3")}>
+                    {!collapsed && <span className="text-[10px] font-bold uppercase tracking-[0.16em]">Recolher</span>}
+                    {collapsed ? <ChevronRight /> : <ChevronLeft />}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="right">{collapsed ? "Expandir menu" : "Recolher menu"}</TooltipContent>
+              </Tooltip>
+            </div>
 
-            <nav className="mt-8 flex-1 space-y-2 px-4" aria-label="Navegação principal">
+            <nav className="flex-1 space-y-2 px-4" aria-label="Navegação principal">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const selected = active === item.label;
@@ -74,7 +77,7 @@ export function FilhappDashboard() {
                     <TooltipTrigger asChild>
                       <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start rounded-xl px-4 transition-all", selected ? "bg-sidebar-accent text-sidebar-accent-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground", collapsed && "justify-center px-0")}>
                         <Icon className="size-[19px] shrink-0" />
-                        <span className={cn("overflow-hidden whitespace-nowrap transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
+                        <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
                       </Button>
                     </TooltipTrigger>
                     {collapsed && <TooltipContent side="right">{item.label}</TooltipContent>}
@@ -84,7 +87,7 @@ export function FilhappDashboard() {
             </nav>
 
             <div className="space-y-3 border-t border-sidebar-border p-4">
-              <Button variant="ghost" className={cn("h-11 w-full justify-start rounded-xl text-muted-foreground", collapsed && "justify-center px-0")}><Settings /><span className={cn("overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-36 opacity-100")}>Configurações</span></Button>
+              <Button variant="ghost" className={cn("h-11 w-full justify-start rounded-xl text-muted-foreground", collapsed && "justify-center px-0")}><Settings /><span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-36 opacity-100")}>Configurações</span></Button>
               <div className={cn("flex items-center rounded-xl bg-porcelain p-3", collapsed && "justify-center p-2")}>
                 <div className="grid size-9 shrink-0 place-items-center rounded-full bg-mauve/25 text-mauve"><CircleUserRound className="size-5" /></div>
                 <div className={cn("ml-3 overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "w-36 opacity-100")}><p className="whitespace-nowrap text-sm font-bold">Letícia Motta</p><p className="whitespace-nowrap text-xs text-sage">Plano Essencial</p></div>
@@ -94,7 +97,7 @@ export function FilhappDashboard() {
 
           <main className="min-w-0 flex-1 overflow-x-hidden pb-24 lg:max-h-[calc(100vh-2.5rem)] lg:overflow-y-auto lg:pb-0 xl:max-h-[calc(100vh-4rem)]">
             <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border bg-background/90 px-5 backdrop-blur-xl lg:h-20 lg:px-8 xl:px-10">
-              <div className="flex items-center gap-3 lg:hidden"><div className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Baby className="size-4" /></div><span className="font-display text-lg font-bold">FILHAPP</span></div>
+              <div className="flex items-center gap-3 lg:hidden"><div className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Baby className="size-4" /></div><span className="font-display text-lg font-bold tracking-[0.22em]">FILHAPP</span></div>
               <div className="hidden items-center gap-2 lg:flex"><span className="size-2 rounded-full bg-sage"/><span className="text-xs font-semibold text-muted-foreground">Seus dados estão atualizados</span></div>
               <div className="flex items-center gap-2">
                 <div className="hidden rounded-xl bg-muted p-1 sm:flex" aria-label="Objetivo atual">

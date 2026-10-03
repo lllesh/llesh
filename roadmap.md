@@ -6,3 +6,4 @@
 - [x] Usar “FILHAPP” como nome oficial em toda a experiência, sempre em letras maiúsculas.
 - [x] Implementar sidebar esquerda recolhível com controle sempre acessível e transição fluida.
 - [x] Ampliar conteúdo para fertilidade, concepção e acompanhamento de planos para ter filhos.
+- [x] Refinar tipografia da marca e navegação, suavizar tons escuros e mover o toggle para dentro da sidebar.
