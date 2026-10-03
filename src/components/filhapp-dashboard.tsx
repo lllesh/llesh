@@ -59,8 +59,7 @@ export function FilhappDashboard() {
             <div className="px-4 pb-4">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" onClick={() => setCollapsed(!collapsed)} className={cn("h-10 w-full rounded-xl border border-sidebar-border bg-porcelain/60 text-muted-foreground hover:bg-muted hover:text-foreground", collapsed ? "justify-center px-0" : "justify-between px-3")}>
-                    {!collapsed && <span className="text-[10px] font-bold uppercase tracking-[0.16em]">Recolher</span>}
+                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" onClick={() => setCollapsed(!collapsed)} className="h-10 w-full justify-center rounded-xl border border-sidebar-border bg-porcelain/60 text-muted-foreground hover:bg-muted hover:text-foreground">
                     {collapsed ? <ChevronRight /> : <ChevronLeft />}
                   </Button>
                 </TooltipTrigger>
@@ -75,7 +74,7 @@ export function FilhappDashboard() {
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start rounded-xl px-4 transition-all", selected ? "bg-sidebar-accent text-sidebar-accent-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-xl px-4 transition-all", selected ? "bg-sidebar-accent text-sidebar-accent-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground", collapsed && "justify-center px-0")}>
                         <Icon className="size-[19px] shrink-0" />
                         <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
                       </Button>
@@ -87,7 +86,7 @@ export function FilhappDashboard() {
             </nav>
 
             <div className="space-y-3 border-t border-sidebar-border p-4">
-              <Button variant="ghost" className={cn("h-11 w-full justify-start rounded-xl text-muted-foreground", collapsed && "justify-center px-0")}><Settings /><span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-36 opacity-100")}>Configurações</span></Button>
+              <Button variant="ghost" className={cn("h-11 w-full justify-start text-left rounded-xl text-muted-foreground", collapsed && "justify-center px-0")}><Settings /><span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-36 opacity-100")}>Configurações</span></Button>
               <div className={cn("flex items-center rounded-xl bg-porcelain p-3", collapsed && "justify-center p-2")}>
                 <div className="grid size-9 shrink-0 place-items-center rounded-full bg-mauve/25 text-mauve"><CircleUserRound className="size-5" /></div>
                 <div className={cn("ml-3 overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "w-36 opacity-100")}><p className="whitespace-nowrap text-sm font-bold">Letícia Motta</p><p className="whitespace-nowrap text-xs text-sage">Plano Essencial</p></div>
