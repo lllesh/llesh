@@ -88,7 +88,7 @@ export function FilhappDashboard() {
               {collapsed ? "m!" : (<><span className="block leading-[0.82]">menstru</span><span className="block leading-[0.82]">app!</span></>)}
             </button>
 
-            <nav className="mt-5 space-y-0 px-4" aria-label="Navegação principal">
+            <nav className="mt-8 space-y-0 px-4" aria-label="Navegação principal">
               {navItems.map((item) => {
                 const selected = active === item.label;
                 return (
