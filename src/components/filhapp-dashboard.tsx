@@ -87,13 +87,13 @@ export function FilhappDashboard() {
               </span>
             </div>
 
-            <nav className="space-y-1.5 px-4" aria-label="Navegação principal">
+            <nav className="space-y-0 px-4" aria-label="Navegação principal">
               {navItems.map((item) => {
                 const selected = active === item.label;
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-[72px] w-full justify-start rounded-full px-6 text-left font-display text-[44px] font-black lowercase leading-none tracking-[-0.01em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-foreground hover:bg-foreground" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-[54px] w-full justify-start rounded-full px-6 text-left font-display text-[44px] font-black lowercase leading-none tracking-[-0.01em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-foreground hover:bg-foreground" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
                         {collapsed ? item.label.charAt(0) : item.label}
                       </Button>
                     </TooltipTrigger>
