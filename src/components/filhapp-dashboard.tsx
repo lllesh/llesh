@@ -45,7 +45,7 @@ export function FilhappDashboard() {
     <TooltipProvider delayDuration={150}>
       <div className="min-h-screen bg-background p-0 lg:p-5">
         <div className="mx-auto flex min-h-screen max-w-[1600px] gap-5 lg:min-h-[calc(100vh-2.5rem)]">
-          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[28px] bg-sage shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--sage)_55%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
+          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[28px] bg-muted-foreground shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--sage)_55%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
             <div className={cn("flex h-24 items-center", collapsed ? "justify-center px-3" : "px-6")}>
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--coral)_75%,transparent)]">
                 <Droplets className="size-5" />
@@ -100,10 +100,10 @@ export function FilhappDashboard() {
 </span></div>
               <div className="hidden items-center gap-2 lg:flex"><span className="size-2 rounded-full bg-sage"/><span className="text-xs font-semibold text-muted-foreground">Seus dados estão atualizados</span></div>
               <div className="flex items-center gap-2">
-                <div className="hidden rounded-xl bg-muted p-1 sm:flex" aria-label="Objetivo atual">
-                  {["Acompanhar", "Engravidar", "Evitar"].map((item) => <Button key={item} variant="ghost" size="sm" onClick={() => setObjective(item)} className={cn("rounded-lg px-3 text-xs", objective === item && "bg-card text-foreground shadow-sm")}>{item}</Button>)}
+                <div className="hidden gap-1.5 sm:flex" aria-label="Objetivo atual">
+                  {["Acompanhar", "Engravidar", "Evitar"].map((item) => <Button key={item} variant="ghost" size="sm" onClick={() => setObjective(item)} className={cn("h-9 rounded-full px-4 text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain hover:text-porcelain", objective === item ? "bg-coral hover:bg-coral" : "bg-muted-foreground/70 hover:bg-muted-foreground")}>{item}</Button>)}
                 </div>
-                <Button onClick={() => setLogOpen(true)} className="h-10 rounded-xl px-4 shadow-[0_10px_22px_-10px_color-mix(in_oklab,var(--coral)_85%,transparent)]"><Plus /> <span className="hidden sm:inline">Registrar hoje</span></Button>
+                <Button onClick={() => setLogOpen(true)} className="h-10 rounded-full px-5 text-porcelain shadow-[0_10px_22px_-10px_color-mix(in_oklab,var(--coral)_85%,transparent)]"><Plus /> <span className="hidden sm:inline">Registrar hoje</span></Button>
               </div>
             </header>
 
