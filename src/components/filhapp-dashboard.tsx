@@ -81,29 +81,18 @@ export function FilhappDashboard() {
         <div className="mx-auto flex min-h-screen max-w-[1600px] gap-5 lg:min-h-[calc(100vh-2.5rem)]">
           {/* Ilha flutuante rosa */}
           <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[32px] bg-coral shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--coral)_80%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[96px]" : "w-[272px]")}>
-            <div className={cn("flex h-28 items-center", collapsed ? "justify-center px-3" : "px-7")}>
+            <div className={cn("flex h-24 items-center justify-between", collapsed ? "flex-col justify-center gap-3 px-3 pt-4" : "px-7")}>
               {collapsed ? (
                 <span className="font-display text-2xl font-black leading-none text-porcelain">M!</span>
               ) : (
-                <div className="font-display font-black uppercase leading-[0.85] text-porcelain">
-                  <div className="text-[28px] tracking-[-0.02em]">Menstru</div>
-                  <div className="text-[28px] tracking-[-0.02em]">App!</div>
-                </div>
+                <span className="whitespace-nowrap font-display text-[24px] font-black uppercase leading-none tracking-[-0.02em] text-porcelain">Menstruapp!</span>
               )}
+              <button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} onClick={() => setCollapsed(!collapsed)} className="grid size-8 shrink-0 place-items-center text-porcelain transition-transform hover:scale-110">
+                <span className="block size-[18px] rounded-[6px] border-2 border-porcelain" />
+              </button>
             </div>
 
-            <div className={cn("pb-4", collapsed ? "px-4" : "px-7")}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className={cn("flex size-11 justify-center rounded-[15px] bg-porcelain/20 text-porcelain hover:bg-porcelain/30 hover:text-porcelain", collapsed && "mx-auto")}>
-                    <span className="block size-[18px] rounded-[6px] border-2 border-porcelain" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="right">{collapsed ? "Expandir menu" : "Recolher menu"}</TooltipContent>
-              </Tooltip>
-            </div>
-
-            <nav className={cn("space-y-1", collapsed ? "px-4" : "px-5")} aria-label="Navegação principal">
+            <nav className={cn("mt-4 space-y-1", collapsed ? "px-4" : "px-5")} aria-label="Navegação principal">
               {navItems.map((item) => {
                 const selected = active === item.label;
                 return (
@@ -119,32 +108,33 @@ export function FilhappDashboard() {
               })}
             </nav>
 
-            <div className={cn("mt-4 flex-1 space-y-1.5 overflow-y-auto", collapsed ? "hidden" : "px-5")} aria-label="Métricas de hoje">
+            <div className={cn("flex flex-1 flex-col justify-center gap-4 py-10", collapsed ? "hidden" : "px-5")} aria-label="Hoje">
               {[
-                { label: "Temperatura", value: "36,8°", tone: "bg-salmon" },
-                { label: "Chance hoje", value: "32%", tone: "bg-sage" },
-                { label: "Menstruação em", value: "14 dias", tone: "bg-periwinkle" },
+                { label: "Temperatura basal", value: "36,8°", tone: "bg-salmon" },
+                { label: "Chance de engravidar hoje", value: "32%", tone: "bg-sage" },
+                { label: "Próxima menstruação", value: "14 dias", tone: "bg-periwinkle" },
                 { label: "Ciclo médio", value: "28 dias", tone: "bg-mauve" },
               ].map((m) => (
-                <div key={m.label} className={cn("flex h-11 items-center justify-between gap-2 whitespace-nowrap rounded-full px-5 text-porcelain", m.tone)}>
-                  <span className="text-xs font-bold uppercase tracking-[0.1em]">{m.label}</span>
-                  <span className="font-display text-xl font-black">{m.value}</span>
-                </div>
+                <Tooltip key={m.label}>
+                  <TooltipTrigger asChild>
+                    <div className={cn("flex h-14 items-center justify-center rounded-full px-6 text-porcelain", m.tone)}>
+                      <span className="font-display text-2xl font-black uppercase">{m.value}</span>
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">{m.label}</TooltipContent>
+                </Tooltip>
               ))}
             </div>
             {collapsed && <div className="flex-1" />}
 
-            <div className={cn("space-y-2 pb-5", collapsed ? "px-4" : "px-5")}>
-              <Button variant="ghost" className={cn("h-12 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black uppercase text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
-                {collapsed ? <Settings className="size-5" /> : "Configurações"}
-              </Button>
-              <div className={cn("flex h-14 items-center rounded-full bg-mauve pl-2 pr-5", collapsed && "justify-center px-0")}>
+            <div className={cn("flex items-center gap-2 pb-5", collapsed ? "flex-col px-4" : "px-5")}>
+              <div className={cn("flex h-14 min-w-0 flex-1 items-center rounded-full bg-mauve pl-2 pr-5", collapsed && "w-14 flex-none justify-center p-0")}>
                 <div className="grid size-10 shrink-0 place-items-center rounded-full bg-porcelain/25 text-porcelain"><CircleUserRound className="size-5" /></div>
-                <div className={cn("overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "ml-3 w-36 opacity-100")}>
-                  <p className="whitespace-nowrap text-sm font-bold text-porcelain">Letícia Motta</p>
-                  <p className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain/80">Plano Essencial</p>
-                </div>
+                {!collapsed && <p className="ml-3 truncate text-sm font-bold text-porcelain">Letícia Motta</p>}
               </div>
+              <button aria-label="Configurações" className="grid size-12 shrink-0 place-items-center text-porcelain transition-transform hover:rotate-45">
+                <Settings className="size-6" />
+              </button>
             </div>
           </aside>
 
