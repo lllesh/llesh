@@ -85,7 +85,7 @@ export function FilhappDashboard() {
               {collapsed ? (
                 <span className="font-display text-2xl font-black leading-none text-porcelain">M!</span>
               ) : (
-                <span className="whitespace-nowrap font-display text-[24px] font-black uppercase leading-none tracking-[-0.02em] text-porcelain">Menstruapp!</span>
+                <span className="whitespace-nowrap font-display text-[24px] font-black lowercase leading-none tracking-[0.02em] text-porcelain">menstruapp!</span>
               )}
               <button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} onClick={() => setCollapsed(!collapsed)} className="grid size-8 shrink-0 place-items-center text-porcelain transition-transform hover:scale-110">
                 <span className="block size-[18px] rounded-[6px] border-2 border-porcelain" />
@@ -98,7 +98,7 @@ export function FilhappDashboard() {
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black uppercase tracking-[0.02em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black lowercase tracking-[0.06em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
                         {collapsed ? item.label.charAt(0) : item.label}
                       </Button>
                     </TooltipTrigger>
@@ -118,7 +118,7 @@ export function FilhappDashboard() {
                 <Tooltip key={m.label}>
                   <TooltipTrigger asChild>
                     <div className={cn("flex h-14 items-center justify-center rounded-full px-6 text-porcelain", m.tone)}>
-                      <span className="font-display text-2xl font-black uppercase">{m.value}</span>
+                      <span className="font-display text-2xl font-black lowercase">{m.value}</span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent side="right">{m.label}</TooltipContent>
@@ -140,17 +140,17 @@ export function FilhappDashboard() {
 
           <main className="min-w-0 flex-1 overflow-x-hidden pb-28 lg:pb-0">
             <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/90 px-5 backdrop-blur-xl lg:h-20 lg:px-8">
-              <span className="font-display text-xl font-black uppercase tracking-[-0.02em] text-coral lg:hidden">Menstru App!</span>
+              <span className="font-display text-xl font-black lowercase tracking-[0.02em] text-coral lg:hidden">menstruapp!</span>
               <div className="hidden items-center gap-2 lg:flex">
                 <span className="rounded-full bg-foreground px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">{totalObjects} objetos guardados hoje</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="hidden gap-1.5 sm:flex" aria-label="Objetivo atual">
                   {["Acompanhar", "Engravidar", "Evitar"].map((item) => (
-                    <Button key={item} variant="ghost" size="sm" onClick={() => setObjective(item)} className={cn("h-9 rounded-full px-4 text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain hover:text-porcelain", objective === item ? "bg-coral hover:bg-coral" : "bg-muted-foreground/70 hover:bg-muted-foreground")}>{item}</Button>
+                    <Button key={item} variant="ghost" size="sm" onClick={() => setObjective(item)} className={cn("h-9 rounded-full px-4 text-[10px] font-bold lowercase tracking-[0.14em] text-porcelain hover:text-porcelain", objective === item ? "bg-coral hover:bg-coral" : "bg-muted-foreground/70 hover:bg-muted-foreground")}>{item}</Button>
                   ))}
                 </div>
-                <Button onClick={() => setLogOpen(true)} className="h-10 rounded-full bg-foreground px-5 text-porcelain hover:bg-foreground/90"><Plus /><span className="hidden sm:inline text-[10px] font-bold uppercase tracking-[0.14em]">Registrar</span></Button>
+                <Button onClick={() => setLogOpen(true)} className="h-10 rounded-full bg-foreground px-5 text-porcelain hover:bg-foreground/90"><Plus /><span className="hidden sm:inline text-[10px] font-bold lowercase tracking-[0.14em]">Registrar</span></Button>
               </div>
             </header>
 
@@ -161,12 +161,12 @@ export function FilhappDashboard() {
                   <span className="rounded-full bg-apricot px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">Fase ovulatória</span>
                   <span className="rounded-full bg-porcelain/15 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">Pico de LH hoje</span>
                 </div>
-                <h1 className="mt-4 whitespace-nowrap font-display text-[64px] font-black uppercase leading-[0.85] tracking-[-0.05em] text-porcelain md:text-[110px] xl:text-[140px]">
+                <h1 className="mt-4 whitespace-nowrap font-display text-[64px] font-black lowercase leading-[0.85] tracking-[0.02em] text-porcelain md:text-[110px] xl:text-[140px]">
                   Dia 14<span className="text-coral">.</span>
                 </h1>
-                <div className="mt-8 flex items-center justify-between gap-1">
+                <div className="mt-8 flex items-center justify-between gap-1 px-3 md:px-4">
                   {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
-                    <span key={d} title={`Dia ${d}`} className={cn("block rounded-full", d === 14 ? "size-5 animate-today-glow bg-porcelain" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
+                    <span key={d} title={`Dia ${d}`} className={cn("block rounded-full", d === 14 ? "size-5 animate-today-glow bg-coral ring-2 ring-coral/40" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
                   ))}
                 </div>
               </section>
@@ -201,7 +201,7 @@ export function FilhappDashboard() {
                   <p className="mt-4 font-display text-xl font-bold leading-tight md:text-2xl">
                     Muco em clara de ovo + LH positivo + temperatura subindo. Janela fértil aberta agora.
                   </p>
-                  <Button variant="ghost" className="mt-6 h-11 w-fit rounded-full bg-porcelain/20 px-5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain hover:bg-porcelain/30 hover:text-porcelain">
+                  <Button variant="ghost" className="mt-6 h-11 w-fit rounded-full bg-porcelain/20 px-5 text-[10px] font-bold lowercase tracking-[0.16em] text-porcelain hover:bg-porcelain/30 hover:text-porcelain">
                     Ver análise completa <ArrowUpRight />
                   </Button>
                 </article>
@@ -213,12 +213,12 @@ export function FilhappDashboard() {
             {navItems.slice(0, 4).map((item) => {
               const Icon = item.icon;
               return (
-                <Button key={item.label} variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 flex-col gap-0.5 rounded-full px-1 text-[9px] font-bold uppercase tracking-[0.08em] text-porcelain hover:text-porcelain", active === item.label ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15")}>
+                <Button key={item.label} variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 flex-col gap-0.5 rounded-full px-1 text-[9px] font-bold lowercase tracking-[0.08em] text-porcelain hover:text-porcelain", active === item.label ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15")}>
                   <Icon className="size-4" /><span className="truncate">{item.label}</span>
                 </Button>
               );
             })}
-            <Button variant="ghost" className="h-12 flex-col gap-0.5 rounded-full px-1 text-[9px] font-bold uppercase text-porcelain hover:bg-porcelain/15 hover:text-porcelain"><Menu className="size-4" /><span>Mais</span></Button>
+            <Button variant="ghost" className="h-12 flex-col gap-0.5 rounded-full px-1 text-[9px] font-bold lowercase text-porcelain hover:bg-porcelain/15 hover:text-porcelain"><Menu className="size-4" /><span>Mais</span></Button>
           </nav>
         </div>
       </div>
@@ -226,7 +226,7 @@ export function FilhappDashboard() {
       <Sheet open={logOpen} onOpenChange={setLogOpen}>
         <SheetContent side="right" className="w-full bg-background sm:max-w-md">
           <SheetHeader className="pr-8 text-left">
-            <SheetTitle className="font-display text-4xl font-black uppercase leading-none tracking-[-0.03em]">Hoje.</SheetTitle>
+            <SheetTitle className="font-display text-4xl font-black lowercase leading-none tracking-[0.02em]">Hoje.</SheetTitle>
             <SheetDescription>Dia 14 · Fase ovulatória</SheetDescription>
           </SheetHeader>
           <div className="mt-8 space-y-7">
@@ -234,7 +234,7 @@ export function FilhappDashboard() {
             <LogSection icon={MoonStar} title="Humor" options={["Tranquila", "Sensível", "Animada", "Irritada"]} />
             <LogSection icon={Heart} title="Relação sexual" options={["Não", "Com proteção", "Sem proteção"]} />
           </div>
-          <Button onClick={saveLog} className="mt-8 h-12 w-full rounded-full bg-coral text-[11px] font-bold uppercase tracking-[0.16em] text-porcelain hover:bg-coral/90">
+          <Button onClick={saveLog} className="mt-8 h-12 w-full rounded-full bg-coral text-[11px] font-bold lowercase tracking-[0.16em] text-porcelain hover:bg-coral/90">
             {saved ? <><Check /> Registro salvo</> : "Salvar registro"}
           </Button>
         </SheetContent>
@@ -246,7 +246,7 @@ export function FilhappDashboard() {
 function PocketHead({ title, count }: { title: string; count?: number }) {
   return (
     <div className="flex items-center justify-between gap-2">
-      <h2 className="min-w-0 font-display text-[26px] xl:text-[28px] 2xl:text-5xl font-black uppercase leading-none tracking-[-0.04em]">{title}</h2>
+      <h2 className="min-w-0 font-display text-[26px] xl:text-[28px] 2xl:text-5xl font-black lowercase leading-none tracking-[0.02em]">{title}</h2>
       {count !== undefined && <span className="grid size-9 shrink-0 place-items-center rounded-full bg-porcelain/25 font-display text-base font-black">{count}</span>}
     </div>
   );
@@ -259,7 +259,7 @@ function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; o
       <PocketHead title={def.title} count={inside.length} />
       {/* O bolsinho */}
       <div className="mt-5 flex min-h-[92px] flex-wrap content-start gap-2 rounded-[28px] bg-porcelain/20 p-3">
-        {inside.length === 0 && <span className="m-auto text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain/80">Vazio</span>}
+        {inside.length === 0 && <span className="m-auto text-[10px] font-bold lowercase tracking-[0.16em] text-porcelain/80">Vazio</span>}
         {inside.map((o) => {
           const Icon = o.icon;
           return (
@@ -284,7 +284,7 @@ function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; o
 function Stat({ icon: Icon, label, value, tone }: { icon: typeof Activity; label: string; value: string; tone: string }) {
   return (
     <div className={cn("rounded-[24px] p-4 text-porcelain", tone)}>
-      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.14em] text-porcelain/90"><Icon className="size-3.5" />{label}</div>
+      <div className="flex items-center gap-2 text-[9px] font-bold lowercase tracking-[0.14em] text-porcelain/90"><Icon className="size-3.5" />{label}</div>
       <p className="mt-2 font-display text-2xl font-black tracking-[-0.02em]">{value}</p>
     </div>
   );
@@ -294,7 +294,7 @@ function LogSection({ icon: Icon, title, options }: { icon: typeof Activity; tit
   const [chosen, setChosen] = useState(options[0]);
   return (
     <div>
-      <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em]"><Icon className="size-4 text-coral" />{title}</div>
+      <div className="mb-3 flex items-center gap-2 text-[11px] font-bold lowercase tracking-[0.16em]"><Icon className="size-4 text-coral" />{title}</div>
       <div className="flex flex-wrap gap-2">
         {options.map((o) => (
           <Button key={o} type="button" variant="ghost" size="sm" onClick={() => setChosen(o)} className={cn("rounded-full px-4 text-porcelain hover:text-porcelain", chosen === o ? "bg-coral hover:bg-coral" : "bg-muted-foreground/70 hover:bg-muted-foreground")}>{o}</Button>
