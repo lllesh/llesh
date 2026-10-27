@@ -116,7 +116,7 @@ export function FilhappDashboard() {
                 </div>
               </section>
 
-              <section className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+              <section className="overflow-hidden rounded-3xl bg-card shadow-[0_20px_50px_-30px_color-mix(in_oklab,var(--sage)_50%,transparent)]">
                 <div className="flex flex-col justify-between gap-4 border-b border-border p-5 md:flex-row md:items-center lg:p-6">
                   <div><h2 className="font-display text-lg font-semibold">Panorama do ciclo</h2><p className="mt-1 text-xs text-muted-foreground">Projeção hormonal baseada nos seus últimos 6 ciclos</p></div>
                   <div className="flex flex-wrap gap-4 text-xs font-medium text-muted-foreground"><Legend color="bg-periwinkle" label="Estrogênio"/><Legend color="bg-mauve" label="Progesterona"/><Legend color="bg-apricot" label="Ovulação prevista"/></div>
