@@ -74,27 +74,27 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.989 0.0114 84.58);
-  --foreground: oklch(0.435 0.012 150);
-  --card: oklch(1 0 0);
+  --background: oklch(0.13 0.006 20);
+  --foreground: oklch(0.21 0.008 20);
+  --card: oklch(0.18 0.008 20);
   --card-foreground: oklch(0.435 0.012 150);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.435 0.012 150);
-  --primary: oklch(0.7414 0.1356 14.08);
+  --primary: oklch(0.55 0.22 27);
   --primary-foreground: oklch(0.989 0.0114 84.58);
   --secondary: oklch(0.9071 0.0141 88.69);
   --secondary-foreground: oklch(0.435 0.012 150);
-  --muted: oklch(0.955 0.010 85);
-  --muted-foreground: oklch(0.53 0.018 173);
+  --muted: oklch(0.2 0.01 20);
+  --muted-foreground: oklch(0.32 0.02 20);
   --accent: oklch(0.6999 0.0319 163.89 / 18%);
   --accent-foreground: oklch(0.46 0.025 163.89);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.9071 0.0141 88.69 / 72%);
+  --border: oklch(0.3 0.02 20 / 60%);
   --input: oklch(0.9071 0.0141 88.69);
-  --ring: oklch(0.7414 0.1356 14.08);
-  --chart-1: oklch(0.7414 0.1356 14.08);
-  --chart-2: oklch(0.6999 0.0319 163.89);
+  --ring: oklch(0.55 0.22 27);
+  --chart-1: oklch(0.55 0.22 27);
+  --chart-2: oklch(0.4 0.15 20);
   --chart-3: oklch(0.6815 0.0644 275.37);
   --chart-4: oklch(0.8347 0.1197 64.52);
   --chart-5: oklch(0.7040 0.0713 346.04);
@@ -106,15 +106,15 @@
   --sidebar-accent-foreground: oklch(0.68 0.15 14.08);
   --sidebar-border: oklch(0.9071 0.0141 88.69 / 60%);
   --sidebar-ring: oklch(0.7414 0.1356 14.08);
-  --coral: oklch(0.7414 0.1356 14.08);
-  --salmon: oklch(0.7587 0.1335 25.11);
-  --peach: oklch(0.7976 0.1181 39.37);
-  --apricot: oklch(0.8347 0.1197 64.52);
-  --sage: oklch(0.6999 0.0319 163.89);
-  --periwinkle: oklch(0.6815 0.0644 275.37);
-  --mauve: oklch(0.7040 0.0713 346.04);
-  --stone: oklch(0.9071 0.0141 88.69);
-  --porcelain: oklch(0.9890 0.0114 84.58);
+  --coral: oklch(0.52 0.21 27);
+  --salmon: oklch(0.6 0.23 28);
+  --peach: oklch(0.42 0.17 25);
+  --apricot: oklch(0.63 0.24 29);
+  --sage: oklch(0.27 0.012 20);
+  --periwinkle: oklch(0.33 0.11 18);
+  --mauve: oklch(0.38 0.15 15);
+  --stone: oklch(0.24 0.01 20);
+  --porcelain: oklch(0.97 0.006 30);
 }
 
 .dark {
