@@ -245,9 +245,9 @@ export function FilhappDashboard() {
 
 function PocketHead({ title, count }: { title: string; count?: number }) {
   return (
-    <div className="flex items-center justify-between gap-3">
-      <h2 className="min-w-0 truncate font-display text-4xl font-black uppercase leading-none tracking-[-0.03em] 2xl:text-5xl">{title}</h2>
-      {count !== undefined && <span className="grid size-11 shrink-0 place-items-center rounded-full bg-porcelain/25 font-display text-lg font-black">{count}</span>}
+    <div className="flex items-center justify-between gap-2">
+      <h2 className="min-w-0 font-display text-[26px] xl:text-[28px] 2xl:text-5xl font-black uppercase leading-none tracking-[-0.04em]">{title}</h2>
+      {count !== undefined && <span className="grid size-9 shrink-0 place-items-center rounded-full bg-porcelain/25 font-display text-base font-black">{count}</span>}
     </div>
   );
 }
@@ -255,7 +255,7 @@ function PocketHead({ title, count }: { title: string; count?: number }) {
 function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; onToggle: (id: string) => void }) {
   const inside = def.objects.filter((o) => stored.includes(o.id));
   return (
-    <article className={cn("flex flex-col rounded-[32px] p-7 text-porcelain", def.tone, def.span)}>
+    <article className={cn("flex flex-col rounded-[32px] p-6 text-porcelain", def.tone, def.span)}>
       <PocketHead title={def.title} count={inside.length} />
       {/* O bolsinho */}
       <div className="mt-5 flex min-h-[92px] flex-wrap content-start gap-2 rounded-[28px] bg-porcelain/20 p-3">
