@@ -108,7 +108,25 @@ export function FilhappDashboard() {
               })}
             </nav>
 
-            <div className={cn("flex flex-1 flex-col justify-center gap-4 py-10", collapsed ? "hidden" : "px-5")} aria-label="Hoje">
+            <div className={cn("mt-8 flex flex-col gap-3", collapsed ? "items-center px-4" : "px-5")}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button onClick={() => setLogOpen(true)} aria-label="Registrar" className={cn("h-12 rounded-full bg-foreground text-porcelain hover:bg-foreground/85", collapsed ? "w-12 p-0" : "w-full justify-between px-6")}>
+                    {collapsed ? <Plus /> : <><span className="font-display text-lg font-black lowercase tracking-[0.06em]">registrar</span><span className="flex items-center gap-2 text-sm font-bold">{totalObjects}<Plus /></span></>}
+                  </Button>
+                </TooltipTrigger>
+                {collapsed && <TooltipContent side="right">registrar · {totalObjects}</TooltipContent>}
+              </Tooltip>
+              {!collapsed && (
+                <div className="flex gap-1.5" aria-label="Objetivo atual">
+                  {["Acompanhar", "Engravidar", "Evitar"].map((item) => (
+                    <button key={item} onClick={() => setObjective(item)} className={cn("h-9 flex-1 rounded-full text-[9px] font-bold uppercase tracking-[0.1em] text-porcelain transition-colors", objective === item ? "bg-foreground" : "bg-porcelain/15 hover:bg-porcelain/25")}>{item}</button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className={cn("flex flex-1 flex-col justify-center gap-4 py-8", collapsed ? "hidden" : "px-5")} aria-label="Hoje">
               {[
                 { label: "Temperatura basal", value: "36,8°", tone: "bg-salmon" },
                 { label: "Chance de engravidar hoje", value: "32%", tone: "bg-sage" },
@@ -139,19 +157,9 @@ export function FilhappDashboard() {
           </aside>
 
           <main className="min-w-0 flex-1 overflow-x-hidden pb-28 lg:pb-0">
-            <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/90 px-5 backdrop-blur-xl lg:h-20 lg:px-8">
-              <span className="font-display text-xl font-black lowercase tracking-[0.02em] text-coral lg:hidden">menstruapp!</span>
-              <div className="hidden items-center gap-2 lg:flex">
-                <span className="rounded-full bg-foreground px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">{totalObjects} objetos guardados hoje</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="hidden gap-1.5 sm:flex" aria-label="Objetivo atual">
-                  {["Acompanhar", "Engravidar", "Evitar"].map((item) => (
-                    <Button key={item} variant="ghost" size="sm" onClick={() => setObjective(item)} className={cn("h-9 rounded-full px-4 text-[10px] font-bold lowercase tracking-[0.14em] text-porcelain hover:text-porcelain", objective === item ? "bg-coral hover:bg-coral" : "bg-muted-foreground/70 hover:bg-muted-foreground")}>{item}</Button>
-                  ))}
-                </div>
-                <Button onClick={() => setLogOpen(true)} className="h-10 rounded-full bg-foreground px-5 text-porcelain hover:bg-foreground/90"><Plus /><span className="hidden sm:inline text-[10px] font-bold lowercase tracking-[0.14em]">Registrar</span></Button>
-              </div>
+            <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/90 px-5 backdrop-blur-xl lg:hidden">
+              <span className="font-display text-xl font-black lowercase tracking-[0.02em] text-coral">menstruapp!</span>
+              <Button onClick={() => setLogOpen(true)} aria-label="Registrar" className="size-10 rounded-full bg-coral p-0 text-porcelain hover:bg-coral/90"><Plus /></Button>
             </header>
 
             <div className="mx-auto max-w-[1360px] space-y-5 p-5 md:p-7 lg:p-8">
