@@ -189,7 +189,7 @@ export function FilhappDashboard() {
 
                 <article className="rounded-[32px] bg-apricot p-7 text-porcelain md:col-span-2 xl:col-span-2">
                   <PocketHead eyebrow="Bolsinho hormonal" title="Ovulação" />
-                  <div className="mt-4 h-[180px]">
+                  <div className="mt-2 h-[140px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={cycleData} margin={{ top: 18, right: 4, left: 4, bottom: 0 }}>
                         <XAxis dataKey="day" axisLine={false} tickLine={false} ticks={[1, 7, 14, 21, 28]} tickFormatter={(v) => `D${v}`} tick={{ fill: "var(--porcelain)", fontSize: 10, fontWeight: 700 }} />
@@ -208,7 +208,7 @@ export function FilhappDashboard() {
 
                 <article className="flex flex-col justify-between rounded-[32px] bg-mauve p-7 text-porcelain md:col-span-2 xl:col-span-2">
                   <PocketHead eyebrow="Bolsinho clínico" title="Insight" />
-                  <p className="mt-6 font-display text-2xl font-bold leading-tight md:text-3xl">
+                  <p className="mt-4 font-display text-xl font-bold leading-tight md:text-2xl">
                     Muco em clara de ovo + LH positivo + temperatura subindo. Janela fértil aberta agora.
                   </p>
                   <Button variant="ghost" className="mt-6 h-11 w-fit rounded-full bg-porcelain/20 px-5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain hover:bg-porcelain/30 hover:text-porcelain">
