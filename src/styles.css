@@ -169,8 +169,8 @@
 }
 
 @keyframes today-glow {
-  0%, 100% { box-shadow: 0 0 6px 1px color-mix(in oklab, var(--porcelain) 45%, transparent); }
-  50% { box-shadow: 0 0 16px 5px color-mix(in oklab, var(--porcelain) 75%, transparent); }
+  0%, 100% { box-shadow: 0 0 6px 1px color-mix(in oklab, var(--coral) 45%, transparent); }
+  50% { box-shadow: 0 0 16px 5px color-mix(in oklab, var(--coral) 75%, transparent); }
 }
 @utility animate-today-glow {
   animation: today-glow 2.4s ease-in-out infinite;
