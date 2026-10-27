@@ -93,7 +93,7 @@ export function FilhappDashboard() {
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-16 w-full justify-start rounded-full px-6 text-left font-display text-[30px] font-black lowercase leading-none tracking-[-0.01em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-foreground hover:bg-foreground" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-[72px] w-full justify-start rounded-full px-6 text-left font-display text-[44px] font-black lowercase leading-none tracking-[-0.01em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-foreground hover:bg-foreground" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
                         {collapsed ? item.label.charAt(0) : item.label}
                       </Button>
                     </TooltipTrigger>
@@ -122,9 +122,8 @@ export function FilhappDashboard() {
             {collapsed && <div className="flex-1" />}
 
             <div className={cn("shrink-0 pb-5", collapsed ? "flex justify-center px-4" : "px-4")}>
-              <button aria-label="Letícia Motta" className={cn("flex h-16 items-center rounded-full bg-foreground text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "w-16 justify-center" : "w-full gap-3 pl-2 pr-6")}>
-                <span className="grid size-12 shrink-0 place-items-center rounded-full bg-coral font-display text-lg font-black">LM</span>
-                {!collapsed && <span className="truncate font-display text-[22px] font-black leading-none">Letícia Motta</span>}
+              <button aria-label="Letícia Motta" className={cn("flex items-center justify-center rounded-full bg-foreground text-center text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "size-16" : "min-h-20 w-full px-6 py-3")}>
+                <span className="font-display text-[34px] font-black lowercase leading-[0.9]">{collapsed ? "lm" : "Letícia Motta"}</span>
               </button>
             </div>
           </aside>
@@ -142,11 +141,11 @@ export function FilhappDashboard() {
             <div className="mx-auto max-w-[1360px] space-y-5 p-5 md:p-7 lg:p-8">
               {/* Hero monumental */}
               <section className="relative overflow-hidden rounded-[36px] bg-foreground px-7 pb-8 pt-7 md:px-10 md:pt-9">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-apricot px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">Fase ovulatória</span>
-                  <span className="rounded-full bg-porcelain/15 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">Pico de LH hoje</span>
+                <div className="flex flex-wrap items-center justify-end gap-3">
+                  <span className="rounded-full bg-apricot px-6 py-2.5 text-[15px] font-black uppercase tracking-[0.14em] text-porcelain">Fase ovulatória</span>
+                  <span className="rounded-full bg-porcelain/15 px-6 py-2.5 text-[15px] font-black uppercase tracking-[0.14em] text-porcelain">Pico de LH hoje</span>
                 </div>
-                <h1 className="mt-4 whitespace-nowrap font-display text-[64px] font-black lowercase leading-[0.85] tracking-[0.02em] text-porcelain md:text-[110px] xl:text-[140px]">
+                <h1 className="mt-14 whitespace-nowrap font-display text-[64px] font-black lowercase leading-[0.85] tracking-[0.02em] text-porcelain md:text-[110px] xl:text-[140px]">
                   Dia 14<span className="text-coral">.</span>
                 </h1>
                 <div className="mt-8 flex items-center justify-between gap-1 px-3 md:px-4">
