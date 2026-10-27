@@ -103,13 +103,13 @@ export function FilhappDashboard() {
               </Tooltip>
             </div>
 
-            <nav className={cn("space-y-1.5", collapsed ? "px-4" : "px-5")} aria-label="Navegação principal">
+            <nav className={cn("space-y-1", collapsed ? "px-4" : "px-5")} aria-label="Navegação principal">
               {navItems.map((item) => {
                 const selected = active === item.label;
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-14 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black uppercase tracking-[0.02em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black uppercase tracking-[0.02em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
                         {collapsed ? item.label.charAt(0) : item.label}
                       </Button>
                     </TooltipTrigger>
@@ -119,14 +119,14 @@ export function FilhappDashboard() {
               })}
             </nav>
 
-            <div className={cn("mt-5 flex-1 space-y-2 overflow-y-auto", collapsed ? "hidden" : "px-5")} aria-label="Métricas de hoje">
+            <div className={cn("mt-4 flex-1 space-y-1.5 overflow-y-auto", collapsed ? "hidden" : "px-5")} aria-label="Métricas de hoje">
               {[
                 { label: "Temperatura", value: "36,8°", tone: "bg-salmon" },
                 { label: "Chance hoje", value: "32%", tone: "bg-sage" },
-                { label: "Próx. menstruação", value: "14 dias", tone: "bg-periwinkle" },
+                { label: "Menstruação em", value: "14 dias", tone: "bg-periwinkle" },
                 { label: "Ciclo médio", value: "28 dias", tone: "bg-mauve" },
               ].map((m) => (
-                <div key={m.label} className={cn("flex h-14 items-center justify-between rounded-full px-6 text-porcelain", m.tone)}>
+                <div key={m.label} className={cn("flex h-11 items-center justify-between gap-2 whitespace-nowrap rounded-full px-5 text-porcelain", m.tone)}>
                   <span className="text-xs font-bold uppercase tracking-[0.1em]">{m.label}</span>
                   <span className="font-display text-xl font-black">{m.value}</span>
                 </div>
@@ -135,7 +135,7 @@ export function FilhappDashboard() {
             {collapsed && <div className="flex-1" />}
 
             <div className={cn("space-y-2 pb-5", collapsed ? "px-4" : "px-5")}>
-              <Button variant="ghost" className={cn("h-14 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black uppercase text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
+              <Button variant="ghost" className={cn("h-12 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black uppercase text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
                 {collapsed ? <Settings className="size-5" /> : "Configurações"}
               </Button>
               <div className={cn("flex h-14 items-center rounded-full bg-mauve pl-2 pr-5", collapsed && "justify-center px-0")}>
