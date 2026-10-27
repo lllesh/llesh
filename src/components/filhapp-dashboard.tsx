@@ -45,9 +45,9 @@ export function FilhappDashboard() {
     <TooltipProvider delayDuration={150}>
       <div className="min-h-screen bg-background p-0 lg:p-5">
         <div className="mx-auto flex min-h-screen max-w-[1600px] gap-5 lg:min-h-[calc(100vh-2.5rem)]">
-          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[28px] bg-muted-foreground shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--sage)_55%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
+          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[28px] bg-coral shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--coral)_70%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}> transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
             <div className={cn("flex h-24 items-center", collapsed ? "justify-center px-3" : "px-6")}>
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--coral)_75%,transparent)]">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-porcelain/25 text-porcelain"> shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--coral)_75%,transparent)]">
                 <Droplets className="size-5" />
               </div>
               <div className={cn("ml-3 overflow-hidden transition-all duration-300", collapsed ? "w-0 opacity-0" : "w-40 opacity-100")}>
@@ -60,7 +60,7 @@ export function FilhappDashboard() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className="mx-auto flex size-10 justify-center rounded-[14px] bg-porcelain/20 text-porcelain hover:bg-porcelain/30 hover:text-porcelain">
-                    <PanelLeft className="size-4" />
+                    <span className="block size-4 rounded-[5px] border-2 border-porcelain" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="right">{collapsed ? "Expandir menu" : "Recolher menu"}</TooltipContent>
@@ -74,7 +74,7 @@ export function FilhappDashboard() {
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-xl px-4 transition-all", selected ? "bg-coral text-porcelain hover:bg-coral hover:text-porcelain" : "text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-xl px-4 transition-all", <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-full px-4 transition-all", selected ? "bg-mauve text-porcelain hover:bg-mauve hover:text-porcelain" : "text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}> : "text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
                         <Icon className="size-[19px] shrink-0" />
                         <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
                       </Button>
