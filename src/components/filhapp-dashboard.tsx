@@ -85,10 +85,10 @@ export function FilhappDashboard() {
               aria-label={collapsed ? "Expandir menu" : "Recolher menu"}
               className={cn("shrink-0 text-left font-display font-black lowercase leading-[0.8] tracking-[-0.03em] text-background transition-opacity hover:opacity-80", collapsed ? "px-0 text-center text-[56px]" : "px-8 text-[84px]")}
             >
-              {collapsed ? "m!" : (<><span className="block">menstru</span><span className="block">app!</span></>)}
+              {collapsed ? "m!" : (<><span className="block leading-[0.82]">menstru</span><span className="block leading-[0.82]">app!</span></>)}
             </button>
 
-            <nav className="mt-6 space-y-0 px-4" aria-label="Navegação principal">
+            <nav className="mt-5 space-y-0 px-4" aria-label="Navegação principal">
               {navItems.map((item) => {
                 const selected = active === item.label;
                 return (
@@ -104,7 +104,7 @@ export function FilhappDashboard() {
               })}
             </nav>
 
-            <div className={cn("flex flex-1 flex-col justify-center gap-4 py-6", collapsed ? "hidden" : "px-4")}>
+            <div className={cn("flex flex-1 flex-col justify-center gap-3 py-5", collapsed ? "hidden" : "px-4")}>
               {[
                 { label: "Temperatura basal", value: "36,8°" },
                 { label: "Chance de engravidar hoje", value: "32%" },
@@ -112,7 +112,7 @@ export function FilhappDashboard() {
               ].map((m) => (
                 <Tooltip key={m.label}>
                   <TooltipTrigger asChild>
-                    <div className="flex h-20 items-center justify-center rounded-full bg-foreground text-porcelain">
+                    <div className="flex h-[68px] shrink-0 items-center justify-center rounded-full bg-foreground text-porcelain">
                       <span className="w-[284px] text-left font-display text-[48px] font-black lowercase leading-none tracking-[0.02em]">{m.value}</span>
                     </div>
                   </TooltipTrigger>
@@ -123,8 +123,8 @@ export function FilhappDashboard() {
             {collapsed && <div className="flex-1" />}
 
             <div className="shrink-0 px-4">
-              <button aria-label="Letícia Motta" className={cn("flex w-full flex-col items-center justify-center gap-2 rounded-full bg-foreground text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "py-3" : "py-4")}>
-                <span className="grid size-12 place-items-center rounded-full bg-coral font-display text-lg font-black lowercase text-porcelain">lm</span>
+              <button aria-label="Letícia Motta" className={cn("flex w-full flex-col items-center justify-center gap-2 rounded-full bg-foreground text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "py-3" : "py-3")}>
+                <span className="grid size-10 place-items-center rounded-full bg-coral font-display text-lg font-black lowercase text-porcelain">lm</span>
                 {!collapsed && <span className="font-display text-[38px] font-black lowercase leading-[0.9]">Letícia Motta</span>}
               </button>
             </div>
