@@ -43,7 +43,6 @@ const pockets: PocketDef[] = [
     key: "muco", title: "Muco", eyebrow: "Bolsinho cervical", tone: "bg-sage", span: "",
     objects: [
       { id: "seco", label: "Seco", icon: Waves },
-      { id: "cremoso", label: "Cremoso", icon: Waves },
       { id: "clara", label: "Clara de ovo", icon: Sparkles },
     ],
   },
@@ -248,7 +247,7 @@ function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; o
         {inside.map((o) => {
           const Icon = o.icon;
           return (
-            <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-10 items-center gap-2 rounded-full bg-foreground px-4 text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain transition-transform animate-in zoom-in-50 hover:scale-105">
+            <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-12 items-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-bold uppercase tracking-[0.14em] text-porcelain transition-transform animate-in zoom-in-50 hover:scale-105">
               <Icon className="size-4" />{o.label}
             </button>
           );
@@ -257,7 +256,7 @@ function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; o
       {/* Objetos para guardar */}
       <div className="mt-4 flex flex-wrap gap-2">
         {def.objects.filter((o) => !stored.includes(o.id)).map((o) => (
-          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Guardar ${o.label}`} className="flex h-9 items-center gap-1.5 rounded-full bg-porcelain/25 px-3.5 text-[10px] font-bold uppercase tracking-[0.12em] text-porcelain transition hover:bg-porcelain/35">
+          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Guardar ${o.label}`} className="flex h-11 items-center gap-1.5 rounded-full bg-porcelain/25 px-4 text-[13px] font-bold uppercase tracking-[0.12em] text-porcelain transition hover:bg-porcelain/35">
             <Plus className="size-3.5" />{o.label}
           </button>
         ))}
