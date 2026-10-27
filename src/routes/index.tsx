@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FilhappDashboard } from "@/components/filhapp-dashboard";
+import { IntroSplash } from "@/components/intro-splash";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,5 +17,10 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return <FilhappDashboard />;
+  return (
+    <>
+      <IntroSplash />
+      <FilhappDashboard />
+    </>
+  );
 }
