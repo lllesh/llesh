@@ -208,8 +208,8 @@ export function FilhappDashboard() {
             <LogSection icon={MoonStar} title="Humor" options={["Tranquila", "Sensível", "Animada", "Irritada"]} />
             <LogSection icon={Heart} title="Relação sexual" options={["Não", "Com proteção", "Sem proteção"]} />
           </div>
-          <Button onClick={saveLog} aria-label="Salvar" className={cn("mt-8 h-16 w-full rounded-full bg-coral text-porcelain transition-transform hover:bg-coral/90", saved && "scale-95")}>
-            <Check className="size-7" strokeWidth={3} />
+          <Button onClick={saveLog} aria-label="Salvar" className={cn("mx-auto mt-10 flex size-14 rounded-full bg-coral p-0 text-porcelain transition-transform hover:bg-coral/90", saved && "scale-90")}>
+            <Check className="size-6" strokeWidth={3} />
           </Button>
         </SheetContent>
       </Sheet>
@@ -234,9 +234,26 @@ const titleIcons: Record<string, (p: { className?: string }) => ReactElement> = 
 function PocketHead({ title, iconKey }: { title: string; iconKey?: string }) {
   const Icon = iconKey ? titleIcons[iconKey] : undefined;
   return (
-    <div className="flex items-center gap-4">
-      <h2 className="min-w-0 break-words font-display text-[56px] font-black lowercase leading-[0.85] tracking-[-0.02em] xl:text-[64px] 2xl:text-[88px]">{title}</h2>
-      {Icon && <Icon className="size-12 shrink-0 xl:size-14 2xl:size-16" />}
+    <div className="flex items-center gap-3">
+      <h2 className="min-w-0 break-words font-display text-[56px] font-black lowercase leading-[0.85] tracking-[-0.04em] 2xl:text-[72px]">{title}</h2>
+      {Icon && <Icon className="size-11 shrink-0 2xl:size-14" />}
+    </div>
+  );
+}
+
+function HormoneTip({ active, payload, label }: { active?: boolean; payload?: { name?: string; value?: number }[]; label?: number }) {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="rounded-[20px] bg-foreground px-4 py-3 text-porcelain shadow-lg">
+      <p className="font-display text-xl font-black lowercase leading-none tracking-[-0.03em]">dia {label}</p>
+      <div className="mt-2 space-y-1">
+        {payload.map((p) => (
+          <p key={p.name} className="flex items-baseline justify-between gap-5 text-[10px] font-black uppercase tracking-[0.14em]">
+            <span className="text-porcelain/70">{p.name}</span>
+            <span className="font-display text-base tracking-normal">{p.value}</span>
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
@@ -244,24 +261,21 @@ function PocketHead({ title, iconKey }: { title: string; iconKey?: string }) {
 function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; onToggle: (id: string) => void }) {
   const inside = def.objects.filter((o) => stored.includes(o.id));
   return (
-    <article className={cn("flex flex-col rounded-[32px] p-6 text-porcelain", def.tone, def.span)}>
+    <article className={cn("flex flex-col rounded-[32px] p-6 text-porcelain", def.tone)}>
       <PocketHead title={def.title} iconKey={def.key} />
       {/* O bolsinho */}
-      <div className="mt-5 flex min-h-[92px] flex-wrap content-start gap-2 rounded-[28px] bg-porcelain/20 p-3">
-        {inside.length === 0 && <span className="m-auto text-[10px] font-bold lowercase tracking-[0.16em] text-porcelain/80">Vazio</span>}
-        {inside.map((o) => {
-          return (
-            <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-12 items-center rounded-full bg-foreground px-6 text-[14px] font-bold uppercase tracking-[0.14em] text-porcelain transition-transform animate-in zoom-in-50 hover:scale-105">
-              {o.label}
-            </button>
-          );
-        })}
+      <div className="mt-4 flex min-h-[64px] flex-wrap content-start gap-2 rounded-[28px] bg-foreground/45 p-2">
+        {inside.map((o) => (
+          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-12 items-center rounded-full bg-porcelain px-5 text-[13px] font-black uppercase tracking-[0.14em] text-foreground transition-transform animate-in zoom-in-50 hover:scale-105">
+            {o.label}
+          </button>
+        ))}
       </div>
       {/* Objetos para guardar */}
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-3 flex flex-wrap gap-2">
         {def.objects.filter((o) => !stored.includes(o.id)).map((o) => (
-          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Guardar ${o.label}`} className="flex h-11 items-center gap-1.5 rounded-full bg-porcelain/25 px-4 text-[13px] font-bold uppercase tracking-[0.12em] text-porcelain transition hover:bg-porcelain/35">
-            <Plus className="size-3.5" />{o.label}
+          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Guardar ${o.label}`} className="flex h-10 items-center rounded-full bg-foreground/25 px-4 text-[12px] font-black uppercase tracking-[0.12em] text-porcelain transition hover:bg-foreground/40">
+            {o.label}
           </button>
         ))}
       </div>
