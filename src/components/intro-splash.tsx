@@ -15,7 +15,7 @@ export function IntroSplash() {
   useEffect(() => {
     const wide = window.matchMedia("(min-aspect-ratio: 1/1)").matches;
     setSrc(wide ? introDesk.url : introVideo.url);
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
+    const onKey = (e: KeyboardEvent) => (e.key === "Escape" || e.key === " " || e.key === "Enter") && close();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
