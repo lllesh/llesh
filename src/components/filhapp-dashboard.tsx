@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-  Activity, Baby, BarChart3, BookOpen, CalendarDays, Check, ChevronLeft,
+  Activity, Baby, BarChart3, BookOpen, CalendarDays, Check, ChevronLeft, PanelLeft,
   ChevronRight, CircleUserRound, Droplets, Heart, Home, Menu, MoonStar,
   Plus, Settings, Sparkles, Target, Thermometer, TrendingUp, X, Zap,
 } from "lucide-react";
@@ -45,22 +45,22 @@ export function FilhappDashboard() {
     <TooltipProvider delayDuration={150}>
       <div className="min-h-screen bg-background p-0 lg:p-5">
         <div className="mx-auto flex min-h-screen max-w-[1600px] gap-5 lg:min-h-[calc(100vh-2.5rem)]">
-          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[28px] bg-stone shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--sage)_55%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
+          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[28px] bg-sage shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--sage)_55%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
             <div className={cn("flex h-24 items-center", collapsed ? "justify-center px-3" : "px-6")}>
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--coral)_75%,transparent)]">
                 <Droplets className="size-5" />
               </div>
               <div className={cn("ml-3 overflow-hidden transition-all duration-300", collapsed ? "w-0 opacity-0" : "w-40 opacity-100")}>
-                <div className="whitespace-nowrap font-display text-sm font-bold tracking-[0.22em] text-foreground">MENSTRUAPP</div>
-                <div className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">Menstruação e ciclo</div>
+                <div className="whitespace-nowrap font-display text-sm font-bold tracking-[0.22em] text-porcelain">MENSTRUAPP</div>
+                <div className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.12em] text-porcelain/80">Menstruação e ciclo</div>
               </div>
             </div>
 
             <div className="px-4 pb-4">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className="mx-auto flex size-10 justify-center rounded-[14px] bg-background text-muted-foreground shadow-sm hover:bg-porcelain hover:text-foreground">
-                    <ChevronLeft className={cn("size-4", "transition-transform duration-500", collapsed && "rotate-180")} />
+                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className="mx-auto flex size-10 justify-center rounded-[14px] bg-porcelain/20 text-porcelain hover:bg-porcelain/30 hover:text-porcelain">
+                    <PanelLeft className="size-4" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="right">{collapsed ? "Expandir menu" : "Recolher menu"}</TooltipContent>
@@ -74,7 +74,7 @@ export function FilhappDashboard() {
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-xl px-4 transition-all", selected ? "bg-coral text-porcelain hover:bg-coral hover:text-porcelain" : "text-muted-foreground hover:bg-background/70 hover:text-foreground", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-xl px-4 transition-all", selected ? "bg-coral text-porcelain hover:bg-coral hover:text-porcelain" : "text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
                         <Icon className="size-[19px] shrink-0" />
                         <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
                       </Button>
@@ -86,7 +86,7 @@ export function FilhappDashboard() {
             </nav>
 
             <div className="space-y-3 p-4">
-              <Button variant="ghost" className={cn("h-11 w-full justify-start text-left rounded-xl text-muted-foreground", collapsed && "justify-center px-0")}><Settings /><span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-36 opacity-100")}>Configurações</span></Button>
+              <Button variant="ghost" className={cn("h-11 w-full justify-start text-left rounded-xl text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}><Settings /><span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-36 opacity-100")}>Configurações</span></Button>
               <div className={cn("flex items-center rounded-2xl bg-mauve p-3", collapsed && "justify-center p-2")}>
                 <div className="grid size-9 shrink-0 place-items-center rounded-full bg-porcelain/25 text-porcelain"><CircleUserRound className="size-5" /></div>
                 <div className={cn("ml-3 overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "w-36 opacity-100")}><p className="whitespace-nowrap text-sm font-bold text-porcelain">Letícia Motta</p><p className="whitespace-nowrap text-xs text-porcelain/80">Plano Essencial</p></div>
