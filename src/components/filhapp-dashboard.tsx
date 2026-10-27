@@ -164,9 +164,9 @@ export function FilhappDashboard() {
                 <h1 className="mt-4 whitespace-nowrap font-display text-[64px] font-black uppercase leading-[0.85] tracking-[-0.05em] text-porcelain md:text-[110px] xl:text-[140px]">
                   Dia 14<span className="text-coral">.</span>
                 </h1>
-                <div className="mt-8 flex h-3 gap-1">
+                <div className="mt-8 flex items-center justify-between gap-1">
                   {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
-                    <div key={d} title={`Dia ${d}`} className={cn("flex-1 rounded-full", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/20" : d <= 16 ? "bg-apricot" : "bg-periwinkle", d === 14 && "scale-y-[2.2] bg-porcelain")} />
+                    <span key={d} title={`Dia ${d}`} className={cn("block rounded-full", d === 14 ? "size-5 animate-today-glow bg-porcelain" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
                   ))}
                 </div>
               </section>
@@ -178,7 +178,7 @@ export function FilhappDashboard() {
                 ))}
 
                 <article className="rounded-[32px] bg-apricot p-7 text-porcelain md:col-span-2 xl:col-span-2">
-                  <PocketHead eyebrow="Bolsinho hormonal" title="Ovulação" />
+                  <PocketHead title="Ovulação" />
                   <div className="mt-2 h-[140px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={cycleData} margin={{ top: 18, right: 4, left: 4, bottom: 0 }}>
@@ -197,7 +197,7 @@ export function FilhappDashboard() {
                 </article>
 
                 <article className="flex flex-col justify-between rounded-[32px] bg-mauve p-7 text-porcelain md:col-span-2 xl:col-span-2">
-                  <PocketHead eyebrow="Bolsinho clínico" title="Insight" />
+                  <PocketHead title="Insight" />
                   <p className="mt-4 font-display text-xl font-bold leading-tight md:text-2xl">
                     Muco em clara de ovo + LH positivo + temperatura subindo. Janela fértil aberta agora.
                   </p>
@@ -243,13 +243,10 @@ export function FilhappDashboard() {
   );
 }
 
-function PocketHead({ eyebrow, title, count }: { eyebrow: string; title: string; count?: number }) {
+function PocketHead({ title, count }: { title: string; count?: number }) {
   return (
-    <div className="flex items-start justify-between gap-3">
-      <div>
-        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-porcelain/85">{eyebrow}</p>
-        <h2 className="mt-1 font-display text-3xl font-black uppercase leading-none tracking-[-0.03em] 2xl:text-5xl break-words">{title}</h2>
-      </div>
+    <div className="flex items-center justify-between gap-3">
+      <h2 className="min-w-0 truncate font-display text-4xl font-black uppercase leading-none tracking-[-0.03em] 2xl:text-5xl">{title}</h2>
       {count !== undefined && <span className="grid size-11 shrink-0 place-items-center rounded-full bg-porcelain/25 font-display text-lg font-black">{count}</span>}
     </div>
   );
@@ -259,10 +256,10 @@ function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; o
   const inside = def.objects.filter((o) => stored.includes(o.id));
   return (
     <article className={cn("flex flex-col rounded-[32px] p-7 text-porcelain", def.tone, def.span)}>
-      <PocketHead eyebrow={def.eyebrow} title={def.title} count={inside.length} />
+      <PocketHead title={def.title} count={inside.length} />
       {/* O bolsinho */}
       <div className="mt-5 flex min-h-[92px] flex-wrap content-start gap-2 rounded-[28px] bg-porcelain/20 p-3">
-        {inside.length === 0 && <span className="m-auto text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain/80">Bolsinho vazio</span>}
+        {inside.length === 0 && <span className="m-auto text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain/80">Vazio</span>}
         {inside.map((o) => {
           const Icon = o.icon;
           return (
