@@ -103,16 +103,14 @@ export function FilhappDashboard() {
               </Tooltip>
             </div>
 
-            <nav className={cn("flex-1 space-y-2", collapsed ? "px-4" : "px-5")} aria-label="Navegação principal">
+            <nav className={cn("space-y-1.5", collapsed ? "px-4" : "px-5")} aria-label="Navegação principal">
               {navItems.map((item) => {
-                const Icon = item.icon;
                 const selected = active === item.label;
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start rounded-full px-5 text-left text-porcelain transition-all hover:text-porcelain", selected ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
-                        <Icon className="size-[19px] shrink-0" />
-                        <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-14 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black uppercase tracking-[0.02em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
+                        {collapsed ? item.label.charAt(0) : item.label}
                       </Button>
                     </TooltipTrigger>
                     {collapsed && <TooltipContent side="right">{item.label}</TooltipContent>}
@@ -121,10 +119,24 @@ export function FilhappDashboard() {
               })}
             </nav>
 
+            <div className={cn("mt-5 flex-1 space-y-2 overflow-y-auto", collapsed ? "hidden" : "px-5")} aria-label="Métricas de hoje">
+              {[
+                { label: "Temperatura", value: "36,8°", tone: "bg-salmon" },
+                { label: "Chance hoje", value: "32%", tone: "bg-sage" },
+                { label: "Próx. menstruação", value: "14 dias", tone: "bg-periwinkle" },
+                { label: "Ciclo médio", value: "28 dias", tone: "bg-mauve" },
+              ].map((m) => (
+                <div key={m.label} className={cn("flex h-14 items-center justify-between rounded-full px-6 text-porcelain", m.tone)}>
+                  <span className="text-xs font-bold uppercase tracking-[0.1em]">{m.label}</span>
+                  <span className="font-display text-xl font-black">{m.value}</span>
+                </div>
+              ))}
+            </div>
+            {collapsed && <div className="flex-1" />}
+
             <div className={cn("space-y-2 pb-5", collapsed ? "px-4" : "px-5")}>
-              <Button variant="ghost" className={cn("h-12 w-full justify-start rounded-full px-5 text-left text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
-                <Settings className="size-[19px] shrink-0" />
-                <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.18em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>Configurações</span>
+              <Button variant="ghost" className={cn("h-14 w-full justify-start rounded-full px-6 text-left font-display text-xl font-black uppercase text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
+                {collapsed ? <Settings className="size-5" /> : "Configurações"}
               </Button>
               <div className={cn("flex h-14 items-center rounded-full bg-mauve pl-2 pr-5", collapsed && "justify-center px-0")}>
                 <div className="grid size-10 shrink-0 place-items-center rounded-full bg-porcelain/25 text-porcelain"><CircleUserRound className="size-5" /></div>
@@ -159,17 +171,9 @@ export function FilhappDashboard() {
                   <span className="rounded-full bg-apricot px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">Fase ovulatória</span>
                   <span className="rounded-full bg-porcelain/15 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">Pico de LH hoje</span>
                 </div>
-                <div className="mt-6 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-                  <h1 className="font-display text-[88px] font-black uppercase leading-[0.82] tracking-[-0.05em] text-porcelain md:text-[140px] xl:text-[180px]">
-                    Dia<br />14<span className="text-coral">.</span>
-                  </h1>
-                  <div className="grid grid-cols-2 gap-3 lg:w-[420px]">
-                    <Stat icon={Thermometer} label="Temperatura" value="36,8°" tone="bg-salmon" />
-                    <Stat icon={Heart} label="Chance hoje" value="32%" tone="bg-sage" />
-                    <Stat icon={CalendarDays} label="Próxima menstruação" value="14 dias" tone="bg-periwinkle" />
-                    <Stat icon={Activity} label="Ciclo médio" value="28 dias" tone="bg-mauve" />
-                  </div>
-                </div>
+                <h1 className="mt-4 whitespace-nowrap font-display text-[64px] font-black uppercase leading-[0.85] tracking-[-0.05em] text-porcelain md:text-[110px] xl:text-[140px]">
+                  Dia 14<span className="text-coral">.</span>
+                </h1>
                 <div className="mt-8 flex h-3 gap-1">
                   {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
                     <div key={d} title={`Dia ${d}`} className={cn("flex-1 rounded-full", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/20" : d <= 16 ? "bg-apricot" : "bg-periwinkle", d === 14 && "scale-y-[2.2] bg-porcelain")} />
