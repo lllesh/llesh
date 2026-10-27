@@ -43,9 +43,6 @@ export function IntroSplash() {
           className="h-full w-full object-cover"
         />
       )}
-      <span aria-hidden className="absolute right-8 top-8 grid size-12 place-items-center rounded-[14px] bg-background/60 text-2xl font-light leading-none text-porcelain backdrop-blur">
-        ×
-      </span>
     </div>
   );
 }
