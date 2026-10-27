@@ -166,7 +166,7 @@ export function FilhappDashboard() {
                 </h1>
                 <div className="mt-8 flex items-center justify-between gap-1 px-3 md:px-4">
                   {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
-                    <span key={d} title={`Dia ${d}`} className={cn("block rounded-full", d === 14 ? "size-5 animate-today-glow bg-coral ring-2 ring-coral/40" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
+                    <span key={d} title={`Dia ${d}`} className={cn("block rounded-full", d === 14 ? "size-5 animate-today-glow bg-wine" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
                   ))}
                 </div>
               </section>
