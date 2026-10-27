@@ -96,7 +96,8 @@ export function FilhappDashboard() {
 
           <main className="min-w-0 flex-1 overflow-x-hidden pb-24 lg:max-h-[calc(100vh-2.5rem)] lg:overflow-y-auto lg:pb-0 xl:max-h-[calc(100vh-4rem)]">
             <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border bg-background/90 px-5 backdrop-blur-xl lg:h-20 lg:px-8 xl:px-10">
-              <div className="flex items-center gap-3 lg:hidden"><div className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Baby className="size-4" /></div><span className="font-display text-lg font-bold tracking-[0.22em]">FILHAPP</span></div>
+              <div className="flex items-center gap-3 lg:hidden"><div className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Baby className="size-4" /></div><span className="font-display text-lg font-bold tracking-[0.22em]">MENSTRUAPP
+</span></div>
               <div className="hidden items-center gap-2 lg:flex"><span className="size-2 rounded-full bg-sage"/><span className="text-xs font-semibold text-muted-foreground">Seus dados estão atualizados</span></div>
               <div className="flex items-center gap-2">
                 <div className="hidden rounded-xl bg-muted p-1 sm:flex" aria-label="Objetivo atual">
