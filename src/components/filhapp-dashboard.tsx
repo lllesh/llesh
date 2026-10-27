@@ -158,7 +158,7 @@ export function FilhappDashboard() {
               </section>
 
               {/* Bolsinhos */}
-              <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              <section className="grid gap-5 md:grid-cols-2">
                 {pockets.map((p) => (
                   <Pocket key={p.key} def={p} stored={stored[p.key] ?? []} onToggle={(id) => toggle(p.key, id)} />
                 ))}
@@ -220,7 +220,7 @@ export function FilhappDashboard() {
             <LogSection icon={MoonStar} title="Humor" options={["Tranquila", "Sensível", "Animada", "Irritada"]} />
             <LogSection icon={Heart} title="Relação sexual" options={["Não", "Com proteção", "Sem proteção"]} />
           </div>
-          <Button onClick={saveLog} aria-label="Salvar" className={cn("mt-8 h-16 w-full", saved && "scale-95")} data-x=""  text-[11px] font-bold lowercase tracking-[0.16em] text-porcelain hover:bg-coral/90">
+          <Button onClick={saveLog} aria-label="Salvar" className={cn("mt-8 h-16 w-full rounded-full bg-coral text-porcelain transition-transform hover:bg-coral/90", saved && "scale-95")}>
             <Check className="size-7" strokeWidth={3} />
           </Button>
         </SheetContent>
