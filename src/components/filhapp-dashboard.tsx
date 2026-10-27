@@ -1,10 +1,9 @@
 import { useState } from "react";
 import {
-  Activity, Baby, BarChart3, BookOpen, CalendarDays, Check, ChevronLeft, PanelLeft,
-  ChevronRight, CircleUserRound, Droplets, Heart, Home, Menu, MoonStar,
-  Plus, Settings, Sparkles, Target, Thermometer, TrendingUp, X, Zap,
+  Activity, ArrowUpRight, BarChart3, BookOpen, CalendarDays, Check, CircleUserRound, Droplet,
+  Droplets, Flame, Heart, Home, Menu, MoonStar, Plus, Settings, Sparkles, Thermometer, Waves, Zap,
 } from "lucide-react";
-import { Area, AreaChart, CartesianGrid, ReferenceLine, ResponsiveContainer, Tooltip as ChartTooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, ReferenceLine, ResponsiveContainer, Tooltip as ChartTooltip, XAxis } from "recharts";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -19,15 +18,45 @@ const navItems = [
   { label: "Conteúdos", icon: BookOpen },
 ];
 
-const cycleData = Array.from({ length: 28 }, (_, index) => {
-  const day = index + 1;
+const cycleData = Array.from({ length: 28 }, (_, i) => {
+  const day = i + 1;
   const estrogen = 35 + 57 * Math.exp(-Math.pow(day - 13, 2) / 18) + 16 * Math.exp(-Math.pow(day - 21, 2) / 20);
   const progesterone = 18 + (day > 13 ? 57 * Math.exp(-Math.pow(day - 21, 2) / 30) : 0);
-  const temperature = 36.25 + (day > 14 ? 0.38 : 0.03 * Math.sin(day));
-  return { day, estrogen: Math.round(estrogen), progesterone: Math.round(progesterone), temperature };
+  return { day, estrogen: Math.round(estrogen), progesterone: Math.round(progesterone) };
 });
 
-const days = Array.from({ length: 28 }, (_, i) => i + 1);
+type Obj = { id: string; label: string; icon: typeof Activity };
+type PocketDef = { key: string; title: string; eyebrow: string; tone: string; objects: Obj[]; span: string };
+
+const pockets: PocketDef[] = [
+  {
+    key: "sangue", title: "Sangue", eyebrow: "Bolsinho de fluxo", tone: "bg-coral", span: "md:col-span-2 xl:col-span-2",
+    objects: [
+      { id: "spotting", label: "Spotting", icon: Droplet },
+      { id: "leve", label: "Leve", icon: Droplet },
+      { id: "moderado", label: "Moderado", icon: Droplets },
+      { id: "intenso", label: "Intenso", icon: Droplets },
+      { id: "coagulos", label: "Coágulos", icon: Flame },
+    ],
+  },
+  {
+    key: "muco", title: "Muco", eyebrow: "Bolsinho cervical", tone: "bg-sage", span: "",
+    objects: [
+      { id: "seco", label: "Seco", icon: Waves },
+      { id: "cremoso", label: "Cremoso", icon: Waves },
+      { id: "clara", label: "Clara de ovo", icon: Sparkles },
+    ],
+  },
+  {
+    key: "sintomas", title: "Sintomas", eyebrow: "Bolsinho do corpo", tone: "bg-periwinkle", span: "",
+    objects: [
+      { id: "colica", label: "Cólica", icon: Zap },
+      { id: "mamas", label: "Mamas sensíveis", icon: Heart },
+      { id: "cefaleia", label: "Cefaleia", icon: Flame },
+      { id: "humor", label: "Humor", icon: MoonStar },
+    ],
+  },
+];
 
 export function FilhappDashboard() {
   const [collapsed, setCollapsed] = useState(false);
@@ -35,48 +64,55 @@ export function FilhappDashboard() {
   const [objective, setObjective] = useState("Engravidar");
   const [logOpen, setLogOpen] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [stored, setStored] = useState<Record<string, string[]>>({ sangue: ["leve"], muco: ["clara"], sintomas: ["colica"] });
 
-  const saveLog = () => {
-    setSaved(true);
-    window.setTimeout(() => { setLogOpen(false); setSaved(false); }, 900);
-  };
+  const toggle = (pocket: string, id: string) =>
+    setStored((s) => {
+      const cur = s[pocket] ?? [];
+      return { ...s, [pocket]: cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id] };
+    });
+
+  const saveLog = () => { setSaved(true); window.setTimeout(() => { setLogOpen(false); setSaved(false); }, 900); };
+  const totalObjects = Object.values(stored).flat().length;
 
   return (
     <TooltipProvider delayDuration={150}>
       <div className="min-h-screen bg-background p-0 lg:p-5">
         <div className="mx-auto flex min-h-screen max-w-[1600px] gap-5 lg:min-h-[calc(100vh-2.5rem)]">
-          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[28px] bg-coral shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--coral)_70%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
-            <div className={cn("flex h-24 items-center", collapsed ? "justify-center px-3" : "px-6")}>
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-porcelain/25 text-porcelain">
-                <Droplets className="size-5" />
-              </div>
-              <div className={cn("ml-3 overflow-hidden transition-all duration-300", collapsed ? "w-0 opacity-0" : "w-40 opacity-100")}>
-                <div className="whitespace-nowrap font-display text-sm font-bold tracking-[0.22em] text-porcelain">MENSTRUAPP</div>
-                <div className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.12em] text-porcelain/80">Menstruação e ciclo</div>
-              </div>
+          {/* Ilha flutuante rosa */}
+          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[32px] bg-coral shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--coral)_80%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[96px]" : "w-[272px]")}>
+            <div className={cn("flex h-28 items-center", collapsed ? "justify-center px-3" : "px-7")}>
+              {collapsed ? (
+                <span className="font-display text-2xl font-black leading-none text-porcelain">M!</span>
+              ) : (
+                <div className="font-display font-black uppercase leading-[0.85] text-porcelain">
+                  <div className="text-[28px] tracking-[-0.02em]">Menstru</div>
+                  <div className="text-[28px] tracking-[-0.02em]">App!</div>
+                </div>
+              )}
             </div>
 
-            <div className="px-4 pb-4">
+            <div className={cn("pb-4", collapsed ? "px-4" : "px-7")}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className="mx-auto flex size-10 justify-center rounded-[14px] bg-porcelain/20 text-porcelain hover:bg-porcelain/30 hover:text-porcelain">
-                    <span className="block size-4 rounded-[5px] border-2 border-porcelain" />
+                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className={cn("flex size-11 justify-center rounded-[15px] bg-porcelain/20 text-porcelain hover:bg-porcelain/30 hover:text-porcelain", collapsed && "mx-auto")}>
+                    <span className="block size-[18px] rounded-[6px] border-2 border-porcelain" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="right">{collapsed ? "Expandir menu" : "Recolher menu"}</TooltipContent>
               </Tooltip>
             </div>
 
-            <nav className={cn("flex-1 space-y-2", collapsed ? "px-4" : "px-7")} aria-label="Navegação principal">
+            <nav className={cn("flex-1 space-y-2", collapsed ? "px-4" : "px-5")} aria-label="Navegação principal">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const selected = active === item.label;
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-full px-4 transition-all", selected ? "bg-mauve text-porcelain hover:bg-mauve hover:text-porcelain" : "text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start rounded-full px-5 text-left text-porcelain transition-all hover:text-porcelain", selected ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
                         <Icon className="size-[19px] shrink-0" />
-                        <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
+                        <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.18em] transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
                       </Button>
                     </TooltipTrigger>
                     {collapsed && <TooltipContent side="right">{item.label}</TooltipContent>}
@@ -85,71 +121,194 @@ export function FilhappDashboard() {
               })}
             </nav>
 
-            <div className="space-y-3 p-4">
-              <Button variant="ghost" className={cn("h-11 w-full justify-start text-left rounded-xl text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}><Settings /><span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-36 opacity-100")}>Configurações</span></Button>
-              <div className={cn("flex items-center rounded-2xl bg-mauve p-3", collapsed && "justify-center p-2")}>
-                <div className="grid size-9 shrink-0 place-items-center rounded-full bg-porcelain/25 text-porcelain"><CircleUserRound className="size-5" /></div>
-                <div className={cn("ml-3 overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "w-36 opacity-100")}><p className="whitespace-nowrap text-sm font-bold text-porcelain">Letícia Motta</p><p className="whitespace-nowrap text-xs text-porcelain/80">Plano Essencial</p></div>
+            <div className={cn("space-y-2 pb-5", collapsed ? "px-4" : "px-5")}>
+              <Button variant="ghost" className={cn("h-12 w-full justify-start rounded-full px-5 text-left text-porcelain hover:bg-porcelain/15 hover:text-porcelain", collapsed && "justify-center px-0")}>
+                <Settings className="size-[19px] shrink-0" />
+                <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.18em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>Configurações</span>
+              </Button>
+              <div className={cn("flex h-14 items-center rounded-full bg-mauve pl-2 pr-5", collapsed && "justify-center px-0")}>
+                <div className="grid size-10 shrink-0 place-items-center rounded-full bg-porcelain/25 text-porcelain"><CircleUserRound className="size-5" /></div>
+                <div className={cn("overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "ml-3 w-36 opacity-100")}>
+                  <p className="whitespace-nowrap text-sm font-bold text-porcelain">Letícia Motta</p>
+                  <p className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain/80">Plano Essencial</p>
+                </div>
               </div>
             </div>
           </aside>
 
-          <main className="min-w-0 flex-1 overflow-x-hidden pb-24 lg:pb-0">
-            <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/90 px-5 backdrop-blur-xl lg:h-20 lg:px-8 xl:px-10">
-              <div className="flex items-center gap-3 lg:hidden"><div className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Droplets className="size-4" /></div><span className="font-display text-lg font-bold tracking-[0.22em]">MENSTRUAPP
-</span></div>
-              <div className="hidden items-center gap-2 lg:flex"><span className="size-2 rounded-full bg-sage"/><span className="text-xs font-semibold text-muted-foreground">Seus dados estão atualizados</span></div>
+          <main className="min-w-0 flex-1 overflow-x-hidden pb-28 lg:pb-0">
+            <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/90 px-5 backdrop-blur-xl lg:h-20 lg:px-8">
+              <span className="font-display text-xl font-black uppercase tracking-[-0.02em] text-coral lg:hidden">Menstru App!</span>
+              <div className="hidden items-center gap-2 lg:flex">
+                <span className="rounded-full bg-foreground px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">{totalObjects} objetos guardados hoje</span>
+              </div>
               <div className="flex items-center gap-2">
                 <div className="hidden gap-1.5 sm:flex" aria-label="Objetivo atual">
-                  {["Acompanhar", "Engravidar", "Evitar"].map((item) => <Button key={item} variant="ghost" size="sm" onClick={() => setObjective(item)} className={cn("h-9 rounded-full px-4 text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain hover:text-porcelain", objective === item ? "bg-coral hover:bg-coral" : "bg-muted-foreground/70 hover:bg-muted-foreground")}>{item}</Button>)}
+                  {["Acompanhar", "Engravidar", "Evitar"].map((item) => (
+                    <Button key={item} variant="ghost" size="sm" onClick={() => setObjective(item)} className={cn("h-9 rounded-full px-4 text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain hover:text-porcelain", objective === item ? "bg-coral hover:bg-coral" : "bg-muted-foreground/70 hover:bg-muted-foreground")}>{item}</Button>
+                  ))}
                 </div>
-                <Button onClick={() => setLogOpen(true)} className="h-10 rounded-full px-5 text-porcelain shadow-[0_10px_22px_-10px_color-mix(in_oklab,var(--coral)_85%,transparent)]"><Plus /> <span className="hidden sm:inline">Registrar hoje</span></Button>
+                <Button onClick={() => setLogOpen(true)} className="h-10 rounded-full bg-foreground px-5 text-porcelain hover:bg-foreground/90"><Plus /><span className="hidden sm:inline text-[10px] font-bold uppercase tracking-[0.14em]">Registrar</span></Button>
               </div>
             </header>
 
-            <div className="mx-auto max-w-[1340px] space-y-6 p-5 md:p-7 lg:p-8 xl:p-10">
-              <section className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
-                <div><div className="mb-3 flex items-center gap-2"><span className="rounded-full bg-apricot px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain">Fase ovulatória</span><span className="text-xs font-semibold text-muted-foreground">Dia 14 de 28</span></div><h1 className="font-display text-3xl font-semibold text-foreground md:text-4xl xl:text-5xl">Sua ovulação está próxima</h1><p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">Pico de LH previsto para hoje, com base no padrão dos seus últimos ciclos.</p></div>
-                <div className="grid grid-cols-2 gap-3 sm:flex">
-                  <Metric icon={Thermometer} label="Temperatura" value="36,8 °C" tone="salmon" />
-                  <Metric icon={TrendingUp} label="Chance hoje" value="Alta · 32%" tone="sage" />
+            <div className="mx-auto max-w-[1360px] space-y-5 p-5 md:p-7 lg:p-8">
+              {/* Hero monumental */}
+              <section className="relative overflow-hidden rounded-[36px] bg-foreground px-7 pb-8 pt-7 md:px-10 md:pt-9">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded-full bg-apricot px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">Fase ovulatória</span>
+                  <span className="rounded-full bg-porcelain/15 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain">Pico de LH hoje</span>
+                </div>
+                <div className="mt-6 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+                  <h1 className="font-display text-[88px] font-black uppercase leading-[0.82] tracking-[-0.05em] text-porcelain md:text-[140px] xl:text-[180px]">
+                    Dia<br />14<span className="text-coral">.</span>
+                  </h1>
+                  <div className="grid grid-cols-2 gap-3 lg:w-[420px]">
+                    <Stat icon={Thermometer} label="Temperatura" value="36,8°" tone="bg-salmon" />
+                    <Stat icon={Heart} label="Chance hoje" value="32%" tone="bg-sage" />
+                    <Stat icon={CalendarDays} label="Próxima menstruação" value="14 dias" tone="bg-periwinkle" />
+                    <Stat icon={Activity} label="Ciclo médio" value="28 dias" tone="bg-mauve" />
+                  </div>
+                </div>
+                <div className="mt-8 flex h-3 gap-1">
+                  {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
+                    <div key={d} title={`Dia ${d}`} className={cn("flex-1 rounded-full", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/20" : d <= 16 ? "bg-apricot" : "bg-periwinkle", d === 14 && "scale-y-[2.2] bg-porcelain")} />
+                  ))}
                 </div>
               </section>
 
-              <section className="overflow-hidden rounded-3xl bg-card shadow-[0_20px_50px_-30px_color-mix(in_oklab,var(--sage)_50%,transparent)]">
-                <div className="flex flex-col justify-between gap-4 border-b border-border p-5 md:flex-row md:items-center lg:p-6">
-                  <div><h2 className="font-display text-lg font-semibold">Panorama do ciclo</h2><p className="mt-1 text-xs text-muted-foreground">Projeção hormonal baseada nos seus últimos 6 ciclos</p></div>
-                  <div className="flex flex-wrap gap-4 text-xs font-medium text-muted-foreground"><Legend color="bg-periwinkle" label="Estrogênio"/><Legend color="bg-mauve" label="Progesterona"/><Legend color="bg-apricot" label="Ovulação prevista"/></div>
-                </div>
-                <div className="h-[260px] p-3 pr-5 md:h-[320px] md:p-5">
-                  <ResponsiveContainer width="100%" height="100%"><AreaChart data={cycleData} margin={{ top: 15, right: 8, left: -22, bottom: 0 }}><defs><linearGradient id="estrogen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--periwinkle)" stopOpacity={0.32}/><stop offset="100%" stopColor="var(--periwinkle)" stopOpacity={0.02}/></linearGradient><linearGradient id="progesterone" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--mauve)" stopOpacity={0.28}/><stop offset="100%" stopColor="var(--mauve)" stopOpacity={0.01}/></linearGradient></defs><CartesianGrid vertical={false} stroke="var(--border)" strokeDasharray="3 6"/><XAxis dataKey="day" axisLine={false} tickLine={false} ticks={[1,7,14,21,28]} tickFormatter={(v) => `D${v}`} tick={{ fill: "var(--muted-foreground)", fontSize: 10 }}/><YAxis axisLine={false} tickLine={false} tick={{ fill: "var(--muted-foreground)", fontSize: 10 }}/><ChartTooltip contentStyle={{ border: "1px solid var(--border)", borderRadius: 12, background: "var(--card)", fontSize: 12 }} labelFormatter={(label) => `Dia ${label}`}/><ReferenceLine x={14} stroke="var(--apricot)" strokeWidth={2} strokeDasharray="4 4" label={{ value: "Pico LH", position: "top", fill: "var(--apricot)", fontSize: 11, fontWeight: 700 }}/><Area isAnimationActive={false} type="monotone" dataKey="estrogen" stroke="var(--periwinkle)" strokeWidth={2.5} fill="url(#estrogen)"/><Area isAnimationActive={false} type="monotone" dataKey="progesterone" stroke="var(--mauve)" strokeWidth={2.5} fill="url(#progesterone)"/></AreaChart></ResponsiveContainer>
-                </div>
-                <div className="border-t border-border px-5 py-4"><div className="flex h-9 gap-1">{days.map(day => <div key={day} title={`Dia ${day}`} className={cn("min-w-0 flex-1 rounded-md", day <= 5 && "bg-coral/45", day > 5 && day < 10 && "bg-sage/25", day >= 10 && day <= 16 && "bg-apricot/65", day > 16 && "bg-periwinkle/30", day === 14 && "ring-2 ring-apricot ring-offset-2")} />)}</div><div className="mt-3 flex justify-between text-[10px] font-bold uppercase text-muted-foreground"><span>Menstruação</span><span>Janela fértil</span><span>Fase lútea</span></div></div>
-              </section>
+              {/* Bolsinhos */}
+              <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                {pockets.map((p) => (
+                  <Pocket key={p.key} def={p} stored={stored[p.key] ?? []} onToggle={(id) => toggle(p.key, id)} />
+                ))}
 
-              <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                <InsightCard icon={Target} title="Fase do ciclo" eyebrow="Dia 14 · ovulatória" tone="coral"><p className="text-sm leading-relaxed text-porcelain/90">Transição folicular-lútea esperada nas próximas 24 a 36 horas.</p><div className="mt-5 flex items-center gap-2 text-xs font-bold text-porcelain"><Check className="size-4"/> Ciclo médio: 28 dias</div></InsightCard>
-                <InsightCard icon={Zap} title="Energia em alta" eyebrow="92% do seu padrão" tone="periwinkle"><p className="text-sm leading-relaxed text-porcelain/90">O pico hormonal favorece disposição, libido e desempenho cognitivo.</p><div className="mt-5 h-2 overflow-hidden rounded-full bg-porcelain/25"><div className="h-full w-[92%] rounded-full bg-porcelain"/></div></InsightCard>
-                <InsightCard icon={Heart} title="Sinais de ovulação" eyebrow="3 sinais confirmados" tone="sage"><div className="space-y-2 text-sm text-porcelain/90"><Signal label="Muco cervical" value="Ideal"/><Signal label="Temperatura basal" value="Elevada"/><Signal label="Teste de LH" value="Positivo"/></div></InsightCard>
-                <InsightCard icon={Sparkles} title="Insight clínico" eyebrow="Personalizado para você" tone="apricot"><p className="text-sm leading-relaxed text-porcelain/90">Seu padrão sugere ovulação regular. Mantenha hidratação e descanso para apoiar esta fase.</p><Button variant="link" className="mt-3 h-auto p-0 text-porcelain">Ver análise completa <ChevronRight/></Button></InsightCard>
+                <article className="rounded-[32px] bg-apricot p-7 text-porcelain md:col-span-2 xl:col-span-2">
+                  <PocketHead eyebrow="Bolsinho hormonal" title="Ovulação" />
+                  <div className="mt-4 h-[180px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={cycleData} margin={{ top: 18, right: 4, left: 4, bottom: 0 }}>
+                        <XAxis dataKey="day" axisLine={false} tickLine={false} ticks={[1, 7, 14, 21, 28]} tickFormatter={(v) => `D${v}`} tick={{ fill: "var(--porcelain)", fontSize: 10, fontWeight: 700 }} />
+                        <ChartTooltip contentStyle={{ border: 0, borderRadius: 999, background: "var(--foreground)", color: "var(--porcelain)", fontSize: 12 }} labelFormatter={(l) => `Dia ${l}`} />
+                        <ReferenceLine x={14} stroke="var(--porcelain)" strokeWidth={2} strokeDasharray="4 4" />
+                        <Area isAnimationActive={false} type="monotone" dataKey="estrogen" name="Estrogênio" stroke="var(--porcelain)" strokeWidth={3} fill="var(--porcelain)" fillOpacity={0.18} />
+                        <Area isAnimationActive={false} type="monotone" dataKey="progesterone" name="Progesterona" stroke="var(--coral)" strokeWidth={3} fill="var(--coral)" fillOpacity={0.25} />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <span className="rounded-full bg-porcelain/20 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em]">Estrogênio</span>
+                    <span className="rounded-full bg-coral px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em]">Progesterona</span>
+                  </div>
+                </article>
+
+                <article className="flex flex-col justify-between rounded-[32px] bg-mauve p-7 text-porcelain md:col-span-2 xl:col-span-2">
+                  <PocketHead eyebrow="Bolsinho clínico" title="Insight" />
+                  <p className="mt-6 font-display text-2xl font-bold leading-tight md:text-3xl">
+                    Muco em clara de ovo + LH positivo + temperatura subindo. Janela fértil aberta agora.
+                  </p>
+                  <Button variant="ghost" className="mt-6 h-11 w-fit rounded-full bg-porcelain/20 px-5 text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain hover:bg-porcelain/30 hover:text-porcelain">
+                    Ver análise completa <ArrowUpRight />
+                  </Button>
+                </article>
               </section>
             </div>
           </main>
 
-          <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-border bg-card/95 px-2 pb-[max(8px,env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl lg:hidden" aria-label="Navegação móvel">
-            {navItems.slice(0, 4).map((item) => { const Icon=item.icon; return <Button key={item.label} variant="ghost" onClick={() => setActive(item.label)} className={cn("h-14 flex-col gap-1 rounded-xl px-1 text-[10px]", active===item.label ? "text-primary" : "text-muted-foreground")}><Icon className="size-5"/><span>{item.label}</span></Button> })}
-            <Button variant="ghost" className="h-14 flex-col gap-1 rounded-xl px-1 text-[10px] text-muted-foreground"><Menu className="size-5"/><span>Mais</span></Button>
+          <nav className="fixed inset-x-3 bottom-3 z-30 grid grid-cols-5 rounded-full bg-coral px-2 py-2 shadow-lg lg:hidden" aria-label="Navegação móvel">
+            {navItems.slice(0, 4).map((item) => {
+              const Icon = item.icon;
+              return (
+                <Button key={item.label} variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 flex-col gap-0.5 rounded-full px-1 text-[9px] font-bold uppercase tracking-[0.08em] text-porcelain hover:text-porcelain", active === item.label ? "bg-mauve hover:bg-mauve" : "hover:bg-porcelain/15")}>
+                  <Icon className="size-4" /><span className="truncate">{item.label}</span>
+                </Button>
+              );
+            })}
+            <Button variant="ghost" className="h-12 flex-col gap-0.5 rounded-full px-1 text-[9px] font-bold uppercase text-porcelain hover:bg-porcelain/15 hover:text-porcelain"><Menu className="size-4" /><span>Mais</span></Button>
           </nav>
         </div>
       </div>
 
-      <Sheet open={logOpen} onOpenChange={setLogOpen}><SheetContent side="right" className="w-full border-l border-border bg-background sm:max-w-md"><SheetHeader className="pr-8 text-left"><SheetTitle className="font-display text-2xl">Como você está hoje?</SheetTitle><SheetDescription>Dia 14 · Fase ovulatória</SheetDescription></SheetHeader><div className="mt-8 space-y-7"><LogSection icon={Droplets} title="Fluxo" options={["Sem fluxo","Leve","Moderado","Intenso"]}/><LogSection icon={MoonStar} title="Humor" options={["Tranquila","Sensível","Animada","Irritada"]}/><LogSection icon={Heart} title="Relação sexual" options={["Não","Com proteção","Sem proteção"]}/><div><label className="text-sm font-bold">Observações</label><textarea className="mt-3 min-h-28 w-full resize-none rounded-xl border border-input bg-card p-4 text-sm outline-none focus:ring-2 focus:ring-ring" placeholder="Algo diferente para registrar?" /></div></div><Button onClick={saveLog} className="mt-8 h-12 w-full rounded-xl">{saved ? <><Check/> Registro salvo</> : "Salvar registro"}</Button></SheetContent></Sheet>
+      <Sheet open={logOpen} onOpenChange={setLogOpen}>
+        <SheetContent side="right" className="w-full bg-background sm:max-w-md">
+          <SheetHeader className="pr-8 text-left">
+            <SheetTitle className="font-display text-4xl font-black uppercase leading-none tracking-[-0.03em]">Hoje.</SheetTitle>
+            <SheetDescription>Dia 14 · Fase ovulatória</SheetDescription>
+          </SheetHeader>
+          <div className="mt-8 space-y-7">
+            <LogSection icon={Droplets} title="Fluxo" options={["Sem fluxo", "Leve", "Moderado", "Intenso"]} />
+            <LogSection icon={MoonStar} title="Humor" options={["Tranquila", "Sensível", "Animada", "Irritada"]} />
+            <LogSection icon={Heart} title="Relação sexual" options={["Não", "Com proteção", "Sem proteção"]} />
+          </div>
+          <Button onClick={saveLog} className="mt-8 h-12 w-full rounded-full bg-coral text-[11px] font-bold uppercase tracking-[0.16em] text-porcelain hover:bg-coral/90">
+            {saved ? <><Check /> Registro salvo</> : "Salvar registro"}
+          </Button>
+        </SheetContent>
+      </Sheet>
     </TooltipProvider>
   );
 }
 
-function Metric({ icon: Icon, label, value, tone }: { icon: typeof Activity; label: string; value: string; tone: "salmon" | "sage" }) { return <div className={cn("flex min-w-0 items-center gap-3 rounded-2xl px-4 py-3.5 text-porcelain sm:min-w-48", tone === "salmon" ? "bg-salmon" : "bg-sage")}><div className="grid size-10 shrink-0 place-items-center rounded-[12px] bg-porcelain/20"><Icon className="size-4"/></div><div className="min-w-0"><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-porcelain/85">{label}</p><p className="truncate text-sm font-bold">{value}</p></div></div> }
-function Legend({ color, label }: { color: string; label: string }) { return <span className="flex items-center gap-2"><span className={cn("size-2.5 rounded-full", color)}/>{label}</span> }
-function InsightCard({ icon: Icon, title, eyebrow, tone, children }: { icon: typeof Activity; title: string; eyebrow: string; tone: "coral"|"periwinkle"|"sage"|"apricot"; children: React.ReactNode }) { const tones={coral:"bg-coral",periwinkle:"bg-periwinkle",sage:"bg-sage",apricot:"bg-apricot"}; return <article className={cn("rounded-3xl p-6 text-porcelain shadow-sm", tones[tone])}><div className="mb-5 grid size-10 place-items-center rounded-[12px] bg-porcelain/20"><Icon className="size-5"/></div><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-porcelain/80">{eyebrow}</p><h3 className="mb-3 mt-1 font-display text-lg font-semibold">{title}</h3>{children}</article> }
-function Signal({ label, value }: { label: string; value: string }) { return <div className="flex items-center justify-between border-b border-porcelain/25 pb-2 last:border-0"><span>{label}</span><span className="font-bold">{value}</span></div> }
-function LogSection({ icon: Icon, title, options }: { icon: typeof Activity; title: string; options: string[] }) { const [chosen,setChosen]=useState(options[0]); return <div><div className="mb-3 flex items-center gap-2 text-sm font-bold"><Icon className="size-4 text-primary"/>{title}</div><div className="flex flex-wrap gap-2">{options.map(option=><Button key={option} type="button" variant={chosen===option?"default":"outline"} size="sm" onClick={()=>setChosen(option)} className="rounded-full">{option}</Button>)}</div></div> }
+function PocketHead({ eyebrow, title, count }: { eyebrow: string; title: string; count?: number }) {
+  return (
+    <div className="flex items-start justify-between gap-3">
+      <div>
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-porcelain/85">{eyebrow}</p>
+        <h2 className="mt-1 font-display text-3xl font-black uppercase leading-none tracking-[-0.03em] 2xl:text-5xl break-words">{title}</h2>
+      </div>
+      {count !== undefined && <span className="grid size-11 shrink-0 place-items-center rounded-full bg-porcelain/25 font-display text-lg font-black">{count}</span>}
+    </div>
+  );
+}
+
+function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; onToggle: (id: string) => void }) {
+  const inside = def.objects.filter((o) => stored.includes(o.id));
+  return (
+    <article className={cn("flex flex-col rounded-[32px] p-7 text-porcelain", def.tone, def.span)}>
+      <PocketHead eyebrow={def.eyebrow} title={def.title} count={inside.length} />
+      {/* O bolsinho */}
+      <div className="mt-5 flex min-h-[92px] flex-wrap content-start gap-2 rounded-[28px] bg-porcelain/20 p-3">
+        {inside.length === 0 && <span className="m-auto text-[10px] font-bold uppercase tracking-[0.16em] text-porcelain/80">Bolsinho vazio</span>}
+        {inside.map((o) => {
+          const Icon = o.icon;
+          return (
+            <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-10 items-center gap-2 rounded-full bg-foreground px-4 text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain transition-transform animate-in zoom-in-50 hover:scale-105">
+              <Icon className="size-4" />{o.label}
+            </button>
+          );
+        })}
+      </div>
+      {/* Objetos para guardar */}
+      <div className="mt-4 flex flex-wrap gap-2">
+        {def.objects.filter((o) => !stored.includes(o.id)).map((o) => (
+          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Guardar ${o.label}`} className="flex h-9 items-center gap-1.5 rounded-full bg-porcelain/25 px-3.5 text-[10px] font-bold uppercase tracking-[0.12em] text-porcelain transition hover:bg-porcelain/35">
+            <Plus className="size-3.5" />{o.label}
+          </button>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function Stat({ icon: Icon, label, value, tone }: { icon: typeof Activity; label: string; value: string; tone: string }) {
+  return (
+    <div className={cn("rounded-[24px] p-4 text-porcelain", tone)}>
+      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.14em] text-porcelain/90"><Icon className="size-3.5" />{label}</div>
+      <p className="mt-2 font-display text-2xl font-black tracking-[-0.02em]">{value}</p>
+    </div>
+  );
+}
+
+function LogSection({ icon: Icon, title, options }: { icon: typeof Activity; title: string; options: string[] }) {
+  const [chosen, setChosen] = useState(options[0]);
+  return (
+    <div>
+      <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em]"><Icon className="size-4 text-coral" />{title}</div>
+      <div className="flex flex-wrap gap-2">
+        {options.map((o) => (
+          <Button key={o} type="button" variant="ghost" size="sm" onClick={() => setChosen(o)} className={cn("rounded-full px-4 text-porcelain hover:text-porcelain", chosen === o ? "bg-coral hover:bg-coral" : "bg-muted-foreground/70 hover:bg-muted-foreground")}>{o}</Button>
+        ))}
+      </div>
+    </div>
+  );
+}
