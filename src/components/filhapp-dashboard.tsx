@@ -13,8 +13,8 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { label: "Visão geral", icon: Home },
   { label: "Meu ciclo", icon: CalendarDays },
-  { label: "Fertilidade", icon: Activity },
-  { label: "Plano de filhos", icon: Baby },
+  { label: "Ovulação", icon: Activity },
+  { label: "Sintomas", icon: Droplets },
   { label: "Bio-dados", icon: BarChart3 },
   { label: "Conteúdos", icon: BookOpen },
 ];
@@ -43,24 +43,24 @@ export function FilhappDashboard() {
 
   return (
     <TooltipProvider delayDuration={150}>
-      <div className="min-h-screen bg-stone p-0 lg:p-5 xl:p-8">
-        <div className="mx-auto flex min-h-screen max-w-[1600px] overflow-hidden bg-background shadow-[0_30px_80px_-28px_color-mix(in_oklab,var(--sage)_45%,transparent)] lg:min-h-[calc(100vh-2.5rem)] lg:rounded-3xl lg:border lg:border-porcelain xl:min-h-[calc(100vh-4rem)]">
-          <aside className={cn("relative hidden shrink-0 flex-col border-r border-sidebar-border bg-sidebar transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
+      <div className="min-h-screen bg-background p-0 lg:p-5">
+        <div className="mx-auto flex min-h-screen max-w-[1600px] gap-5 lg:min-h-[calc(100vh-2.5rem)]">
+          <aside className={cn("sticky top-5 hidden h-[calc(100vh-2.5rem)] shrink-0 flex-col overflow-hidden rounded-[28px] bg-stone shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--sage)_55%,transparent)] transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[88px]" : "w-[260px]")}>
             <div className={cn("flex h-24 items-center", collapsed ? "justify-center px-3" : "px-6")}>
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--coral)_75%,transparent)]">
-                <Baby className="size-5" />
+                <Droplets className="size-5" />
               </div>
               <div className={cn("ml-3 overflow-hidden transition-all duration-300", collapsed ? "w-0 opacity-0" : "w-40 opacity-100")}>
-                <div className="font-display text-xl font-bold tracking-[0.24em] text-foreground">MENSTRUAPP</div>
-                <div className="whitespace-nowrap text-[10px] font-semibold uppercase text-muted-foreground">Saúde reprodutiva</div>
+                <div className="whitespace-nowrap font-display text-sm font-bold tracking-[0.22em] text-foreground">MENSTRUAPP</div>
+                <div className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">Menstruação e ciclo</div>
               </div>
             </div>
 
             <div className="px-4 pb-4">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className="mx-auto flex h-8 w-8 justify-center rounded-lg text-muted-foreground hover:bg-transparent hover:text-foreground">
-                    <ChevronLeft className={cn("transition-transform duration-500", collapsed && "rotate-180")} />
+                  <Button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} className="mx-auto flex size-10 justify-center rounded-[14px] bg-background text-muted-foreground shadow-sm hover:bg-porcelain hover:text-foreground">
+                    <ChevronLeft className={cn("size-4", "transition-transform duration-500", collapsed && "rotate-180")} />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="right">{collapsed ? "Expandir menu" : "Recolher menu"}</TooltipContent>
@@ -74,7 +74,7 @@ export function FilhappDashboard() {
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-xl px-4 transition-all", selected ? "bg-sidebar-accent text-sidebar-accent-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground", collapsed && "justify-center px-0")}>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-12 w-full justify-start text-left rounded-xl px-4 transition-all", selected ? "bg-coral text-porcelain hover:bg-coral hover:text-porcelain" : "text-muted-foreground hover:bg-background/70 hover:text-foreground", collapsed && "justify-center px-0")}>
                         <Icon className="size-[19px] shrink-0" />
                         <span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all duration-300", collapsed ? "w-0 opacity-0" : "ml-1 w-40 opacity-100")}>{item.label}</span>
                       </Button>
@@ -85,18 +85,18 @@ export function FilhappDashboard() {
               })}
             </nav>
 
-            <div className="space-y-3 border-t border-sidebar-border p-4">
+            <div className="space-y-3 p-4">
               <Button variant="ghost" className={cn("h-11 w-full justify-start text-left rounded-xl text-muted-foreground", collapsed && "justify-center px-0")}><Settings /><span className={cn("overflow-hidden whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] transition-all", collapsed ? "w-0 opacity-0" : "ml-1 w-36 opacity-100")}>Configurações</span></Button>
-              <div className={cn("flex items-center rounded-xl bg-porcelain p-3", collapsed && "justify-center p-2")}>
-                <div className="grid size-9 shrink-0 place-items-center rounded-full bg-mauve/25 text-mauve"><CircleUserRound className="size-5" /></div>
-                <div className={cn("ml-3 overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "w-36 opacity-100")}><p className="whitespace-nowrap text-sm font-bold">Letícia Motta</p><p className="whitespace-nowrap text-xs text-sage">Plano Essencial</p></div>
+              <div className={cn("flex items-center rounded-2xl bg-mauve p-3", collapsed && "justify-center p-2")}>
+                <div className="grid size-9 shrink-0 place-items-center rounded-full bg-porcelain/25 text-porcelain"><CircleUserRound className="size-5" /></div>
+                <div className={cn("ml-3 overflow-hidden transition-all", collapsed ? "w-0 opacity-0" : "w-36 opacity-100")}><p className="whitespace-nowrap text-sm font-bold text-porcelain">Letícia Motta</p><p className="whitespace-nowrap text-xs text-porcelain/80">Plano Essencial</p></div>
               </div>
             </div>
           </aside>
 
-          <main className="min-w-0 flex-1 overflow-x-hidden pb-24 lg:max-h-[calc(100vh-2.5rem)] lg:overflow-y-auto lg:pb-0 xl:max-h-[calc(100vh-4rem)]">
-            <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border bg-background/90 px-5 backdrop-blur-xl lg:h-20 lg:px-8 xl:px-10">
-              <div className="flex items-center gap-3 lg:hidden"><div className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Baby className="size-4" /></div><span className="font-display text-lg font-bold tracking-[0.22em]">MENSTRUAPP
+          <main className="min-w-0 flex-1 overflow-x-hidden pb-24 lg:pb-0">
+            <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/90 px-5 backdrop-blur-xl lg:h-20 lg:px-8 xl:px-10">
+              <div className="flex items-center gap-3 lg:hidden"><div className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground"><Droplets className="size-4" /></div><span className="font-display text-lg font-bold tracking-[0.22em]">MENSTRUAPP
 </span></div>
               <div className="hidden items-center gap-2 lg:flex"><span className="size-2 rounded-full bg-sage"/><span className="text-xs font-semibold text-muted-foreground">Seus dados estão atualizados</span></div>
               <div className="flex items-center gap-2">
@@ -109,14 +109,14 @@ export function FilhappDashboard() {
 
             <div className="mx-auto max-w-[1340px] space-y-6 p-5 md:p-7 lg:p-8 xl:p-10">
               <section className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
-                <div><div className="mb-3 flex items-center gap-2"><span className="rounded-full bg-apricot/20 px-3 py-1 text-[10px] font-bold uppercase text-apricot">Fase ovulatória</span><span className="text-xs font-semibold text-muted-foreground">Dia 14 de 28</span></div><h1 className="font-display text-3xl font-semibold text-foreground md:text-4xl xl:text-5xl">Sua janela mais fértil</h1><p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">Hoje sua probabilidade de concepção está no ponto mais alto deste ciclo.</p></div>
+                <div><div className="mb-3 flex items-center gap-2"><span className="rounded-full bg-apricot px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-porcelain">Fase ovulatória</span><span className="text-xs font-semibold text-muted-foreground">Dia 14 de 28</span></div><h1 className="font-display text-3xl font-semibold text-foreground md:text-4xl xl:text-5xl">Sua ovulação está próxima</h1><p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">Pico de LH previsto para hoje, com base no padrão dos seus últimos ciclos.</p></div>
                 <div className="grid grid-cols-2 gap-3 sm:flex">
                   <Metric icon={Thermometer} label="Temperatura" value="36,8 °C" tone="salmon" />
                   <Metric icon={TrendingUp} label="Chance hoje" value="Alta · 32%" tone="sage" />
                 </div>
               </section>
 
-              <section className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+              <section className="overflow-hidden rounded-3xl bg-card shadow-[0_20px_50px_-30px_color-mix(in_oklab,var(--sage)_50%,transparent)]">
                 <div className="flex flex-col justify-between gap-4 border-b border-border p-5 md:flex-row md:items-center lg:p-6">
                   <div><h2 className="font-display text-lg font-semibold">Panorama do ciclo</h2><p className="mt-1 text-xs text-muted-foreground">Projeção hormonal baseada nos seus últimos 6 ciclos</p></div>
                   <div className="flex flex-wrap gap-4 text-xs font-medium text-muted-foreground"><Legend color="bg-periwinkle" label="Estrogênio"/><Legend color="bg-mauve" label="Progesterona"/><Legend color="bg-apricot" label="Ovulação prevista"/></div>
@@ -128,16 +128,16 @@ export function FilhappDashboard() {
               </section>
 
               <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                <InsightCard icon={Target} title="Plano de concepção" eyebrow="Meta: próximos 6 meses" tone="coral"><p className="text-sm leading-relaxed text-muted-foreground">Seu timing está alinhado. Priorize relações hoje e nas próximas 24 horas.</p><div className="mt-5 flex items-center gap-2 text-xs font-bold text-coral"><Check className="size-4"/> 4 de 6 hábitos em dia</div></InsightCard>
-                <InsightCard icon={Zap} title="Energia em alta" eyebrow="92% do seu padrão" tone="periwinkle"><p className="text-sm leading-relaxed text-muted-foreground">O pico hormonal favorece disposição, libido e desempenho cognitivo.</p><div className="mt-5 h-2 overflow-hidden rounded-full bg-muted"><div className="h-full w-[92%] rounded-full bg-periwinkle"/></div></InsightCard>
-                <InsightCard icon={Heart} title="Sinais férteis" eyebrow="3 sinais confirmados" tone="sage"><div className="space-y-2 text-sm text-muted-foreground"><Signal label="Muco cervical" value="Ideal"/><Signal label="Temperatura basal" value="Elevada"/><Signal label="Teste de LH" value="Positivo"/></div></InsightCard>
-                <InsightCard icon={Sparkles} title="Insight clínico" eyebrow="Personalizado para você" tone="salmon"><p className="text-sm leading-relaxed text-muted-foreground">Seu padrão sugere ovulação regular. Mantenha hidratação e descanso para apoiar esta fase.</p><Button variant="link" className="mt-3 h-auto p-0 text-salmon">Ver análise completa <ChevronRight/></Button></InsightCard>
+                <InsightCard icon={Target} title="Fase do ciclo" eyebrow="Dia 14 · ovulatória" tone="coral"><p className="text-sm leading-relaxed text-porcelain/90">Transição folicular-lútea esperada nas próximas 24 a 36 horas.</p><div className="mt-5 flex items-center gap-2 text-xs font-bold text-porcelain"><Check className="size-4"/> Ciclo médio: 28 dias</div></InsightCard>
+                <InsightCard icon={Zap} title="Energia em alta" eyebrow="92% do seu padrão" tone="periwinkle"><p className="text-sm leading-relaxed text-porcelain/90">O pico hormonal favorece disposição, libido e desempenho cognitivo.</p><div className="mt-5 h-2 overflow-hidden rounded-full bg-porcelain/25"><div className="h-full w-[92%] rounded-full bg-porcelain"/></div></InsightCard>
+                <InsightCard icon={Heart} title="Sinais de ovulação" eyebrow="3 sinais confirmados" tone="sage"><div className="space-y-2 text-sm text-porcelain/90"><Signal label="Muco cervical" value="Ideal"/><Signal label="Temperatura basal" value="Elevada"/><Signal label="Teste de LH" value="Positivo"/></div></InsightCard>
+                <InsightCard icon={Sparkles} title="Insight clínico" eyebrow="Personalizado para você" tone="apricot"><p className="text-sm leading-relaxed text-porcelain/90">Seu padrão sugere ovulação regular. Mantenha hidratação e descanso para apoiar esta fase.</p><Button variant="link" className="mt-3 h-auto p-0 text-porcelain">Ver análise completa <ChevronRight/></Button></InsightCard>
               </section>
             </div>
           </main>
 
           <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-border bg-card/95 px-2 pb-[max(8px,env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl lg:hidden" aria-label="Navegação móvel">
-            {navItems.slice(0, 4).map((item) => { const Icon=item.icon; return <Button key={item.label} variant="ghost" onClick={() => setActive(item.label)} className={cn("h-14 flex-col gap-1 rounded-xl px-1 text-[10px]", active===item.label ? "text-primary" : "text-muted-foreground")}><Icon className="size-5"/><span>{item.label.replace("Plano de filhos","Planos")}</span></Button> })}
+            {navItems.slice(0, 4).map((item) => { const Icon=item.icon; return <Button key={item.label} variant="ghost" onClick={() => setActive(item.label)} className={cn("h-14 flex-col gap-1 rounded-xl px-1 text-[10px]", active===item.label ? "text-primary" : "text-muted-foreground")}><Icon className="size-5"/><span>{item.label}</span></Button> })}
             <Button variant="ghost" className="h-14 flex-col gap-1 rounded-xl px-1 text-[10px] text-muted-foreground"><Menu className="size-5"/><span>Mais</span></Button>
           </nav>
         </div>
@@ -148,8 +148,8 @@ export function FilhappDashboard() {
   );
 }
 
-function Metric({ icon: Icon, label, value, tone }: { icon: typeof Activity; label: string; value: string; tone: "salmon" | "sage" }) { return <div className="flex min-w-0 items-center gap-3 rounded-xl border border-border bg-card p-3 sm:min-w-44"><div className={cn("grid size-9 shrink-0 place-items-center rounded-lg", tone === "salmon" ? "bg-salmon/15 text-salmon" : "bg-sage/15 text-sage")}><Icon className="size-4"/></div><div className="min-w-0"><p className="text-[10px] font-bold uppercase text-muted-foreground">{label}</p><p className="truncate text-sm font-bold">{value}</p></div></div> }
+function Metric({ icon: Icon, label, value, tone }: { icon: typeof Activity; label: string; value: string; tone: "salmon" | "sage" }) { return <div className={cn("flex min-w-0 items-center gap-3 rounded-2xl px-4 py-3.5 text-porcelain sm:min-w-48", tone === "salmon" ? "bg-salmon" : "bg-sage")}><div className="grid size-10 shrink-0 place-items-center rounded-[12px] bg-porcelain/20"><Icon className="size-4"/></div><div className="min-w-0"><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-porcelain/85">{label}</p><p className="truncate text-sm font-bold">{value}</p></div></div> }
 function Legend({ color, label }: { color: string; label: string }) { return <span className="flex items-center gap-2"><span className={cn("size-2.5 rounded-full", color)}/>{label}</span> }
-function InsightCard({ icon: Icon, title, eyebrow, tone, children }: { icon: typeof Activity; title: string; eyebrow: string; tone: "coral"|"periwinkle"|"sage"|"salmon"; children: React.ReactNode }) { const tones={coral:"bg-coral/15 text-coral",periwinkle:"bg-periwinkle/15 text-periwinkle",sage:"bg-sage/15 text-sage",salmon:"bg-salmon/15 text-salmon"}; return <article className="rounded-2xl border border-border bg-card p-5 shadow-sm"><div className={cn("mb-5 grid size-10 place-items-center rounded-xl", tones[tone])}><Icon className="size-5"/></div><p className="text-[10px] font-bold uppercase text-muted-foreground">{eyebrow}</p><h3 className="mb-3 mt-1 font-display text-lg font-semibold">{title}</h3>{children}</article> }
-function Signal({ label, value }: { label: string; value: string }) { return <div className="flex items-center justify-between border-b border-border pb-2 last:border-0"><span>{label}</span><span className="font-bold text-sage">{value}</span></div> }
+function InsightCard({ icon: Icon, title, eyebrow, tone, children }: { icon: typeof Activity; title: string; eyebrow: string; tone: "coral"|"periwinkle"|"sage"|"apricot"; children: React.ReactNode }) { const tones={coral:"bg-coral",periwinkle:"bg-periwinkle",sage:"bg-sage",apricot:"bg-apricot"}; return <article className={cn("rounded-3xl p-6 text-porcelain shadow-sm", tones[tone])}><div className="mb-5 grid size-10 place-items-center rounded-[12px] bg-porcelain/20"><Icon className="size-5"/></div><p className="text-[10px] font-bold uppercase tracking-[0.12em] text-porcelain/80">{eyebrow}</p><h3 className="mb-3 mt-1 font-display text-lg font-semibold">{title}</h3>{children}</article> }
+function Signal({ label, value }: { label: string; value: string }) { return <div className="flex items-center justify-between border-b border-porcelain/25 pb-2 last:border-0"><span>{label}</span><span className="font-bold">{value}</span></div> }
 function LogSection({ icon: Icon, title, options }: { icon: typeof Activity; title: string; options: string[] }) { const [chosen,setChosen]=useState(options[0]); return <div><div className="mb-3 flex items-center gap-2 text-sm font-bold"><Icon className="size-4 text-primary"/>{title}</div><div className="flex flex-wrap gap-2">{options.map(option=><Button key={option} type="button" variant={chosen===option?"default":"outline"} size="sm" onClick={()=>setChosen(option)} className="rounded-full">{option}</Button>)}</div></div> }
