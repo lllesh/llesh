@@ -51,7 +51,7 @@ export function FilhappDashboard() {
                 <Baby className="size-5" />
               </div>
               <div className={cn("ml-3 overflow-hidden transition-all duration-300", collapsed ? "w-0 opacity-0" : "w-40 opacity-100")}>
-                <div className="font-display text-xl font-bold tracking-[0.24em] text-foreground">FILHAPP</div>
+                <div className="font-display text-xl font-bold tracking-[0.24em] text-foreground">MENSTRUAPP</div>
                 <div className="whitespace-nowrap text-[10px] font-semibold uppercase text-muted-foreground">Saúde reprodutiva</div>
               </div>
             </div>
