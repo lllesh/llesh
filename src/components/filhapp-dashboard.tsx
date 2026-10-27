@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 import {
   Activity, ArrowUpRight, BarChart3, BookOpen, CalendarDays, Check, CircleUserRound, Droplet,
   Droplets, Flame, Heart, Home, Menu, MoonStar, Plus, Settings, Sparkles, Thermometer, Waves, Zap,
@@ -76,25 +76,26 @@ export function FilhappDashboard() {
 
   return (
     <TooltipProvider delayDuration={150}>
-      <div className="min-h-screen bg-background p-0 lg:p-5">
-        <div className="mx-auto flex min-h-screen max-w-[1600px] gap-5 lg:min-h-[calc(100vh-2.5rem)]">
-          {/* Ilha flutuante rosa */}
-          <div className="relative hidden shrink-0 lg:block">
-          <aside className={cn("sticky top-5 flex h-[calc(100vh-2.5rem)] flex-col overflow-y-auto overflow-x-hidden rounded-[32px] bg-coral shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--coral)_80%,transparent)] transition-[width] duration-500 ease-in-out", collapsed ? "w-[104px]" : "w-[380px]")}>
-            <div className={cn("flex h-28 shrink-0 items-center", collapsed ? "justify-center" : "px-8")}>
-              <span className="whitespace-nowrap font-display text-[48px] font-black lowercase leading-none tracking-[-0.02em] text-porcelain">
-                {collapsed ? "m!" : "menstruapp!"}
-              </span>
-            </div>
+      <div className="min-h-screen bg-background p-0 lg:h-screen lg:overflow-hidden lg:p-5">
+        <div className="flex min-h-screen gap-5 lg:h-full lg:min-h-0">
+          {/* Ilha flutuante */}
+          <aside className={cn("hidden h-full shrink-0 flex-col overflow-y-auto overflow-x-hidden rounded-[32px] bg-coral py-6 transition-[width] duration-500 ease-in-out lg:flex", collapsed ? "w-[104px]" : "w-[380px]")}>
+            <button
+              onClick={() => setCollapsed(!collapsed)}
+              aria-label={collapsed ? "Expandir menu" : "Recolher menu"}
+              className={cn("shrink-0 text-left font-display font-black lowercase leading-[0.8] tracking-[-0.03em] text-background transition-opacity hover:opacity-80", collapsed ? "px-0 text-center text-[56px]" : "px-8 text-[84px]")}
+            >
+              {collapsed ? "m!" : (<><span className="block leading-[0.82]">menstru</span><span className="block leading-[0.82]">app!</span></>)}
+            </button>
 
-            <nav className="space-y-0 px-4" aria-label="Navegação principal">
+            <nav className="mt-8 space-y-0 px-4" aria-label="Navegação principal">
               {navItems.map((item) => {
                 const selected = active === item.label;
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-[54px] w-full justify-start rounded-full px-6 text-left font-display text-[44px] font-black lowercase leading-none tracking-[-0.01em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-foreground hover:bg-foreground" : "hover:bg-porcelain/15", collapsed && "justify-center px-0")}>
-                        {collapsed ? item.label.charAt(0) : item.label}
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("h-[54px] w-full justify-center rounded-full px-0 font-display text-[44px] font-black lowercase leading-none tracking-[-0.01em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-foreground hover:bg-foreground" : "hover:bg-porcelain/15")}>
+                        <span className={cn(collapsed ? "text-center" : "w-[284px] text-left")}>{collapsed ? item.label.charAt(0) : item.label}</span>
                       </Button>
                     </TooltipTrigger>
                     {collapsed && <TooltipContent side="right">{item.label}</TooltipContent>}
@@ -103,7 +104,7 @@ export function FilhappDashboard() {
               })}
             </nav>
 
-            <div className={cn("flex flex-1 flex-col justify-center gap-3 py-8", collapsed ? "hidden" : "px-4")}>
+            <div className={cn("flex flex-1 flex-col justify-center gap-3 py-5", collapsed ? "hidden" : "px-4")}>
               {[
                 { label: "Temperatura basal", value: "36,8°" },
                 { label: "Chance de engravidar hoje", value: "32%" },
@@ -111,8 +112,8 @@ export function FilhappDashboard() {
               ].map((m) => (
                 <Tooltip key={m.label}>
                   <TooltipTrigger asChild>
-                    <div className="flex h-16 items-center justify-center rounded-full bg-foreground px-6 text-porcelain">
-                      <span className="font-display text-[32px] font-black lowercase leading-none">{m.value}</span>
+                    <div className="flex h-[68px] shrink-0 items-center justify-center rounded-full bg-foreground text-porcelain">
+                      <span className="w-[284px] text-left font-display text-[48px] font-black lowercase leading-none tracking-[0.02em]">{m.value}</span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent side="right">{m.label}</TooltipContent>
@@ -121,24 +122,21 @@ export function FilhappDashboard() {
             </div>
             {collapsed && <div className="flex-1" />}
 
-            <div className={cn("shrink-0 pb-5", collapsed ? "flex justify-center px-4" : "px-4")}>
-              <button aria-label="Letícia Motta" className={cn("flex items-center justify-center rounded-full bg-foreground text-center text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "size-16" : "min-h-20 w-full px-6 py-3")}>
-                <span className="font-display text-[34px] font-black lowercase leading-[0.9]">{collapsed ? "lm" : "Letícia Motta"}</span>
+            <div className="shrink-0 px-4">
+              <button aria-label="Letícia Motta" className={cn("flex w-full flex-col items-center justify-center gap-2 rounded-full bg-foreground text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "py-3" : "py-3")}>
+                <span className="grid size-10 place-items-center rounded-full bg-coral font-display text-lg font-black lowercase text-porcelain">lm</span>
+                {!collapsed && <span className="font-display text-[38px] font-black lowercase leading-[0.9]">Letícia Motta</span>}
               </button>
             </div>
           </aside>
-          <button aria-label={collapsed ? "Expandir menu" : "Recolher menu"} onClick={() => setCollapsed(!collapsed)} className="absolute -right-4 top-1/2 z-10 grid size-9 -translate-y-1/2 place-items-center rounded-[12px] bg-foreground text-porcelain shadow-lg transition-transform hover:scale-110">
-            <span className="block size-[14px] rounded-[4px] border-2 border-porcelain" />
-          </button>
-          </div>
 
-          <main className="min-w-0 flex-1 overflow-x-hidden pb-28 lg:pb-0">
+          <main className="min-w-0 flex-1 overflow-x-hidden pb-28 lg:h-full lg:overflow-y-auto lg:rounded-[32px] lg:pb-0">
             <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/90 px-5 backdrop-blur-xl lg:hidden">
               <span className="font-display text-xl font-black lowercase tracking-[0.02em] text-coral">menstruapp!</span>
               <Button onClick={() => setLogOpen(true)} aria-label="Registrar" className="size-10 rounded-full bg-coral p-0 text-porcelain hover:bg-coral/90"><Plus /></Button>
             </header>
 
-            <div className="mx-auto max-w-[1360px] space-y-5 p-5 md:p-7 lg:p-8">
+            <div className="space-y-5 p-5 md:p-7 lg:p-0">
               {/* Hero monumental */}
               <section className="relative overflow-hidden rounded-[36px] bg-foreground px-7 pb-8 pt-7 md:px-10 md:pt-9">
                 <div className="flex flex-wrap items-center justify-end gap-3">
@@ -227,10 +225,26 @@ export function FilhappDashboard() {
   );
 }
 
-function PocketHead({ title, count }: { title: string; count?: number }) {
+function EggIcon({ className }: { className?: string }) {
   return (
-    <div className="flex items-center justify-between gap-2">
+    <svg viewBox="0 0 48 48" className={className} aria-hidden fill="none">
+      <path d="M24 4c11 0 20 7 20 17 0 12-9 23-21 23S4 35 6 24C8 12 14 4 24 4Z" fill="currentColor" opacity="0.35" />
+      <circle cx="25" cy="24" r="8" fill="currentColor" />
+    </svg>
+  );
+}
+
+const titleIcons: Record<string, (p: { className?: string }) => ReactElement> = {
+  sangue: ({ className }) => <Droplet className={className} fill="currentColor" strokeWidth={0} />,
+  muco: EggIcon,
+};
+
+function PocketHead({ title, iconKey }: { title: string; iconKey?: string }) {
+  const Icon = iconKey ? titleIcons[iconKey] : undefined;
+  return (
+    <div className="flex items-center gap-4">
       <h2 className="min-w-0 break-words font-display text-[56px] font-black lowercase leading-[0.85] tracking-[-0.02em] xl:text-[64px] 2xl:text-[88px]">{title}</h2>
+      {Icon && <Icon className="size-12 shrink-0 xl:size-14 2xl:size-16" />}
     </div>
   );
 }
@@ -239,15 +253,14 @@ function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; o
   const inside = def.objects.filter((o) => stored.includes(o.id));
   return (
     <article className={cn("flex flex-col rounded-[32px] p-6 text-porcelain", def.tone, def.span)}>
-      <PocketHead title={def.title} count={inside.length} />
+      <PocketHead title={def.title} iconKey={def.key} />
       {/* O bolsinho */}
       <div className="mt-5 flex min-h-[92px] flex-wrap content-start gap-2 rounded-[28px] bg-porcelain/20 p-3">
         {inside.length === 0 && <span className="m-auto text-[10px] font-bold lowercase tracking-[0.16em] text-porcelain/80">Vazio</span>}
         {inside.map((o) => {
-          const Icon = o.icon;
           return (
-            <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-12 items-center gap-2 rounded-full bg-foreground px-5 text-[14px] font-bold uppercase tracking-[0.14em] text-porcelain transition-transform animate-in zoom-in-50 hover:scale-105">
-              <Icon className="size-4" />{o.label}
+            <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-12 items-center rounded-full bg-foreground px-6 text-[14px] font-bold uppercase tracking-[0.14em] text-porcelain transition-transform animate-in zoom-in-50 hover:scale-105">
+              {o.label}
             </button>
           );
         })}

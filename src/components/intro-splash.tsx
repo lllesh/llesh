@@ -15,7 +15,7 @@ export function IntroSplash() {
   useEffect(() => {
     const wide = window.matchMedia("(min-aspect-ratio: 1/1)").matches;
     setSrc(wide ? introDesk.url : introVideo.url);
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
+    const onKey = (e: KeyboardEvent) => (e.key === "Escape" || e.key === " " || e.key === "Enter") && close();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
@@ -43,9 +43,6 @@ export function IntroSplash() {
           className="h-full w-full object-cover"
         />
       )}
-      <span aria-hidden className="absolute right-8 top-8 grid size-12 place-items-center rounded-[14px] bg-background/60 text-2xl font-light leading-none text-porcelain backdrop-blur">
-        ×
-      </span>
     </div>
   );
 }
