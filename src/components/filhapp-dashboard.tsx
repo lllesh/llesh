@@ -80,9 +80,9 @@ export function FilhappDashboard() {
         <div className="mx-auto flex min-h-screen max-w-[1600px] gap-5 lg:min-h-[calc(100vh-2.5rem)]">
           {/* Ilha flutuante rosa */}
           <div className="relative hidden shrink-0 lg:block">
-          <aside className={cn("sticky top-5 flex h-[calc(100vh-2.5rem)] flex-col overflow-y-auto overflow-x-hidden rounded-[32px] bg-coral shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--coral)_80%,transparent)] transition-[width] duration-500 ease-in-out", collapsed ? "w-[104px]" : "w-[320px]")}>
+          <aside className={cn("sticky top-5 flex h-[calc(100vh-2.5rem)] flex-col overflow-y-auto overflow-x-hidden rounded-[32px] bg-coral shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--coral)_80%,transparent)] transition-[width] duration-500 ease-in-out", collapsed ? "w-[104px]" : "w-[380px]")}>
             <div className={cn("flex h-28 shrink-0 items-center", collapsed ? "justify-center" : "px-8")}>
-              <span className="whitespace-nowrap font-display text-[34px] font-black lowercase leading-none tracking-[-0.01em] text-porcelain">
+              <span className="whitespace-nowrap font-display text-[48px] font-black lowercase leading-none tracking-[-0.02em] text-porcelain">
                 {collapsed ? "m!" : "menstruapp!"}
               </span>
             </div>
