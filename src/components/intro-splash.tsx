@@ -24,7 +24,11 @@ export function IntroSplash() {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-700 ${
+      role="button"
+      tabIndex={0}
+      aria-label="Entrar"
+      onClick={close}
+      className={`fixed inset-0 z-[100] flex cursor-pointer items-center justify-center bg-background transition-opacity duration-700 ${
         leaving ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
@@ -39,13 +43,9 @@ export function IntroSplash() {
           className="h-full w-full object-cover"
         />
       )}
-      <button
-        type="button"
-        onClick={close}
-        className="absolute bottom-8 right-8 rounded-full bg-background px-6 py-3 text-xs font-black uppercase tracking-[0.3em] text-porcelain"
-      >
-        Pular ↗
-      </button>
+      <span aria-hidden className="absolute right-8 top-8 grid size-12 place-items-center rounded-[14px] bg-background/60 text-2xl font-light leading-none text-porcelain backdrop-blur">
+        ×
+      </span>
     </div>
   );
 }
