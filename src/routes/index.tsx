@@ -5,7 +5,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "MENSTRUAPP | Menstruação e ciclo menstrual" },
-      { name: "description", content: "Acompanhe seu ciclo, entenda sua fertilidade e planeje seus próximos passos com inteligência clínica." },
+      { name: "description", content: "Acompanhe sua menstruação e as fases do seu ciclo com precisão clínica." },
       { property: "og:title", content: "MENSTRUAPP | Menstruação e ciclo menstrual" },
       { property: "og:description", content: "Panorama clínico da sua menstruação e do seu ciclo menstrual." },
       { property: "og:type", content: "website" },
