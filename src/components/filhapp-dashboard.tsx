@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactElement } from "react";
 import {
   Activity, ArrowUpRight, BarChart3, BookOpen, CalendarDays, Check, CircleUserRound, Droplet,
   Droplets, Flame, Heart, Home, Menu, MoonStar, Plus, Settings, Sparkles, Thermometer, Waves, Zap,
@@ -234,7 +234,7 @@ function EggIcon({ className }: { className?: string }) {
   );
 }
 
-const titleIcons: Record<string, (p: { className?: string }) => JSX.Element> = {
+const titleIcons: Record<string, (p: { className?: string }) => ReactElement> = {
   sangue: ({ className }) => <Droplet className={className} fill="currentColor" strokeWidth={0} />,
   muco: EggIcon,
 };
