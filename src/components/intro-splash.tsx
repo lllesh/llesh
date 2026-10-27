@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import introVideo from "@/assets/menstruapp-intro.mp4.asset.json";
+import introDesk from "@/assets/menstruapp-intro-desk.mp4.asset.json";
 
 export function IntroSplash() {
   const [visible, setVisible] = useState(true);
   const [leaving, setLeaving] = useState(false);
+  const [src, setSrc] = useState<string | null>(null);
 
   const close = () => {
     setLeaving(true);
@@ -11,6 +13,8 @@ export function IntroSplash() {
   };
 
   useEffect(() => {
+    const wide = window.matchMedia("(min-aspect-ratio: 1/1)").matches;
+    setSrc(wide ? introDesk.url : introVideo.url);
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -24,14 +28,17 @@ export function IntroSplash() {
         leaving ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
-      <video
-        src={introVideo.url}
-        autoPlay
-        muted
-        playsInline
-        onEnded={close}
-        className="h-full w-full object-cover md:w-auto md:object-contain"
-      />
+      {src && (
+        <video
+          key={src}
+          src={src}
+          autoPlay
+          muted
+          playsInline
+          onEnded={close}
+          className="h-full w-full object-cover"
+        />
+      )}
       <button
         type="button"
         onClick={close}
