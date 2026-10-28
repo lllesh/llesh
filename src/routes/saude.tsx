@@ -57,7 +57,7 @@ function SaudeShow() {
       <section className="mx-auto max-w-7xl px-6 pb-24 pt-10 md:px-12 md:pt-20">
         <div className="flex flex-wrap gap-3">
           {marcas.map((m) => (
-            <span key={m} className="rounded-full bg-secondary px-4 py-1.5 font-display text-sm font-black text-secondary-foreground">
+            <span key={m} className="rounded-full bg-card px-4 py-1.5 font-display text-sm font-black text-lele">
               {m}
             </span>
           ))}
@@ -88,7 +88,7 @@ function SaudeShow() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-24 md:px-12">
-        <div className="rounded-[2.5rem] bg-card p-10 text-card-foreground md:p-16">
+        <div className="rounded-[2.5rem] bg-card p-10 text-lele md:p-16">
           <h2 className="font-display text-5xl font-black leading-none tracking-[-0.03em] md:text-7xl">
             alguém acompanhando.
           </h2>
@@ -145,28 +145,28 @@ function Formulario() {
   }
 
   const campo =
-    "h-16 w-full rounded-full bg-secondary px-7 font-display text-lg font-bold text-lele placeholder:text-lele/50 outline-none focus:ring-2 focus:ring-ring";
+    "h-16 w-full rounded-full bg-background px-7 font-display text-lg font-bold text-lele placeholder:text-lele/50 outline-none focus:ring-2 focus:ring-ring";
 
   return (
     <section id="fundador" className="mx-auto max-w-7xl px-6 pb-24 md:px-12">
-      <div className="rounded-[2.5rem] bg-card p-10 text-card-foreground md:p-16">
+      <div className="rounded-[2.5rem] bg-card p-10 text-lele md:p-16">
         <h2 className="font-display text-5xl font-black leading-none tracking-[-0.03em] md:text-7xl">turma fundadora.</h2>
         {estado === "ok" ? (
           <p className="mt-10 font-display text-3xl font-black text-primary">recebido. seu núcleo está sendo preparado.</p>
         ) : (
           <form onSubmit={enviar} className="mt-12 grid gap-4 md:grid-cols-2">
-            <input name="nome" required minLength={2} maxLength={120} placeholder="nome" className={`${campo} bg-background`} />
+            <input name="nome" required minLength={2} maxLength={120} placeholder="nome" className={campo} />
             <select name="profissao" required defaultValue="" className={campo}>
               <option value="" disabled>profissão</option>
               {["médico(a)", "nutricionista", "psicólogo(a)", "advogado(a)", "terapeuta", "outra"].map((p) => (
                 <option key={p}>{p}</option>
               ))}
             </select>
-            <input name="registro" maxLength={40} placeholder="CRM / CRN / CRP / OAB" className={`${campo} bg-background`} />
-            <input name="whatsapp" required minLength={8} maxLength={30} placeholder="whatsapp" className={`${campo} bg-background`} />
-            <input name="email" type="email" required maxLength={200} placeholder="e-mail atual" className={`${campo} bg-background`} />
-            <input name="dominio" maxLength={120} placeholder="domínio dos sonhos (marcos.doctor)" className={`${campo} bg-background`} />
-            <input name="assistente" maxLength={40} placeholder="nome da sua concierge" className={`${campo} bg-background`} />
+            <input name="registro" maxLength={40} placeholder="CRM / CRN / CRP / OAB" className={campo} />
+            <input name="whatsapp" required minLength={8} maxLength={30} placeholder="whatsapp" className={campo} />
+            <input name="email" type="email" required maxLength={200} placeholder="e-mail atual" className={campo} />
+            <input name="dominio" maxLength={120} placeholder="domínio dos sonhos (marcos.doctor)" className={campo} />
+            <input name="assistente" maxLength={40} placeholder="nome da sua concierge" className={campo} />
             <button
               disabled={estado === "enviando"}
               aria-label="enviar"
