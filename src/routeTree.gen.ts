@@ -12,7 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as SaudeRouteImport } from './routes/saude'
-import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedMenstruappRouteImport } from './routes/_authenticated/menstruapp'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -28,35 +28,42 @@ const SaudeRoute = SaudeRouteImport.update({
   path: '/saude',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AuthenticatedMenstruappRoute = AuthenticatedMenstruappRouteImport.update({
+  id: '/menstruapp',
+  path: '/menstruapp',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof AuthenticatedIndexRoute
+  '/': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/saude': typeof SaudeRoute
+  '/menstruapp': typeof AuthenticatedMenstruappRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/saude': typeof SaudeRoute
-  '/': typeof AuthenticatedIndexRoute
+  '/menstruapp': typeof AuthenticatedMenstruappRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/saude': typeof SaudeRoute
-  '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/menstruapp': typeof AuthenticatedMenstruappRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/saude'
+  fullPaths: '/' | '/auth' | '/saude' | '/menstruapp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/auth' | '/saude' | '/'
-  id: '__root__' | '/_authenticated' | '/auth' | '/saude' | '/_authenticated/'
+  to: '/' | '/auth' | '/saude' | '/menstruapp'
+  id:
+    | '__root__'
+    | '/_authenticated'
+    | '/auth'
+    | '/saude'
+    | '/_authenticated/menstruapp'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -88,22 +95,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SaudeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/': {
-      id: '/_authenticated/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+    '/_authenticated/menstruapp': {
+      id: '/_authenticated/menstruapp'
+      path: '/menstruapp'
+      fullPath: '/menstruapp'
+      preLoaderRoute: typeof AuthenticatedMenstruappRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedMenstruappRoute: typeof AuthenticatedMenstruappRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedMenstruappRoute: AuthenticatedMenstruappRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
