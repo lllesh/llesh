@@ -143,13 +143,15 @@ export function FilhappDashboard() {
                   <span className="rounded-full bg-apricot px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-porcelain">Fase ovulatória</span>
                   <span className="rounded-full bg-porcelain/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-porcelain">Pico de LH</span>
                 </div>
-                <h1 className="whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[170px] xl:text-[220px]">
-                  dia 14<span className="text-coral">.</span>
-                </h1>
-                <div className="mt-7 flex items-center justify-between gap-1 px-2">
-                  {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
-                    <span key={d} title={`Dia ${d}`} className={cn("block rounded-full", d === 14 ? "size-5 animate-today-glow bg-mauve" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
-                  ))}
+                <div className="w-fit">
+                  <h1 className="whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[170px] xl:text-[220px]">
+                    dia 14<span className="text-coral">.</span>
+                  </h1>
+                  <div className="mt-7 flex items-center justify-between pl-[0.06em] pr-[0.02em]">
+                    {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
+                      <span key={d} title={`Dia ${d}`} className={cn("block shrink-0 rounded-full", d === 14 ? "size-4 animate-today-glow bg-mauve" : cn("size-2", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
+                    ))}
+                  </div>
                 </div>
               </section>
 
