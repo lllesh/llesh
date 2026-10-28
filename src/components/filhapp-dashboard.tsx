@@ -94,8 +94,8 @@ export function FilhappDashboard() {
                 return (
                   <Tooltip key={item.label}>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("flex h-[60px] w-full justify-center rounded-full px-0 font-display text-[44px] font-black lowercase leading-none tracking-[-0.02em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-foreground hover:bg-foreground" : "hover:bg-porcelain/15")}>
-                        <span className={cn(collapsed ? "text-center" : "w-[246px] text-left")}>{collapsed ? item.label.charAt(0) : item.label}</span>
+                      <Button variant="ghost" onClick={() => setActive(item.label)} className={cn("flex h-[60px] w-full justify-center rounded-full px-0 font-display text-[50px] font-black lowercase leading-none tracking-[-0.04em] text-porcelain transition-all hover:text-porcelain", selected ? "bg-foreground hover:bg-foreground" : "hover:bg-porcelain/15")}>
+                        <span className={cn("-translate-y-[0.04em]", collapsed ? "text-center" : "w-[270px] text-left")}>{collapsed ? item.label.charAt(0) : item.label}</span>
                       </Button>
                     </TooltipTrigger>
                     {collapsed && <TooltipContent side="right">{item.label}</TooltipContent>}
@@ -123,9 +123,9 @@ export function FilhappDashboard() {
             {collapsed && <div className="flex-1" />}
 
             <div className="shrink-0 px-4">
-              <button aria-label="Letícia Motta" className={cn("flex h-[60px] w-full items-center rounded-full bg-foreground text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "justify-center" : "justify-center gap-3 pl-2 pr-6")}>
-                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-coral text-porcelain"><CircleUserRound className="size-6" strokeWidth={2.2} /></span>
-                {!collapsed && <span className="font-display text-[34px] font-black lowercase leading-none tracking-[-0.02em]">letícia motta</span>}
+              <button aria-label="Letícia Motta" className={cn("flex h-[60px] w-full items-center rounded-full bg-foreground text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "justify-center" : "justify-start gap-4 pl-[7px] pr-6")}>
+                <span className="grid size-[46px] shrink-0 place-items-center rounded-full bg-porcelain/10 text-porcelain"><CircleUserRound className="size-6" strokeWidth={1.8} /></span>
+                {!collapsed && <span className="-translate-y-[0.04em] truncate font-display text-[36px] font-black lowercase leading-none tracking-[-0.04em]">letícia motta</span>}
               </button>
             </div>
           </aside>
@@ -143,15 +143,13 @@ export function FilhappDashboard() {
                   <span className="rounded-full bg-apricot px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-porcelain">Fase ovulatória</span>
                   <span className="rounded-full bg-porcelain/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-porcelain">Pico de LH</span>
                 </div>
-                <div className="w-fit">
-                  <h1 className="whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[170px] xl:text-[220px]">
-                    dia 14<span className="text-coral">.</span>
-                  </h1>
-                  <div className="mt-7 flex items-center justify-between pl-[0.06em] pr-[0.02em]">
-                    {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
-                      <span key={d} title={`Dia ${d}`} className={cn("block shrink-0 rounded-full", d === 14 ? "size-4 animate-today-glow bg-mauve" : cn("size-2", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
-                    ))}
-                  </div>
+                <h1 className="whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[170px] xl:text-[220px]">
+                  dia 14<span className="ml-[0.06em] text-coral">.</span>
+                </h1>
+                <div className="mt-10 flex w-full items-center justify-between">
+                  {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
+                    <span key={d} title={`Dia ${d}`} className={cn("block shrink-0 rounded-full", d === 14 ? "size-4 animate-today-glow bg-mauve" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
+                  ))}
                 </div>
               </section>
 
@@ -260,13 +258,13 @@ function PocketHead({ title, iconKey }: { title: string; iconKey?: string }) {
 function HormoneTip({ active, payload, label }: { active?: boolean; payload?: { name?: string; value?: number }[]; label?: number }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-[20px] bg-foreground px-4 py-3 text-porcelain shadow-lg">
-      <p className="font-display text-xl font-black lowercase leading-none tracking-[-0.03em]">dia {label}</p>
-      <div className="mt-2 space-y-1">
+    <div className="min-w-[210px] rounded-[24px] bg-foreground px-6 py-5 text-porcelain shadow-2xl">
+      <p className="font-display text-[28px] font-black lowercase leading-none tracking-[-0.04em]">dia {label}<span className="text-coral">.</span></p>
+      <div className="mt-4 flex flex-col gap-2">
         {payload.map((p) => (
-          <p key={p.name} className="flex items-baseline justify-between gap-5 text-[10px] font-black uppercase tracking-[0.14em]">
-            <span className="text-porcelain/70">{p.name}</span>
-            <span className="font-display text-base tracking-normal">{p.value}</span>
+          <p key={p.name} className="flex items-center justify-between gap-6 leading-none">
+            <span className="text-[10px] font-black uppercase tracking-[0.16em] text-porcelain/60">{p.name}</span>
+            <span className="font-display text-[20px] font-black leading-none tracking-[-0.02em]">{p.value}</span>
           </p>
         ))}
       </div>
@@ -280,9 +278,9 @@ function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; o
     <article className={cn("flex flex-col rounded-[32px] p-8 text-porcelain", def.tone, def.span)}>
       <PocketHead title={def.title} iconKey={def.key} />
       {/* O bolsinho */}
-      <div className="mt-4 flex min-h-[64px] flex-wrap content-start gap-2 rounded-[28px] bg-foreground/45 p-2">
+      <div className="mt-5 flex min-h-[56px] flex-wrap items-center content-center gap-2 rounded-full bg-foreground/80 px-3 py-2.5">
         {inside.map((o) => (
-          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-12 items-center rounded-full bg-porcelain px-5 text-[13px] font-black uppercase tracking-[0.14em] text-foreground transition-transform animate-in zoom-in-50 hover:scale-105">
+          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-9 items-center rounded-full bg-background px-6 text-[15px] font-black uppercase leading-none tracking-[0.14em] text-porcelain transition-transform animate-in zoom-in-50 hover:scale-105">
             {o.label}
           </button>
         ))}
