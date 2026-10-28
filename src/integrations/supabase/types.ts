@@ -14,7 +14,86 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      checkins: {
+        Row: {
+          app: string
+          audio_path: string | null
+          created_at: string
+          dados: Json
+          id: string
+          midia_path: string | null
+          ocorreu_em: string
+          owner_id: string
+          pessoa_id: string | null
+          tipo: string
+          transcricao: string | null
+        }
+        Insert: {
+          app?: string
+          audio_path?: string | null
+          created_at?: string
+          dados?: Json
+          id?: string
+          midia_path?: string | null
+          ocorreu_em?: string
+          owner_id?: string
+          pessoa_id?: string | null
+          tipo: string
+          transcricao?: string | null
+        }
+        Update: {
+          app?: string
+          audio_path?: string | null
+          created_at?: string
+          dados?: Json
+          id?: string
+          midia_path?: string | null
+          ocorreu_em?: string
+          owner_id?: string
+          pessoa_id?: string | null
+          tipo?: string
+          transcricao?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "checkins_pessoa_id_fkey"
+            columns: ["pessoa_id"]
+            isOneToOne: false
+            referencedRelation: "pessoas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pessoas: {
+        Row: {
+          created_at: string
+          id: string
+          nascimento: string | null
+          nome: string
+          owner_id: string
+          relacao: string
+          sexo: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          nascimento?: string | null
+          nome: string
+          owner_id?: string
+          relacao?: string
+          sexo?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          nascimento?: string | null
+          nome?: string
+          owner_id?: string
+          relacao?: string
+          sexo?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
