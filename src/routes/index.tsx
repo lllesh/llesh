@@ -7,9 +7,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "n o ii | núcleo organizado inteligente interativo" },
-      { name: "description", content: "Crie o seu nó: um lugar só para a sua vida inteira." },
+      { name: "description", content: "Um lugar só para a sua vida inteira." },
       { property: "og:title", content: "n o ii | núcleo organizado inteligente interativo" },
-      { property: "og:description", content: "Crie o seu nó: um lugar só para a sua vida inteira." },
+      { property: "og:description", content: "Um lugar só para a sua vida inteira." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -90,10 +90,10 @@ function NoiiHome() {
           <input className={campo} style={relevo} type="email" placeholder="e-mail" aria-label="e-mail" required value={email} onChange={(e) => setEmail(e.target.value)} />
           <input className={campo} style={relevo} type="password" placeholder="senha" aria-label="senha" required minLength={6} value={senha} onChange={(e) => setSenha(e.target.value)} />
           <button type="submit" disabled={busy} className="mt-1 h-14 rounded-full text-xl font-bold tracking-tight outline-none focus-visible:outline-none disabled:opacity-50" style={{ ...saliente, color: INK }}>
-            {mode === "criar" ? "criar meu nó" : "entrar"}
+            {mode === "criar" ? "criar conta" : "entrar"}
           </button>
           <button type="button" onClick={() => { setMode(mode === "criar" ? "entrar" : "criar"); setAviso(null); }} className="self-center text-lg font-bold opacity-60 hover:opacity-100">
-            {mode === "criar" ? "já tenho meu nó" : "criar meu nó"}
+            {mode === "criar" ? "já tenho conta" : "criar conta"}
           </button>
           {aviso && <p className="text-center text-lg opacity-80">{aviso}</p>}
         </form>
