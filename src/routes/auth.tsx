@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/auth")({
@@ -12,9 +11,9 @@ export const Route = createFileRoute("/auth")({
   },
   head: () => ({
     meta: [
-      { title: "lle.sh | entrar" },
+      { title: "n o ii | entrar" },
       { name: "description", content: "Entre no seu universo com uma conta só." },
-      { property: "og:title", content: "lle.sh | entrar" },
+      { property: "og:title", content: "n o ii | entrar" },
       { property: "og:description", content: "Entre no seu universo com uma conta só." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -22,10 +21,6 @@ export const Route = createFileRoute("/auth")({
   }),
   component: AuthScreen,
 });
-
-async function oauthSignIn(provider: "google" | "lovable") {
-  return lovable.auth.signInWithOAuth(provider, { redirect_uri: window.location.origin });
-}
 
 function AuthScreen() {
   const navigate = useNavigate();
@@ -37,21 +32,6 @@ function AuthScreen() {
 
   const goHome = async () => {
     await navigate({ to: "/menstruapp" });
-  };
-
-  const handleOAuth = async (provider: "google" | "lovable") => {
-    setBusy(true);
-    setNotice(null);
-    try {
-      const result = await oauthSignIn(provider);
-      if (result.error) {
-        setNotice(result.error.message);
-        return;
-      }
-      if (!result.redirected) await goHome();
-    } finally {
-      setBusy(false);
-    }
   };
 
   const handleEmail = async (event: React.FormEvent) => {
@@ -134,7 +114,7 @@ function AuthScreen() {
             setMode(mode === "entrar" ? "criar" : "entrar");
             setNotice(null);
           }}
-          className="mt-2 self-center font-display text-[18px] font-bold lowercase tracking-[0.04em] text-porcelain/50 hover:text-porcelain"
+          className="mt-2 self-center font-display text-[18px] font-bold lowercase tracking-[0.04em] text-foreground/60 hover:text-foreground"
         >
           {mode === "entrar" ? "criar conta" : "voltar"}
         </button>
