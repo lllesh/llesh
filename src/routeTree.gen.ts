@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
+import { Route as FirstRouteImport } from './routes/first'
 import { Route as SaudeRouteImport } from './routes/saude'
 import { Route as AuthenticatedMenstruappRouteImport } from './routes/_authenticated/menstruapp'
 
@@ -35,6 +36,11 @@ const CalendarioRoute = CalendarioRouteImport.update({
   path: '/calendario',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FirstRoute = FirstRouteImport.update({
+  id: '/first',
+  path: '/first',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SaudeRoute = SaudeRouteImport.update({
   id: '/saude',
   path: '/saude',
@@ -50,6 +56,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/first': typeof FirstRoute
   '/saude': typeof SaudeRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
 }
@@ -57,6 +64,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/first': typeof FirstRoute
   '/saude': typeof SaudeRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
 }
@@ -66,20 +74,22 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/first': typeof FirstRoute
   '/saude': typeof SaudeRoute
   '/_authenticated/menstruapp': typeof AuthenticatedMenstruappRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/calendario' | '/saude' | '/menstruapp'
+  fullPaths: '/' | '/auth' | '/calendario' | '/first' | '/saude' | '/menstruapp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/calendario' | '/saude' | '/menstruapp'
+  to: '/' | '/auth' | '/calendario' | '/first' | '/saude' | '/menstruapp'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/calendario'
+    | '/first'
     | '/saude'
     | '/_authenticated/menstruapp'
   fileRoutesById: FileRoutesById
@@ -89,6 +99,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
+  FirstRoute: typeof FirstRoute
   SaudeRoute: typeof SaudeRoute
 }
 
@@ -120,6 +131,13 @@ declare module '@tanstack/react-router' {
       path: '/calendario'
       fullPath: '/calendario'
       preLoaderRoute: typeof CalendarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/first': {
+      id: '/first'
+      path: '/first'
+      fullPath: '/first'
+      preLoaderRoute: typeof FirstRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/saude': {
@@ -155,6 +173,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
+  FirstRoute: FirstRoute,
   SaudeRoute: SaudeRoute,
 }
 export const routeTree = rootRouteImport
