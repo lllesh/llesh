@@ -35,7 +35,7 @@ const FOLDERS = ["entrada", "enviados", "rascunhos", "arquivo", "lixeira"];
 function FitmailPage() {
   const [active, setActive] = useState(0);
   const [folder, setFolder] = useState("entrada");
-  const mail = MAILS[active];
+  const mail = MAILS[active] ?? MAILS[0]!;
 
   return (
     <div className="flex min-h-svh" style={{ background: BG, color: INK }}>
