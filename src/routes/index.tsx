@@ -80,7 +80,7 @@ function NoiiHome() {
 
   return (
     <main className="min-h-svh flex flex-col items-center justify-center px-6 py-8" style={{ background: BG, color: INK }}>
-      <div className="relative h-[110px] w-[260px] overflow-hidden"><img src={logo.url} alt="n o ii — núcleo organizado inteligente interativo" className="absolute left-1/2 top-1/2 w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 select-none" draggable={false} /></div>
+      <div className="relative h-[150px] w-[260px] overflow-hidden"><img src={logo.url} alt="n o ii — núcleo organizado inteligente interativo" className="absolute left-1/2 top-1/2 w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 select-none" draggable={false} /></div>
 
       {!logada ? (
         <form onSubmit={enviar} className="mt-8 flex w-full max-w-[420px] flex-col gap-4">
