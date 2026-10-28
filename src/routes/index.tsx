@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
-import logo from "@/assets/noii-logo.png.asset.json";
+import logo from "@/assets/noii-logo-relevo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -80,7 +80,7 @@ function NoiiHome() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6 py-16" style={{ background: BG, color: INK }}>
-      <img src={logo.url} alt="n o ii — núcleo organizado inteligente interativo" className="w-full max-w-[460px] select-none" draggable={false} />
+      <img src={logo.url} alt="n o ii — núcleo organizado inteligente interativo" className="w-full max-w-[320px] select-none" draggable={false} />
 
       {!logada ? (
         <form onSubmit={enviar} className="mt-14 flex w-full max-w-[480px] flex-col gap-5">
