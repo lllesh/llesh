@@ -138,15 +138,15 @@ export function FilhappDashboard() {
 
             <div className="space-y-5 p-5 md:p-7 lg:p-0">
               {/* Hero monumental — palco generoso */}
-              <section className="relative overflow-hidden rounded-[36px] bg-foreground px-8 pb-12 pt-10 md:px-14 md:pb-14 md:pt-12">
-                <div className="flex flex-wrap items-center justify-end gap-2">
+              <section className="relative flex min-h-[380px] flex-col justify-end overflow-hidden rounded-[36px] bg-foreground px-8 pb-10 pt-24 md:px-14 md:pb-12">
+                <div className="absolute right-8 top-8 flex flex-wrap items-center justify-end gap-2 md:right-10 md:top-10">
                   <span className="rounded-full bg-apricot px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-porcelain">Fase ovulatória</span>
                   <span className="rounded-full bg-porcelain/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-porcelain">Pico de LH</span>
                 </div>
-                <h1 className="mt-10 whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[170px] xl:text-[220px]">
+                <h1 className="whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[170px] xl:text-[220px]">
                   dia 14<span className="text-coral">.</span>
                 </h1>
-                <div className="mt-12 flex items-center justify-between gap-1 px-2">
+                <div className="mt-7 flex items-center justify-between gap-1 px-2">
                   {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
                     <span key={d} title={`Dia ${d}`} className={cn("block rounded-full", d === 14 ? "size-5 animate-today-glow bg-mauve" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
                   ))}
@@ -155,22 +155,26 @@ export function FilhappDashboard() {
 
               <section className="grid gap-5 md:grid-cols-2">
                 {/* Ovulação — o ato canônico, logo abaixo do dia 14 */}
-                <article className="rounded-[32px] bg-apricot p-8 text-porcelain md:col-span-2">
-                  <div className="flex items-start justify-between gap-4">
+                <article className="overflow-hidden rounded-[32px] bg-apricot pt-8 text-porcelain md:col-span-2">
+                  <div className="flex items-start justify-between gap-4 px-8">
                     <PocketHead title="Ovulação" />
                     <div className="flex gap-2 pt-2">
                       <span className="flex items-center gap-2 rounded-full bg-foreground/40 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.14em]"><i className="block size-2 rounded-full bg-porcelain" />Estrogênio</span>
                       <span className="flex items-center gap-2 rounded-full bg-foreground/40 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.14em]"><i className="block size-2 rounded-full bg-foreground" />Progesterona</span>
                     </div>
                   </div>
-                  <div className="mt-6 h-[220px]">
+                  <div className="mt-4 h-[240px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <AreaChart data={cycleData} margin={{ top: 12, right: 4, left: 4, bottom: 0 }}>
-                        <XAxis dataKey="day" axisLine={false} tickLine={false} ticks={[1, 7, 14, 21, 28]} tickFormatter={(v) => `D${v}`} tick={{ fill: "var(--porcelain)", fontSize: 11, fontWeight: 800 }} />
+                      <AreaChart data={cycleData} margin={{ top: 12, right: 0, left: 0, bottom: 0 }}>
+                        <defs>
+                          <linearGradient id="gEst" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--porcelain)" stopOpacity={0.35} /><stop offset="100%" stopColor="var(--porcelain)" stopOpacity={0} /></linearGradient>
+                          <linearGradient id="gProg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--foreground)" stopOpacity={0.35} /><stop offset="100%" stopColor="var(--foreground)" stopOpacity={0} /></linearGradient>
+                        </defs>
+                        <XAxis dataKey="day" hide />
                         <ChartTooltip cursor={{ stroke: "var(--porcelain)", strokeWidth: 1, strokeOpacity: 0.5 }} content={<HormoneTip />} />
-                        <ReferenceLine x={14} stroke="var(--porcelain)" strokeWidth={2} strokeDasharray="4 4" />
-                        <Area isAnimationActive={false} type="monotone" dataKey="estrogen" name="Estrogênio" stroke="var(--porcelain)" strokeWidth={3} fill="var(--porcelain)" fillOpacity={0.18} />
-                        <Area isAnimationActive={false} type="monotone" dataKey="progesterone" name="Progesterona" stroke="var(--foreground)" strokeWidth={3} fill="var(--foreground)" fillOpacity={0.2} />
+                        <ReferenceLine x={14} stroke="var(--porcelain)" strokeWidth={2} strokeDasharray="4 4" strokeOpacity={0.7} />
+                        <Area isAnimationActive={false} type="monotone" dataKey="estrogen" name="Estrogênio" stroke="var(--porcelain)" strokeWidth={3} fill="url(#gEst)" />
+                        <Area isAnimationActive={false} type="monotone" dataKey="progesterone" name="Progesterona" stroke="var(--foreground)" strokeWidth={3} fill="url(#gProg)" />
                       </AreaChart>
                     </ResponsiveContainer>
                   </div>
