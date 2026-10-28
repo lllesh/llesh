@@ -280,7 +280,7 @@ function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; o
       {/* O bolsinho */}
       <div className="mt-5 flex min-h-[56px] flex-wrap items-center content-center gap-2 rounded-full bg-foreground/80 px-3 py-2.5">
         {inside.map((o) => (
-          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-9 items-center rounded-full bg-foreground px-6 text-[15px] font-black uppercase leading-none tracking-[0.14em] text-porcelain ring-1 ring-porcelain/15 transition-transform animate-in zoom-in-50 hover:scale-105">
+          <button key={o.id} onClick={() => onToggle(o.id)} aria-label={`Tirar ${o.label}`} className="flex h-9 items-center rounded-full bg-background px-6 text-[15px] font-black uppercase leading-none tracking-[0.14em] text-porcelain transition-transform animate-in zoom-in-50 hover:scale-105">
             {o.label}
           </button>
         ))}
