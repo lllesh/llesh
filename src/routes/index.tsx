@@ -36,7 +36,7 @@ function NoiiHome() {
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      if (data.user) setLogada((data.user.user_metadata?.nome as string) || data.user.email || "");
+      if (data.user) setLogada((data.user.user_metadata?.["nome"] as string) || data.user.email || "");
     });
   }, []);
 
@@ -57,7 +57,7 @@ function NoiiHome() {
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password: senha });
         if (error) return setAviso(error.message);
-        setLogada((data.user?.user_metadata?.nome as string) || email);
+        setLogada((data.user?.user_metadata?.["nome"] as string) || email);
       }
     } finally {
       setBusy(false);
