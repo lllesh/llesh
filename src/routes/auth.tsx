@@ -8,7 +8,7 @@ export const Route = createFileRoute("/auth")({
   ssr: false,
   beforeLoad: async () => {
     const { data } = await supabase.auth.getUser();
-    if (data.user) throw redirect({ to: "/" });
+    if (data.user) throw redirect({ to: "/menstruapp" });
   },
   head: () => ({
     meta: [
@@ -36,7 +36,7 @@ function AuthScreen() {
   const [notice, setNotice] = useState<string | null>(null);
 
   const goHome = async () => {
-    await navigate({ to: "/" });
+    await navigate({ to: "/menstruapp" });
   };
 
   const handleOAuth = async (provider: "google" | "lovable") => {

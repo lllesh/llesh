@@ -64,6 +64,45 @@ export type Database = {
           },
         ]
       }
+      fundadores: {
+        Row: {
+          created_at: string
+          dominio_desejado: string | null
+          email: string
+          id: string
+          nome: string
+          nome_assistente: string | null
+          profissao: string
+          registro: string | null
+          status: string
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string
+          dominio_desejado?: string | null
+          email: string
+          id?: string
+          nome: string
+          nome_assistente?: string | null
+          profissao: string
+          registro?: string | null
+          status?: string
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string
+          dominio_desejado?: string | null
+          email?: string
+          id?: string
+          nome?: string
+          nome_assistente?: string | null
+          profissao?: string
+          registro?: string | null
+          status?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       pessoas: {
         Row: {
           created_at: string
