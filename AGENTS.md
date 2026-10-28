@@ -10,3 +10,5 @@
 <!-- LOVABLE:END -->
 
 - Keep the reproductive-health dashboard desktop-first, with a collapsible left rail and a mobile bottom navigation, so both form factors feel native.
+
+- Single shared backend: every app (menstruapp and future siblings) writes to `public.checkins` (tagged by `app` + `tipo`, payload in `dados` jsonb) linked to `public.pessoas`; files go to private bucket `checkins` under `<user_id>/...`. Why: one database feeds all front-ends.
