@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
 import { Route as FirstRouteImport } from './routes/first'
+import { Route as FitmailRouteImport } from './routes/fitmail'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as SaudeRouteImport } from './routes/saude'
 import { Route as AuthenticatedMenstruappRouteImport } from './routes/_authenticated/menstruapp'
@@ -42,6 +43,11 @@ const FirstRoute = FirstRouteImport.update({
   path: '/first',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FitmailRoute = FitmailRouteImport.update({
+  id: '/fitmail',
+  path: '/fitmail',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/first': typeof FirstRoute
+  '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
   '/saude': typeof SaudeRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/first': typeof FirstRoute
+  '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
   '/saude': typeof SaudeRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/first': typeof FirstRoute
+  '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
   '/saude': typeof SaudeRoute
   '/_authenticated/menstruapp': typeof AuthenticatedMenstruappRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/first'
+    | '/fitmail'
     | '/portfolio'
     | '/saude'
     | '/menstruapp'
@@ -103,6 +113,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/first'
+    | '/fitmail'
     | '/portfolio'
     | '/saude'
     | '/menstruapp'
@@ -113,6 +124,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/first'
+    | '/fitmail'
     | '/portfolio'
     | '/saude'
     | '/_authenticated/menstruapp'
@@ -124,6 +136,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
   FirstRoute: typeof FirstRoute
+  FitmailRoute: typeof FitmailRoute
   PortfolioRoute: typeof PortfolioRoute
   SaudeRoute: typeof SaudeRoute
 }
@@ -163,6 +176,13 @@ declare module '@tanstack/react-router' {
       path: '/first'
       fullPath: '/first'
       preLoaderRoute: typeof FirstRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fitmail': {
+      id: '/fitmail'
+      path: '/fitmail'
+      fullPath: '/fitmail'
+      preLoaderRoute: typeof FitmailRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio': {
@@ -206,6 +226,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
   FirstRoute: FirstRoute,
+  FitmailRoute: FitmailRoute,
   PortfolioRoute: PortfolioRoute,
   SaudeRoute: SaudeRoute,
 }
