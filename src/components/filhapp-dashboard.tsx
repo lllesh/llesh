@@ -123,62 +123,72 @@ export function FilhappDashboard() {
             {collapsed && <div className="flex-1" />}
 
             <div className="shrink-0 px-4">
-              <button aria-label="Letícia Motta" className="flex h-[60px] w-full items-center justify-center rounded-full bg-foreground text-porcelain transition-transform hover:scale-[1.02]">
-                <span className={cn("font-display font-black lowercase leading-none tracking-[-0.02em]", collapsed ? "text-[28px]" : "text-[40px]")}>{collapsed ? "l" : "letícia motta"}</span>
+              <button aria-label="Letícia Motta" className={cn("flex h-[60px] w-full items-center rounded-full bg-foreground text-porcelain transition-transform hover:scale-[1.02]", collapsed ? "justify-center" : "justify-center gap-3 pl-2 pr-6")}>
+                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-coral text-porcelain"><CircleUserRound className="size-6" strokeWidth={2.2} /></span>
+                {!collapsed && <span className="font-display text-[34px] font-black lowercase leading-none tracking-[-0.02em]">letícia motta</span>}
               </button>
             </div>
           </aside>
 
-          <main className="min-w-0 flex-1 overflow-x-hidden pb-28 lg:h-full lg:overflow-hidden lg:pb-0">
+          <main className="min-w-0 flex-1 overflow-x-hidden pb-28 lg:h-full lg:overflow-y-auto lg:rounded-[32px] lg:pb-0">
             <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/90 px-5 backdrop-blur-xl lg:hidden">
               <span className="font-display text-xl font-black lowercase tracking-[-0.03em] text-coral">menstruapp!</span>
               <Button onClick={() => setLogOpen(true)} aria-label="Hoje" className="size-10 rounded-full bg-coral p-0 text-porcelain hover:bg-coral/90"><Plus /></Button>
             </header>
 
-            <div className="flex flex-col gap-5 p-5 md:p-7 lg:h-full lg:p-0">
-              {/* Hero monumental */}
-              <section className="relative shrink-0 overflow-hidden rounded-[36px] bg-foreground px-7 pb-6 pt-5 md:px-10">
-                <div className="absolute right-6 top-6 flex gap-2">
-                  <span className="rounded-full bg-apricot px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-porcelain">Fase ovulatória</span>
-                  <span className="rounded-full bg-porcelain/15 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-porcelain">Pico de LH</span>
+            <div className="space-y-5 p-5 md:p-7 lg:p-0">
+              {/* Hero monumental — palco generoso */}
+              <section className="relative overflow-hidden rounded-[36px] bg-foreground px-8 pb-12 pt-10 md:px-14 md:pb-14 md:pt-12">
+                <div className="flex flex-wrap items-center justify-end gap-2">
+                  <span className="rounded-full bg-apricot px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-porcelain">Fase ovulatória</span>
+                  <span className="rounded-full bg-porcelain/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-porcelain">Pico de LH</span>
                 </div>
-                <h1 className="whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[160px] xl:text-[200px]">
+                <h1 className="mt-10 whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[170px] xl:text-[220px]">
                   dia 14<span className="text-coral">.</span>
                 </h1>
-                <div className="mt-5 flex items-center justify-between gap-1 px-1">
+                <div className="mt-12 flex items-center justify-between gap-1 px-2">
                   {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
                     <span key={d} title={`Dia ${d}`} className={cn("block rounded-full", d === 14 ? "size-5 animate-today-glow bg-mauve" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
                   ))}
                 </div>
               </section>
 
-              {/* Ovulação — o ato canônico */}
-              <article className="flex min-h-[200px] flex-1 flex-col rounded-[32px] bg-apricot px-7 pb-4 pt-6 text-porcelain">
-                <div className="flex items-start justify-between gap-4">
-                  <PocketHead title="Ovulação" />
-                  <div className="flex gap-2 pt-2">
-                    <span className="flex items-center gap-2 rounded-full bg-foreground/40 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.14em]"><i className="block size-2 rounded-full bg-porcelain" />Estrogênio</span>
-                    <span className="flex items-center gap-2 rounded-full bg-foreground/40 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.14em]"><i className="block size-2 rounded-full bg-foreground" />Progesterona</span>
+              <section className="grid gap-5 md:grid-cols-2">
+                {/* Ovulação — o ato canônico, logo abaixo do dia 14 */}
+                <article className="rounded-[32px] bg-apricot p-8 text-porcelain md:col-span-2">
+                  <div className="flex items-start justify-between gap-4">
+                    <PocketHead title="Ovulação" />
+                    <div className="flex gap-2 pt-2">
+                      <span className="flex items-center gap-2 rounded-full bg-foreground/40 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.14em]"><i className="block size-2 rounded-full bg-porcelain" />Estrogênio</span>
+                      <span className="flex items-center gap-2 rounded-full bg-foreground/40 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.14em]"><i className="block size-2 rounded-full bg-foreground" />Progesterona</span>
+                    </div>
                   </div>
-                </div>
-                <div className="mt-1 min-h-0 flex-1">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={cycleData} margin={{ top: 12, right: 4, left: 4, bottom: 0 }}>
-                      <XAxis dataKey="day" axisLine={false} tickLine={false} ticks={[1, 7, 14, 21, 28]} tickFormatter={(v) => `D${v}`} tick={{ fill: "var(--porcelain)", fontSize: 11, fontWeight: 800 }} />
-                      <ChartTooltip cursor={{ stroke: "var(--porcelain)", strokeWidth: 1, strokeOpacity: 0.5 }} content={<HormoneTip />} />
-                      <ReferenceLine x={14} stroke="var(--porcelain)" strokeWidth={2} strokeDasharray="4 4" />
-                      <Area isAnimationActive={false} type="monotone" dataKey="estrogen" name="Estrogênio" stroke="var(--porcelain)" strokeWidth={3} fill="var(--porcelain)" fillOpacity={0.18} />
-                      <Area isAnimationActive={false} type="monotone" dataKey="progesterone" name="Progesterona" stroke="var(--foreground)" strokeWidth={3} fill="var(--foreground)" fillOpacity={0.2} />
-                    </AreaChart>
-                  </ResponsiveContainer>
-                </div>
-              </article>
+                  <div className="mt-6 h-[220px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={cycleData} margin={{ top: 12, right: 4, left: 4, bottom: 0 }}>
+                        <XAxis dataKey="day" axisLine={false} tickLine={false} ticks={[1, 7, 14, 21, 28]} tickFormatter={(v) => `D${v}`} tick={{ fill: "var(--porcelain)", fontSize: 11, fontWeight: 800 }} />
+                        <ChartTooltip cursor={{ stroke: "var(--porcelain)", strokeWidth: 1, strokeOpacity: 0.5 }} content={<HormoneTip />} />
+                        <ReferenceLine x={14} stroke="var(--porcelain)" strokeWidth={2} strokeDasharray="4 4" />
+                        <Area isAnimationActive={false} type="monotone" dataKey="estrogen" name="Estrogênio" stroke="var(--porcelain)" strokeWidth={3} fill="var(--porcelain)" fillOpacity={0.18} />
+                        <Area isAnimationActive={false} type="monotone" dataKey="progesterone" name="Progesterona" stroke="var(--foreground)" strokeWidth={3} fill="var(--foreground)" fillOpacity={0.2} />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                </article>
 
-              {/* Sangue, muco, sintomas */}
-              <section className="grid shrink-0 gap-5 md:grid-cols-3">
                 {pockets.map((p) => (
                   <Pocket key={p.key} def={p} stored={stored[p.key] ?? []} onToggle={(id) => toggle(p.key, id)} />
                 ))}
+
+                <article className="flex flex-col justify-between rounded-[32px] bg-mauve p-8 text-porcelain md:col-span-2">
+                  <PocketHead title="Insight" />
+                  <p className="mt-5 max-w-3xl font-display text-2xl font-bold leading-tight md:text-3xl">
+                    Muco em clara de ovo, LH positivo, temperatura subindo. Janela fértil aberta agora.
+                  </p>
+                  <Button variant="ghost" aria-label="Abrir" className="mt-8 size-12 rounded-full bg-porcelain/20 p-0 text-porcelain hover:bg-porcelain/30 hover:text-porcelain">
+                    <ArrowUpRight className="size-6" strokeWidth={1.5} />
+                  </Button>
+                </article>
               </section>
             </div>
           </main>
