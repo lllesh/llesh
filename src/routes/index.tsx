@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
   component: NoiiHome,
 });
 
-const INK = "#3A3836";
+const INK = "#A9A59F";
 const BG = "#F6F4F1";
 const relevo = { background: BG, boxShadow: "inset 6px 6px 14px #DEDCD8, inset -6px -6px 14px #FFFFFF" };
 const saliente = { background: BG, boxShadow: "8px 8px 18px #DEDCD8, -8px -8px 18px #FFFFFF" };
@@ -76,7 +76,7 @@ function NoiiHome() {
     }
   };
 
-  const campo = "h-16 w-full rounded-full px-8 text-xl outline-none placeholder:opacity-40";
+  const campo = "h-16 w-full rounded-full px-8 text-xl font-medium outline-none focus:outline-none focus-visible:outline-none placeholder:opacity-60";
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6 py-16" style={{ background: BG, color: INK }}>
@@ -89,7 +89,7 @@ function NoiiHome() {
           )}
           <input className={campo} style={relevo} type="email" placeholder="e-mail" aria-label="e-mail" required value={email} onChange={(e) => setEmail(e.target.value)} />
           <input className={campo} style={relevo} type="password" placeholder="senha" aria-label="senha" required minLength={6} value={senha} onChange={(e) => setSenha(e.target.value)} />
-          <button type="submit" disabled={busy} className="mt-2 h-16 rounded-full text-2xl font-black tracking-tight disabled:opacity-50" style={{ ...saliente, color: INK }}>
+          <button type="submit" disabled={busy} className="mt-2 h-16 rounded-full text-2xl font-bold tracking-tight outline-none focus-visible:outline-none disabled:opacity-50" style={{ ...saliente, color: INK }}>
             {mode === "criar" ? "criar meu nó" : "entrar"}
           </button>
           <button type="button" onClick={() => { setMode(mode === "criar" ? "entrar" : "criar"); setAviso(null); }} className="self-center text-lg font-bold opacity-60 hover:opacity-100">
@@ -99,11 +99,11 @@ function NoiiHome() {
         </form>
       ) : (
         <section className="mt-14 flex w-full max-w-[480px] flex-col items-center gap-5">
-          <p className="text-3xl font-black tracking-tight">{logada}</p>
+          <p className="text-3xl font-bold tracking-tight">{logada}</p>
           {(["voz", "vídeo", "local"] as Perm[]).map((p) => (
-            <button key={p} type="button" onClick={() => pedir(p)} className="flex h-16 w-full items-center justify-between rounded-full px-8 text-2xl font-black" style={perms[p] ? relevo : saliente}>
+            <button key={p} type="button" onClick={() => pedir(p)} className="flex h-16 w-full items-center justify-between rounded-full px-8 text-2xl font-bold outline-none focus-visible:outline-none" style={{ ...(perms[p] ? relevo : saliente), color: INK }}>
               <span>{p}</span>
-              <span>{perms[p] ? "✓" : "↗"}</span>
+              <span aria-hidden className="h-3 w-3 rounded-full" style={perms[p] ? { background: "#C9C5BF" } : relevo} />
             </button>
           ))}
           {aviso && <p className="text-center text-lg opacity-80">{aviso}</p>}
