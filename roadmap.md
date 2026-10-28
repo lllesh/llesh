@@ -7,3 +7,5 @@
 - [x] Cards, pílulas e caixinhas preenchidos com a paleta e texto em Branco Lelê.
 
 - [x] Régua de 28 pontos mais pra dentro (dentro do "d" e longe da borda direita)
+
+- [x] Logo oficial do n o ii (relevo arredondado) na página principal, tamanho contido e centrado.
