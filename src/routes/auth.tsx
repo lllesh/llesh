@@ -91,35 +91,13 @@ function AuthScreen() {
     "flex h-[64px] w-full items-center justify-center rounded-full font-display text-[26px] font-black lowercase leading-none tracking-[-0.02em] transition-opacity disabled:opacity-60";
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-16">
-      {/* guarda-chuva */}
-      <h1 className="font-display text-[88px] font-black lowercase leading-none tracking-[-0.06em] text-porcelain md:text-[150px]">
-        lle<span className="text-coral">.sh</span>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#F6F4F1] px-6 py-16">
+      <h1 className="font-display text-[110px] font-black lowercase leading-none tracking-[0.02em] text-[#1E1B18] md:text-[160px]">
+        n o ii
       </h1>
-      <div className="mt-6 flex h-[44px] items-center justify-center rounded-full bg-coral px-7">
-        <span className="font-display text-[20px] font-black lowercase leading-none tracking-[-0.02em] text-porcelain">
-          menstruapp
-        </span>
-      </div>
 
-      {/* métodos */}
       <div className="mt-14 flex w-full max-w-[520px] flex-col gap-4">
-        <button
-          type="button"
-          disabled={busy}
-          onClick={() => handleOAuth("google")}
-          className={cn(pillBase, "bg-foreground text-porcelain hover:opacity-90")}
-        >
-          google
-        </button>
-        <button
-          type="button"
-          disabled={busy}
-          onClick={() => handleOAuth("lovable")}
-          className={cn(pillBase, "bg-foreground text-porcelain hover:opacity-90")}
-        >
-          lovable
-        </button>
+
 
         <form onSubmit={handleEmail} className="mt-4 flex flex-col gap-4">
           <input
