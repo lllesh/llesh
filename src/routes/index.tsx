@@ -76,7 +76,7 @@ function NoiiHome() {
     }
   };
 
-  const campo = "h-14 w-full rounded-full px-7 text-lg font-medium outline-none focus:outline-none focus-visible:outline-none placeholder:opacity-60";
+  const campo = "h-14 w-full rounded-full px-7 text-center text-lg font-medium outline-none focus:outline-none focus-visible:outline-none placeholder:opacity-60 placeholder:text-center";
 
   return (
     <main className="min-h-svh flex flex-col items-center justify-center px-6 py-8" style={{ background: BG, color: INK }}>
