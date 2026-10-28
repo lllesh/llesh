@@ -76,20 +76,20 @@ function NoiiHome() {
     }
   };
 
-  const campo = "h-16 w-full rounded-full px-8 text-xl font-medium outline-none focus:outline-none focus-visible:outline-none placeholder:opacity-60";
+  const campo = "h-14 w-full rounded-full px-7 text-lg font-medium outline-none focus:outline-none focus-visible:outline-none placeholder:opacity-60";
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 py-16" style={{ background: BG, color: INK }}>
-      <img src={logo.url} alt="n o ii — núcleo organizado inteligente interativo" className="w-full max-w-[320px] select-none" draggable={false} />
+    <main className="min-h-svh flex flex-col items-center justify-center px-6 py-8" style={{ background: BG, color: INK }}>
+      <div className="relative h-[150px] w-[260px] overflow-hidden"><img src={logo.url} alt="n o ii — núcleo organizado inteligente interativo" className="absolute left-1/2 top-1/2 w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 select-none" draggable={false} /></div>
 
       {!logada ? (
-        <form onSubmit={enviar} className="mt-14 flex w-full max-w-[480px] flex-col gap-5">
+        <form onSubmit={enviar} className="mt-8 flex w-full max-w-[420px] flex-col gap-4">
           {mode === "criar" && (
             <input className={campo} style={relevo} placeholder="seu nome" aria-label="nome" required value={nome} onChange={(e) => setNome(e.target.value)} />
           )}
           <input className={campo} style={relevo} type="email" placeholder="e-mail" aria-label="e-mail" required value={email} onChange={(e) => setEmail(e.target.value)} />
           <input className={campo} style={relevo} type="password" placeholder="senha" aria-label="senha" required minLength={6} value={senha} onChange={(e) => setSenha(e.target.value)} />
-          <button type="submit" disabled={busy} className="mt-2 h-16 rounded-full text-2xl font-bold tracking-tight outline-none focus-visible:outline-none disabled:opacity-50" style={{ ...saliente, color: INK }}>
+          <button type="submit" disabled={busy} className="mt-1 h-14 rounded-full text-xl font-bold tracking-tight outline-none focus-visible:outline-none disabled:opacity-50" style={{ ...saliente, color: INK }}>
             {mode === "criar" ? "criar meu nó" : "entrar"}
           </button>
           <button type="button" onClick={() => { setMode(mode === "criar" ? "entrar" : "criar"); setAviso(null); }} className="self-center text-lg font-bold opacity-60 hover:opacity-100">
@@ -99,9 +99,9 @@ function NoiiHome() {
         </form>
       ) : (
         <section className="mt-14 flex w-full max-w-[480px] flex-col items-center gap-5">
-          <p className="text-3xl font-bold tracking-tight">{logada}</p>
+          <p className="text-2xl font-bold tracking-tight">{logada}</p>
           {(["voz", "vídeo", "local"] as Perm[]).map((p) => (
-            <button key={p} type="button" onClick={() => pedir(p)} className="flex h-16 w-full items-center justify-between rounded-full px-8 text-2xl font-bold outline-none focus-visible:outline-none" style={{ ...(perms[p] ? relevo : saliente), color: INK }}>
+            <button key={p} type="button" onClick={() => pedir(p)} className="flex h-14 w-full items-center justify-between rounded-full px-7 text-xl font-bold outline-none focus-visible:outline-none" style={{ ...(perms[p] ? relevo : saliente), color: INK }}>
               <span>{p}</span>
               <span aria-hidden className="h-3 w-3 rounded-full" style={perms[p] ? { background: "#C9C5BF" } : relevo} />
             </button>
