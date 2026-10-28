@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { FilhappDashboard } from "@/components/filhapp-dashboard";
 import { IntroSplash } from "@/components/intro-splash";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_authenticated/")({
   head: () => ({
     meta: [
       { title: "MENSTRUAPP | Menstruação e ciclo menstrual" },
