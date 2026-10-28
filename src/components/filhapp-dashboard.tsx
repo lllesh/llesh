@@ -146,7 +146,7 @@ export function FilhappDashboard() {
                 <h1 className="whitespace-nowrap font-display text-[96px] font-black lowercase leading-[0.8] tracking-[-0.06em] text-porcelain md:text-[170px] xl:text-[220px]">
                   dia 14<span className="ml-[0.06em] text-coral">.</span>
                 </h1>
-                <div className="mt-10 flex w-full items-center justify-between pl-[6px]">
+                <div className="mt-10 flex w-full items-center justify-between px-6">
                   {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
                     <span key={d} title={`Dia ${d}`} className={cn("block shrink-0 rounded-full", d === 14 ? "size-4 animate-today-glow bg-mauve" : cn("size-2.5", d <= 5 ? "bg-coral" : d < 10 ? "bg-porcelain/25" : d <= 16 ? "bg-apricot" : "bg-periwinkle"))} />
                   ))}

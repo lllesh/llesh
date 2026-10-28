@@ -5,3 +5,5 @@
 - [x] Menu lateral como retângulo arredondado flutuante, botão squircle.
 - [x] Fonte da marca MENSTRUAPP reduzida.
 - [x] Cards, pílulas e caixinhas preenchidos com a paleta e texto em Branco Lelê.
+
+- [x] Régua de 28 pontos mais pra dentro (dentro do "d" e longe da borda direita)
