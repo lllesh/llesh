@@ -271,7 +271,7 @@ function HormoneTip({ active, payload, label }: { active?: boolean; payload?: { 
 function Pocket({ def, stored, onToggle }: { def: PocketDef; stored: string[]; onToggle: (id: string) => void }) {
   const inside = def.objects.filter((o) => stored.includes(o.id));
   return (
-    <article className={cn("flex flex-col rounded-[32px] p-6 text-porcelain", def.tone)}>
+    <article className={cn("flex flex-col rounded-[32px] p-8 text-porcelain", def.tone, def.span)}>
       <PocketHead title={def.title} iconKey={def.key} />
       {/* O bolsinho */}
       <div className="mt-4 flex min-h-[64px] flex-wrap content-start gap-2 rounded-[28px] bg-foreground/45 p-2">
