@@ -32,7 +32,7 @@ describe("debug", () => {
     const router = renderAt("/");
     await waitFor(() => {
       console.log("STATUS", router.state.status, "LOC", router.state.location.pathname);
-      console.log("MATCHES", router.state.matches.map((m) => m.routeId));
+      console.log("MATCHES", router.state.matches.map((m) => m.routeId), "BODYLEN", document.body.innerHTML.length);
       expect(router.state.status).toBe("idle");
     }, { timeout: 8000 });
   });
