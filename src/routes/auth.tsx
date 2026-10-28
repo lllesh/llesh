@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/auth")({
@@ -12,9 +11,9 @@ export const Route = createFileRoute("/auth")({
   },
   head: () => ({
     meta: [
-      { title: "lle.sh | entrar" },
+      { title: "n o ii | entrar" },
       { name: "description", content: "Entre no seu universo com uma conta só." },
-      { property: "og:title", content: "lle.sh | entrar" },
+      { property: "og:title", content: "n o ii | entrar" },
       { property: "og:description", content: "Entre no seu universo com uma conta só." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -22,10 +21,6 @@ export const Route = createFileRoute("/auth")({
   }),
   component: AuthScreen,
 });
-
-async function oauthSignIn(provider: "google" | "lovable") {
-  return lovable.auth.signInWithOAuth(provider, { redirect_uri: window.location.origin });
-}
 
 function AuthScreen() {
   const navigate = useNavigate();
@@ -37,21 +32,6 @@ function AuthScreen() {
 
   const goHome = async () => {
     await navigate({ to: "/menstruapp" });
-  };
-
-  const handleOAuth = async (provider: "google" | "lovable") => {
-    setBusy(true);
-    setNotice(null);
-    try {
-      const result = await oauthSignIn(provider);
-      if (result.error) {
-        setNotice(result.error.message);
-        return;
-      }
-      if (!result.redirected) await goHome();
-    } finally {
-      setBusy(false);
-    }
   };
 
   const handleEmail = async (event: React.FormEvent) => {
@@ -91,35 +71,13 @@ function AuthScreen() {
     "flex h-[64px] w-full items-center justify-center rounded-full font-display text-[26px] font-black lowercase leading-none tracking-[-0.02em] transition-opacity disabled:opacity-60";
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-16">
-      {/* guarda-chuva */}
-      <h1 className="font-display text-[88px] font-black lowercase leading-none tracking-[-0.06em] text-porcelain md:text-[150px]">
-        lle<span className="text-coral">.sh</span>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#F6F4F1] px-6 py-16">
+      <h1 className="font-display text-[110px] font-black lowercase leading-none tracking-[0.02em] text-[#1E1B18] md:text-[160px]">
+        n o ii
       </h1>
-      <div className="mt-6 flex h-[44px] items-center justify-center rounded-full bg-coral px-7">
-        <span className="font-display text-[20px] font-black lowercase leading-none tracking-[-0.02em] text-porcelain">
-          menstruapp
-        </span>
-      </div>
 
-      {/* métodos */}
       <div className="mt-14 flex w-full max-w-[520px] flex-col gap-4">
-        <button
-          type="button"
-          disabled={busy}
-          onClick={() => handleOAuth("google")}
-          className={cn(pillBase, "bg-foreground text-porcelain hover:opacity-90")}
-        >
-          google
-        </button>
-        <button
-          type="button"
-          disabled={busy}
-          onClick={() => handleOAuth("lovable")}
-          className={cn(pillBase, "bg-foreground text-porcelain hover:opacity-90")}
-        >
-          lovable
-        </button>
+
 
         <form onSubmit={handleEmail} className="mt-4 flex flex-col gap-4">
           <input
@@ -156,7 +114,7 @@ function AuthScreen() {
             setMode(mode === "entrar" ? "criar" : "entrar");
             setNotice(null);
           }}
-          className="mt-2 self-center font-display text-[18px] font-bold lowercase tracking-[0.04em] text-porcelain/50 hover:text-porcelain"
+          className="mt-2 self-center font-display text-[18px] font-bold lowercase tracking-[0.04em] text-foreground/60 hover:text-foreground"
         >
           {mode === "entrar" ? "criar conta" : "voltar"}
         </button>
