@@ -84,11 +84,18 @@ function NoiiHome() {
     try {
       if (p === "voz") (await navigator.mediaDevices.getUserMedia({ audio: true })).getTracks().forEach((t) => t.stop());
       if (p === "vídeo") (await navigator.mediaDevices.getUserMedia({ video: true })).getTracks().forEach((t) => t.stop());
-      if (p === "local")
-        await new Promise((ok, no) => navigator.geolocation.getCurrentPosition(ok, no));
+      if (p === "local") {
+        if (!("geolocation" in navigator)) throw new Error("sem");
+        await new Promise((ok, no) => navigator.geolocation.getCurrentPosition(ok, no, { timeout: 15000 }));
+      }
+      setAviso(null);
       setPerms((s) => ({ ...s, [p]: true }));
-    } catch {
-      setAviso(`${p} não autorizado`);
+    } catch (err) {
+      const code = (err as GeolocationPositionError)?.code;
+      if (p === "local" && code === 1)
+        setAviso("o iPhone bloqueou o local. abre Ajustes › Privacidade › Serviços de Localização › Safari e escolhe “Perguntar”.");
+      else if (p === "local") setAviso("não deu pra achar o local agora. tenta de novo");
+      else setAviso(`${p} não autorizado`);
     }
   };
 
@@ -123,7 +130,8 @@ function NoiiHome() {
             </button>
           ))}
           {aviso && <p className="text-center text-lg opacity-80">{aviso}</p>}
-          <button type="button" onClick={async () => { await supabase.auth.signOut(); setLogada(null); }} className="mt-4 text-lg font-bold opacity-50 hover:opacity-100">sair</button>
+          <a href="/menstruapp" className="mt-2 flex h-14 w-full items-center justify-center rounded-full text-xl font-bold tracking-tight" style={{ ...saliente, color: INK }}>entrar</a>
+          <button type="button" onClick={async () => { await supabase.auth.signOut(); setLogada(null); }} className="mt-2 text-lg font-bold opacity-50 hover:opacity-100">sair</button>
         </section>
       )}
     </main>
