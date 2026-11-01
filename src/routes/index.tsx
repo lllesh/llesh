@@ -12,6 +12,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Um lugar só para a sua vida inteira." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#F6F4F1" },
     ],
   }),
   component: NoiiHome,
@@ -24,6 +25,17 @@ const saliente = { background: BG, boxShadow: "8px 8px 18px #DEDCD8, -8px -8px 1
 
 type Perm = "voz" | "vídeo" | "local";
 
+function traduz(msg: string) {
+  const m = msg.toLowerCase();
+  if (m.includes("invalid login")) return "e-mail ou senha incorretos";
+  if (m.includes("email not confirmed")) return "confirma seu e-mail antes de entrar";
+  if (m.includes("already registered")) return "esse e-mail já tem conta";
+  if (m.includes("password")) return "senha fraca: use pelo menos 8 caracteres, com letras e números";
+  if (m.includes("rate limit")) return "muitas tentativas. espera um pouquinho";
+  if (m.includes("invalid") && m.includes("email")) return "e-mail inválido";
+  return "algo deu errado. tenta de novo";
+}
+
 function NoiiHome() {
   const [mode, setMode] = useState<"criar" | "entrar">("criar");
   const [nome, setNome] = useState("");
@@ -35,9 +47,13 @@ function NoiiHome() {
   const [perms, setPerms] = useState<Record<Perm, boolean>>({ voz: false, vídeo: false, local: false });
 
   useEffect(() => {
+    const h = document.documentElement, b = document.body;
+    const prev: string[] = [h.style.background, b.style.background];
+    h.style.background = BG; b.style.background = BG;
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) setLogada((data.user.user_metadata?.["nome"] as string) || data.user.email || "");
     });
+    return () => { h.style.background = prev[0] ?? ""; b.style.background = prev[1] ?? ""; };
   }, []);
 
   const enviar = async (e: React.FormEvent) => {
@@ -51,12 +67,12 @@ function NoiiHome() {
           password: senha,
           options: { emailRedirectTo: window.location.origin, data: { nome } },
         });
-        if (error) return setAviso(error.message);
+        if (error) return setAviso(traduz(error.message));
         if (data.session) setLogada(nome || email);
         else setAviso("pronto. confirma no seu e-mail e volta aqui pra entrar.");
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password: senha });
-        if (error) return setAviso(error.message);
+        if (error) return setAviso(traduz(error.message));
         setLogada((data.user?.user_metadata?.["nome"] as string) || email);
       }
     } finally {
@@ -68,11 +84,18 @@ function NoiiHome() {
     try {
       if (p === "voz") (await navigator.mediaDevices.getUserMedia({ audio: true })).getTracks().forEach((t) => t.stop());
       if (p === "vídeo") (await navigator.mediaDevices.getUserMedia({ video: true })).getTracks().forEach((t) => t.stop());
-      if (p === "local")
-        await new Promise((ok, no) => navigator.geolocation.getCurrentPosition(ok, no));
+      if (p === "local") {
+        if (!("geolocation" in navigator)) throw new Error("sem");
+        await new Promise((ok, no) => navigator.geolocation.getCurrentPosition(ok, no, { timeout: 15000 }));
+      }
+      setAviso(null);
       setPerms((s) => ({ ...s, [p]: true }));
-    } catch {
-      setAviso(`${p} não autorizado`);
+    } catch (err) {
+      const code = (err as GeolocationPositionError)?.code;
+      if (p === "local" && code === 1)
+        setAviso("o iPhone bloqueou o local. abre Ajustes › Privacidade › Serviços de Localização › Safari e escolhe “Perguntar”.");
+      else if (p === "local") setAviso("não deu pra achar o local agora. tenta de novo");
+      else setAviso(`${p} não autorizado`);
     }
   };
 
@@ -107,7 +130,8 @@ function NoiiHome() {
             </button>
           ))}
           {aviso && <p className="text-center text-lg opacity-80">{aviso}</p>}
-          <button type="button" onClick={async () => { await supabase.auth.signOut(); setLogada(null); }} className="mt-4 text-lg font-bold opacity-50 hover:opacity-100">sair</button>
+          <a href="/menstruapp" className="mt-2 flex h-14 w-full items-center justify-center rounded-full text-xl font-bold tracking-tight" style={{ ...saliente, color: INK }}>entrar</a>
+          <button type="button" onClick={async () => { await supabase.auth.signOut(); setLogada(null); }} className="mt-2 text-lg font-bold opacity-50 hover:opacity-100">sair</button>
         </section>
       )}
     </main>
