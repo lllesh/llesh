@@ -67,12 +67,12 @@ function NoiiHome() {
           password: senha,
           options: { emailRedirectTo: window.location.origin, data: { nome } },
         });
-        if (error) return setAviso(error.message);
+        if (error) return setAviso(traduz(error.message));
         if (data.session) setLogada(nome || email);
         else setAviso("pronto. confirma no seu e-mail e volta aqui pra entrar.");
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password: senha });
-        if (error) return setAviso(error.message);
+        if (error) return setAviso(traduz(error.message));
         setLogada((data.user?.user_metadata?.["nome"] as string) || email);
       }
     } finally {
