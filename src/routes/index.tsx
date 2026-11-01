@@ -48,12 +48,12 @@ function NoiiHome() {
 
   useEffect(() => {
     const h = document.documentElement, b = document.body;
-    const prev = [h.style.background, b.style.background];
+    const prev: string[] = [h.style.background, b.style.background];
     h.style.background = BG; b.style.background = BG;
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) setLogada((data.user.user_metadata?.["nome"] as string) || data.user.email || "");
     });
-    return () => { h.style.background = prev[0]; b.style.background = prev[1]; };
+    return () => { h.style.background = prev[0] ?? ""; b.style.background = prev[1] ?? ""; };
   }, []);
 
   const enviar = async (e: React.FormEvent) => {
