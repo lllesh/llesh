@@ -12,6 +12,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Um lugar só para a sua vida inteira." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#F6F4F1" },
     ],
   }),
   component: NoiiHome,
@@ -24,6 +25,17 @@ const saliente = { background: BG, boxShadow: "8px 8px 18px #DEDCD8, -8px -8px 1
 
 type Perm = "voz" | "vídeo" | "local";
 
+function traduz(msg: string) {
+  const m = msg.toLowerCase();
+  if (m.includes("invalid login")) return "e-mail ou senha incorretos";
+  if (m.includes("email not confirmed")) return "confirma seu e-mail antes de entrar";
+  if (m.includes("already registered")) return "esse e-mail já tem conta";
+  if (m.includes("password")) return "senha fraca: use pelo menos 8 caracteres, com letras e números";
+  if (m.includes("rate limit")) return "muitas tentativas. espera um pouquinho";
+  if (m.includes("invalid") && m.includes("email")) return "e-mail inválido";
+  return "algo deu errado. tenta de novo";
+}
+
 function NoiiHome() {
   const [mode, setMode] = useState<"criar" | "entrar">("criar");
   const [nome, setNome] = useState("");
@@ -35,9 +47,13 @@ function NoiiHome() {
   const [perms, setPerms] = useState<Record<Perm, boolean>>({ voz: false, vídeo: false, local: false });
 
   useEffect(() => {
+    const h = document.documentElement, b = document.body;
+    const prev = [h.style.background, b.style.background];
+    h.style.background = BG; b.style.background = BG;
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) setLogada((data.user.user_metadata?.["nome"] as string) || data.user.email || "");
     });
+    return () => { h.style.background = prev[0]; b.style.background = prev[1]; };
   }, []);
 
   const enviar = async (e: React.FormEvent) => {
