@@ -16,6 +16,7 @@ import { Route as CalendarioRouteImport } from './routes/calendario'
 import { Route as FirstRouteImport } from './routes/first'
 import { Route as FitmailRouteImport } from './routes/fitmail'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as RedefinirRouteImport } from './routes/redefinir'
 import { Route as SaudeRouteImport } from './routes/saude'
 import { Route as AuthenticatedMenstruappRouteImport } from './routes/_authenticated/menstruapp'
 
@@ -53,6 +54,11 @@ const PortfolioRoute = PortfolioRouteImport.update({
   path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RedefinirRoute = RedefinirRouteImport.update({
+  id: '/redefinir',
+  path: '/redefinir',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SaudeRoute = SaudeRouteImport.update({
   id: '/saude',
   path: '/saude',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
+  '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
 }
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
+  '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
 }
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
+  '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
   '/_authenticated/menstruapp': typeof AuthenticatedMenstruappRoute
 }
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/first'
     | '/fitmail'
     | '/portfolio'
+    | '/redefinir'
     | '/saude'
     | '/menstruapp'
   fileRoutesByTo: FileRoutesByTo
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
     | '/first'
     | '/fitmail'
     | '/portfolio'
+    | '/redefinir'
     | '/saude'
     | '/menstruapp'
   id:
@@ -126,6 +137,7 @@ export interface FileRouteTypes {
     | '/first'
     | '/fitmail'
     | '/portfolio'
+    | '/redefinir'
     | '/saude'
     | '/_authenticated/menstruapp'
   fileRoutesById: FileRoutesById
@@ -138,6 +150,7 @@ export interface RootRouteChildren {
   FirstRoute: typeof FirstRoute
   FitmailRoute: typeof FitmailRoute
   PortfolioRoute: typeof PortfolioRoute
+  RedefinirRoute: typeof RedefinirRoute
   SaudeRoute: typeof SaudeRoute
 }
 
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/redefinir': {
+      id: '/redefinir'
+      path: '/redefinir'
+      fullPath: '/redefinir'
+      preLoaderRoute: typeof RedefinirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/saude': {
       id: '/saude'
       path: '/saude'
@@ -228,6 +248,7 @@ const rootRouteChildren: RootRouteChildren = {
   FirstRoute: FirstRoute,
   FitmailRoute: FitmailRoute,
   PortfolioRoute: PortfolioRoute,
+  RedefinirRoute: RedefinirRoute,
   SaudeRoute: SaudeRoute,
 }
 export const routeTree = rootRouteImport
