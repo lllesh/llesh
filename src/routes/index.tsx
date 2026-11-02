@@ -50,11 +50,29 @@ function NoiiHome() {
     const h = document.documentElement, b = document.body;
     const prev: string[] = [h.style.background, b.style.background];
     h.style.background = BG; b.style.background = BG;
+    // links antigos de troca de senha caem aqui: leva direto pra tela de nova senha
+    if (window.location.hash.includes("type=recovery")) {
+      window.location.replace("/redefinir" + window.location.hash);
+      return;
+    }
+    const { data: sub } = supabase.auth.onAuthStateChange((ev) => {
+      if (ev === "PASSWORD_RECOVERY") window.location.replace("/redefinir");
+    });
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) setLogada((data.user.user_metadata?.["nome"] as string) || data.user.email || "");
     });
-    return () => { h.style.background = prev[0] ?? ""; b.style.background = prev[1] ?? ""; };
+    return () => { sub.subscription.unsubscribe(); h.style.background = prev[0] ?? ""; b.style.background = prev[1] ?? ""; };
   }, []);
+
+  const esqueci = async () => {
+    if (!email) return setAviso("escreve seu e-mail ali em cima e toca de novo");
+    setBusy(true);
+    setAviso(null);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/redefinir` });
+    setBusy(false);
+    if (error) return setAviso(traduz(error.message));
+    setAviso("pronto. abre o link que chegou no seu e-mail (olha o spam também).");
+  };
 
   const enviar = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -118,6 +136,11 @@ function NoiiHome() {
           <button type="button" onClick={() => { setMode(mode === "criar" ? "entrar" : "criar"); setAviso(null); }} className="self-center text-lg font-bold opacity-60 hover:opacity-100">
             {mode === "criar" ? "já tenho conta" : "criar conta"}
           </button>
+          {mode === "entrar" && (
+            <button type="button" disabled={busy} onClick={esqueci} className="self-center text-base font-bold opacity-50 hover:opacity-100">
+              esqueci a senha
+            </button>
+          )}
           {aviso && <p className="text-center text-lg opacity-80">{aviso}</p>}
         </form>
       ) : (
