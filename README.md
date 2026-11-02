@@ -1,14 +1,20 @@
-# Welcome to your Lovable project
+# n o ii
+
+Eu preciso criar o melhor aplicativo de menstruação do mundo inteiro, da galáxia. Menstruação, ciclo menstrual... pra quem quer engravidar, pra quem não quer, etc.
+Eu sou médica especializada nisso.
+Tem que ser não só o melhor do mundo, mas o mais bonito do mundo. O design tá acima de qualquer coisa, até mesmo do conteúdo. Eu quero nível Dribbble.
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://noiiii.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/65aaff23-bf85-4e95-979d-40e880b26a45).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +26,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
