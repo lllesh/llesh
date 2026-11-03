@@ -7,9 +7,7 @@ export const Route = createFileRoute("/fem")({
   head: () => ({
     meta: [
       { title: "fèm | Letícia Motta" },
-      { name: "description", content: "Um lugar só para a sua vida inteira." },
       { property: "og:title", content: "fèm | Letícia Motta" },
-      { property: "og:description", content: "Um lugar só para a sua vida inteira." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#F6F4F1" },

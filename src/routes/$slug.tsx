@@ -16,6 +16,8 @@ const SITES: Record<string, string> = {
   hospital: "hospital",
   med: "mediciiiiish",
   mediciiiiish: "mediciiiiish",
+  lle: "lle",
+  "lle.sh": "lle",
 };
 
 // Títulos bonitos por endereço curto (a aba mostra o nome do site)
@@ -31,6 +33,8 @@ const NOMES: Record<string, string> = {
   hospital: "hospital",
   med: "mediciiiiish",
   mediciiiiish: "mediciiiiish",
+  lle: "lle.sh",
+  "lle.sh": "lle.sh",
 };
 
 export const Route = createFileRoute("/$slug")({
