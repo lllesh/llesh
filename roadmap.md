@@ -1,12 +1,4 @@
 # Roadmap
 
-- [x] Paleta oficial, desktop-first, sidebar recolhível, mobile com navegação inferior.
-- [x] Escopo: menstruação e ciclo menstrual (subespecialidade), sem "saúde reprodutiva".
-- [x] Menu lateral como retângulo arredondado flutuante, botão squircle.
-- [x] Fonte da marca MENSTRUAPP reduzida.
-- [x] Cards, pílulas e caixinhas preenchidos com a paleta e texto em Branco Lelê.
-
-- [x] Régua de 28 pontos mais pra dentro (dentro do "d" e longe da borda direita)
-
-- [x] Logo oficial do n o ii (relevo arredondado) na página principal, tamanho contido e centrado.
-- [ ] Importar projetos de fora (GitHub e outros) — aguardando a Letícia mandar
+- [ ] Login da Dra Lê (le@lle.sh) não entra: verificar conta, regravar senha Lele2027!@, testar login de ponta a ponta
+- [ ] Fluxo "esqueci a senha" funcionando para qualquer pessoa (e-mail de reset + página /redefinir)
