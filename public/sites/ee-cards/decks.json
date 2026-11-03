@@ -1,0 +1,27 @@
+{
+  "provisional": true,
+  "decks": [
+    {
+      "id": "femea",
+      "title": "Fêmea",
+      "cover": 1,
+      "cards": null
+    },
+    {
+      "id": "mae-do-ovulo",
+      "title": "A mãe do óvulo",
+      "cover": 127,
+      "cards": [
+        127
+      ]
+    },
+    {
+      "id": "tentancia",
+      "title": "A tentância",
+      "cover": 171,
+      "cards": [
+        171
+      ]
+    }
+  ]
+}

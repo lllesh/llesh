@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fafafa">
+<meta name="robots" content="noindex, nofollow">
+<title>projetos · leticia.ink</title>
+<base href="/sites/leticia.ink/projetos/">
+<link rel="icon" href="https://leticia.ink/favicon.png">
+<link rel="apple-touch-icon" href="https://leticia.ink/pwa/icon-192.png">
+<meta property="og:title" content="projetos">
+<meta property="og:image" content="https://leticia.ink/og-umbii.png">
+<style>
+/* leticia.ink/projetos (15/10/2026): o índice dos projetos dela, no design do leticia.ink (fonte S black, vermelho #ff0d0d, fundo #fafafa, texto em cima).
+   Fechado pela porta (middleware.js); a lista mora no banco leticia_study.projetos. "+" no fim: escreve o nome, enter, e o projeto nasce em leticia.ink/projetos/<nome>. */
+@font-face{font-family:S;src:url(/sites/leticia.ink/black.woff2) format("woff2");font-weight:900}
+a,button,input,select,textarea,[tabindex]{outline:none;-webkit-tap-highlight-color:transparent}
+:focus,:focus-visible{outline:none;box-shadow:none}
+html,body{margin:0;background:#fafafa}
+body{box-sizing:border-box;min-height:100vh;min-height:100dvh;padding:9vh 6vw 12vh}
+ol{list-style:none;margin:0;padding:0}
+li,#mais,#novo{font-family:S,Arial,sans-serif;font-weight:900;color:#ff0d0d;font-size:clamp(44px,8.2vw,150px);line-height:.86;letter-spacing:-.07em}
+li{max-width:86vw;text-wrap:balance;margin-bottom:.16em}
+li a{color:inherit;text-decoration:none}
+#mais{background:none;border:0;padding:0;margin:0;cursor:pointer;display:block}
+#novo{display:none;height:1.1em;margin-top:-.07em;background:transparent;border:0;padding:0;margin:0;width:86vw;caret-color:#ff0d0d;-webkit-appearance:none;border-radius:0}
+#novo::placeholder{color:transparent}
+#novo:-webkit-autofill{-webkit-box-shadow:0 0 0 200px #fafafa inset;-webkit-text-fill-color:#ff0d0d}
+@media(max-width:700px){li,#mais,#novo{font-size:13vw;line-height:.9}body{padding:12vh 24px 12vh}}
+</style>
+<script src="https://lle.sh/lenis/liso.js" defer></script>
+</head>
+<body>
+<ol id="lista"></ol>
+<button id="mais" aria-label="novo projeto">+</button>
+<input id="novo" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="done">
+<script>
+const lista = document.getElementById('lista'), mais = document.getElementById('mais'), novo = document.getElementById('novo');
+function poe(p) {
+  const li = document.createElement('li'), a = document.createElement('a');
+  a.href = '/projetos/' + p.nome; a.target = '_blank'; a.rel = 'noopener'; a.textContent = p.titulo;
+  li.appendChild(a); lista.appendChild(li);
+}
+fetch('/api/projetos', { credentials: 'same-origin' }).then(r => r.ok ? r.json() : []).then(l => l.forEach(poe));
+mais.onclick = () => { mais.style.display = 'none'; novo.style.display = 'block'; novo.focus(); };
+novo.onblur = () => { if (!novo.value.trim()) { novo.style.display = 'none'; mais.style.display = ''; } };
+novo.onkeydown = async (e) => {
+  if (e.key === 'Escape') { novo.value = ''; novo.blur(); return; }
+  if (e.key !== 'Enter' || !novo.value.trim()) return;
+  const titulo = novo.value.trim();
+  const r = await fetch('/api/projetos', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ titulo }) });
+  const j = await r.json().catch(() => ({}));
+  if (r.ok && j.ok) { poe({ nome: j.nome, titulo: titulo.toLowerCase() }); novo.value = ''; novo.blur(); }
+  else { novo.style.opacity = '.3'; setTimeout(() => novo.style.opacity = '', 1200); }
+};
+</script>
+</body>
+</html>

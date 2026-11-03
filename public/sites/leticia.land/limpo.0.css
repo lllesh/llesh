@@ -1,0 +1,4 @@
+/* leticia.land 15/10/2026: só a página branca e vermelha, só as letras grandes (pedido da Dra Lê) */
+[class*="filter-blur"],.one-grid-column,.vertical-rule,p.p1,.p1,canvas,img.mask-logo,.mask-logo,.grid__item-img-inner,.background-image-wrap,.award-item-preview,.big-logo-mask,.services-bg-text,.projects-bg-text,.footer-bg-text,.hero-info-wrap,.about-info-wrap{display:none!important}
+h1,h2,h3,h4,h5,h1 *,h2 *,h3 *,h5 *{color:#ff0d0d!important}
+html,body{background:#fafafa!important}

@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://boxes.lle.sh/c/box.letici.app/maca.png",
+    "path": "/box-reference/maca.png",
+    "bytes": 774395,
+    "sha256": "04ef86975307ebf39fb9306bac95f195506c3e18f2b1fb7c7a402da0a87f2796"
+  },
+  {
+    "url": "https://boxes.lle.sh/c/box.letici.app/caixa/img/leticia/frente.png",
+    "path": "/box-reference/caixa/img/leticia/frente.png",
+    "bytes": 4426738,
+    "sha256": "56daac37c306088dd467b43b0721fb9f130847a31ff10b4333553e6824e73c9d"
+  },
+  {
+    "url": "https://boxes.lle.sh/c/box.letici.app/caixa/img/leticia/verso.png",
+    "path": "/box-reference/caixa/img/leticia/verso.png",
+    "bytes": 3713484,
+    "sha256": "4ec58de6c542483f16d36362b4f602f3908f25f4bff0cf459c2b3e2f1532bd3c"
+  },
+  {
+    "url": "https://boxes.lle.sh/c/box.letici.app/caixa/img/fazer-cartas/frente.jpg",
+    "path": "/box-reference/caixa/img/fazer-cartas/frente.jpg",
+    "bytes": 33718,
+    "sha256": "c8f39afb9d200337b6ca711dc678b3b747e1c18384bf2a81a24a4ce5a8434473"
+  },
+  {
+    "url": "https://boxes.lle.sh/c/box.letici.app/caixa/img/fazer-cartas/verso.jpg",
+    "path": "/box-reference/caixa/img/fazer-cartas/verso.jpg",
+    "bytes": 27940,
+    "sha256": "ec3c2aafe34323333198d62a2df9103c95053e6489a86f5a67aeea3d722bc7c7"
+  }
+]

@@ -1,0 +1,1 @@
+window.addEventListener('load',()=>{history.replaceState({eePage:location.pathname},'', '/');},{once:true});
