@@ -5,12 +5,31 @@ const LISTA = artefatos as { t: string; s: string }[];
 
 // Sites importados: endereço curto na raiz -> /sites/<pasta>/index.html
 const SITES: Record<string, string> = {
+  cards: "ee-cards",
   "ee.cards": "ee-cards",
+  ink: "leticia.ink",
   "leticia.ink": "leticia.ink",
+  land: "leticia.land",
   "leticia.land": "leticia.land",
   pulse: "pulse",
   pro: "noiipro",
   hospital: "hospital",
+  med: "mediciiiiish",
+  mediciiiiish: "mediciiiiish",
+};
+
+// Títulos bonitos por endereço curto (a aba mostra o nome do site)
+const NOMES: Record<string, string> = {
+  cards: "ee.cards",
+  "ee.cards": "ee.cards",
+  ink: "leticia.ink",
+  "leticia.ink": "leticia.ink",
+  land: "leticia.land",
+  "leticia.land": "leticia.land",
+  pulse: "pulse",
+  pro: "pro",
+  hospital: "hospital",
+  med: "mediciiiiish",
   mediciiiiish: "mediciiiiish",
 };
 
