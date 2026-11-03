@@ -9,3 +9,4 @@
 - [x] Régua de 28 pontos mais pra dentro (dentro do "d" e longe da borda direita)
 
 - [x] Logo oficial do n o ii (relevo arredondado) na página principal, tamanho contido e centrado.
+- [ ] Importar projetos de fora (GitHub e outros) — aguardando a Letícia mandar
