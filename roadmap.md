@@ -6,4 +6,4 @@
 - [ ] Passkey (chave de acesso: entrar com digital/rosto, sem senha) — pedido da Dra Lê, próxima rodada
 ## 03/11 13:09
 - [x] /llesh virou página inicial (/)
-- [ ] Mostrar/mapear lista completa de páginas (sites + artefatos) para a Dra Lê
+- [x] /sites agora lista tudo: 14 páginas do app + 8 sites + 30 artefatos
