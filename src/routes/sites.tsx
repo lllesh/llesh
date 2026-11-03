@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 const SITES = [
-  { nome: "ee.cards", href: "/sites/ee-cards/index.html", cor: "bg-primary" },
-  { nome: "leticia.ink", href: "/sites/leticia.ink/index.html", cor: "bg-secondary" },
-  { nome: "leticia.land", href: "/sites/leticia.land/index.html", cor: "bg-accent" },
-  { nome: "pulse", href: "/sites/pulse/index.html", cor: "bg-secondary" },
-  { nome: "pro", href: "/sites/noiipro/index.html", cor: "bg-accent" },
-  { nome: "hospital", href: "/sites/hospital/index.html", cor: "bg-primary" },
-  { nome: "mediciiiiish", href: "/sites/mediciiiiish/index.html", cor: "bg-secondary" },
+  { nome: "ee.cards", href: "/ee.cards", cor: "bg-primary" },
+  { nome: "leticia.ink", href: "/leticia.ink", cor: "bg-secondary" },
+  { nome: "leticia.land", href: "/leticia.land", cor: "bg-accent" },
+  { nome: "pulse", href: "/pulse", cor: "bg-secondary" },
+  { nome: "pro", href: "/pro", cor: "bg-accent" },
+  { nome: "hospital", href: "/hospital", cor: "bg-primary" },
+  { nome: "mediciiiiish", href: "/mediciiiiish", cor: "bg-secondary" },
 ];
 
 export const Route = createFileRoute("/sites")({
