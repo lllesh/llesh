@@ -14,6 +14,8 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as ArtefatosRouteImport } from './routes/artefatos'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
+import { Route as EcossistemaRouteImport } from './routes/ecossistema'
+import { Route as FemRouteImport } from './routes/fem'
 import { Route as FemeaRouteRouteImport } from './routes/femea/route'
 import { Route as FertifyRouteRouteImport } from './routes/fertify/route'
 import { Route as FirstRouteImport } from './routes/first'
@@ -71,6 +73,16 @@ const AuthRoute = AuthRouteImport.update({
 const CalendarioRoute = CalendarioRouteImport.update({
   id: '/calendario',
   path: '/calendario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EcossistemaRoute = EcossistemaRouteImport.update({
+  id: '/ecossistema',
+  path: '/ecossistema',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FemRoute = FemRouteImport.update({
+  id: '/fem',
+  path: '/fem',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FemeaRouteRoute = FemeaRouteRouteImport.update({
@@ -254,6 +266,8 @@ export interface FileRoutesByFullPath {
   '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/ecossistema': typeof EcossistemaRoute
+  '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
@@ -289,6 +303,8 @@ export interface FileRoutesByTo {
   '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/ecossistema': typeof EcossistemaRoute
+  '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
@@ -331,6 +347,8 @@ export interface FileRoutesById {
   '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
+  '/ecossistema': typeof EcossistemaRoute
+  '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/portfolio': typeof PortfolioRoute
@@ -373,6 +391,8 @@ export interface FileRouteTypes {
     | '/artefatos'
     | '/auth'
     | '/calendario'
+    | '/ecossistema'
+    | '/fem'
     | '/first'
     | '/fitmail'
     | '/portfolio'
@@ -408,6 +428,8 @@ export interface FileRouteTypes {
     | '/artefatos'
     | '/auth'
     | '/calendario'
+    | '/ecossistema'
+    | '/fem'
     | '/first'
     | '/fitmail'
     | '/portfolio'
@@ -449,6 +471,8 @@ export interface FileRouteTypes {
     | '/artefatos'
     | '/auth'
     | '/calendario'
+    | '/ecossistema'
+    | '/fem'
     | '/first'
     | '/fitmail'
     | '/portfolio'
@@ -491,6 +515,8 @@ export interface RootRouteChildren {
   ArtefatosRoute: typeof ArtefatosRoute
   AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
+  EcossistemaRoute: typeof EcossistemaRoute
+  FemRoute: typeof FemRoute
   FirstRoute: typeof FirstRoute
   FitmailRoute: typeof FitmailRoute
   PortfolioRoute: typeof PortfolioRoute
@@ -533,6 +559,20 @@ declare module '@tanstack/react-router' {
       path: '/calendario'
       fullPath: '/calendario'
       preLoaderRoute: typeof CalendarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ecossistema': {
+      id: '/ecossistema'
+      path: '/ecossistema'
+      fullPath: '/ecossistema'
+      preLoaderRoute: typeof EcossistemaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fem': {
+      id: '/fem'
+      path: '/fem'
+      fullPath: '/fem'
+      preLoaderRoute: typeof FemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/femea': {
@@ -901,6 +941,8 @@ const rootRouteChildren: RootRouteChildren = {
   ArtefatosRoute: ArtefatosRoute,
   AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
+  EcossistemaRoute: EcossistemaRoute,
+  FemRoute: FemRoute,
   FirstRoute: FirstRoute,
   FitmailRoute: FitmailRoute,
   PortfolioRoute: PortfolioRoute,
