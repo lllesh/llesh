@@ -10,6 +10,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "ll e.s h" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "description", content: "ll e.s h" },
+      { property: "og:description", content: "ll e.s h" },
       { name: "theme-color", content: "#F6F4F1" },
     ],
   }),
