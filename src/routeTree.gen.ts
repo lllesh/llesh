@@ -13,12 +13,40 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
+import { Route as FemeaRouteRouteImport } from './routes/femea/route'
+import { Route as FertifyRouteRouteImport } from './routes/fertify/route'
 import { Route as FirstRouteImport } from './routes/first'
 import { Route as FitmailRouteImport } from './routes/fitmail'
+import { Route as MenstruappBoldRouteRouteImport } from './routes/menstruapp-bold/route'
+import { Route as MenstruappFofoRouteRouteImport } from './routes/menstruapp-fofo/route'
+import { Route as PacienteRouteRouteImport } from './routes/paciente/route'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as RedefinirRouteImport } from './routes/redefinir'
 import { Route as SaudeRouteImport } from './routes/saude'
 import { Route as AuthenticatedMenstruappRouteImport } from './routes/_authenticated/menstruapp'
+import { Route as FemeaIndexRouteImport } from './routes/femea/index'
+import { Route as FemeaSlugRouteImport } from './routes/femea/$slug'
+import { Route as FertifyIndexRouteImport } from './routes/fertify/index'
+import { Route as FertifyAlertasRouteImport } from './routes/fertify/alertas'
+import { Route as FertifyArquivosRouteImport } from './routes/fertify/arquivos'
+import { Route as FertifyCalendarioRouteImport } from './routes/fertify/calendario'
+import { Route as FertifyCiclosRouteImport } from './routes/fertify/ciclos'
+import { Route as FertifyConfiguracoesRouteImport } from './routes/fertify/configuracoes'
+import { Route as FertifyCrmRouteImport } from './routes/fertify/crm'
+import { Route as FertifyExamesRouteImport } from './routes/fertify/exames'
+import { Route as FertifyFertilistasRouteImport } from './routes/fertify/fertilistas'
+import { Route as FertifyMedicacoesRouteImport } from './routes/fertify/medicacoes'
+import { Route as FertifyMensagensRouteImport } from './routes/fertify/mensagens'
+import { Route as FertifyPacientesRouteImport } from './routes/fertify/pacientes'
+import { Route as FertifyProcedimentosRouteImport } from './routes/fertify/procedimentos'
+import { Route as FertifyProtocolosRouteImport } from './routes/fertify/protocolos'
+import { Route as FertifyTarefasRouteImport } from './routes/fertify/tarefas'
+import { Route as FertifyTemplatesRouteImport } from './routes/fertify/templates'
+import { Route as FertifyUltrassonsRouteImport } from './routes/fertify/ultrassons'
+import { Route as MenstruappBoldIndexRouteImport } from './routes/menstruapp-bold/index'
+import { Route as MenstruappFofoIndexRouteImport } from './routes/menstruapp-fofo/index'
+import { Route as PacienteIndexRouteImport } from './routes/paciente/index'
+import { Route as FertifyPacientesIdRouteImport } from './routes/fertify/pacientes.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -39,6 +67,16 @@ const CalendarioRoute = CalendarioRouteImport.update({
   path: '/calendario',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FemeaRouteRoute = FemeaRouteRouteImport.update({
+  id: '/femea',
+  path: '/femea',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FertifyRouteRoute = FertifyRouteRouteImport.update({
+  id: '/fertify',
+  path: '/fertify',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FirstRoute = FirstRouteImport.update({
   id: '/first',
   path: '/first',
@@ -47,6 +85,21 @@ const FirstRoute = FirstRouteImport.update({
 const FitmailRoute = FitmailRouteImport.update({
   id: '/fitmail',
   path: '/fitmail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenstruappBoldRouteRoute = MenstruappBoldRouteRouteImport.update({
+  id: '/menstruapp-bold',
+  path: '/menstruapp-bold',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenstruappFofoRouteRoute = MenstruappFofoRouteRouteImport.update({
+  id: '/menstruapp-fofo',
+  path: '/menstruapp-fofo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PacienteRouteRoute = PacienteRouteRouteImport.update({
+  id: '/paciente',
+  path: '/paciente',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioRoute = PortfolioRouteImport.update({
@@ -69,9 +122,129 @@ const AuthenticatedMenstruappRoute = AuthenticatedMenstruappRouteImport.update({
   path: '/menstruapp',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const FemeaIndexRoute = FemeaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FemeaRouteRoute,
+} as any)
+const FemeaSlugRoute = FemeaSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => FemeaRouteRoute,
+} as any)
+const FertifyIndexRoute = FertifyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyAlertasRoute = FertifyAlertasRouteImport.update({
+  id: '/alertas',
+  path: '/alertas',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyArquivosRoute = FertifyArquivosRouteImport.update({
+  id: '/arquivos',
+  path: '/arquivos',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyCalendarioRoute = FertifyCalendarioRouteImport.update({
+  id: '/calendario',
+  path: '/calendario',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyCiclosRoute = FertifyCiclosRouteImport.update({
+  id: '/ciclos',
+  path: '/ciclos',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyConfiguracoesRoute = FertifyConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyCrmRoute = FertifyCrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyExamesRoute = FertifyExamesRouteImport.update({
+  id: '/exames',
+  path: '/exames',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyFertilistasRoute = FertifyFertilistasRouteImport.update({
+  id: '/fertilistas',
+  path: '/fertilistas',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyMedicacoesRoute = FertifyMedicacoesRouteImport.update({
+  id: '/medicacoes',
+  path: '/medicacoes',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyMensagensRoute = FertifyMensagensRouteImport.update({
+  id: '/mensagens',
+  path: '/mensagens',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyPacientesRoute = FertifyPacientesRouteImport.update({
+  id: '/pacientes',
+  path: '/pacientes',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyProcedimentosRoute = FertifyProcedimentosRouteImport.update({
+  id: '/procedimentos',
+  path: '/procedimentos',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyProtocolosRoute = FertifyProtocolosRouteImport.update({
+  id: '/protocolos',
+  path: '/protocolos',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyTarefasRoute = FertifyTarefasRouteImport.update({
+  id: '/tarefas',
+  path: '/tarefas',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyTemplatesRoute = FertifyTemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const FertifyUltrassonsRoute = FertifyUltrassonsRouteImport.update({
+  id: '/ultrassons',
+  path: '/ultrassons',
+  getParentRoute: () => FertifyRouteRoute,
+} as any)
+const MenstruappBoldIndexRoute = MenstruappBoldIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MenstruappBoldRouteRoute,
+} as any)
+const MenstruappFofoIndexRoute = MenstruappFofoIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MenstruappFofoRouteRoute,
+} as any)
+const PacienteIndexRoute = PacienteIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PacienteRouteRoute,
+} as any)
+const FertifyPacientesIdRoute = FertifyPacientesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => FertifyPacientesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/femea': typeof FemeaRouteRouteWithChildren
+  '/fertify': typeof FertifyRouteRouteWithChildren
+  '/menstruapp-bold': typeof MenstruappBoldRouteRouteWithChildren
+  '/menstruapp-fofo': typeof MenstruappFofoRouteRouteWithChildren
+  '/paciente': typeof PacienteRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/first': typeof FirstRoute
@@ -80,6 +253,29 @@ export interface FileRoutesByFullPath {
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
+  '/femea/$slug': typeof FemeaSlugRoute
+  '/fertify/alertas': typeof FertifyAlertasRoute
+  '/fertify/arquivos': typeof FertifyArquivosRoute
+  '/fertify/calendario': typeof FertifyCalendarioRoute
+  '/fertify/ciclos': typeof FertifyCiclosRoute
+  '/fertify/configuracoes': typeof FertifyConfiguracoesRoute
+  '/fertify/crm': typeof FertifyCrmRoute
+  '/fertify/exames': typeof FertifyExamesRoute
+  '/fertify/fertilistas': typeof FertifyFertilistasRoute
+  '/fertify/medicacoes': typeof FertifyMedicacoesRoute
+  '/fertify/mensagens': typeof FertifyMensagensRoute
+  '/fertify/pacientes': typeof FertifyPacientesRouteWithChildren
+  '/fertify/procedimentos': typeof FertifyProcedimentosRoute
+  '/fertify/protocolos': typeof FertifyProtocolosRoute
+  '/fertify/tarefas': typeof FertifyTarefasRoute
+  '/fertify/templates': typeof FertifyTemplatesRoute
+  '/fertify/ultrassons': typeof FertifyUltrassonsRoute
+  '/femea/': typeof FemeaIndexRoute
+  '/fertify/': typeof FertifyIndexRoute
+  '/menstruapp-bold/': typeof MenstruappBoldIndexRoute
+  '/menstruapp-fofo/': typeof MenstruappFofoIndexRoute
+  '/paciente/': typeof PacienteIndexRoute
+  '/fertify/pacientes/$id': typeof FertifyPacientesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -91,11 +287,39 @@ export interface FileRoutesByTo {
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
+  '/femea/$slug': typeof FemeaSlugRoute
+  '/fertify/alertas': typeof FertifyAlertasRoute
+  '/fertify/arquivos': typeof FertifyArquivosRoute
+  '/fertify/calendario': typeof FertifyCalendarioRoute
+  '/fertify/ciclos': typeof FertifyCiclosRoute
+  '/fertify/configuracoes': typeof FertifyConfiguracoesRoute
+  '/fertify/crm': typeof FertifyCrmRoute
+  '/fertify/exames': typeof FertifyExamesRoute
+  '/fertify/fertilistas': typeof FertifyFertilistasRoute
+  '/fertify/medicacoes': typeof FertifyMedicacoesRoute
+  '/fertify/mensagens': typeof FertifyMensagensRoute
+  '/fertify/pacientes': typeof FertifyPacientesRouteWithChildren
+  '/fertify/procedimentos': typeof FertifyProcedimentosRoute
+  '/fertify/protocolos': typeof FertifyProtocolosRoute
+  '/fertify/tarefas': typeof FertifyTarefasRoute
+  '/fertify/templates': typeof FertifyTemplatesRoute
+  '/fertify/ultrassons': typeof FertifyUltrassonsRoute
+  '/femea': typeof FemeaIndexRoute
+  '/fertify': typeof FertifyIndexRoute
+  '/menstruapp-bold': typeof MenstruappBoldIndexRoute
+  '/menstruapp-fofo': typeof MenstruappFofoIndexRoute
+  '/paciente': typeof PacienteIndexRoute
+  '/fertify/pacientes/$id': typeof FertifyPacientesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/femea': typeof FemeaRouteRouteWithChildren
+  '/fertify': typeof FertifyRouteRouteWithChildren
+  '/menstruapp-bold': typeof MenstruappBoldRouteRouteWithChildren
+  '/menstruapp-fofo': typeof MenstruappFofoRouteRouteWithChildren
+  '/paciente': typeof PacienteRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/first': typeof FirstRoute
@@ -104,11 +328,39 @@ export interface FileRoutesById {
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
   '/_authenticated/menstruapp': typeof AuthenticatedMenstruappRoute
+  '/femea/$slug': typeof FemeaSlugRoute
+  '/fertify/alertas': typeof FertifyAlertasRoute
+  '/fertify/arquivos': typeof FertifyArquivosRoute
+  '/fertify/calendario': typeof FertifyCalendarioRoute
+  '/fertify/ciclos': typeof FertifyCiclosRoute
+  '/fertify/configuracoes': typeof FertifyConfiguracoesRoute
+  '/fertify/crm': typeof FertifyCrmRoute
+  '/fertify/exames': typeof FertifyExamesRoute
+  '/fertify/fertilistas': typeof FertifyFertilistasRoute
+  '/fertify/medicacoes': typeof FertifyMedicacoesRoute
+  '/fertify/mensagens': typeof FertifyMensagensRoute
+  '/fertify/pacientes': typeof FertifyPacientesRouteWithChildren
+  '/fertify/procedimentos': typeof FertifyProcedimentosRoute
+  '/fertify/protocolos': typeof FertifyProtocolosRoute
+  '/fertify/tarefas': typeof FertifyTarefasRoute
+  '/fertify/templates': typeof FertifyTemplatesRoute
+  '/fertify/ultrassons': typeof FertifyUltrassonsRoute
+  '/femea/': typeof FemeaIndexRoute
+  '/fertify/': typeof FertifyIndexRoute
+  '/menstruapp-bold/': typeof MenstruappBoldIndexRoute
+  '/menstruapp-fofo/': typeof MenstruappFofoIndexRoute
+  '/paciente/': typeof PacienteIndexRoute
+  '/fertify/pacientes/$id': typeof FertifyPacientesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/femea'
+    | '/fertify'
+    | '/menstruapp-bold'
+    | '/menstruapp-fofo'
+    | '/paciente'
     | '/auth'
     | '/calendario'
     | '/first'
@@ -117,6 +369,29 @@ export interface FileRouteTypes {
     | '/redefinir'
     | '/saude'
     | '/menstruapp'
+    | '/femea/$slug'
+    | '/fertify/alertas'
+    | '/fertify/arquivos'
+    | '/fertify/calendario'
+    | '/fertify/ciclos'
+    | '/fertify/configuracoes'
+    | '/fertify/crm'
+    | '/fertify/exames'
+    | '/fertify/fertilistas'
+    | '/fertify/medicacoes'
+    | '/fertify/mensagens'
+    | '/fertify/pacientes'
+    | '/fertify/procedimentos'
+    | '/fertify/protocolos'
+    | '/fertify/tarefas'
+    | '/fertify/templates'
+    | '/fertify/ultrassons'
+    | '/femea/'
+    | '/fertify/'
+    | '/menstruapp-bold/'
+    | '/menstruapp-fofo/'
+    | '/paciente/'
+    | '/fertify/pacientes/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -128,10 +403,38 @@ export interface FileRouteTypes {
     | '/redefinir'
     | '/saude'
     | '/menstruapp'
+    | '/femea/$slug'
+    | '/fertify/alertas'
+    | '/fertify/arquivos'
+    | '/fertify/calendario'
+    | '/fertify/ciclos'
+    | '/fertify/configuracoes'
+    | '/fertify/crm'
+    | '/fertify/exames'
+    | '/fertify/fertilistas'
+    | '/fertify/medicacoes'
+    | '/fertify/mensagens'
+    | '/fertify/pacientes'
+    | '/fertify/procedimentos'
+    | '/fertify/protocolos'
+    | '/fertify/tarefas'
+    | '/fertify/templates'
+    | '/fertify/ultrassons'
+    | '/femea'
+    | '/fertify'
+    | '/menstruapp-bold'
+    | '/menstruapp-fofo'
+    | '/paciente'
+    | '/fertify/pacientes/$id'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/femea'
+    | '/fertify'
+    | '/menstruapp-bold'
+    | '/menstruapp-fofo'
+    | '/paciente'
     | '/auth'
     | '/calendario'
     | '/first'
@@ -140,11 +443,39 @@ export interface FileRouteTypes {
     | '/redefinir'
     | '/saude'
     | '/_authenticated/menstruapp'
+    | '/femea/$slug'
+    | '/fertify/alertas'
+    | '/fertify/arquivos'
+    | '/fertify/calendario'
+    | '/fertify/ciclos'
+    | '/fertify/configuracoes'
+    | '/fertify/crm'
+    | '/fertify/exames'
+    | '/fertify/fertilistas'
+    | '/fertify/medicacoes'
+    | '/fertify/mensagens'
+    | '/fertify/pacientes'
+    | '/fertify/procedimentos'
+    | '/fertify/protocolos'
+    | '/fertify/tarefas'
+    | '/fertify/templates'
+    | '/fertify/ultrassons'
+    | '/femea/'
+    | '/fertify/'
+    | '/menstruapp-bold/'
+    | '/menstruapp-fofo/'
+    | '/paciente/'
+    | '/fertify/pacientes/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  FemeaRouteRoute: typeof FemeaRouteRouteWithChildren
+  FertifyRouteRoute: typeof FertifyRouteRouteWithChildren
+  MenstruappBoldRouteRoute: typeof MenstruappBoldRouteRouteWithChildren
+  MenstruappFofoRouteRoute: typeof MenstruappFofoRouteRouteWithChildren
+  PacienteRouteRoute: typeof PacienteRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
   FirstRoute: typeof FirstRoute
@@ -184,6 +515,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalendarioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/femea': {
+      id: '/femea'
+      path: '/femea'
+      fullPath: '/femea'
+      preLoaderRoute: typeof FemeaRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fertify': {
+      id: '/fertify'
+      path: '/fertify'
+      fullPath: '/fertify'
+      preLoaderRoute: typeof FertifyRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/first': {
       id: '/first'
       path: '/first'
@@ -196,6 +541,27 @@ declare module '@tanstack/react-router' {
       path: '/fitmail'
       fullPath: '/fitmail'
       preLoaderRoute: typeof FitmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menstruapp-bold': {
+      id: '/menstruapp-bold'
+      path: '/menstruapp-bold'
+      fullPath: '/menstruapp-bold'
+      preLoaderRoute: typeof MenstruappBoldRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menstruapp-fofo': {
+      id: '/menstruapp-fofo'
+      path: '/menstruapp-fofo'
+      fullPath: '/menstruapp-fofo'
+      preLoaderRoute: typeof MenstruappFofoRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/paciente': {
+      id: '/paciente'
+      path: '/paciente'
+      fullPath: '/paciente'
+      preLoaderRoute: typeof PacienteRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio': {
@@ -226,6 +592,167 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedMenstruappRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/femea/': {
+      id: '/femea/'
+      path: '/'
+      fullPath: '/femea/'
+      preLoaderRoute: typeof FemeaIndexRouteImport
+      parentRoute: typeof FemeaRouteRoute
+    }
+    '/femea/$slug': {
+      id: '/femea/$slug'
+      path: '/$slug'
+      fullPath: '/femea/$slug'
+      preLoaderRoute: typeof FemeaSlugRouteImport
+      parentRoute: typeof FemeaRouteRoute
+    }
+    '/fertify/': {
+      id: '/fertify/'
+      path: '/'
+      fullPath: '/fertify/'
+      preLoaderRoute: typeof FertifyIndexRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/alertas': {
+      id: '/fertify/alertas'
+      path: '/alertas'
+      fullPath: '/fertify/alertas'
+      preLoaderRoute: typeof FertifyAlertasRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/arquivos': {
+      id: '/fertify/arquivos'
+      path: '/arquivos'
+      fullPath: '/fertify/arquivos'
+      preLoaderRoute: typeof FertifyArquivosRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/calendario': {
+      id: '/fertify/calendario'
+      path: '/calendario'
+      fullPath: '/fertify/calendario'
+      preLoaderRoute: typeof FertifyCalendarioRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/ciclos': {
+      id: '/fertify/ciclos'
+      path: '/ciclos'
+      fullPath: '/fertify/ciclos'
+      preLoaderRoute: typeof FertifyCiclosRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/configuracoes': {
+      id: '/fertify/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/fertify/configuracoes'
+      preLoaderRoute: typeof FertifyConfiguracoesRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/crm': {
+      id: '/fertify/crm'
+      path: '/crm'
+      fullPath: '/fertify/crm'
+      preLoaderRoute: typeof FertifyCrmRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/exames': {
+      id: '/fertify/exames'
+      path: '/exames'
+      fullPath: '/fertify/exames'
+      preLoaderRoute: typeof FertifyExamesRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/fertilistas': {
+      id: '/fertify/fertilistas'
+      path: '/fertilistas'
+      fullPath: '/fertify/fertilistas'
+      preLoaderRoute: typeof FertifyFertilistasRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/medicacoes': {
+      id: '/fertify/medicacoes'
+      path: '/medicacoes'
+      fullPath: '/fertify/medicacoes'
+      preLoaderRoute: typeof FertifyMedicacoesRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/mensagens': {
+      id: '/fertify/mensagens'
+      path: '/mensagens'
+      fullPath: '/fertify/mensagens'
+      preLoaderRoute: typeof FertifyMensagensRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/pacientes': {
+      id: '/fertify/pacientes'
+      path: '/pacientes'
+      fullPath: '/fertify/pacientes'
+      preLoaderRoute: typeof FertifyPacientesRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/procedimentos': {
+      id: '/fertify/procedimentos'
+      path: '/procedimentos'
+      fullPath: '/fertify/procedimentos'
+      preLoaderRoute: typeof FertifyProcedimentosRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/protocolos': {
+      id: '/fertify/protocolos'
+      path: '/protocolos'
+      fullPath: '/fertify/protocolos'
+      preLoaderRoute: typeof FertifyProtocolosRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/tarefas': {
+      id: '/fertify/tarefas'
+      path: '/tarefas'
+      fullPath: '/fertify/tarefas'
+      preLoaderRoute: typeof FertifyTarefasRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/templates': {
+      id: '/fertify/templates'
+      path: '/templates'
+      fullPath: '/fertify/templates'
+      preLoaderRoute: typeof FertifyTemplatesRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/fertify/ultrassons': {
+      id: '/fertify/ultrassons'
+      path: '/ultrassons'
+      fullPath: '/fertify/ultrassons'
+      preLoaderRoute: typeof FertifyUltrassonsRouteImport
+      parentRoute: typeof FertifyRouteRoute
+    }
+    '/menstruapp-bold/': {
+      id: '/menstruapp-bold/'
+      path: '/'
+      fullPath: '/menstruapp-bold/'
+      preLoaderRoute: typeof MenstruappBoldIndexRouteImport
+      parentRoute: typeof MenstruappBoldRouteRoute
+    }
+    '/menstruapp-fofo/': {
+      id: '/menstruapp-fofo/'
+      path: '/'
+      fullPath: '/menstruapp-fofo/'
+      preLoaderRoute: typeof MenstruappFofoIndexRouteImport
+      parentRoute: typeof MenstruappFofoRouteRoute
+    }
+    '/paciente/': {
+      id: '/paciente/'
+      path: '/'
+      fullPath: '/paciente/'
+      preLoaderRoute: typeof PacienteIndexRouteImport
+      parentRoute: typeof PacienteRouteRoute
+    }
+    '/fertify/pacientes/$id': {
+      id: '/fertify/pacientes/$id'
+      path: '/$id'
+      fullPath: '/fertify/pacientes/$id'
+      preLoaderRoute: typeof FertifyPacientesIdRouteImport
+      parentRoute: typeof FertifyPacientesRoute
+    }
   }
 }
 
@@ -240,9 +767,117 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface FemeaRouteRouteChildren {
+  FemeaSlugRoute: typeof FemeaSlugRoute
+  FemeaIndexRoute: typeof FemeaIndexRoute
+}
+
+const FemeaRouteRouteChildren: FemeaRouteRouteChildren = {
+  FemeaSlugRoute: FemeaSlugRoute,
+  FemeaIndexRoute: FemeaIndexRoute,
+}
+
+const FemeaRouteRouteWithChildren = FemeaRouteRoute._addFileChildren(
+  FemeaRouteRouteChildren,
+)
+
+interface FertifyPacientesRouteChildren {
+  FertifyPacientesIdRoute: typeof FertifyPacientesIdRoute
+}
+
+const FertifyPacientesRouteChildren: FertifyPacientesRouteChildren = {
+  FertifyPacientesIdRoute: FertifyPacientesIdRoute,
+}
+
+const FertifyPacientesRouteWithChildren =
+  FertifyPacientesRoute._addFileChildren(FertifyPacientesRouteChildren)
+
+interface FertifyRouteRouteChildren {
+  FertifyAlertasRoute: typeof FertifyAlertasRoute
+  FertifyArquivosRoute: typeof FertifyArquivosRoute
+  FertifyCalendarioRoute: typeof FertifyCalendarioRoute
+  FertifyCiclosRoute: typeof FertifyCiclosRoute
+  FertifyConfiguracoesRoute: typeof FertifyConfiguracoesRoute
+  FertifyCrmRoute: typeof FertifyCrmRoute
+  FertifyExamesRoute: typeof FertifyExamesRoute
+  FertifyFertilistasRoute: typeof FertifyFertilistasRoute
+  FertifyMedicacoesRoute: typeof FertifyMedicacoesRoute
+  FertifyMensagensRoute: typeof FertifyMensagensRoute
+  FertifyPacientesRoute: typeof FertifyPacientesRouteWithChildren
+  FertifyProcedimentosRoute: typeof FertifyProcedimentosRoute
+  FertifyProtocolosRoute: typeof FertifyProtocolosRoute
+  FertifyTarefasRoute: typeof FertifyTarefasRoute
+  FertifyTemplatesRoute: typeof FertifyTemplatesRoute
+  FertifyUltrassonsRoute: typeof FertifyUltrassonsRoute
+  FertifyIndexRoute: typeof FertifyIndexRoute
+}
+
+const FertifyRouteRouteChildren: FertifyRouteRouteChildren = {
+  FertifyAlertasRoute: FertifyAlertasRoute,
+  FertifyArquivosRoute: FertifyArquivosRoute,
+  FertifyCalendarioRoute: FertifyCalendarioRoute,
+  FertifyCiclosRoute: FertifyCiclosRoute,
+  FertifyConfiguracoesRoute: FertifyConfiguracoesRoute,
+  FertifyCrmRoute: FertifyCrmRoute,
+  FertifyExamesRoute: FertifyExamesRoute,
+  FertifyFertilistasRoute: FertifyFertilistasRoute,
+  FertifyMedicacoesRoute: FertifyMedicacoesRoute,
+  FertifyMensagensRoute: FertifyMensagensRoute,
+  FertifyPacientesRoute: FertifyPacientesRouteWithChildren,
+  FertifyProcedimentosRoute: FertifyProcedimentosRoute,
+  FertifyProtocolosRoute: FertifyProtocolosRoute,
+  FertifyTarefasRoute: FertifyTarefasRoute,
+  FertifyTemplatesRoute: FertifyTemplatesRoute,
+  FertifyUltrassonsRoute: FertifyUltrassonsRoute,
+  FertifyIndexRoute: FertifyIndexRoute,
+}
+
+const FertifyRouteRouteWithChildren = FertifyRouteRoute._addFileChildren(
+  FertifyRouteRouteChildren,
+)
+
+interface MenstruappBoldRouteRouteChildren {
+  MenstruappBoldIndexRoute: typeof MenstruappBoldIndexRoute
+}
+
+const MenstruappBoldRouteRouteChildren: MenstruappBoldRouteRouteChildren = {
+  MenstruappBoldIndexRoute: MenstruappBoldIndexRoute,
+}
+
+const MenstruappBoldRouteRouteWithChildren =
+  MenstruappBoldRouteRoute._addFileChildren(MenstruappBoldRouteRouteChildren)
+
+interface MenstruappFofoRouteRouteChildren {
+  MenstruappFofoIndexRoute: typeof MenstruappFofoIndexRoute
+}
+
+const MenstruappFofoRouteRouteChildren: MenstruappFofoRouteRouteChildren = {
+  MenstruappFofoIndexRoute: MenstruappFofoIndexRoute,
+}
+
+const MenstruappFofoRouteRouteWithChildren =
+  MenstruappFofoRouteRoute._addFileChildren(MenstruappFofoRouteRouteChildren)
+
+interface PacienteRouteRouteChildren {
+  PacienteIndexRoute: typeof PacienteIndexRoute
+}
+
+const PacienteRouteRouteChildren: PacienteRouteRouteChildren = {
+  PacienteIndexRoute: PacienteIndexRoute,
+}
+
+const PacienteRouteRouteWithChildren = PacienteRouteRoute._addFileChildren(
+  PacienteRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  FemeaRouteRoute: FemeaRouteRouteWithChildren,
+  FertifyRouteRoute: FertifyRouteRouteWithChildren,
+  MenstruappBoldRouteRoute: MenstruappBoldRouteRouteWithChildren,
+  MenstruappFofoRouteRoute: MenstruappFofoRouteRouteWithChildren,
+  PacienteRouteRoute: PacienteRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
   FirstRoute: FirstRoute,
