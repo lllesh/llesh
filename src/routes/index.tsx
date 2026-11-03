@@ -1,16 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import html from "../../public/sites/lle/index.html?raw";
 
-// A página ll e.s h é servida DIRETO na raiz, sem iframe (iframe deixava o toque lento no iPhone).
+// A página ll e.s h é entregue direto na raiz, já pronta (sem buscar de novo a cada visita, sem iframe).
 export const Route = createFileRoute("/")({
   server: {
     handlers: {
-      GET: async ({ request }) => {
-        const res = await fetch(new URL("/sites/lle/index.html", request.url));
-        const html = await res.text();
-        return new Response(html, {
-          headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-cache" },
-        });
-      },
+      GET: async () =>
+        new Response(html, {
+          headers: { "content-type": "text/html; charset=utf-8", "cache-control": "public, max-age=60" },
+        }),
     },
   },
   head: () => ({

@@ -1362,6 +1362,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     palco.appendChild(peca);
     setTimeout(pontoTexto, 120);
     if (t) t.style.visibility = 'hidden';
+    if (t) espalha(t);
     var leg = $('#legenda'); leg.style.left = ((E.lateral && innerWidth > 760) ? 244 : 0) + 'px';
     leg.innerHTML = '<b></b><span></span>';
     leg.querySelector('b').textContent = o.nome || '';
