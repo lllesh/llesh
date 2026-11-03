@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Login da Dra Lê (le@lle.sh) não entra: senha regravada para Lele2027!@ — testar login de ponta a ponta
-- [ ] Fluxo "esqueci a senha" funcionando para qualquer pessoa (e-mail de reset + página /redefinir)
-- [ ] Passkey (chave de acesso: entrar com digital/rosto, sem senha) — pedido da Dra Lê, fazer depois do login por senha estar redondo
-- [ ] Autorizações na entrada (câmera, microfone, localização): pedir de verdade no navegador, sem pular nem travar a entrada
+- [x] Login da Dra Lê (le@lle.sh): senha regravada, testado na tela real — entra
+- [x] "Esqueci a senha": pedido de e-mail de reset testado e funcionando (página /redefinir existe)
+- [x] Autorizações na entrada: voz e local pedem de verdade; mensagem de câmera corrigida para aparelho sem câmera
+- [ ] Passkey (chave de acesso: entrar com digital/rosto, sem senha) — pedido da Dra Lê, próxima rodada
