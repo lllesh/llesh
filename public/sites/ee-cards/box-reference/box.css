@@ -1,0 +1,414 @@
+
+  
+  :root{
+    /* CELULAR = O MIX (ordem da Le, 09/08/2026): nem tão grande nem tão pequena,
+       nem tão gorda nem tão fina. Ver o bloco de medidas mais abaixo. */
+    /* CELULAR: a caixinha é a CARTA DELA — proporção exata do arquivo
+       (2721 × 4838 = 0,5625) e do tamanho dela: 24px de respiro de cada lado.
+       (Era 0,6035 = 898/1488, e ficava pequena, sobrando tela.)
+       O DESKTOP não muda — ele redefine --w/--h no @media (min-width:1024px). */
+    --w: min(calc(100vw - 48px), calc((100dvh - 96px) * 0.5625));
+    --h: calc(var(--w) / 0.5625);
+    --d: calc(var(--w) * 0.2500);   /* CELULAR: grossura média. FECHADO, não mexer. */      /* ENCORPADA (ordem da Le): 0,1989 -> 0,2350 -> 0,3000 */
+    --teal: #4C6971;
+    --arteA: url("/sites/ee-cards/box-reference/caixa/img/fazer-cartas/frente.jpg");
+    --arteB: url("/sites/ee-cards/box-reference/caixa/img/fazer-cartas/verso.jpg");
+  }
+  *{box-sizing:border-box}
+  /* A PELE DO femea.live: fundo claro, a maçãzinha no alto (ordem da Le, 08/08/2026) */
+  html,body{height:100%; background:#F6F4F1}
+  body{
+    margin:0; min-height:100dvh; overflow:hidden;
+    background: #F6F4F1;   /* cor CHAPADA: topo e rodapé do navegador ficam iguais */
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  /* a maçãzinha do femea.live, com o mesmo pulinho */
+  /* A LINHA DO TOPO — a maçã e o pontinho ficam no MESMO eixo (ordem da Le,
+     09/08/2026: estavam em alturas diferentes). Muda aqui e os dois sobem juntos. */
+  :root{ --linha-topo: 12px; --maca: 40px; }
+  .macazinha{
+    position:fixed; left:22px;
+    top:calc(var(--linha-topo) + env(safe-area-inset-top));
+    width:var(--maca); height:var(--maca); object-fit:contain;
+    z-index:7; display:block; cursor:pointer;
+    /* ⛔ SEM PULO (ordem da Le): a maçã fica parada. */
+  }
+
+  .trilho{ height:100dvh; display:flex; align-items:center; overflow:hidden; touch-action:none; }
+  /* nome do deck passando atrás da caixa */
+  .marquee{
+    position:absolute; left:0; right:0; top:50%; transform:translateY(-50%);
+    z-index:0; overflow:hidden; pointer-events:none; opacity:1;
+    display:flex; white-space:nowrap;
+  }
+  .marquee span{
+    display:inline-block; padding-right:.6em;
+    /* a fonte de trás é escolhida pela pessoa no 2º pontinho (fica salva no aparelho) */
+    font-family: var(--fonte-marquee, "Snell Roundhand","Savoye LET","Bradley Hand","Segoe Script",cursive);
+    font-size: clamp(150px, 58vw, 520px); font-weight:700; letter-spacing:.1em;
+    /* no fundo claro o nome passa em creme quente, discreto (era #FFFBF3 no fundo preto) */
+    color:#E8E2D7; animation: correNome 52s linear infinite;
+  }
+  @keyframes correNome{ from{ transform:translateX(0) } to{ transform:translateX(-100%) } }
+  @media (prefers-reduced-motion: reduce){ .marquee span{ animation:none } }
+
+  .slot{
+    flex:none; width:100vw; height:100dvh;
+    display:flex; align-items:center; justify-content:center;
+    perspective:1600px; perspective-origin:50% 42%; position:relative;
+  }
+
+  .caixa{
+    position:relative; width:var(--w); height:var(--h);
+    transform-style:preserve-3d; will-change:transform; touch-action:none; cursor:grab;
+  }
+  .caixa, .caixa *{ touch-action:none; -webkit-user-drag:none; user-select:none; }
+  .caixa.is-drag{ cursor:grabbing }
+  .face{ position:absolute; overflow:hidden; backface-visibility:hidden; }
+
+  .frente,.tras{ width:var(--w); height:var(--h); border-radius:6px; }
+  .frente img,.tras img{ width:100%; height:100%; display:block; object-fit:cover; object-position:center; }
+  .frente{ transform: translateZ(calc(var(--d)/2)); }
+  .tras  { transform: rotateY(180deg) translateZ(calc(var(--d)/2)); }
+
+  /* ===== LIVRETINHO: a capa abre PRO LADO, girando na lombada ===== */
+  /* a charneira é a lombada (borda esquerda, no meio da espessura) */
+  .charneira{
+    position:absolute; left:0; top:0; width:var(--w); height:var(--h);
+    transform-origin: 0% 50%; transform-style:preserve-3d;
+    will-change:transform;
+  }
+  .capa{ position:absolute; inset:0; transform-style:preserve-3d; }
+  .capa .frente{ position:absolute; left:0; top:0; }
+  /* a guarda: o lado de dentro da capa (papel), aparece quando o livro abre */
+  .guarda{
+    position:absolute; left:0; top:0; width:var(--w); height:var(--h); border-radius:6px;
+    background:#F3E6D6; backface-visibility:hidden;
+    transform: rotateY(180deg) translateZ(calc(var(--d)/2 - .4px));
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.10), inset 22px 0 40px -26px rgba(0,0,0,.55);
+  }
+  /* miolo de folhas: a pilha de páginas que aparece com a capa aberta */
+  .folhas{ position:absolute; inset:0; transform-style:preserve-3d; pointer-events:none; }
+  .folhas span{
+    position:absolute; display:block; border-radius:3px 5px 5px 3px;
+    width:calc(var(--w) * .962); height:calc(var(--h) * .974);
+    left:calc(var(--w) * .030); top:calc(var(--h) * .013);
+    background:linear-gradient(90deg,#EDE3D3 0%, #FBF6EC 7%, #FDFAF3 60%, #F6EFE2 100%);
+    box-shadow: 0 1px 0 rgba(0,0,0,.10), inset 0 0 0 .5px rgba(0,0,0,.05);
+  }
+  /* as folhas empilhadas dentro da espessura do livro */
+  .folhas span:nth-child(1){ transform: translateZ(calc(var(--d) *  .455)); }
+  .folhas span:nth-child(2){ transform: translateZ(calc(var(--d) *  .285)); }
+  .folhas span:nth-child(3){ transform: translateZ(calc(var(--d) *  .115)); }
+  .folhas span:nth-child(4){ transform: translateZ(calc(var(--d) * -.055)); }
+  .folhas span:nth-child(5){ transform: translateZ(calc(var(--d) * -.225)); }
+  .folhas span:nth-child(6){ transform: translateZ(calc(var(--d) * -.395)); }
+
+  .lado,.tampa{ background-color:#F7D2AF; border-radius:4px; overflow:hidden; }
+  /* a arte VIRA A QUINA espelhada: no canto os pixels batem, sem remendo */
+  .lado::before,.tampa::before{
+    content:""; position:absolute; inset:0; z-index:1;
+    background-repeat:no-repeat;
+  }
+  .esq::before{ background-image:var(--ladoA); background-size:100% 100%; }
+  .dir::before{ background-image:var(--ladoB); background-size:100% 100%; }
+  .topo::before{ background-image:var(--topo); background-size:100% 100%; }
+  .base::before{ background-image:var(--base); background-size:100% 100%; }
+  /* sombra da dobra por cima da arte */
+  .lado::after,.tampa::after{
+    content:""; position:absolute; inset:0; z-index:2; border-radius:4px;
+    /* dobra do papelão: SÓ sombra, sem risco de luz branca na quina
+       (na caixinha preta o brilho branco ficava gritante) */
+    background:linear-gradient(90deg, rgba(0,0,0,.18), rgba(0,0,0,.04) 30%, rgba(0,0,0,.16));
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.14);
+  }
+  .tampa::after{ background:linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.20)); }
+  .lado{ width:var(--d); height:var(--h); }
+  .esq{ transform: rotateY(-90deg) translateZ(calc(var(--w)/2)); left:calc((var(--w) - var(--d))/2); }
+  .dir{ transform: rotateY( 90deg) translateZ(calc(var(--w)/2)); left:calc((var(--w) - var(--d))/2); }
+  .tampa{ width:var(--w); height:var(--d); }
+  /* topo e base agora são o CORTE do livro (papel), não tampa de caixa */
+  .topo { transform: rotateX( 90deg) translateZ(calc(var(--h)/2)); top:calc((var(--h) - var(--d))/2); }
+  .base { transform: rotateX(-90deg) translateZ(calc(var(--h)/2)); top:calc((var(--h) - var(--d))/2); }
+  .lado::after,.tampa::after{ content:""; position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(0,0,0,.16), rgba(0,0,0,.03) 30%, rgba(0,0,0,.14)); }
+  .tampa::after{ background:linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.16)); }
+
+
+  /* CADEADO DE MALA: dois rolos que giram com o dedo (letras e números) */
+  .cadeado{
+    position:fixed; right:calc(34px + env(safe-area-inset-right)); top:calc(14px + env(safe-area-inset-top));
+    z-index:85; display:flex; gap:6px; touch-action:none; user-select:none;
+    /* POR ENQUANTO ESCONDIDO — ordem da Le, 05/08/2026 (o cadeado continua aqui, só não aparece) */
+    display:none;
+  }
+  .rolo{
+    position:relative; width:30px; height:22px; overflow:hidden; cursor:grab;
+    background:transparent; box-shadow:none;
+  }
+  .rolo:active{ cursor:grabbing }
+  .rolo .anel{ position:absolute; left:0; right:0; top:0; }
+  .rolo b{
+    display:block; height:22px; line-height:22px; text-align:center;
+    font-family:"Cerebri Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:15px; font-weight:600; color:#FFFBF3;
+  }
+
+  /* SELETOR DE COR — bolinha em cima à direita; toca e abre a roda do espectro */
+  /* um pontinho só, que vai trocando de cor sozinho */
+  /* ordem da Le, 09/08/2026: os dois pontinhos MAIS JUNTOS e MAIS EM CIMA,
+     e em PRETO E BRANCO — menos cor. Saíram o vermelho e o amarelo em neon. */
+  /* ⛔ DESLIGADO por ordem da Le (09/08/2026): fica só o pontinho da FONTE.
+     Escondido, sem tirar o código — é só apagar este display:none pra voltar. */
+  .cor{ display:none !important; }
+  .cor{
+    position:fixed; left:calc(94px + env(safe-area-inset-left));
+    /* centro do pontinho (4px) no centro da maçã (40px): linha + 20 - 2 */
+    top:calc(var(--linha-topo) + 18px + env(safe-area-inset-top));
+    width:4px; height:4px; padding:0; border:0; border-radius:999px; z-index:91; cursor:pointer;
+    background:#1A1A1A;                                  /* o preto */
+    animation: pulsaPreto 1.9s ease-in-out infinite;
+    transition: transform .5s cubic-bezier(.2,.9,.3,1.2);
+  }
+  .cor:active{ transform:scale(.7) }
+  /* O PONTINHO É MIÚDO, MAS O ALVO DO DEDO É GRANDE:
+     uma área invisível em volta de cada um — abre no primeiro toque, e um não
+     rouba o toque do outro. Agora eles estão a 14px, então o alvo tem 14 de
+     largura (metade pra cada lado) e segue alto, 44, pra o dedo achar fácil. */
+  .cor::before, .fonte::before{
+    content:""; position:absolute; left:50%; top:50%;
+    width:26px; height:44px; transform:translate(-50%,-50%);
+    border-radius:8px; background:transparent;
+  }
+  /* os dois pontinhos respiram, fora de compasso um do outro — sem neon, sem cor */
+  @keyframes pulsaPreto{
+    0%,100%{ box-shadow:0 0 3px 1px rgba(0,0,0,.18); opacity:.55 }
+    50%    { box-shadow:0 0 6px 2px rgba(0,0,0,.30); opacity:1 }
+  }
+  @keyframes pulsaBranco{
+    0%,100%{ box-shadow:0 0 0 1px rgba(0,0,0,.22), 0 0 3px 1px rgba(0,0,0,.10); opacity:.55 }
+    50%    { box-shadow:0 0 0 1px rgba(0,0,0,.28), 0 0 6px 2px rgba(0,0,0,.16); opacity:1 }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cor, .fonte{ animation:none }
+  }
+
+  /* SEGUNDO PONTINHO — escolhe a fonte do nome que passa lá atrás */
+  .fonte{
+    position:fixed; left:calc(94px + env(safe-area-inset-left));
+    /* centro do pontinho (4px) no centro da maçã (40px): linha + 20 - 2 */
+    top:calc(var(--linha-topo) + 18px + env(safe-area-inset-top));
+    width:4px; height:4px; padding:0; border:0; border-radius:999px; z-index:91; cursor:pointer;
+    background:#FFFFFF;                                  /* o branco */
+    box-shadow:0 0 0 1px rgba(0,0,0,.22);                /* senão some no fundo claro */
+    animation: pulsaBranco 1.9s ease-in-out infinite;
+    animation-delay: -.95s;                              /* fora de compasso do vermelho */
+    transition: transform .5s cubic-bezier(.2,.9,.3,1.2);
+  }
+  .fonte:active{ transform:scale(.7) }
+  .fontes{
+    position:fixed; inset:0; z-index:88; display:flex; flex-direction:column;
+    /* flex-start, não center: com a lista inteira a caixa rola, e centrado ela cortaria o topo */
+    align-items:center; justify-content:flex-start; gap:.15em;
+    background:rgba(0,0,0,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch; padding:14vh 6vw;
+    animation:fontesEntra .42s cubic-bezier(.2,.9,.25,1) both;
+  }
+  .fontes.saindo{ animation:fontesSai .3s ease both }
+  @keyframes fontesEntra{ from{ opacity:0 } to{ opacity:1 } }
+  @keyframes fontesSai{ from{ opacity:1 } to{ opacity:0 } }
+  .fontes b{
+    display:block; font-weight:400; color:#FFFBF3; cursor:pointer; line-height:1.5;
+    font-size:clamp(15px, 4vw, 21px); opacity:.62; padding:.05em .2em;
+    transition: opacity .25s, transform .25s cubic-bezier(.2,.9,.3,1.3);
+  }
+  .fontes b:hover, .fontes b.eh{ opacity:1; transform:scale(1.06) }
+  /* A PALETA É UMA CAIXINHA — a mesma caixa redonda dos decks, só que cheia de cor.
+     Toca no lugar da caixa onde está a cor que você quer. */
+  .paleta{
+    position:fixed; inset:0; z-index:82;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(0,0,0,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    animation: palVeu .42s cubic-bezier(.2,.9,.25,1) both;
+    /* a caixinha da paleta tem o MESMO formato e o mesmo raio das outras */
+    --w: min(66vw, 300px);
+    --h: calc(var(--w) / 0.6035);
+    --cx-raio: calc(var(--w) * 0.100);   /* MIX: média de 0,145 (ee) e 0,055 (femea) */
+    --cx-cor: #17171A;
+  }
+  .paleta.saindo{ animation: palVeuSai .34s ease both }
+  @keyframes palVeu{ from{ opacity:0 } to{ opacity:1 } }
+  @keyframes palVeuSai{ from{ opacity:1 } to{ opacity:0 } }
+
+  .pal-palco{
+    position:relative; width:var(--w); height:var(--h);
+    perspective: calc(var(--w) * 6); perspective-origin:50% 46%;
+    animation: palEntra .78s cubic-bezier(.2,.9,.25,1) both;
+  }
+  .paleta.saindo .pal-palco{ animation: palSai .5s cubic-bezier(.3,.8,.3,1) both }
+  @keyframes palEntra{
+    0%  { transform:scale(.06); opacity:0; filter:blur(16px) }
+    38% { transform:scale(1.16); opacity:1; filter:blur(0) }   /* explode */
+    58% { transform:scale(.92) }                               /* quica */
+    76% { transform:scale(1.06) }
+    90% { transform:scale(.98) }
+    100%{ transform:scale(1) }
+  }
+  @keyframes palSai{
+    0%  { transform:scale(1); opacity:1; filter:blur(0) }
+    22% { transform:scale(1.12) }
+    44% { transform:scale(.9) }
+    100%{ transform:scale(.06); opacity:0; filter:blur(16px) }
+  }
+
+  .pal-cx{
+    position:absolute; inset:0; transform-style:preserve-3d;
+    touch-action:none; cursor:crosshair;
+    animation: palGira 11s ease-in-out infinite;   /* balança devagarinho: é caixa, não papel */
+  }
+  @keyframes palGira{
+    0%,100%{ transform: rotateY(-5deg) rotateX( 2deg) }
+    50%    { transform: rotateY( 5deg) rotateX(-2deg) }
+  }
+  .pal-tela{ position:absolute; inset:0; width:100%; height:100%; display:block; border-radius:inherit; }
+  @media (prefers-reduced-motion: reduce){
+    .pal-palco, .pal-cx, .paleta{ animation:none }
+  }
+
+  /* CARTINHAS dentro da caixa */
+
+  .sombra{
+    position:absolute; left:50%; top:calc(50% + var(--h)/2 + 22px);
+    width:calc(var(--w) * 1.05); height:30px; border-radius:50%;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.62), rgba(0,0,0,0) 70%);
+    transform: translate(-50%,-50%); filter: blur(6px);
+  }
+
+  /* O VÉU — abriu a caixinha, a cor dela toma a tela e a página de dentro vem */
+  .veu{
+    position:fixed; inset:0; z-index:120; pointer-events:none;
+    opacity:0; transform:scale(.86); filter:blur(10px);
+    transition: opacity .62s cubic-bezier(.3,.9,.25,1),
+                transform .78s cubic-bezier(.2,.9,.25,1),
+                filter .6s ease;
+  }
+  .veu.cheio{ opacity:1; transform:scale(1); filter:blur(0) }
+  @media (prefers-reduced-motion: reduce){
+    .veu{ transition: opacity .3s linear; transform:none; filter:none }
+  }
+
+  /* ===================================================================
+     MODELO REDONDO — a caixinha de cantos arredondados, trazida do
+     line.braee.in (time-braeein/src/components/CaixinhaDia.jsx).
+     Bloco maciço: frente + verso arredondados e uma CINTA de tábuas
+     que dá a volta no contorno — é ela que faz o canto sair redondo
+     sem abrir fresta. A arte do deck vai nas duas folhas, intacta.
+     =================================================================== */
+  .caixinha{
+    --cx-cor:#8FA5C8;
+    --cx-raio: calc(var(--w) * 0.100);   /* MIX: média de 0,145 (ee) e 0,055 (femea) */
+    position:relative; display:flex; align-items:center; justify-content:center;
+  }
+
+  .cx-palco{
+    position:relative; width:var(--w); height:calc(var(--h) * 1.02);
+    perspective: calc(var(--w) * 6); perspective-origin:50% 46%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cx{
+    position:relative; width:var(--w); height:var(--h);
+    transform-style:preserve-3d; will-change:transform;
+    touch-action:none; cursor:grab;
+  }
+  .cx:active{ cursor:grabbing }
+  .cx, .cx *{ touch-action:none; -webkit-user-drag:none; user-select:none; }
+
+  .cx-folha{
+    position:absolute; left:0; top:0; display:block; overflow:hidden;
+    width:var(--w); height:var(--h);
+    border-radius:var(--cx-raio); background:var(--cx-cor);
+  }
+  .cx-folha--frente, .cx-folha--verso{ backface-visibility:hidden }
+  .cx-folha--frente{ box-shadow: inset 0 0 0 1px rgba(255,255,255,.16), 0 22px 52px -46px rgba(0,0,0,.34); }
+  .cx-folha--verso { box-shadow: inset 0 0 0 1px rgba(255,255,255,.10); }
+  /* a arte do deck, do jeito que ela é — sem véu, sem nada por cima */
+  .cx-arte{
+    position:absolute; inset:0; border-radius:inherit;
+    background-size:cover; background-position:center;
+  }
+  /* SÓ NO CELULAR: a caixinha está na proporção exata da carta dela, então a arte
+     entra INTEIRA e preenche tudo. contain garante que nada seja cortado, e o
+     fundo fica na cor da moldura da própria arte. O DESKTOP não muda. */
+  @media (max-width: 1023px){
+    .cx-arte{
+      background-size:contain; background-repeat:no-repeat;
+      background-color:#FFF7E9;
+    }
+  }
+  /* as tábuas da cinta: encostadas uma na outra, sem fresta */
+  .cx-tabua{ position:absolute; display:block; backface-visibility:visible; }
+
+  /* a sombra pousa a caixinha no chão — sem pesar (ordem da Le, 09/08/2026:
+     estava "pesada demais e meio fora do lugar"). Mais clara, mais difusa,
+     mais estreita e encostando no pé da caixa. */
+  .cx-sombra{
+    position:absolute; left:11%; right:11%; bottom:-1%;
+    height:calc(var(--h) * .045); border-radius:50%;
+    background: radial-gradient(closest-side, rgba(0,0,0,.38), transparent 74%);
+    filter: blur(10px); pointer-events:none;
+  }
+
+  /* ===================================================================
+     A CAIXINHA — ordem da Le, 09/08/2026:
+       DESKTOP  = a do femea.live, deitada (razão 1.75, lombada 13,5%, canto 5,5%)
+       CELULAR  = o MIX das duas: "não tão gorda, não tão fina;
+                  não tão grande, não tão pequena" — em pé, no meio do caminho.
+     As três contas, pra não perder:
+       ee.cards   lombada 26,28% · canto 14,5%
+       femea.live lombada 13,50% · canto  5,5%
+       MIX        lombada 19,89% · canto 10,0%   (a média exata das duas)
+     =================================================================== */
+
+  /* ===================================================================
+     DESKTOP = CAIXINHA DEITADA · CELULAR = CAIXINHA EM PÉ
+     (ordem da Le, 08/08/2026 — a mesma regra do femea.live)
+     No celular nada muda: continua tudo como estava.
+     No desktop a caixa deita — mesma proporção, só virada — e a ARTE
+     gira junto, INTEIRA: mesma razão 898/1488, então entra sem corte,
+     sem esticar e sem tirar nada dela.
+     =================================================================== */
+  @media (min-width: 1024px){
+    :root{
+      /* NO DESKTOP É A DO femea.live, sem meio-termo (ordem da Le, 09/08/2026):
+         deitada na razão 1.75, lombada 13,5% da largura, canto 5,5%. */
+      --w: min(calc(100vw - 130px), calc((100dvh - 120px) * 1.75));
+      --h: calc(var(--w) / 1.75);
+      --d: calc(var(--w) * 0.1350);   /* DESKTOP = femea.live clonado: não se mexe */      /* encorpada; a do femea.live era 0,1350 */
+    }
+    .caixinha{ --cx-raio: calc(var(--w) * 0.055); }
+
+    /* a arte deitada: o retângulo dela é --h × --w (em pé) e gira 90° —
+       depois de girar ocupa exatamente --w × --h, a caixa inteira. */
+    .cx-arte{
+      inset:auto; left:50%; top:50%;
+      width:var(--h); height:var(--w);
+      transform-origin:50% 50%;
+      transform: translate(-50%,-50%) rotate(90deg);
+      border-radius:0;                     /* o canto redondo vem da folha */
+    }
+  }
+
+
+@font-face{font-family:Newsreader;src:url(/sites/ee-cards/assets/bbefeffe9658a20893b4.woff2) format("woff2");font-style:normal;font-weight:400;font-display:swap}
+body,.marquee span{font-family:Newsreader,serif!important}.cx-arte{background-size:contain!important;background-repeat:no-repeat;background-color:#FFF7E9}html,body{overflow-x:hidden}a.box-back{position:fixed;z-index:8;left:22px;bottom:calc(20px + env(safe-area-inset-bottom));font:16px Newsreader,serif;text-decoration:none;color:#4A3C3E}
+
+@font-face{font-family:AristotelicaBoxTitle;src:url('/sites/ee-cards/fonts/Aristotelica-Pro-Display-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}.marquee span{font-family:AristotelicaBoxTitle,sans-serif!important}
+
+.marquee span{letter-spacing:-.045em!important;font-weight:400!important}
+
+/* Small optical spacing adjustment; fixed scene, no page bounce. */
+.marquee span{letter-spacing:-.025em!important}
+html,body{position:fixed;inset:0;width:100%;height:100%;min-height:0;overflow:hidden;overscroll-behavior:none;touch-action:none}
+.trilho{position:fixed;inset:0;height:100%;overscroll-behavior:none}.marquee{position:fixed!important}

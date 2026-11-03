@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-br" data-lado>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFBF3">
+<meta name="robots" content="noindex, nofollow">
+<title>obras · leticia.land</title>
+<link rel="icon" href="https://leticia.land/favicon.png">
+<link rel="apple-touch-icon" href="https://leticia.land/pwa/icon-192.png">
+<meta property="og:title" content="obras">
+<meta property="og:image" content="https://leticia.land/og-umbii.png">
+<style>
+/* leticia.land/obras (17/10/2026, pedido da Dra Lê): páginas que passam de lado, uma tela por vez (como livro).
+   No meio de cada página, só um "+". Clicou: digita o nome do projeto ali mesmo, enter grava; a página mostra o nome
+   e nasce outra página à direita com outro "+". Banco: leticia_land_projetos.projetos (campo link vazio, para depois). */
+@font-face{font-family:S;src:url(/sites/leticia.land/black.woff2) format("woff2");font-weight:900;font-display:block}
+a,button,input,select,textarea,[tabindex]{outline:none;-webkit-tap-highlight-color:transparent}
+:focus,:focus-visible{outline:none;box-shadow:none}
+html,body{margin:0;height:100%;overflow:hidden;background:#FFFBF3;overscroll-behavior:none}
+body{touch-action:none;-webkit-user-select:none;user-select:none}
+#trilho{display:flex;height:100vh;height:100dvh;will-change:transform;transition:transform .75s cubic-bezier(.22,.8,.2,1)}
+.pg{flex:0 0 100vw;height:100%;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:0 25vw;overflow:hidden}
+.mais{background:none;border:0;padding:24px;margin:0;cursor:pointer;font:400 30px/1 -apple-system,"Helvetica Neue",Arial,sans-serif;color:#2a2622}
+.nome{font-family:S,Arial,sans-serif;font-weight:900;color:#2a2622;font-size:clamp(40px,8vw,140px);line-height:.92;letter-spacing:-.05em;text-align:center;text-wrap:balance;overflow-wrap:anywhere;max-width:100%;min-width:.6em;caret-color:#2a2622;-webkit-user-select:text;user-select:text}
+.nome:empty::before{content:"\200b"}
+@media(max-width:700px){.pg{padding:0 15vw}.nome{font-size:12vw}}
+</style>
+</head>
+<body>
+<div id="trilho"></div>
+<script>
+const trilho = document.getElementById('trilho');
+let i = 0, n = 0, preso = false, solta;
+
+function vai(k) {
+  k = Math.max(0, Math.min(n - 1, k));
+  if (k === i) return;
+  const a = document.activeElement; if (a && a.isContentEditable) a.blur();
+  i = k; trilho.style.transform = `translateX(${-i * 100}vw)`;
+}
+
+// o nome cabe na metade de dentro: diminui a letra até caber em ~50% da altura
+function cabe(el) {
+  el.style.fontSize = '';
+  let f = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollHeight > innerHeight * .5 && f > 18) { f -= 2; el.style.fontSize = f + 'px'; }
+}
+
+function paginaNome(p) {
+  const pg = document.createElement('section'); pg.className = 'pg';
+  const t = document.createElement('div'); t.className = 'nome'; t.textContent = p.nome;
+  pg.appendChild(t); return pg;
+}
+
+function paginaMais() {
+  const pg = document.createElement('section'); pg.className = 'pg';
+  const b = document.createElement('button'); b.className = 'mais'; b.textContent = '+'; b.setAttribute('aria-label', 'novo projeto');
+  pg.appendChild(b);
+  b.onclick = () => {
+    const t = document.createElement('div'); t.className = 'nome';
+    t.contentEditable = 'plaintext-only'; if (t.contentEditable !== 'plaintext-only') t.contentEditable = 'true';
+    t.spellcheck = false; t.setAttribute('autocapitalize', 'none'); t.setAttribute('enterkeyhint', 'done');
+    b.replaceWith(t); t.focus();
+    let indo = false;
+    const volta = () => { if (!indo && !t.textContent.trim()) t.replaceWith(b); };
+    t.onblur = volta;
+    t.oninput = () => { const s = t.textContent.toLowerCase(); if (s !== t.textContent) { t.textContent = s; const r = document.createRange(); r.selectNodeContents(t); r.collapse(false); const g = getSelection(); g.removeAllRanges(); g.addRange(r); } cabe(t); };
+    t.onkeydown = async (e) => {
+      if (e.key === 'Escape') { t.textContent = ''; t.blur(); return; }
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const nome = t.textContent.trim().toLowerCase();
+      if (!nome || indo) return;
+      indo = true;
+      const r = await fetch('/api/obras', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nome }) });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) {
+        t.contentEditable = 'false'; t.textContent = nome; t.onblur = t.oninput = t.onkeydown = null; t.blur(); cabe(t);
+        trilho.appendChild(paginaMais()); n++;
+      } else { indo = false; t.style.opacity = '.3'; setTimeout(() => t.style.opacity = '', 1200); }
+    };
+  };
+  return pg;
+}
+
+fetch('/api/obras', { credentials: 'same-origin' }).then(r => r.ok ? r.json() : []).catch(() => []).then(l => {
+  (Array.isArray(l) ? l : []).forEach(p => trilho.appendChild(paginaNome(p)));
+  trilho.appendChild(paginaMais());
+  n = trilho.children.length;
+  document.fonts.ready.then(() => document.querySelectorAll('.nome').forEach(cabe));
+});
+
+// gesto: rodinha/trackpad (de lado ou para baixo), uma página por gesto; espera a inércia acabar antes do próximo
+let soma = 0;
+addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+  clearTimeout(solta); solta = setTimeout(() => { preso = false; soma = 0; }, 160);
+  if (preso) return;
+  soma += d;
+  if (Math.abs(soma) > 30) { vai(i + (soma > 0 ? 1 : -1)); preso = true; soma = 0; }
+}, { passive: false });
+
+addEventListener('keydown', (e) => {
+  if (document.activeElement && document.activeElement.isContentEditable) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); vai(i + 1); }
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); vai(i - 1); }
+});
+
+// dedo de lado no celular
+let x0 = null, y0 = 0;
+addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+addEventListener('touchend', (e) => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+  if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) vai(i + (dx < 0 ? 1 : -1));
+}, { passive: true });
+
+addEventListener('resize', () => document.querySelectorAll('.nome').forEach(cabe));
+</script>
+</body>
+</html>

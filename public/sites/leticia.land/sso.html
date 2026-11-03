@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>⠀</title>
+<style>html,body{margin:0;background:#FFFBF3}</style>
+<!-- 17/10/2026: o site é aberto; esta página só serve para a dona voltar do i.lle.sh com a chave de editar (cookie leticia-chave). Não tem tela de entrar. -->
+<script>
+(function () {
+  var sso = (location.hash.match(/[#&]sso=([^&]+)/) || [])[1];
+  if (!sso) { location.replace('https://i.lle.sh/sso?volta=' + encodeURIComponent(location.origin + '/sso')); return }
+  history.replaceState(null, '', location.pathname);
+  fetch('/api/porta', { method: 'POST', headers: { Authorization: 'Bearer ' + decodeURIComponent(sso) } })
+    .then(function (r) { return r.json() })
+    .then(function (j) {
+      if (j.ok && j.chave) {
+        try { localStorage.setItem('leticia-chave', j.chave) } catch (e) {}
+        document.cookie = 'leticia-chave=' + encodeURIComponent(j.chave) + '; Path=/; Max-Age=' + (30 * 86400) + '; Secure; SameSite=Lax';
+      }
+      location.replace('/');
+    }).catch(function () { location.replace('/') });
+})();
+</script></head><body></body></html>

@@ -1,0 +1,2 @@
+import{t as e}from"/plyn-assets/6eb7f46930baaa24fc71.mjs";import{o as t,s as n}from"/plyn-assets/b4ac6b2bdaa51a6e9d05.mjs";function r(e){return n=>/*#__PURE__*/ t(e,{...n,style:{...n.style,height:`100dvh`}})}function i(){return(i=e((()=>{n()})))()}export{i as n,r as t};
+//# sourceMappingURL=DVHUnits.C-ikIrrN.mjs.map

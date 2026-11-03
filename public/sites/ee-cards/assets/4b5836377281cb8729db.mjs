@@ -1,0 +1,2 @@
+import{t as e}from"/assets/f3763a39ba10c18b59f4.mjs";import{c as t,o as n}from"/assets/a308d5ce4995fa983dca.mjs";function r(e){return n=>{let r={...n.style,height:`100dvh`};return t(e,{...n,style:r})}}var i=e((()=>{n()}));export{r as n,i as t};
+//# sourceMappingURL=Mobile_View_100VH.CmWhdkkv.mjs.map

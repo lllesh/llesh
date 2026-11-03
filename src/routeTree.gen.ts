@@ -26,6 +26,7 @@ import { Route as PacienteRouteRouteImport } from './routes/paciente/route'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as RedefinirRouteImport } from './routes/redefinir'
 import { Route as SaudeRouteImport } from './routes/saude'
+import { Route as SitesRouteImport } from './routes/sites'
 import { Route as AuthenticatedMenstruappRouteImport } from './routes/_authenticated/menstruapp'
 import { Route as FemeaIndexRouteImport } from './routes/femea/index'
 import { Route as FemeaSlugRouteImport } from './routes/femea/$slug'
@@ -133,6 +134,11 @@ const RedefinirRoute = RedefinirRouteImport.update({
 const SaudeRoute = SaudeRouteImport.update({
   id: '/saude',
   path: '/saude',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitesRoute = SitesRouteImport.update({
+  id: '/sites',
+  path: '/sites',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedMenstruappRoute = AuthenticatedMenstruappRouteImport.update({
@@ -273,6 +279,7 @@ export interface FileRoutesByFullPath {
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
+  '/sites': typeof SitesRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
   '/femea/$slug': typeof FemeaSlugRoute
   '/fertify/alertas': typeof FertifyAlertasRoute
@@ -310,6 +317,7 @@ export interface FileRoutesByTo {
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
+  '/sites': typeof SitesRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
   '/femea/$slug': typeof FemeaSlugRoute
   '/fertify/alertas': typeof FertifyAlertasRoute
@@ -354,6 +362,7 @@ export interface FileRoutesById {
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
+  '/sites': typeof SitesRoute
   '/_authenticated/menstruapp': typeof AuthenticatedMenstruappRoute
   '/femea/$slug': typeof FemeaSlugRoute
   '/fertify/alertas': typeof FertifyAlertasRoute
@@ -398,6 +407,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/redefinir'
     | '/saude'
+    | '/sites'
     | '/menstruapp'
     | '/femea/$slug'
     | '/fertify/alertas'
@@ -435,6 +445,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/redefinir'
     | '/saude'
+    | '/sites'
     | '/menstruapp'
     | '/femea/$slug'
     | '/fertify/alertas'
@@ -478,6 +489,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/redefinir'
     | '/saude'
+    | '/sites'
     | '/_authenticated/menstruapp'
     | '/femea/$slug'
     | '/fertify/alertas'
@@ -522,6 +534,7 @@ export interface RootRouteChildren {
   PortfolioRoute: typeof PortfolioRoute
   RedefinirRoute: typeof RedefinirRoute
   SaudeRoute: typeof SaudeRoute
+  SitesRoute: typeof SitesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -643,6 +656,13 @@ declare module '@tanstack/react-router' {
       path: '/saude'
       fullPath: '/saude'
       preLoaderRoute: typeof SaudeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sites': {
+      id: '/sites'
+      path: '/sites'
+      fullPath: '/sites'
+      preLoaderRoute: typeof SitesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/menstruapp': {
@@ -948,6 +968,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortfolioRoute: PortfolioRoute,
   RedefinirRoute: RedefinirRoute,
   SaudeRoute: SaudeRoute,
+  SitesRoute: SitesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

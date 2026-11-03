@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>cartas · livro</title>
+<link rel="icon" type="image/png" href="/sites/leticia.ink/cartas/icon.png"><link rel="apple-touch-icon" href="/sites/leticia.ink/cartas/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;800;900&display=swap">
+<style>
+:root{
+  --bg:#FBFAF8; --ink:#2B2729; --muted:#6F6769; --line:#ECE6E3;
+  --rosa:#F48591; --coral:#FA8D85; --pessego:#FEA283; --laranja:#FFB872; --salvia:#8DA599; --verm:#AC0000;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Figtree",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:20px}
+
+.abre{padding-block:12vh 4vh}
+.abre h1{margin:0;font-weight:900;font-size:clamp(96px,22vw,300px);line-height:.8;letter-spacing:-.06em}
+.abre h1 span{display:inline-block}
+.abre h1 .p1{color:var(--rosa)}.abre h1 .p2{color:var(--laranja)}.abre h1 .p3{color:var(--salvia)}
+.abre .sub{margin-top:48px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.leitura{position:relative}
+.leitura p{position:sticky;margin:0;font-weight:800;font-size:clamp(30px,5.2vw,72px);line-height:1.05;letter-spacing:-.035em;max-width:17ch}
+.leitura .t{color:rgba(43,39,41,.13);transition:color .45s ease}
+.leitura .t.on{color:var(--ink)}
+
+/* coleções */
+nav.cols{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.cols .wrap{display:flex;gap:8px;align-items:center;overflow-x:auto;padding-block:14px;scrollbar-width:none}
+nav.cols .wrap::-webkit-scrollbar{display:none}
+nav.cols .marca{font-weight:900;letter-spacing:-.02em;font-size:18px;margin-right:10px;white-space:nowrap}
+.pill{flex:none;font:600 13px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--ink);padding:10px 14px;border-radius:999px;border:0;background:color-mix(in srgb,var(--c,#ddd) 35%,#fff);cursor:pointer;white-space:nowrap;display:inline-flex;gap:8px;align-items:center}
+.pill small{font-size:11px;color:var(--muted);font-weight:600}
+.pill.ativo{background:var(--ink);color:#fff}.pill.ativo small{color:#ddd}
+
+section.colecao{padding-block:10vh 4vh}
+.cab{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.cab .num{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cab h2{margin:0;font-weight:900;font-size:clamp(52px,10vw,132px);line-height:.88;letter-spacing:-.05em;color:var(--c);outline:none;border-radius:12px;overflow-wrap:anywhere}
+.cab h2:focus{box-shadow:0 0 0 3px var(--verm)}
+.ferr{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.busca{font:500 16px "Figtree",system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid var(--line);background:#fff;min-width:220px;outline:none;max-width:100%}
+.busca:focus{border-color:var(--verm)}
+
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+a.carta{position:relative;display:flex;flex-direction:column;aspect-ratio:5/7;border-radius:28px;overflow:hidden;background:var(--c);color:#fff;text-decoration:none;box-shadow:0 10px 30px rgba(43,39,41,.10);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+a.carta:hover,a.carta:focus-visible{transform:translateY(-6px) rotate(-1deg);box-shadow:0 18px 40px rgba(43,39,41,.18);outline:none}
+a.carta .n{position:absolute;top:14px;left:16px;font-size:12px;font-weight:800;letter-spacing:.1em;z-index:2;text-shadow:0 1px 6px rgba(0,0,0,.25)}
+a.carta img,a.carta video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+a.carta .tx{margin:auto 0 0;padding:44px 16px 18px;font-weight:800;font-size:17px;line-height:1.15;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;position:relative;z-index:1;overflow-wrap:anywhere}
+a.carta.com-midia .tx{background:linear-gradient(transparent,rgba(0,0,0,.55));font-size:15px}
+a.carta.vazia .tx{color:rgba(255,255,255,.75);font-weight:600}
+.mais{display:flex;justify-content:center;margin-top:28px}
+
+button{font:600 12px/1 "Figtree",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;border-radius:999px;border:2px solid var(--verm);background:var(--verm);color:#fff;cursor:pointer}
+button.leve{background:#fff;color:var(--verm)}
+button:focus-visible,.pill:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+button[disabled]{opacity:.45;cursor:default}
+
+.rv{opacity:0;transform:translateY(44px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+#status{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;font:700 12px/1 "Figtree",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:14px 20px;border-radius:999px;background:var(--verm);color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+#status.leve{background:#fff;color:var(--verm)}
+#entrar{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px}
+#entrar form{display:flex;flex-direction:column;gap:16px;width:min(320px,100%);text-align:center}
+#entrar label{font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase}
+#entrar input{font:inherit;font-size:22px;text-align:center;letter-spacing:.3em;padding:12px;border:2px solid var(--ink);border-radius:999px;background:transparent;outline:none}
+#entrar input:focus{border-color:var(--verm)}
+.fim{padding-block:10vh 22vh;text-align:center;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.vazio{color:var(--muted);padding:40px 0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.leitura .t{transition:none}a.carta{transition:none}}
+
+/* regras de design da Dra Lê: pílula sempre cheia de cor e letra #FFFBF3, preto nunca, vermelho só no site P&B, respiro */
+:root{--creme:#FFFBF3}
+.abre h1{font-size:clamp(76px,17vw,240px)}
+.abre .sub{margin-top:22px}
+.leitura{margin-bottom:14vh}
+.leitura .t.on{color:var(--laranja)}
+nav.cols .wrap{gap:12px;padding-block:18px;padding-inline:20px 40px}
+nav.cols .marca{color:var(--muted)}
+.pill{background:var(--c,#8DA599)!important;color:var(--creme)!important;padding:11px 16px}
+.pill small{color:var(--creme)!important;opacity:.8}
+.pill.ativo{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--c)}
+button,button.leve{border:0;color:var(--creme)}
+button{background:var(--laranja)}
+button.leve{background:var(--salvia)}
+.cab{row-gap:32px;margin-bottom:44px}
+.cab .num{font-size:11px;margin-bottom:6px}
+.ferr{gap:12px}
+.busca{background:color-mix(in srgb,var(--laranja) 18%,#fff);border-color:transparent;color:var(--muted)}
+.busca:focus{border-color:var(--laranja)}
+.grade{gap:28px}
+a.carta{color:var(--creme)}
+#status,#status.leve{background:var(--salvia);color:var(--creme)}
+#entrar input:focus{border-color:var(--laranja)}
+nav.cols .wrap{flex-wrap:wrap;overflow:visible;row-gap:12px}
+/* salvo vira bolinha rosa à direita; letras pequenas um pouco maiores; subtítulo cinza */
+#status,#status.leve{left:auto;right:24px;bottom:calc(24px + env(safe-area-inset-bottom));width:18px;height:18px;padding:0;border-radius:50%;background:var(--rosa);font-size:0;line-height:0;color:transparent;overflow:hidden;box-shadow:0 4px 14px rgba(244,133,145,.45)}
+#status.salvando{animation:pulsa 1s ease-in-out infinite}
+#status.erro{background:var(--coral);animation:pulsa .5s ease-in-out infinite}
+@keyframes pulsa{50%{transform:scale(1.5);opacity:.6}}
+.abre .sub{color:#A39B9D;font-size:14px}
+/* salvo volta a ser pílula: rosa, letra #FFFBF3, à direita, letra maior */
+#status,#status.leve,#status.salvando,#status.erro{width:auto;height:auto;padding:14px 22px;border-radius:999px;background:var(--rosa);color:var(--creme);font:600 17px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;text-transform:none;overflow:visible;animation:none;box-shadow:0 8px 24px rgba(244,133,145,.35)}
+#status.erro{background:var(--coral)}
+.cab .num{font-size:12px;color:#A39B9D}
+.pill,button,button.leve{font-size:15px!important}
+.pill small{font-size:13px}
+.busca{font-size:17px}
+a.carta .tx{font-size:19px}
+nav.cols .marca{font-size:20px;color:#A39B9D}
+button,button.leve{font:600 13px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;text-transform:none;padding:12px 18px}
+/* salvar: bolinha rosa com S, em cima à direita, igual ao modelo */
+#status,#status.leve,#status.salvando,#status.erro{top:calc(86px + env(safe-area-inset-top));right:72px;bottom:auto;left:auto;width:50px;height:50px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#EB6272;color:var(--creme);font:800 21px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;opacity:.4;box-shadow:0 6px 18px rgba(244,133,145,.35)}
+#status.salvando{animation:pulsa 1s ease-in-out infinite}
+#status.erro{background:var(--coral);animation:pulsa .5s ease-in-out infinite}
+@keyframes pulsa{50%{transform:scale(1.15);opacity:.7}}
+</style>
+<style>a, button, input, select, textarea, [tabindex] { outline: none; -webkit-tap-highlight-color: transparent; } :focus, :focus-visible { outline: none; box-shadow: none; }</style>
+<style>/* 13/10/2026: fonte cinza (a frase que acende) menor só no computador */ @media (min-width:1024px){.leitura p{font-size:clamp(24px,3.6vw,50px);max-width:30ch}}</style>
+</head>
+<body>
+
+
+<div id="app" hidden>
+  <header class="wrap abre">
+    <h1 style="color:var(--laranja)">cartas</h1>
+  </header>
+  <div class="wrap leitura"><p id="intro">Cada carta tem a sua própria página. Toque numa carta para abrir e mexer nela. Aqui a senhora vê todas, cria cartas e coleções, busca e organiza. Arquivar não apaga nada. Cada carta tem a sua própria página. Toque numa carta para abrir e mexer nela. Aqui a senhora vê todas, cria cartas e coleções, busca e organiza. Arquivar não apaga nada.</p></div>
+
+</div>
+
+<script src="/sites/leticia.ink/cartas/titulo-fixo.js"></script>
+<script>
+(function () {
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e }
+  function leitura() {
+    var p = document.getElementById('intro'), ps = p.textContent.split(/(\s+)/), partes = [], a = '', n = 0;
+    ps.forEach(function (w) { if (/^\s+$/.test(w)) { a += w; return } a += w; n++; if (/[,.:;]$/.test(w) || n >= 6) { partes.push(a); a = ''; n = 0 } }); if (a) partes.push(a);
+    p.textContent = ''; var ts = partes.map(function (x) { var s = el('span', 't', x); p.appendChild(s); return s });
+    var esp = el('div'); p.after(esp);
+    function ajusta() { var h = p.offsetHeight, vh = innerHeight, t0 = window.srTopo ? srTopo() : 90; p.style.top = (t0 + Math.max(0, (vh - t0 - h) / 2) + (innerWidth >= 1024 ? Math.round(vh * 0.02) : 0)) + 'px'; /* 13/10: no computador sobe um pouquinho */ esp.style.height = Math.round(ts.length * vh * 0.2) + 'px'; roda() }
+    function roda() { var nat = esp.getBoundingClientRect().top - p.offsetHeight, prog = ((parseFloat(p.style.top) || 0) - nat) / Math.max(1, esp.offsetHeight), at = Math.min(ts.length - 1, Math.floor(prog * ts.length)); ts.forEach(function (s, i) { s.classList.toggle('on', i === at) }) }
+    addEventListener('scroll', roda, { passive: true }); addEventListener('resize', ajusta);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajusta); ajusta();
+  }
+
+  document.getElementById('app').hidden = false; window.srTituloFixo && srTituloFixo(); leitura();
+})();
+</script>
+</body>
+</html>

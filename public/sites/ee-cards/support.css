@@ -1,0 +1,10 @@
+
+#__framer-badge-container, #framer-badge-container, [data-framer-badge],
+a[href="https://www.framer.com"], a[href="https://framer.com"],
+a[href^="https://www.framer.com/?"], a[href^="https://framer.com/?"] {
+display:none!important;visibility:hidden!important;pointer-events:none!important}
+html,body{min-height:100dvh}body{overflow-x:hidden}
+/* Original artwork must always be displayed in its entirety. */
+img[data-original-card]{object-fit:contain!important;object-position:center!important;
+height:auto!important;aspect-ratio:2721/4838;clip-path:none!important;filter:none!important}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}

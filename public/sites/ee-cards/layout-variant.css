@@ -1,0 +1,17 @@
+/* Requested layout change, restricted to the duplicated Margaret home page. */
+@media (min-width: 1200px) {
+  .framer-fPy9W.framer-ry6gaz {
+    flex-direction: row-reverse !important;
+  }
+
+  body:has(.framer-fPy9W) .framer-1RJol > .framer-smg0ux,
+  body:has(.framer-fPy9W) .framer-1RJol .framer-1a4pt2a-container {
+    left: auto !important;
+    right: 0 !important;
+  }
+
+  .framer-fPy9W > [data-framer-name="Content Wrapper"] {
+    --border-left-width: 0px !important;
+    --border-right-width: 1px !important;
+  }
+}

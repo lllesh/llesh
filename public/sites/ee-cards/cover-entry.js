@@ -1,0 +1,1 @@
+/* Navigation is handled by the existing card interaction. */

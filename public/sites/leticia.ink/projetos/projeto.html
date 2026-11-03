@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fafafa">
+<meta name="robots" content="noindex, nofollow">
+<title>projetos · leticia.ink</title>
+<link rel="icon" href="https://leticia.ink/favicon.png">
+<link rel="apple-touch-icon" href="https://leticia.ink/pwa/icon-192.png">
+<meta property="og:image" content="https://leticia.ink/og-umbii.png">
+<style>
+/* leticia.ink/projetos/<nome> (15/10/2026): a página de cada projeto, no design do leticia.ink, vazia até ela pôr coisas. Fechada pela porta. */
+@font-face{font-family:S;src:url(/sites/leticia.ink/black.woff2) format("woff2");font-weight:900}
+a,button,input,select,textarea,[tabindex]{outline:none;-webkit-tap-highlight-color:transparent}
+:focus,:focus-visible{outline:none;box-shadow:none}
+html,body{margin:0;background:#fafafa}
+body{box-sizing:border-box;min-height:100vh;min-height:100dvh;padding:9vh 6vw 12vh}
+a.volta,h2{display:block;margin:0;font-family:S,Arial,sans-serif;font-weight:900;color:#ff0d0d;font-size:clamp(44px,8.2vw,150px);line-height:.86;letter-spacing:-.07em;text-decoration:none}
+h2{max-width:86vw;text-wrap:balance}
+@media(max-width:700px){a.volta,h2{font-size:13vw;line-height:.9}body{padding:12vh 24px 12vh}}
+</style>
+<script src="https://lle.sh/lenis/liso.js" defer></script>
+</head>
+<body>
+<a class="volta" href="/sites/leticia.ink/projetos/" target="_blank" rel="noopener">←</a>
+<h2 id="titulo"></h2>
+<script>
+const nome = decodeURIComponent(location.pathname.replace(/^\/projetos\/|\/$/g, ''));
+fetch('/api/projetos', { credentials: 'same-origin' }).then(r => r.ok ? r.json() : []).then(l => {
+  const p = l.find(x => x.nome === nome);
+  if (!p) { location.replace('/404'); return; }
+  document.getElementById('titulo').textContent = p.titulo; document.title = p.titulo + ' · projetos';
+});
+</script>
+</body>
+</html>

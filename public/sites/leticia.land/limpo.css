@@ -1,0 +1,4 @@
+/* leticia.land 15/10/2026 — só o que a Dra Lê pediu na página do bleibt:
+   tirar o fundo embaçado, os textinhos pequenos, as coisas de cima, as linhas, o aviso de cookies; ficam só as letras grandes, branco e vermelho */
+[class*="filter-blur"],p.p1,.p1,.g-grid-button-wrap,.horizontal-rule,.vertical-rule,.one-grid-column,.cookie-wrap,.w-webflow-badge{display:none!important}
+html,body{background:#fafafa!important}
