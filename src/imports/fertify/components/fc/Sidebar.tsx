@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 
 const items = [
-  { to: "/fertify/", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/fertify", label: "Dashboard", icon: LayoutDashboard },
   { to: "/fertify/pacientes", label: "Pacientes", icon: Users },
   { to: "/fertify/fertilistas", label: "Fertilistas", icon: Stethoscope },
   { to: "/fertify/ciclos", label: "Ciclos de Tratamento", icon: Activity },
@@ -29,7 +29,7 @@ export function Sidebar() {
   const path = useRouterState({ select: (s) => s.location.pathname });
   return (
     <aside className="hidden lg:flex w-64 shrink-0 flex-col border-r border-stroke1 bg-b-surface2 p-4 sticky top-0 h-screen overflow-y-auto scrollbar-thin">
-      <Link to="/fertify/" className="px-2 py-3 mb-2">
+      <Link to="/fertify" className="px-2 py-3 mb-2">
         <div className="flex items-center gap-2">
           <div className="h-9 w-9 rounded-2xl bg-b-primary text-white grid place-items-center font-bold">F</div>
           <div>
@@ -40,7 +40,7 @@ export function Sidebar() {
       </Link>
       <nav className="flex-1 mt-2 flex flex-col gap-0.5">
         {items.map(({ to, label, icon: Icon }) => {
-          const active = to === "/fertify/" ? path === "/fertify" || path === "/fertify/" : path.startsWith(to);
+          const active = to === "/fertify" ? path === "/fertify" || path === "/fertify" : path.startsWith(to);
           return (
             <Link
               key={to}

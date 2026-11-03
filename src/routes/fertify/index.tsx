@@ -3,7 +3,7 @@ import { Layout, Card, Pill } from "@/imports/fertify/components/fc/Layout";
 import { doctors, patients, proximosEventos } from "@/imports/fertify/data/mock";
 import { Plus, ArrowUpRight, AlertTriangle, ActivitySquare, Users, Stethoscope, HeartPulse, CalendarClock } from "lucide-react";
 
-export const Route = createFileRoute("/fertify/")({
+export const Route = createFileRoute("/fertify")({
   head: () => ({ meta: [
     { title: "Dashboard — FERTIFY Care" },
     { name: "description", content: "Centro de comando da medicina reprodutiva — pacientes, ciclos, exames e procedimentos." },

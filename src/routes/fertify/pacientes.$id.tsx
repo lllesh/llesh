@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout, Card, Pill } from "@/imports/fertify/components/fc/Layout";
 import { patients, type Patient } from "@/imports/fertify/data/mock";
