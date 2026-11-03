@@ -21,6 +21,7 @@ import { Route as FemeaRouteRouteImport } from './routes/femea/route'
 import { Route as FertifyRouteRouteImport } from './routes/fertify/route'
 import { Route as FirstRouteImport } from './routes/first'
 import { Route as FitmailRouteImport } from './routes/fitmail'
+import { Route as LleshRouteImport } from './routes/llesh'
 import { Route as MenstruappBoldRouteRouteImport } from './routes/menstruapp-bold/route'
 import { Route as MenstruappFofoRouteRouteImport } from './routes/menstruapp-fofo/route'
 import { Route as PacienteRouteRouteImport } from './routes/paciente/route'
@@ -110,6 +111,11 @@ const FirstRoute = FirstRouteImport.update({
 const FitmailRoute = FitmailRouteImport.update({
   id: '/fitmail',
   path: '/fitmail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LleshRoute = LleshRouteImport.update({
+  id: '/llesh',
+  path: '/llesh',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MenstruappBoldRouteRoute = MenstruappBoldRouteRouteImport.update({
@@ -283,6 +289,7 @@ export interface FileRoutesByFullPath {
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/llesh': typeof LleshRoute
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
@@ -322,6 +329,7 @@ export interface FileRoutesByTo {
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/llesh': typeof LleshRoute
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
@@ -368,6 +376,7 @@ export interface FileRoutesById {
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/llesh': typeof LleshRoute
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
@@ -414,6 +423,7 @@ export interface FileRouteTypes {
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/llesh'
     | '/portfolio'
     | '/redefinir'
     | '/saude'
@@ -453,6 +463,7 @@ export interface FileRouteTypes {
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/llesh'
     | '/portfolio'
     | '/redefinir'
     | '/saude'
@@ -498,6 +509,7 @@ export interface FileRouteTypes {
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/llesh'
     | '/portfolio'
     | '/redefinir'
     | '/saude'
@@ -544,6 +556,7 @@ export interface RootRouteChildren {
   FemRoute: typeof FemRoute
   FirstRoute: typeof FirstRoute
   FitmailRoute: typeof FitmailRoute
+  LleshRoute: typeof LleshRoute
   PortfolioRoute: typeof PortfolioRoute
   RedefinirRoute: typeof RedefinirRoute
   SaudeRoute: typeof SaudeRoute
@@ -634,6 +647,13 @@ declare module '@tanstack/react-router' {
       path: '/fitmail'
       fullPath: '/fitmail'
       preLoaderRoute: typeof FitmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llesh': {
+      id: '/llesh'
+      path: '/llesh'
+      fullPath: '/llesh'
+      preLoaderRoute: typeof LleshRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/menstruapp-bold': {
@@ -986,6 +1006,7 @@ const rootRouteChildren: RootRouteChildren = {
   FemRoute: FemRoute,
   FirstRoute: FirstRoute,
   FitmailRoute: FitmailRoute,
+  LleshRoute: LleshRoute,
   PortfolioRoute: PortfolioRoute,
   RedefinirRoute: RedefinirRoute,
   SaudeRoute: SaudeRoute,
