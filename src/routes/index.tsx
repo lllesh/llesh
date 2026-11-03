@@ -6,8 +6,8 @@ import logo from "@/assets/noii-logo-relevo.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "n o ii" },
-      { property: "og:title", content: "n o ii" },
+      { title: "ll e.s h" },
+      { property: "og:title", content: "ll e.s h" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "theme-color", content: "#F6F4F1" },
