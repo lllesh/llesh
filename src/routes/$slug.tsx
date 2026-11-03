@@ -3,14 +3,27 @@ import artefatos from "@/lib/artefatos.json";
 
 const LISTA = artefatos as { t: string; s: string }[];
 
+// Sites importados: endereço curto na raiz -> /sites/<pasta>/index.html
+const SITES: Record<string, string> = {
+  "ee.cards": "ee-cards",
+  "leticia.ink": "leticia.ink",
+  "leticia.land": "leticia.land",
+  pulse: "pulse",
+  pro: "noiipro",
+  hospital: "hospital",
+  mediciiiiish: "mediciiiiish",
+};
+
 export const Route = createFileRoute("/$slug")({
   loader: ({ params }) => {
     const item = LISTA.find((a) => a.s === params.slug);
-    if (!item) throw notFound();
-    return item;
+    if (item) return { tipo: "artefato" as const, titulo: item.t, src: `/artefatos/${item.s}.html` };
+    const pasta = SITES[params.slug];
+    if (pasta) return { tipo: "site" as const, titulo: params.slug, src: `/sites/${pasta}/index.html` };
+    throw notFound();
   },
   head: ({ loaderData }) => {
-    const titulo = loaderData ? `${loaderData.t} | n o ii` : "n o ii";
+    const titulo = loaderData ? `${loaderData.titulo} | n o ii` : "n o ii";
     return {
       meta: [
         { title: titulo },
@@ -22,15 +35,15 @@ export const Route = createFileRoute("/$slug")({
       ],
     };
   },
-  component: Artefato,
+  component: Pagina,
 });
 
-function Artefato() {
+function Pagina() {
   const item = Route.useLoaderData();
   return (
     <iframe
-      src={`/artefatos/${item.s}.html`}
-      title={item.t}
+      src={item.src}
+      title={item.titulo}
       className="fixed inset-0 h-screen w-screen border-0"
     />
   );
