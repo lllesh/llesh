@@ -2,19 +2,19 @@ import { useMemo, useState, type CSSProperties } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { CalendarHeart } from "lucide-react";
 import { sum } from "d3-array";
-import { Beeswarm, type BeeswarmView } from "../components/chart/Beeswarm";
-import { PatientPanel } from "../components/PatientPanel";
-import { StatRow } from "../components/StatRow";
-import { Watchlist } from "../components/Watchlist";
+import { Beeswarm, type BeeswarmView } from "@/imports/paciente/components/chart/Beeswarm";
+import { PatientPanel } from "@/imports/paciente/components/PatientPanel";
+import { StatRow } from "@/imports/paciente/components/StatRow";
+import { Watchlist } from "@/imports/paciente/components/Watchlist";
 import {
   SegmentFilter,
   ViewToggle,
   type SegmentFilterValue,
-} from "../components/SegmentFilter";
-import { ThemeToggle } from "../components/ThemeToggle";
-import { TemplateGuide } from "../components/TemplateGuide";
-import { patients } from "../data/patients";
-import { formatCyclesTotal } from "../lib/cycle-color";
+} from "@/imports/paciente/components/SegmentFilter";
+import { ThemeToggle } from "@/imports/paciente/components/ThemeToggle";
+import { TemplateGuide } from "@/imports/paciente/components/TemplateGuide";
+import { patients } from "@/imports/paciente/data/patients";
+import { formatCyclesTotal } from "@/imports/paciente/lib/cycle-color";
 
 export const Route = createFileRoute("/paciente/")({
   head: () => ({
