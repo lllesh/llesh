@@ -40,7 +40,7 @@ export function Sidebar() {
       </Link>
       <nav className="flex-1 mt-2 flex flex-col gap-0.5">
         {items.map(({ to, label, icon: Icon }) => {
-          const active = to === "/" ? path === "/" : path.startsWith(to);
+          const active = to === "/fertify/" ? path === "/fertify" || path === "/fertify/" : path.startsWith(to);
           return (
             <Link
               key={to}

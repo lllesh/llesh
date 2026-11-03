@@ -83,7 +83,7 @@ function GroupLabel({ children }: { children: React.ReactNode }) {
 
 function NavBody({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isActive = (slug: string) => pathname === `/${slug}`;
+  const isActive = (slug: string) => pathname === `/femea/${slug}`;
 
   return (
     <nav className="flex flex-col gap-0.5 px-2">
@@ -140,7 +140,7 @@ function NavBody({ onNavigate }: { onNavigate?: () => void }) {
 
 function SidebarBrand({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const homeActive = pathname === "/";
+  const homeActive = pathname === "/femea" || pathname === "/femea/";
 
   return (
     <Link
