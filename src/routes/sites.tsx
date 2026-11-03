@@ -7,6 +7,7 @@ const SITES = [
   { nome: "pulse", href: "/sites/pulse/index.html", cor: "bg-secondary" },
   { nome: "pro", href: "/sites/noiipro/index.html", cor: "bg-accent" },
   { nome: "hospital", href: "/sites/hospital/index.html", cor: "bg-primary" },
+  { nome: "mediciiiiish", href: "/sites/mediciiiiish/index.html", cor: "bg-secondary" },
 ];
 
 export const Route = createFileRoute("/sites")({
