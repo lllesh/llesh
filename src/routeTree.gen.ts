@@ -22,6 +22,8 @@ import { Route as FertifyRouteRouteImport } from './routes/fertify/route'
 import { Route as FirstRouteImport } from './routes/first'
 import { Route as FitmailRouteImport } from './routes/fitmail'
 import { Route as LleshRouteImport } from './routes/llesh'
+import { Route as LleshIleshRouteImport } from './routes/llesh-ilesh'
+import { Route as LleshSlideRouteImport } from './routes/llesh-slide'
 import { Route as MenstruappBoldRouteRouteImport } from './routes/menstruapp-bold/route'
 import { Route as MenstruappFofoRouteRouteImport } from './routes/menstruapp-fofo/route'
 import { Route as PacienteRouteRouteImport } from './routes/paciente/route'
@@ -116,6 +118,16 @@ const FitmailRoute = FitmailRouteImport.update({
 const LleshRoute = LleshRouteImport.update({
   id: '/llesh',
   path: '/llesh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LleshIleshRoute = LleshIleshRouteImport.update({
+  id: '/llesh-ilesh',
+  path: '/llesh-ilesh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LleshSlideRoute = LleshSlideRouteImport.update({
+  id: '/llesh-slide',
+  path: '/llesh-slide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MenstruappBoldRouteRoute = MenstruappBoldRouteRouteImport.update({
@@ -290,6 +302,8 @@ export interface FileRoutesByFullPath {
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/llesh': typeof LleshRoute
+  '/llesh-ilesh': typeof LleshIleshRoute
+  '/llesh-slide': typeof LleshSlideRoute
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
@@ -330,6 +344,8 @@ export interface FileRoutesByTo {
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/llesh': typeof LleshRoute
+  '/llesh-ilesh': typeof LleshIleshRoute
+  '/llesh-slide': typeof LleshSlideRoute
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
@@ -377,6 +393,8 @@ export interface FileRoutesById {
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
   '/llesh': typeof LleshRoute
+  '/llesh-ilesh': typeof LleshIleshRoute
+  '/llesh-slide': typeof LleshSlideRoute
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
@@ -424,6 +442,8 @@ export interface FileRouteTypes {
     | '/first'
     | '/fitmail'
     | '/llesh'
+    | '/llesh-ilesh'
+    | '/llesh-slide'
     | '/portfolio'
     | '/redefinir'
     | '/saude'
@@ -464,6 +484,8 @@ export interface FileRouteTypes {
     | '/first'
     | '/fitmail'
     | '/llesh'
+    | '/llesh-ilesh'
+    | '/llesh-slide'
     | '/portfolio'
     | '/redefinir'
     | '/saude'
@@ -510,6 +532,8 @@ export interface FileRouteTypes {
     | '/first'
     | '/fitmail'
     | '/llesh'
+    | '/llesh-ilesh'
+    | '/llesh-slide'
     | '/portfolio'
     | '/redefinir'
     | '/saude'
@@ -557,6 +581,8 @@ export interface RootRouteChildren {
   FirstRoute: typeof FirstRoute
   FitmailRoute: typeof FitmailRoute
   LleshRoute: typeof LleshRoute
+  LleshIleshRoute: typeof LleshIleshRoute
+  LleshSlideRoute: typeof LleshSlideRoute
   PortfolioRoute: typeof PortfolioRoute
   RedefinirRoute: typeof RedefinirRoute
   SaudeRoute: typeof SaudeRoute
@@ -654,6 +680,20 @@ declare module '@tanstack/react-router' {
       path: '/llesh'
       fullPath: '/llesh'
       preLoaderRoute: typeof LleshRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llesh-ilesh': {
+      id: '/llesh-ilesh'
+      path: '/llesh-ilesh'
+      fullPath: '/llesh-ilesh'
+      preLoaderRoute: typeof LleshIleshRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llesh-slide': {
+      id: '/llesh-slide'
+      path: '/llesh-slide'
+      fullPath: '/llesh-slide'
+      preLoaderRoute: typeof LleshSlideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/menstruapp-bold': {
@@ -1007,6 +1047,8 @@ const rootRouteChildren: RootRouteChildren = {
   FirstRoute: FirstRoute,
   FitmailRoute: FitmailRoute,
   LleshRoute: LleshRoute,
+  LleshIleshRoute: LleshIleshRoute,
+  LleshSlideRoute: LleshSlideRoute,
   PortfolioRoute: PortfolioRoute,
   RedefinirRoute: RedefinirRoute,
   SaudeRoute: SaudeRoute,
