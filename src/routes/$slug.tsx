@@ -38,7 +38,7 @@ export const Route = createFileRoute("/$slug")({
     const item = LISTA.find((a) => a.s === params.slug);
     if (item) return { tipo: "artefato" as const, titulo: item.t, src: `/artefatos/${item.s}.html` };
     const pasta = SITES[params.slug];
-    if (pasta) return { tipo: "site" as const, titulo: params.slug, src: `/sites/${pasta}/index.html` };
+    if (pasta) return { tipo: "site" as const, titulo: NOMES[params.slug], src: `/sites/${pasta}/index.html` };
     throw notFound();
   },
   head: ({ loaderData }) => {
