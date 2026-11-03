@@ -1,4 +1,4 @@
-/* fumaca.js (lle.sh, 11/10/2026): a fumaça colorida do mouse (o fluido do modelo innoviseagency.netlify.app, em /sites/lle/links/fluido.js)
+/* fumaca.js (lle.sh, 11/10/2026): a fumaça colorida do mouse (o fluido do modelo innoviseagency.netlify.app, em /links/fluido.js)
    + um pontinho piscando no canto de baixo, à direita; tocar nele abre o controle: a cor (as 7 da paleta) e a força (mais fraca ↔ mais forte).
    No celular também: o dedo arrastando faz a fumaça (o modelo já tinha toque).
    Uso: <script src="/sites/lle/links/fumaca.js" data-chave="links"></script>   (a escolha fica guardada neste navegador, por página) */

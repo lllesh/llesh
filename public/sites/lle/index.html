@@ -2,15 +2,15 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<script src="porta.js"></script>
+<script src="/sites/lle/porta.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>LLE.SH</title>
 <meta name="theme-color" content="#000000">
 <meta name="description" content="a biblioteca de tudo: midjourney, templates e o resto, em grid, canvas e infinity">
-<link rel="icon" type="image/png" sizes="32x32" href="bola/L007/bola-32.png">
-<link rel="shortcut icon" href="bola/L007/bola.ico">
-<link rel="apple-touch-icon" href="bola/L007/bola-apple.png">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="/sites/lle/bola/L007/bola-32.png">
+<link rel="shortcut icon" href="/sites/lle/bola/L007/bola.ico">
+<link rel="apple-touch-icon" href="/sites/lle/bola/L007/bola-apple.png">
+<link rel="manifest" href="/sites/lle/manifest.webmanifest">
 <meta property="og:title" content="LLE.SH">
 <meta property="og:description" content="a biblioteca de tudo: midjourney, templates e o resto, em grid, canvas e infinity">
 <meta property="og:url" content="https://lle.sh">
@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://lle.sh/bola/L007/bola-og.png">
 <style>
 /* wii.sh (05/10/2026, ex umbigo.co/atlas.2): CLONE do app de Mac Atlas, medido em cima da janela dele (1127 x 1084, tela retina, 1 px aqui = 2 px lá).
-   mesmas medidas, cores e ícones (os símbolos do próprio macOS que o Atlas usa, em /sites/lle/ico). Biblioteca em /sites/lle/biblioteca.json */
+   mesmas medidas, cores e ícones (os símbolos do próprio macOS que o Atlas usa, em /ico). Biblioteca em /biblioteca.json */
 :root{
   --mola:linear(0.0000, 0.0244, 0.0880, 0.1782, 0.2841, 0.3968, 0.5094, 0.6167, 0.7151, 0.8021, 0.8765, 0.9381, 0.9872, 1.0246, 1.0516, 1.0693, 1.0795, 1.0834, 1.0824, 1.0779, 1.0708, 1.0623, 1.0529, 1.0435, 1.0344, 1.0259, 1.0184, 1.0119, 1.0064, 1.0021, 0.9987, 0.9962, 0.9945, 0.9935, 0.9931, 0.9931, 0.9934, 0.9939, 0.9946, 0.9954, 1);
   --fundo:#FFFFFF; --lateral:rgba(230,231,231,.94); --texto:#1d1d1f; --cinza:#8e8e93; --sub:#a2a2a2;
@@ -114,7 +114,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:default}
 .grupo button.on{color:#1d1d1f;background:rgba(0,0,0,.07)}
 #like{display:none}
 #app.tem-sel #like{display:grid}
-#like.on .i{--m:url(ico/heart.fill.png)!important;color:#ff375f}
+#like.on .i{--m:url(/sites/lle/ico/heart.fill.png)!important;color:#ff375f}
 #busca{display:flex;align-items:center;height:36px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:var(--borda);overflow:hidden;width:36px;transition:width .3s cubic-bezier(.3,.8,.2,1);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 #busca.aberta{width:220px}
@@ -440,7 +440,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 
 /* PRESS & FOIL na logo (07/10/2026): a logo vira metal holográfico, com uma luz que segue o mouse/dedo */
 .logo-caixa .foil{position:absolute;left:0;top:0;pointer-events:none;
-  -webkit-mask:url(logo-sem-bolinha-sombra-inteira.png) center/100% 100% no-repeat;mask:url(logo-sem-bolinha-sombra-inteira.png) center/100% 100% no-repeat;
+  -webkit-mask:url(/sites/lle/logo-sem-bolinha-sombra-inteira.png) center/100% 100% no-repeat;mask:url(/sites/lle/logo-sem-bolinha-sombra-inteira.png) center/100% 100% no-repeat;
   background:radial-gradient(circle 70px at var(--fx,50%) var(--fy,40%),rgba(255,255,255,.95),rgba(255,255,255,0) 70%),
     linear-gradient(115deg,#F48591,#FFB872 20%,#8DA599 40%,#8D96C1 60%,#C18EA9 80%,#F48591);
   background-size:100% 100%,260% 100%;background-position:0 0,var(--fh,30%) 0;mix-blend-mode:multiply;opacity:.55;transition:opacity .3s;display:none}
@@ -465,8 +465,8 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 #abre-lat img{width:100%;height:100%;display:block;pointer-events:none}
 #abre-lat{position:fixed;left:calc(50% - 74px);top:calc(88% - 20px);z-index:46;touch-action:none;cursor:grab;width:40px;height:40px;border-radius:0;border:0;padding:0;background:none;cursor:pointer}
 #pontinhos{display:none!important}
-@font-face{font-family:'Distro Black';src:url(fonts/DISTROBL.woff2) format('woff2');font-display:block}
-@font-face{font-family:'Jeffesta';src:url(fonts/jeffesta-regular-webfont.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'Distro Black';src:url(/sites/lle/fonts/DISTROBL.woff2) format('woff2');font-display:block}
+@font-face{font-family:'Jeffesta';src:url(/sites/lle/fonts/jeffesta-regular-webfont.woff2) format('woff2');font-display:swap}
 #lat-pontos{padding:0!important}
 
 #abre-lat img{animation:corFlutua 1.05s ease-in-out infinite}
@@ -493,16 +493,16 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 <body>
 <div id="app" class="vista-grid">
   <aside id="lateral">
-    <button id="bt-lateral-lat" title="Toggle Sidebar"><img class="logo logo-longo" src="logo-longo.png" alt="ll e.s h" draggable="false"></button>
-    <button id="bt-adicionar" title="Add Files…"><i class="i" style="--m:url(ico/plus.png);width:11px;height:10.8px"></i></button>
+    <button id="bt-lateral-lat" title="Toggle Sidebar"><img class="logo logo-longo" src="/sites/lle/logo-longo.png" alt="ll e.s h" draggable="false"></button>
+    <button id="bt-adicionar" title="Add Files…"><i class="i" style="--m:url(/sites/lle/ico/plus.png);width:11px;height:10.8px"></i></button>
     <div class="lat-corpo">
       <div id="sis"></div>
-      <div class="sec"><span>Collections</span><button class="mais-peq" id="nova-colecao" title="New Collection"><i class="i" style="--m:url(ico/plus.circle.fill.png);width:14px;height:14.0px"></i></button></div>
+      <div class="sec"><span>Collections</span><button class="mais-peq" id="nova-colecao" title="New Collection"><i class="i" style="--m:url(/sites/lle/ico/plus.circle.fill.png);width:14px;height:14.0px"></i></button></div>
       <div id="colecoes"></div>
-      <div class="sec"><span>Smart Folders</span><button class="mais-peq" id="nova-pasta" title="New Smart Folder"><i class="i" style="--m:url(ico/plus.circle.fill.png);width:14px;height:14.0px"></i></button></div>
+      <div class="sec"><span>Smart Folders</span><button class="mais-peq" id="nova-pasta" title="New Smart Folder"><i class="i" style="--m:url(/sites/lle/ico/plus.circle.fill.png);width:14px;height:14.0px"></i></button></div>
       <div id="pastas"></div>
     </div>
-    <div class="lat-pe"><i class="i ic" style="--m:url(ico/library.png);width:13px;height:12.0px"></i><span class="nm">My Library</span><span class="chev"><i class="i" style="--m:url(ico/chevron.up.png);width:10.5px;height:5.9px"></i></span></div>
+    <div class="lat-pe"><i class="i ic" style="--m:url(/sites/lle/ico/library.png);width:13px;height:12.0px"></i><span class="nm">My Library</span><span class="chev"><i class="i" style="--m:url(/sites/lle/ico/chevron.up.png);width:10.5px;height:5.9px"></i></span></div>
   </aside>
 
   <main id="principal">
@@ -513,7 +513,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     <div class="vazio" id="vazio">No items match these filters</div>
 
     <div id="topo">
-      <button id="bt-lateral-topo" title="ll e.s h"><span class="logo-caixa"><img class="logo logo-fora" src="logo-sem-bolinha-sombra-inteira.png" alt="ll e.s h" draggable="false"><img class="ponto" src="bolinha-logo-grande.png" alt="" draggable="false"></span></button>
+      <button id="bt-lateral-topo" title="ll e.s h"><span class="logo-caixa"><img class="logo logo-fora" src="/sites/lle/logo-sem-bolinha-sombra-inteira.png" alt="ll e.s h" draggable="false"><img class="ponto" src="/sites/lle/bolinha-logo-grande.png" alt="" draggable="false"></span></button>
       <div class="titulo"><b id="t-nome">All</b><span id="t-n">0 items</span></div>
       <div id="modos">
         <button data-v="grid">Grid</button><button data-v="solo">Solo</button><button data-v="list">List</button><button data-v="canvas">Canvas</button><button data-v="infinity">Infinity</button>
@@ -521,11 +521,11 @@ html,body,#palco .fundo{transition:background-color .5s ease}
       <button id="bola" title="ll e.s h"><span class="flutua"><span class="corpo"><i class="furo"></i></span></span></button><button id="pil2" title="Effect"></button><button id="pil3" title="Cards"></button>
       <div class="direita">
         <div class="grupo">
-          <button id="bt-info" title="Info"><i class="i" style="--m:url(ico/info.circle.png);width:15.5px;height:15.5px"></i></button>
-          <button id="like" title="Like"><i class="i" style="--m:url(ico/heart.png);width:15.5px;height:13.9px"></i></button>
-          <button id="bt-filtro" title="Filter"><i class="i" style="--m:url(ico/line.3.horizontal.decrease.png);width:15px;height:8.6px"></i></button>
+          <button id="bt-info" title="Info"><i class="i" style="--m:url(/sites/lle/ico/info.circle.png);width:15.5px;height:15.5px"></i></button>
+          <button id="like" title="Like"><i class="i" style="--m:url(/sites/lle/ico/heart.png);width:15.5px;height:13.9px"></i></button>
+          <button id="bt-filtro" title="Filter"><i class="i" style="--m:url(/sites/lle/ico/line.3.horizontal.decrease.png);width:15px;height:8.6px"></i></button>
         </div>
-        <div id="busca"><button id="bt-busca" title="Search"><i class="i" style="--m:url(ico/magnifyingglass.png);width:16px;height:16.3px"></i></button><input id="q" placeholder="Search" autocomplete="off" spellcheck="false"></div>
+        <div id="busca"><button id="bt-busca" title="Search"><i class="i" style="--m:url(/sites/lle/ico/magnifyingglass.png);width:16px;height:16.3px"></i></button><input id="q" placeholder="Search" autocomplete="off" spellcheck="false"></div>
       </div>
     </div>
 
@@ -533,12 +533,12 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     <aside id="info"></aside>
 
     <div class="flut" id="flut-esq">
-      <button class="redondo" id="bt-misturar" title="Shuffles items into a random order"><i class="i" style="--m:url(ico/shuffle.png);width:18.5px;height:14.5px"></i></button>
+      <button class="redondo" id="bt-misturar" title="Shuffles items into a random order"><i class="i" style="--m:url(/sites/lle/ico/shuffle.png);width:18.5px;height:14.5px"></i></button>
     </div>
     <div class="flut" id="flut-dir">
       <button id="exportar">Export 1 file</button>
       <div class="grupo peq so-grid">
-        <button id="bt-zoom" title="Zoom In"><i class="i" style="--m:url(ico/plus.magnifyingglass.png);width:15.5px;height:15.8px"></i></button>
+        <button id="bt-zoom" title="Zoom In"><i class="i" style="--m:url(/sites/lle/ico/plus.magnifyingglass.png);width:15.5px;height:15.8px"></i></button>
         <button id="bt-ordem" title="Sort Items By"><svg width="17.5" height="13" viewBox="0 0 35 26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20M2 13h14M2 23h9M28.5 3v20M23.5 18l5 5 5-5"/></svg></button>
       </div>
     </div>
@@ -571,7 +571,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
   function item(a) {
     // a = [id, colecao, nome, w, h, tipo, data, extra]
     var o = { id: a[0], col: a[1], nome: a[2], w: a[3], h: a[4], tipo: a[5], data: a[6], r: a[3] / a[4], criado: a[8] || a[6], arq: a[9] || '' };
-    if (o.col === 'venus') { o.t = '/sites/lle/img/t/' + o.id + '.jpg'; o.o = (o.tipo === 'v' ? '/sites/lle/img/leve/' : '/sites/lle/img/o/') + o.id + (o.tipo === 'v' ? '.mp4' : '.jpg'); /* 07/10/2026: vídeo leve (o original fica em /sites/lle/img/o) */ o.cx = a[7][0]; o.cy = a[7][1]; o.kb = a[7][2] }
+    if (o.col === 'venus') { o.t = '/sites/lle/img/t/' + o.id + '.jpg'; o.o = (o.tipo === 'v' ? '/sites/lle/img/leve/' : '/sites/lle/img/o/') + o.id + (o.tipo === 'v' ? '.mp4' : '.jpg'); /* 07/10/2026: vídeo leve (o original fica em /img/o) */ o.cx = a[7][0]; o.cy = a[7][1]; o.kb = a[7][2] }
     else if (o.col === 'midjourney') { var b = o.id.replace(/\.\w+$/, ''); o.t = MJ + 'capas/' + b + '.jpg'; o.o = MJ + o.id; o.txt = a[7]; o.nome = b }
     else if (o.col === 'templates') { o.t = '/amei/fotos/' + o.id + '.jpg'; o.o = o.t; o.link = '/sites/lle/z/' + a[7] + '/' }
     return o;
@@ -1369,7 +1369,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     leg.innerHTML = '<b></b><span></span>';
     leg.querySelector('b').textContent = o.nome || '';
     leg.querySelector('span').textContent = o.w + ' × ' + o.h;
-    if (o.link) leg.insertAdjacentHTML('beforeend', ' · <a target="_blank" rel="noopener" href="https://lle.sh/'&#32;+&#32;o.link&#32;+&#32;'">abrir o template</a>');
+    if (o.link) leg.insertAdjacentHTML('beforeend', ' · <a target="_blank" rel="noopener" href="' + o.link + '">abrir o template</a>');
     requestAnimationFrame(function () {
       palco.classList.add('on'); app.classList.add('foto-aberta');
       // 07/10/2026: cobre a página toda com a foto (só a logo aparece por cima); tocar nela de novo fecha
@@ -1952,7 +1952,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 })();
 </script>
 
-<div id="pontinhos"><button data-u="/sites/lle/z/ropecurvecarousel/" title="ropecurvecarousel"></button><button data-u="/sites/lle/z/affableideas/" title="affableideas"></button><button data-u="/sites/lle/z/pinkinnovation/" title="pinkinnovation"></button><button data-u="/sites/lle/z/passionatestep/" title="passionatestep"></button><button data-u="/sites/lle/z/youtubeplayer/" title="youtubeplayer"></button><button data-u="/sites/lle/z/shojiaudioplayer/" title="shojiaudioplayer"></button><button data-u="/sites/lle/z/vaporgenerator/" title="vaporgenerator"></button><button data-u="/sites/lle/z/shojipreloader/" title="shojipreloader"></button><button data-u="/sites/lle/z/holographicimageglitchco/" title="holographicimageglitchco"></button><button data-u="/sites/lle/z/polaroidimagemaker/" title="polaroidimagemaker"></button><button data-u="/sites/lle/z/asciipixels/" title="asciipixels"></button><button data-u="/sites/lle/z/rohitanand/" title="rohitanand"></button><button data-u="/sites/lle/z/video/" title="video"></button><button data-u="/sites/lle/z/prismglass/" title="prismglass"></button><button data-u="/sites/lle/z/polaroidimagerail/" title="polaroidimagerail"></button><button data-u="/sites/lle/z/polaroidshuffle/" title="polaroidshuffle"></button><button data-u="/sites/lle/z/fluidtext/" title="fluidtext"></button><button data-u="/sites/lle/z/elasticgrid/" title="elasticgrid"></button><button data-u="/sites/lle/z/dotmapredux/" title="dotmapredux"></button><button data-u="/sites/lle/z/gregariouspineapples/" title="gregariouspineapples"></button><button data-u="/sites/lle/z/arealipodplayer/" title="arealipodplayer"></button><button data-u="/sites/lle/z/miraculouscelery/" title="miraculouscelery"></button><button data-u="/sites/lle/z/vinylplayerframercompone/" title="vinylplayerframercompone"></button><button data-u="/sites/lle/z/cdenvelopeplayer/" title="cdenvelopeplayer"></button><button data-u="/sites/lle/z/gravitymousetrail/" title="gravitymousetrail"></button><button data-u="/sites/lle/z/piago/" title="piago"></button><button data-u="/sites/lle/z/cdpayer/" title="cdpayer"></button><button data-u="/sites/lle/z/dynamicislandmusicplayer/" title="dynamicislandmusicplayer"></button><button data-u="/sites/lle/z/dazzledpyramid/" title="dazzledpyramid"></button><button data-u="/sites/lle/z/home/" title="home"></button><button data-u="/sites/lle/z/particlecloudscroll/" title="particlecloudscroll"></button><button data-u="/sites/lle/z/simplegradientblur/" title="simplegradientblur"></button><button data-u="/sites/lle/z/motiondeck/" title="motiondeck"></button><button data-u="/sites/lle/z/shapemorph/" title="shapemorph"></button><button data-compara="1" title="neném × agora" style="background:#F48591"></button><button data-u="/sites/lle/z/goldchampion/" title="goldchampion"></button><button data-u="/sites/lle/z/splitview/" title="splitview"></button><button data-u="/sites/lle/z/dazzledfocus/" title="dazzledfocus"></button><button data-u="/sites/lle/z/awarebiscuits/" title="awarebiscuits"></button><button data-u="/sites/lle/z/likelyinfo/" title="likelyinfo"></button><button data-u="/sites/lle/z/compareslider/" title="compareslider"></button><button data-u="/sites/lle/z/socialemoji/" title="socialemoji"></button><button data-u="/sites/lle/z/premiumvideoplayer/" title="premiumvideoplayer"></button><button data-u="/sites/lle/z/formalsalmon/" title="formalsalmon"></button><a class="pagina" href="z/chinesetemple/index.html" target="_blank" rel="noopener" title="chinesetemple"></a></div>
+<div id="pontinhos"><button data-u="/sites/lle/z/ropecurvecarousel/" title="ropecurvecarousel"></button><button data-u="/sites/lle/z/affableideas/" title="affableideas"></button><button data-u="/sites/lle/z/pinkinnovation/" title="pinkinnovation"></button><button data-u="/sites/lle/z/passionatestep/" title="passionatestep"></button><button data-u="/sites/lle/z/youtubeplayer/" title="youtubeplayer"></button><button data-u="/sites/lle/z/shojiaudioplayer/" title="shojiaudioplayer"></button><button data-u="/sites/lle/z/vaporgenerator/" title="vaporgenerator"></button><button data-u="/sites/lle/z/shojipreloader/" title="shojipreloader"></button><button data-u="/sites/lle/z/holographicimageglitchco/" title="holographicimageglitchco"></button><button data-u="/sites/lle/z/polaroidimagemaker/" title="polaroidimagemaker"></button><button data-u="/sites/lle/z/asciipixels/" title="asciipixels"></button><button data-u="/sites/lle/z/rohitanand/" title="rohitanand"></button><button data-u="/sites/lle/z/video/" title="video"></button><button data-u="/sites/lle/z/prismglass/" title="prismglass"></button><button data-u="/sites/lle/z/polaroidimagerail/" title="polaroidimagerail"></button><button data-u="/sites/lle/z/polaroidshuffle/" title="polaroidshuffle"></button><button data-u="/sites/lle/z/fluidtext/" title="fluidtext"></button><button data-u="/sites/lle/z/elasticgrid/" title="elasticgrid"></button><button data-u="/sites/lle/z/dotmapredux/" title="dotmapredux"></button><button data-u="/sites/lle/z/gregariouspineapples/" title="gregariouspineapples"></button><button data-u="/sites/lle/z/arealipodplayer/" title="arealipodplayer"></button><button data-u="/sites/lle/z/miraculouscelery/" title="miraculouscelery"></button><button data-u="/sites/lle/z/vinylplayerframercompone/" title="vinylplayerframercompone"></button><button data-u="/sites/lle/z/cdenvelopeplayer/" title="cdenvelopeplayer"></button><button data-u="/sites/lle/z/gravitymousetrail/" title="gravitymousetrail"></button><button data-u="/sites/lle/z/piago/" title="piago"></button><button data-u="/sites/lle/z/cdpayer/" title="cdpayer"></button><button data-u="/sites/lle/z/dynamicislandmusicplayer/" title="dynamicislandmusicplayer"></button><button data-u="/sites/lle/z/dazzledpyramid/" title="dazzledpyramid"></button><button data-u="/sites/lle/z/home/" title="home"></button><button data-u="/sites/lle/z/particlecloudscroll/" title="particlecloudscroll"></button><button data-u="/sites/lle/z/simplegradientblur/" title="simplegradientblur"></button><button data-u="/sites/lle/z/motiondeck/" title="motiondeck"></button><button data-u="/sites/lle/z/shapemorph/" title="shapemorph"></button><button data-compara="1" title="neném × agora" style="background:#F48591"></button><button data-u="/sites/lle/z/goldchampion/" title="goldchampion"></button><button data-u="/sites/lle/z/splitview/" title="splitview"></button><button data-u="/sites/lle/z/dazzledfocus/" title="dazzledfocus"></button><button data-u="/sites/lle/z/awarebiscuits/" title="awarebiscuits"></button><button data-u="/sites/lle/z/likelyinfo/" title="likelyinfo"></button><button data-u="/sites/lle/z/compareslider/" title="compareslider"></button><button data-u="/sites/lle/z/socialemoji/" title="socialemoji"></button><button data-u="/sites/lle/z/premiumvideoplayer/" title="premiumvideoplayer"></button><button data-u="/sites/lle/z/formalsalmon/" title="formalsalmon"></button><a class="pagina" href="/sites/lle/z/chinesetemple/" target="_blank" rel="noopener" title="chinesetemple"></a></div>
 <iframe id="efeito" title="efeito"></iframe>
 <script>
 (function () {
@@ -2058,7 +2058,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 </script>
 
 <!-- 11/10/2026: a fumaça do mouse do lle.sh/links (fluido + pontinho que abre a cor e a força), no lugar do rastro antigo (guardado em index.antes-da-fumaca.html) -->
-<script src="links/fumaca.js" data-chave="le"></script>
+<script src="/sites/lle/links/fumaca.js" data-chave="le"></script>
 
 <script>
 (function () {
@@ -2154,7 +2154,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 })();
 </script>
 
-<button id="abre-lat" title="menu"><img src="coracao-peq.png" alt="" draggable="false"></button>
+<button id="abre-lat" title="menu"><img src="/sites/lle/coracao-peq.png" alt="" draggable="false"></button>
 <script>
 (function () {
   var lat = document.getElementById('lateral'), box = document.createElement('div'); box.id = 'lat-pontos'; lat.appendChild(box);
@@ -2297,7 +2297,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 <style id="arrumado">#app.arrumado .t{animation:none!important;translate:none!important}#app.arrumado .t img{object-fit:cover}</style>
 <style id="vai-subir">.t.vai-subir{translate:0 min(300px,120%);scale:.77}</style>
 <style id="sem-boiar">/* 08/10/2026: as fotos não boiam mais (subiam e desciam sem parar); fica só a subida do modelo */#app.ef-floating .t,.t{animation:none!important}</style>
-<style id="texto-na-foto">@font-face{font-family:'Distro Heavy';src:url(fonts/DISTROH.woff2) format('woff2');font-display:block}
+<style id="texto-na-foto">@font-face{font-family:'Distro Heavy';src:url(/sites/lle/fonts/DISTROH.woff2) format('woff2');font-display:block}
 /* 08/10/2026: texto por cima da foto/vídeo: pontinho piscando na foto aberta abre a página de escrever;
    o texto fica onde a pessoa arrastar e do tamanho que ela quiser, embutido na foto (pequena ou aberta) */
 .t,#palco .peca{container-type:size}
