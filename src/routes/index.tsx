@@ -7,9 +7,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "n o ii" },
-      { name: "description", content: "Um lugar só para a sua vida inteira." },
       { property: "og:title", content: "n o ii" },
-      { property: "og:description", content: "Um lugar só para a sua vida inteira." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "theme-color", content: "#F6F4F1" },
