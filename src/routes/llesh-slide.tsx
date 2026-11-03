@@ -6,7 +6,7 @@ import logo from "@/assets/llesh-logo.png.asset.json";
 export const Route = createFileRoute("/llesh-slide")({
   head: () => ({
     meta: [
-      { title: "ll e.s h" },
+      { title: "ll e.s h · deslizar" },
       { property: "og:title", content: "ll e.s h" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
