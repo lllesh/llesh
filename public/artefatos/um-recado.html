@@ -1,0 +1,141 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Um Recado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #FFFBF3;
+    --ink: #3a3430;
+    --ink-soft: #8a8078;
+    --card: #8D96C1;
+    --card-text: #FFFBF3;
+    --card-shadow-1: rgba(58, 52, 48, 0.10);
+    --card-shadow-2: rgba(255, 255, 255, 0.6);
+    --hairline: rgba(58, 52, 48, 0.12);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #211f1d;
+      --ink: #efe9df;
+      --ink-soft: #9a9089;
+      --card: #7b84b3;
+      --card-text: #FFFBF3;
+      --card-shadow-1: rgba(0, 0, 0, 0.45);
+      --card-shadow-2: rgba(255, 255, 255, 0.04);
+      --hairline: rgba(239, 233, 223, 0.14);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #211f1d;
+    --ink: #efe9df;
+    --ink-soft: #9a9089;
+    --card: #7b84b3;
+    --card-text: #FFFBF3;
+    --card-shadow-1: rgba(0, 0, 0, 0.45);
+    --card-shadow-2: rgba(255, 255, 255, 0.04);
+    --hairline: rgba(239, 233, 223, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+    font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    max-width: 460px;
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-style: italic;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  .card {
+    background: var(--card);
+    color: var(--card-text);
+    border-radius: 32px;
+    width: 100%;
+    padding: 56px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-shadow:
+      0 1px 2px var(--card-shadow-1),
+      0 18px 40px -12px var(--card-shadow-1),
+      inset 0 1px 0 var(--card-shadow-2);
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.55;
+    text-wrap: balance;
+  }
+
+  .card p.lede {
+    font-size: 26px;
+  }
+
+  .signoff {
+    font-style: italic;
+    font-size: 19px;
+    opacity: 0.88;
+    align-self: flex-end;
+  }
+
+  .footline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--ink-soft);
+    font-size: 15px;
+    letter-spacing: 0.04em;
+  }
+
+  .footline .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: none;
+  }
+
+  @media (max-width: 420px) {
+    .card { padding: 44px 30px; }
+    .card p.lede { font-size: 23px; }
+  }
+</style>
+
+<div class="page">
+  <div class="eyebrow">10 de setembro</div>
+  <div class="card">
+    <p class="lede">isso aqui é só pra mostrar que eu escrevo direito quando você me pede.</p>
+    <p>nada de tela em branco, nada de "modelo genérico" — uma carta, cor cheia, respiro, sem negrito em lugar nenhum.</p>
+    <p class="signoff">— feito pra você</p>
+  </div>
+  <div class="footline">
+    <span class="dot"></span>
+    <span>um cartão, uma cor, uma frase — o resto é silêncio</span>
+  </div>
+</div>
+
+</body></html>

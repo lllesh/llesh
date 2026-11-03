@@ -1,0 +1,220 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>Índice Ghost</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFFBF3;
+    --ink: #2a2118;
+    --ink-dim: #6b6155;
+    --hair: #e8e0d0;
+    --card-hover: #f7f0df;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #211a13;
+      --ink: #f3ead9;
+      --ink-dim: #a89a86;
+      --hair: #3a3025;
+      --card-hover: #2c2419;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #211a13;
+    --ink: #f3ead9;
+    --ink-dim: #a89a86;
+    --hair: #3a3025;
+    --card-hover: #2c2419;
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 6rem;
+  }
+
+  .eyebrow{
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    margin: 0 0 0.6rem;
+  }
+
+  h1{
+    font-size: clamp(2.1rem, 5vw, 2.8rem);
+    font-weight: 400;
+    margin: 0 0 0.5rem;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+  }
+
+  .sub{
+    font-size: 1.05rem;
+    color: var(--ink-dim);
+    margin: 0 0 3rem;
+    max-width: 46ch;
+    line-height: 1.5;
+  }
+
+  .index{
+    border-top: 1px solid var(--hair);
+  }
+
+  .entry{
+    display: grid;
+    grid-template-columns: 2.6rem 1fr auto;
+    gap: 1.1rem;
+    align-items: baseline;
+    padding: 1.35rem 0.75rem;
+    border-bottom: 1px solid var(--hair);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease;
+    margin: 0 -0.75rem;
+    border-radius: 6px;
+  }
+  .entry:hover, .entry:focus-visible{
+    background: var(--card-hover);
+    outline: none;
+  }
+  .entry:focus-visible{
+    box-shadow: 0 0 0 2px var(--accent) inset;
+  }
+
+  .num{
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    padding-top: 0.35rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .body{ min-width: 0; }
+
+  .name{
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin: 0 0 0.28rem;
+    text-wrap: balance;
+  }
+  .name .tag{
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    vertical-align: middle;
+    margin-left: 0.55rem;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.18rem 0.55rem;
+    display: inline-block;
+    transform: translateY(-0.12em);
+  }
+
+  .desc{
+    font-size: 0.98rem;
+    color: var(--ink-dim);
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  .go{
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.85rem;
+    color: var(--accent);
+    white-space: nowrap;
+    padding-top: 0.5rem;
+    align-self: start;
+  }
+  .entry:hover .go{ text-decoration: underline; }
+
+  .foot{
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: var(--ink-dim);
+  }
+
+  @media (max-width: 520px){
+    .entry{ grid-template-columns: 1.8rem 1fr; }
+    .go{ display:none; }
+  }
+</style>
+
+<div class="page">
+  <p class="eyebrow">iô.io — projetos</p>
+  <h1>Seus clones do Ghost</h1>
+  <p class="sub">Todos prontos e no ar. Toque em qualquer linha pra abrir.</p>
+
+  <nav class="index">
+    <a class="entry" style="--accent:#F48591" href="https://okiro-clone.vercel.app" target="_blank" rel="noopener">
+      <span class="num">01</span>
+      <span class="body">
+        <p class="name">Okiro <span class="tag">1ª versão</span></p>
+        <p class="desc">Fonte Urbanist — a primeira leva desse tema.</p>
+      </span>
+      <span class="go">okiro-clone.vercel.app →</span>
+    </a>
+
+    <a class="entry" style="--accent:#FA8D85" href="https://leticia.club" target="_blank" rel="noopener">
+      <span class="num">02</span>
+      <span class="body">
+        <p class="name">Okiro <span class="tag">versão fiel · Letícia Clube</span></p>
+        <p class="desc">Fonte original Nunito — virou o seu blog em leticia.club.</p>
+      </span>
+      <span class="go">leticia.club →</span>
+    </a>
+
+    <a class="entry" style="--accent:#FEA283" href="https://xoxo-nine-tawny.vercel.app" target="_blank" rel="noopener">
+      <span class="num">03</span>
+      <span class="body">
+        <p class="name">Xoxo</p>
+        <p class="desc">Tema Ghost de blog e revista, da Frenify.</p>
+      </span>
+      <span class="go">xoxo-nine-tawny.vercel.app →</span>
+    </a>
+
+    <a class="entry" style="--accent:#FFB872" href="https://neoh-ppc.vercel.app" target="_blank" rel="noopener">
+      <span class="num">04</span>
+      <span class="body">
+        <p class="name">Neoh</p>
+        <p class="desc">Outro tema Ghost da Frenify, resgatado do Wayback.</p>
+      </span>
+      <span class="go">neoh-ppc.vercel.app →</span>
+    </a>
+
+    <a class="entry" style="--accent:#8DA599" href="https://paragraph-ioio.vercel.app" target="_blank" rel="noopener">
+      <span class="num">05</span>
+      <span class="body">
+        <p class="name">Paragraph</p>
+        <p class="desc">Tema Ghost da Highfive Themes.</p>
+      </span>
+      <span class="go">paragraph-ioio.vercel.app →</span>
+    </a>
+
+    <a class="entry" style="--accent:#8D96C1" href="https://ghost-admin-ppc.vercel.app" target="_blank" rel="noopener">
+      <span class="num">06</span>
+      <span class="body">
+        <p class="name">Ghost Admin <span class="tag">parte interna</span></p>
+        <p class="desc">O editor por dentro — onde se escreve e publica os posts.</p>
+      </span>
+      <span class="go">ghost-admin-ppc.vercel.app →</span>
+    </a>
+  </nav>
+
+  <p class="foot">6 links, todos no ar.</p>
+</div>
+
+</body></html>

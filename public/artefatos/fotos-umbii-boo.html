@@ -1,0 +1,111 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>F O T O S . U M B I I . B O O</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap">
+<style>
+/* layout: moldura branca com um painel arredondado em gradiente cinza-creme (como veenus.quest); seções empilhadas com muito respiro; carmim só nos destaques */
+:root {
+  --moldura: #ffffff;
+  --creme: #f6efe8;
+  --taupe: #cdc4bc;
+  --carmim: #e3284f;
+  --coral: #f2785e;
+  --ardosia: #4c5566;
+  --tinta: #2a2e36;
+  --suave: #7d7a78;
+  --display: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--moldura); color: var(--tinta); font-family: var(--display); margin: 0; padding-inline: 16px; padding-block: 28px; -webkit-font-smoothing: antialiased; }
+.painel {
+  max-width: 1040px; margin: 0 auto; border-radius: 22px; overflow: hidden;
+  background: radial-gradient(120% 70% at 50% 42%, var(--creme) 0%, #e6ddd5 48%, var(--taupe) 100%);
+  padding-inline: clamp(22px, 6vw, 88px); padding-block: clamp(56px, 9vw, 120px);
+}
+.caps { text-transform: uppercase; letter-spacing: .42em; font-weight: 500; font-size: 11px; color: var(--ardosia); }
+h1 { font-weight: 300; font-size: clamp(30px, 6.4vw, 64px); letter-spacing: .28em; line-height: 1.15; margin: 26px 0 22px; text-wrap: balance; color: var(--tinta); }
+h1 b { font-weight: 600; color: var(--carmim); }
+.lead { max-width: 60ch; font-size: 17px; line-height: 1.7; color: var(--ardosia); margin: 0; }
+.faixa { height: 6px; border-radius: 6px; margin: 64px 0 0; background: linear-gradient(90deg, var(--carmim), var(--coral) 55%, var(--ardosia)); opacity: .85; }
+section { margin-top: clamp(72px, 10vw, 112px); }
+h2 { margin: 0 0 30px; font-size: 12px; font-weight: 600; letter-spacing: .5em; text-transform: uppercase; color: var(--carmim); }
+.links { display: flex; flex-wrap: wrap; gap: 14px; }
+.pilula { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px; background: var(--tinta); color: #fff; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; min-width: 0; overflow-wrap: anywhere; }
+.pilula.clara { background: rgba(255,255,255,.72); color: var(--tinta); }
+.pilula:focus-visible, .pilula:hover { outline: 2px solid var(--carmim); outline-offset: 3px; }
+ul.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+ul.lista li { display: grid; grid-template-columns: 22px 1fr; gap: 14px; font-size: 16px; line-height: 1.65; color: var(--tinta); max-width: 70ch; }
+ul.lista li::before { content: ''; width: 9px; height: 9px; border-radius: 50%; margin-top: 9px; background: var(--carmim); }
+ul.lista.feito li::before { background: var(--ardosia); }
+ul.lista.falta li::before { background: var(--coral); }
+ul.lista li span { min-width: 0; }
+ul.lista strong { font-weight: 600; }
+.passos { display: grid; gap: 16px; counter-reset: p; }
+.passo { background: rgba(255,255,255,.62); border-radius: 18px; padding: 22px 26px; display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; }
+.passo::before { counter-increment: p; content: counter(p); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--carmim); color: #fff; font-weight: 600; font-size: 14px; }
+.passo p { margin: 0; line-height: 1.65; font-size: 15px; min-width: 0; }
+.passo p b { font-weight: 600; }
+code { font-family: ui-monospace, Menlo, monospace; font-size: .9em; background: rgba(255,255,255,.7); padding: 2px 7px; border-radius: 6px; overflow-wrap: anywhere; }
+.rodape { margin-top: clamp(80px, 11vw, 120px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+@media (max-width: 520px) { .caps { letter-spacing: .3em; } h1 { letter-spacing: .16em; } .pilula { letter-spacing: .2em; } }
+</style>
+
+<main class="painel">
+  <div class="caps">relatório · terminal a p i / g o o g l e . f o t o s · 28 set 2026</div>
+  <h1>f o t o s . <b>u m b i g o</b></h1>
+  <p class="lead">O PWA de teste do umbigo: a cliente traz as fotos do Google Fotos pelo Takeout (tudo de uma vez) ou pela janelinha (escolhendo), e elas ficam guardadas e arrumadas no aplicativo. Feito a partir do modelo cadastro.umbii.boo, que continua intacto.</p>
+  <div class="faixa" aria-hidden="true"></div>
+
+  <section>
+    <h2>links</h2>
+    <div class="links">
+      <a class="pilula" href="https://fotos.umbii.boo">fotos.umbii.boo</a>
+      <a class="pilula clara" href="https://cadastro.umbii.boo">modelo · cadastro.umbii.boo</a>
+      <a class="pilula clara" href="https://console.cloud.google.com/auth/clients?project=umbigo">google cloud · projeto umbigo</a>
+    </div>
+    <p class="lead" style="margin-top:22px;font-size:14px">Pasta: <code>~/Documents/T E R M I N A L/fotos.umbii.boo</code> · projeto Vercel <code>fotos.umbii.boo</code></p>
+  </section>
+
+  <section>
+    <h2>já feito</h2>
+    <ul class="lista feito">
+      <li><span><strong>Pesquisa:</strong> desde 31/03/2025 o Google não deixa nenhum aplicativo ler a biblioteca inteira do Google Fotos. A API de portabilidade só vale na Europa e não inclui Fotos. Sobraram a janelinha de escolher e o Takeout.</span></li>
+      <li><span><strong>Duplicata do modelo</strong> em fotos.umbii.boo, com tudo de finanças trocado por umbigo: Início, Trazer tudo, Escolher, Fotos e Conta, em pílulas da paleta.</span></li>
+      <li><span><strong>Trazer tudo (Takeout):</strong> conectar o Google, abrir o Takeout com o Google Fotos marcado e buscar os pacotes no Drive. O robô abre os pacotes, separa fotos e vídeos, lê as datas e guarda tudo.</span></li>
+      <li><span><strong>Escolher fotos (janelinha):</strong> conectar o Google, marcar no Google Fotos e as fotos chegam. O robô fica no servidor, protegido.</span></li>
+      <li><span><strong>Banco próprio</strong> dentro do "u m b ii . b o o", sem projeto novo: schema <code>fotos_umbii_boo</code> e bucket <code>fotos-umbii-boo</code>, fechados para quem não é a dona.</span></li>
+      <li><span><strong>Google Cloud:</strong> APIs do Drive e do Google Fotos ligadas, e a chave da janelinha do Drive só vale em fotos.umbii.boo.</span></li>
+      <li><span><strong>Conferência no ar:</strong> só o domínio nosso, sem nenhum .vercel.app. Favicon, ícones, og:image e og:url abrem no domínio novo. A entrada é só para le@umbii.boo e o banco está fechado.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>em andamento</h2>
+    <ul class="lista">
+      <li><span>Esperando a Dra Lê criar a autorização do Google (o ID do cliente OAuth). A página do Google Cloud bloqueia os cliques pelo Chrome, por causa de outra extensão.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>o que falta</h2>
+    <div class="passos">
+      <div class="passo"><p><b>Branding:</b> no Google Cloud (projeto umbigo), toque em <b>Começar</b>. Nome <b>umbigo</b>, público <b>Externo</b>, contato <b>le@umbii.boo</b>, depois Criar.</p></div>
+      <div class="passo"><p><b>Público-alvo:</b> toque em <b>Publicar aplicativo</b> e depois em Confirmar, para qualquer conta Google de teste conseguir conectar.</p></div>
+      <div class="passo"><p><b>Clientes:</b> toque em <b>+ Criar cliente</b>. Escolha Aplicativo da Web, nome fotos.umbii.boo, e em origem coloque <b>https://fotos.umbii.boo</b>.</p></div>
+      <div class="passo"><p>Colar o <b>ID do cliente</b> (termina em .apps.googleusercontent.com) no terminal. Em um minuto o botão "conectar o google" passa a funcionar.</p></div>
+    </div>
+    <ul class="lista falta" style="margin-top:40px">
+      <li><span>Vídeos com mais de 50 MB ficam de fora, por causa do limite por arquivo do plano do Supabase.</span></li>
+      <li><span>As fotos HEIC do iPhone ficam guardadas, mas na grade aparecem só com o rótulo "heic".</span></li>
+      <li><span>Ainda falta o robô de IA: achar o rosto do Luigi, da Giovanna e da Giulia, escolher as melhores, tratar e montar com música.</span></li>
+    </ul>
+  </section>
+
+  <div class="rodape">
+    <span class="caps">v è n u s . q u e s t · estilo</span>
+    <span class="caps">nada foi apagado</span>
+  </div>
+</main>
+
+</body></html>

@@ -1,0 +1,624 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>n o ii · advogados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
+<style>
+/* Layout: cópia fiel das duas referências. Topo e abertura = identity-extractor (washi, sumi, pílula ferrugem, campo com botão preto, área tracejada). Partes seguintes = dr-show (convite: títulos Cormorant finos, filete dourado com ponto, texto Lora, cartões claros, formulário). Sem itálico. */
+:root {
+  --verde: #FFFBF3;
+  --branco: #3B3D40;
+  --verde-linha: rgba(255,251,243,0.45);
+  --verde-fino: rgba(255,251,243,0.28);
+
+  --washi: var(--branco);
+  --sumi: var(--verde);
+  --hairline: var(--verde-linha);
+  --ferrugem: var(--verde);
+  --ferrugem-texto: var(--branco);
+
+  --carvao: var(--verde);
+  --apagado: var(--verde);
+  --ouro: var(--verde);
+  --borda: var(--verde-fino);
+  --cartao: var(--branco);
+  --campo: var(--verde-linha);
+  --marrom: var(--verde);
+
+  --display: 'Prata', Georgia, 'Times New Roman', serif;
+  --baskerville: 'Prata', Georgia, serif;
+  --lora: 'Prata', Georgia, serif;
+  --mono: 'Prata', Georgia, serif;
+
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+em, i { font-style: normal; }
+html, body { background: var(--washi); color: var(--sumi); }
+body { font-family: var(--baskerville); -webkit-font-smoothing: antialiased; font-variant-numeric: lining-nums; }
+*::selection { background: var(--sumi); color: var(--washi); }
+a { color: inherit; }
+:focus-visible { outline: 1.5px solid var(--ferrugem); outline-offset: 3px; }
+
+/* ================= identity-extractor ================= */
+.nav {
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 40px; border-bottom: 1px solid var(--hairline);
+}
+.brand, .nav-links a {
+  font-family: var(--mono); font-size: 15px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--sumi); text-decoration: none;
+}
+.nav-links a { opacity: .75; transition: opacity 150ms ease, color 150ms ease; }
+.nav-links a:hover { opacity: 1; color: var(--ferrugem); }
+.nav-center { position: absolute; left: 50%; transform: translateX(-50%); }
+.start {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ferrugem-texto); background: var(--ferrugem);
+  border: 1px solid var(--verde-linha); border-radius: 999px; padding: 6px 16px; text-decoration: none;
+  transition: opacity 150ms ease;
+}
+.start:hover { opacity: .9; }
+
+.hero {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 96px 40px 64px; max-width: 760px; margin: 0 auto; width: 100%;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 15px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--verde); margin-bottom: 36px;
+}
+.headline {
+  font-family: var(--display); font-weight: 400; font-size: clamp(56px, 9vw, 112px);
+  line-height: 0.98; letter-spacing: -0.01em; margin: 0 0 28px; text-wrap: balance;
+}
+.headline em { font-weight: 400; }
+.lede {
+  font-family: var(--baskerville); font-size: 20px; line-height: 1.55;
+  color: var(--verde); max-width: 600px; margin: 0 0 48px;
+}
+.ingest { width: 100%; max-width: 680px; display: flex; flex-direction: column; gap: 16px; }
+.ingest-row {
+  display: flex; align-items: center; width: 100%;
+  background: var(--branco); border: 1px solid var(--verde-linha); border-radius: 999px;
+  padding: 4px 4px 4px 0;
+  box-shadow: none;
+}
+.ingest-prefix {
+  font-family: var(--mono); font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--verde); padding: 0 16px 0 20px; border-right: 1px solid var(--verde-linha);
+  white-space: nowrap; line-height: 49px;
+}
+.ingest-input {
+  flex: 1; min-width: 0; font-family: var(--mono); font-size: 18px; letter-spacing: 0.02em;
+  color: var(--sumi); background: transparent; border: 0; padding: 14px 18px; outline: none;
+}
+.ingest-input::placeholder { color: var(--verde); }
+.ingest-go {
+  flex: none; height: 49px; padding: 0 22px; border: 0; border-radius: 999px; cursor: pointer;
+  font-family: var(--mono); font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--washi); background: var(--sumi);
+  box-shadow: none;
+  transition: opacity 150ms ease;
+}
+.ingest-go:hover { opacity: .88; }
+.ingest-zone {
+  display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
+  background: var(--branco); border: 1px dashed var(--verde-linha); border-radius: 28px;
+  padding: 32px 24px; box-shadow: none;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+.ingest-zone:hover, .ingest-zone.over { background: var(--branco); border-color: var(--verde-linha); }
+.ingest-zone-eyebrow { font-family: var(--mono); font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--verde); }
+.ingest-zone-title { font-family: var(--display); font-size: 28px; line-height: 1.15; color: var(--sumi); }
+.ingest-zone-meta { font-family: var(--mono); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--verde); }
+.ingest-zone-meta u { text-underline-offset: 3px; }
+.ingest-zone input { display: none; }
+.foot-meta { margin-top: 28px; font-family: var(--mono); font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--verde); }
+
+.how { border-top: 1px solid var(--hairline); padding: 64px 40px 96px; max-width: 920px; margin: 0 auto; width: 100%; }
+.how-eyebrow { font-family: var(--mono); font-size: 15px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--verde); margin-bottom: 28px; }
+.how-list { list-style: none; margin: 0; padding: 0; }
+.how-list li {
+  display: grid; grid-template-columns: 56px 1.3fr 2fr; align-items: baseline; gap: 24px;
+  padding: 22px 0; border-bottom: 1px solid var(--hairline);
+  font-family: var(--display); font-size: 28px; line-height: 1.2;
+}
+.how-list .num { font-family: var(--mono); font-size: 15px; letter-spacing: 0.18em; color: var(--verde); }
+.how-list .dim { font-family: var(--baskerville); font-size: 18px; line-height: 1.6; color: var(--verde); }
+
+/* ================= dr-show ================= */
+.convite { color: var(--carvao); font-family: var(--lora); }
+.sec { padding: 96px 24px; border-top: 1px solid var(--borda); }
+.sec-in { max-width: 672px; margin: 0 auto; text-align: center; }
+.sec-in.largo { max-width: 896px; }
+.kicker { font-family: var(--display); font-size: 16px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--apagado); margin: 0 0 16px; }
+.titulo { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 6vw, 56px); line-height: 1.08; color: var(--carvao); margin: 0; text-wrap: balance; }
+.filete { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 28px auto 32px; }
+.filete::before, .filete::after { content: ''; width: 48px; height: 1px; background: var(--ouro); }
+.filete span { width: 4px; height: 4px; border-radius: 50%; background: var(--ouro); }
+.texto { font-size: 19px; line-height: 1.8; color: var(--apagado); margin: 0 auto; max-width: 640px; }
+.texto + .texto { margin-top: 16px; }
+
+/* conversa */
+.conversa {
+  max-width: 480px; margin: 48px auto 0; text-align: left;
+  background: var(--branco); border: 1px solid var(--verde-fino); padding: 28px 24px;
+}
+.conversa-topo { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--borda); }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%; flex: none; overflow: hidden;
+  border: 1px solid var(--ouro); display: grid; place-items: center;
+  font-family: var(--display); font-size: 28px; color: var(--carvao); background: var(--cartao);
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.conversa-topo strong { display: block; font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.1; color: var(--carvao); }
+.conversa-topo small { font-family: var(--display); font-size: 15px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--apagado); }
+.mensagens { display: flex; flex-direction: column; gap: 12px; }
+.msg { max-width: 86%; padding: 11px 15px; font-size: 18px; line-height: 1.6; }
+.msg.ia { align-self: flex-start; background: var(--washi); color: var(--carvao); border: 1px solid var(--borda); }
+.msg.pac { align-self: flex-end; background: var(--marrom); color: var(--washi); }
+.horarios { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.horarios span { font-family: var(--display); font-size: 18px; letter-spacing: 0.08em; padding: 4px 10px; border: 1px solid var(--borda); background: var(--cartao); }
+.horarios span.on { border-color: var(--marrom); color: var(--washi); background: var(--marrom); }
+.nota { margin-top: 18px; font-family: var(--display); font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--apagado); }
+
+/* linha do tempo */
+.tempo { margin-top: 8px; }
+.passo { padding: 8px 0; }
+.passo .quando { font-family: var(--display); font-size: 20px; letter-spacing: 0.06em; color: var(--apagado); margin: 0 0 12px; }
+.passo p { margin: 0 auto; max-width: 560px; font-size: 19px; line-height: 1.85; color: var(--carvao); opacity: .9; }
+.passo + .passo::before { content: ''; display: block; width: 1px; height: 64px; background: var(--verde-fino); margin: 8px auto 28px; }
+
+/* citação */
+.citacao { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 3.4vw, 30px); line-height: 1.4; color: var(--carvao); margin: 0 auto; max-width: 600px; }
+.autor { margin-top: 16px; font-family: var(--display); font-size: 16px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--apagado); }
+
+/* notas gentis */
+.notas { margin: 48px auto 0; max-width: 560px; display: flex; flex-direction: column; gap: 14px; }
+.notas p { margin: 0; font-size: 18px; line-height: 1.8; color: var(--apagado); }
+.notas strong { font-weight: 400; color: var(--carvao); }
+
+/* cartões */
+.cartoes { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; margin-top: 16px; text-align: center; }
+.cartao { background: var(--branco); border: 1px solid var(--verde-fino); padding: 36px 20px 32px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.cartao.destaque { border-color: var(--ouro); background: var(--cartao); }
+.cartao h3 { font-family: var(--display); font-weight: 400; font-size: 26px; margin: 0; color: var(--carvao); }
+.cartao .qtd { font-family: var(--display); font-size: 16px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--apagado); }
+.preco { font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 1; color: var(--carvao); white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
+.preco small { font-size: 20px; color: var(--apagado); }
+.riscado { font-size: 18px; color: var(--apagado); }
+.riscado s { text-decoration-color: var(--ouro); }
+.linha-ouro { width: 32px; height: 1px; background: var(--ouro); margin: 6px 0; }
+.cartao .por { font-size: 18px; color: var(--apagado); }
+.selo-dest { font-family: var(--display); font-size: 15px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--marrom); }
+.implant { margin: 0 auto 48px; display: inline-flex; flex-direction: column; align-items: center; gap: 8px; }
+
+/* a conta */
+.conta { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); margin-top: 16px; border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda); }
+.conta div { padding: 36px 12px; }
+.conta div + div { border-left: 1px solid var(--borda); }
+.conta .preco { font-size: clamp(34px, 5vw, 46px); }
+.conta .kicker { margin-bottom: 14px; }
+.conta p { margin: 12px 0 0; font-size: 18px; line-height: 1.6; color: var(--apagado); }
+
+/* garantias */
+.garantias { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 48px 40px; margin-top: 16px; text-align: center; }
+.garantias h3 { font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.25; margin: 0 0 12px; color: var(--carvao); }
+.garantias p { margin: 0; font-size: 18px; line-height: 1.8; color: var(--apagado); }
+
+/* formulário */
+.form { max-width: 480px; margin: 40px auto 0; text-align: left; display: flex; flex-direction: column; gap: 22px; }
+.form label { display: block; font-family: var(--display); font-size: 19px; letter-spacing: 0.02em; color: var(--carvao); margin-bottom: 8px; }
+.form input, .form select {
+  width: 100%; font-family: var(--lora); font-size: 18px; color: var(--carvao);
+  background: var(--branco); border: 1px solid var(--campo); padding: 10px 12px; border-radius: 0; outline: none;
+}
+.form input::placeholder { color: var(--verde-fino); }
+.form input:focus, .form select:focus { border-color: var(--marrom); }
+.enviar {
+  margin-top: 8px; width: 100%; border: 0; cursor: pointer; padding: 14px 16px;
+  font-family: var(--display); font-size: 18px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--washi); background: var(--marrom); transition: opacity 150ms ease;
+}
+.enviar:hover { opacity: .9; }
+.pronto { margin-top: 8px; border: 1px solid var(--ouro); background: var(--cartao); padding: 20px; font-size: 18px; line-height: 1.7; color: var(--carvao); }
+.pronto pre { white-space: pre-wrap; font-family: var(--lora); font-size: 18px; color: var(--apagado); margin: 12px 0; }
+.copiar { font-family: var(--display); font-size: 16px; letter-spacing: 0.24em; text-transform: uppercase; background: transparent; border: 1px solid var(--marrom); color: var(--marrom); padding: 8px 14px; cursor: pointer; }
+.presenca { margin-top: 28px; font-size: 18px; color: var(--apagado); text-align: center; }
+
+/* antes e depois */
+.antes { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; margin-top: 16px; text-align: left; }
+.antes > div { padding: 32px 28px; border: 1px solid var(--verde-fino); background: var(--branco); }
+.antes > div.depois { border-color: var(--ouro); background: var(--cartao); }
+.antes .kicker { margin-bottom: 18px; }
+.antes ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.antes li { font-size: 18px; line-height: 1.7; color: var(--apagado); padding-left: 18px; position: relative; }
+.antes li::before { content: ''; position: absolute; left: 0; top: .75em; width: 8px; height: 1px; background: var(--ouro); }
+.antes .depois li { color: var(--carvao); }
+
+/* ditado */
+.ditado { max-width: 600px; margin: 48px auto 0; text-align: left; border: 1px solid var(--verde-fino); background: var(--branco); }
+.ditado-fala { display: flex; gap: 16px; align-items: flex-start; padding: 24px; border-bottom: 1px solid var(--borda); }
+.mic { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--marrom); display: grid; place-items: center; }
+.mic svg { width: 16px; height: 16px; stroke: var(--washi); fill: none; stroke-width: 1.6; }
+.onda { display: flex; gap: 3px; align-items: center; height: 14px; margin-bottom: 8px; }
+.onda i { display: block; width: 3px; background: var(--ouro); border-radius: 2px; }
+.ditado-fala p { margin: 0; font-size: 18px; line-height: 1.7; color: var(--apagado); }
+.ditado-saida { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+.bloco h4 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; font-size: 16px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--apagado); }
+.bloco p { margin: 0; font-size: 18px; line-height: 1.7; color: var(--carvao); }
+.assinar { align-self: flex-start; border: 0; padding: 12px 20px; font-family: var(--display); font-size: 18px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--washi); background: var(--marrom); }
+
+.rodape .lema { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 4vw, 40px); color: var(--carvao); margin: 0 0 12px; }
+
+.rodape { border-top: 1px solid var(--verde-fino); padding: 64px 24px; text-align: center; }
+.rodape .nomes { font-family: var(--display); font-weight: 400; font-size: 30px; color: var(--carvao); margin: 0 0 8px; }
+.rodape .data { font-family: var(--display); font-size: 16px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--apagado); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sobe { animation: sobe 1s ease both; }
+  .d1 { animation-delay: .1s } .d2 { animation-delay: .25s } .d3 { animation-delay: .4s }
+  @keyframes sobe { from { opacity: .001; transform: translateY(12px) } to { opacity: 1; transform: none } }
+}
+
+@media (max-width: 640px) {
+  .nav { padding: 18px 20px; }
+  .nav-links { display: none; }
+  .nav-center { position: static; transform: none; }
+  .hero { padding: 56px 20px 48px; }
+  .how { padding: 48px 20px 72px; }
+  .how-list li { grid-template-columns: 40px 1fr; }
+  .how-list .dim { grid-column: 2; }
+  .ingest-prefix { display: none; }
+  .ingest-input { padding-left: 20px; }
+  .ingest-go { padding: 0 16px; }
+  .sec { padding: 72px 20px; }
+  .cartoes, .garantias, .conta, .antes { grid-template-columns: minmax(0,1fr); }
+  .conta div + div { border-left: 0; border-top: 1px solid var(--borda); }
+}
+
+/* só letra minúscula */
+*,*::before,*::after{text-transform:lowercase!important}
+::placeholder{text-transform:lowercase!important}
+/* vitrine do d r . s h o w */
+.vitrine{max-width:620px;margin:48px auto 0;border:1px solid var(--verde-linha);background:var(--branco);text-align:left}
+.vitrine-barra{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--verde-fino)}
+.vitrine-barra i{width:8px;height:8px;border-radius:50%;border:1px solid var(--verde-linha)}
+.vitrine-barra span{margin-left:10px;font-size:14px;color:var(--verde);letter-spacing:.04em}
+.vitrine-corpo{padding:40px 32px 36px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.vitrine-corpo .avatar{width:72px;height:72px;font-size:30px}
+.vitrine-nome{font-family:var(--display);font-size:34px;line-height:1.1;color:var(--verde)}
+.vitrine-esp{font-size:16px;color:var(--verde)}
+.vitrine-botoes{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
+.vitrine-botoes span{font-size:14px;letter-spacing:.2em;padding:10px 18px;border:1px solid var(--verde)}
+.vitrine-botoes span.cheio{background:var(--verde);color:var(--branco)}
+.vitrine-menu{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:18px;padding-top:18px;border-top:1px solid var(--verde-fino);width:100%;font-size:15px;color:var(--verde)}
+.vitrine .avatar{border-color:var(--verde)}
+.cruzado{display:inline-block;margin-top:28px;font-size:16px;letter-spacing:.2em;color:var(--verde);text-decoration:none;border-bottom:1px solid var(--verde-linha);padding-bottom:4px}
+.cruzado:hover{border-color:var(--verde)}
+.nav-links{display:flex;gap:28px}
+</style>
+
+
+<div class="page">
+  <nav class="nav">
+    <a class="brand" href="#inicio">n o ii</a>
+    <div class="nav-center"><a class="start" href="#fundadores">// ser fundador</a></div>
+    <div class="nav-links"><a href="#precos">preços</a><a href="https://claude.ai/artifact/SeJv9gb1jA56nmdoB4WHhK" target="_blank" rel="noopener">d r . s h o w</a></div>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div class="eyebrow sobe">// n o ii · para advogados</div>
+    <h1 class="headline sobe d1">tudo num lugar só.</h1>
+    <p class="lede sobe d2">Clientes, agenda, processos, prazos, documentos, reunião por vídeo e cobrança, organizados num único lugar e com a sua marca. Uma inteligência artificial para cada cliente. E o senhor não digita mais nada.</p>
+
+    <div class="ingest sobe d3">
+      <form class="ingest-row" id="formNome">
+        <span class="ingest-prefix">nome /</span>
+        <input class="ingest-input" id="nome" type="text" placeholder="digite o seu nome, ex.: dr. otávio" autocomplete="off" aria-label="o seu nome">
+        <button class="ingest-go" type="submit">[ ver o meu → ]</button>
+      </form>
+      <label class="ingest-zone" id="zona" for="logo">
+        <span class="ingest-zone-eyebrow">// a sua logo</span>
+        <span class="ingest-zone-title">arraste a sua logo e veja como fica</span>
+        <span class="ingest-zone-meta">— ou <u>clique para escolher</u> · png · jpg · svg</span>
+        <input id="logo" type="file" accept="image/*">
+      </label>
+    </div>
+    <p class="foot-meta">20 vagas de fundador · preço garantido para sempre</p>
+  </header>
+
+  <section class="how" id="dentro">
+    <div class="how-eyebrow">// o que está dentro do n o ii</div>
+    <ul class="how-list">
+      <li><span class="num">01</span><span>uma IA para cada cliente</span><span class="dim">Com o nome que o senhor escolher. Conhece a história daquele cliente, e só dele. Responde dúvidas a qualquer hora, lembra do que precisa ser feito e avisa o senhor quando algo pede a sua atenção.</span></li>
+      <li><span class="num">02</span><span>acompanhamento do caso</span><span class="dim">Cada cliente tem a sua pasta: processo, prazos, andamentos, documentos e contratos, e acompanha tudo pelo aplicativo.</span></li>
+      <li><span class="num">03</span><span>agenda organizada</span><span class="dim">Uma agenda só, para o senhor e para a sua equipe. Confirmação, remarcação e lembretes automáticos, sem ninguém precisar ficar respondendo mensagem.</span></li>
+      <li><span class="num">04</span><span>reunião por vídeo com a sua marca</span><span class="dim">A reunião por vídeo acontece dentro do seu aplicativo, com o seu nome na tela. O cliente não baixa nada.</span></li>
+      <li><span class="num">05</span><span>tudo por voz</span><span class="dim">O senhor fala, e o n o ii escreve: o andamento, o contrato, a peça, as orientações e as mensagens. No atendimento, ele escuta e prepara tudo sozinho.</span></li>
+      <li><span class="num">06</span><span>contratos e peças assinados</span><span class="dim">O senhor fala, e o n o ii prepara o rascunho do contrato, da procuração ou da peça. O senhor revisa e assina com assinatura digital válida.</span></li>
+      <li><span class="num">07</span><span>cobrança</span><span class="dim">Pix, cartão e mensalidade automática do acompanhamento, com nota fiscal. O senhor recebe em dia, sem correr atrás de ninguém.</span></li>
+    </ul>
+  </section>
+</div>
+
+<main class="convite">
+  <section class="sec" id="dor">
+    <div class="sec-in largo">
+      <p class="kicker">hoje está tudo espalhado</p>
+      <h2 class="titulo">o escritório inteiro, num lugar só</h2>
+      <div class="filete"><span></span></div>
+      <p class="texto">Horário combinado numa mensagem, documento perdido no e-mail, recado em áudio que ninguém achou mais, o mesmo texto digitado de novo e de novo. O escritório de hoje vive espalhado em meia dúzia de aplicativos, e quem paga a conta é o tempo do senhor.</p>
+      <p class="texto">O n o ii junta tudo num único lugar, com a sua marca. E nós cuidamos dele por trás, para o senhor só atender.</p>
+      <div class="antes" style="margin-top:48px">
+        <div>
+          <p class="kicker">antes</p>
+          <ul>
+            <li>Horários marcados em conversas soltas, sem controle</li>
+            <li>Prazos anotados em agendas e documentos por e-mail</li>
+            <li>Documentos e orientações digitados um por um</li>
+            <li>Atendimento por vídeo num aplicativo de outra empresa</li>
+            <li>O cliente ligando para perguntar o que já foi explicado</li>
+            <li>Cobrança feita na mão, com atraso e constrangimento</li>
+          </ul>
+        </div>
+        <div class="depois">
+          <p class="kicker">com o n o ii</p>
+          <ul>
+            <li>Agenda única, com confirmação e lembretes automáticos</li>
+            <li>Processo, prazos e documentos de cada cliente na pasta dele</li>
+            <li>O senhor fala, e o n o ii escreve</li>
+            <li>Reunião por vídeo dentro do seu aplicativo, com o seu nome</li>
+            <li>A IA de cada cliente responde, lembra e acompanha</li>
+            <li>Mensalidade cobrada sozinha, com nota fiscal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ia">
+    <div class="sec-in">
+      <p class="kicker">cada cliente com a sua</p>
+      <h2 class="titulo">uma IA que conhece só ele</h2>
+      <div class="filete"><span></span></div>
+      <p class="texto">A IA de cada cliente conhece a história dele e as orientações que o senhor deu. Ela lembra, acompanha, tira dúvidas e marca horário, a qualquer hora do dia. E não sabe nada de mais ninguém.</p>
+      <p class="texto">O senhor escolhe o nome. O cliente sente que tem alguém do escritório com ele o tempo todo.</p>
+
+      <div class="conversa" id="demo">
+        <div class="conversa-topo">
+          <div class="avatar" id="avatar">t</div>
+          <div>
+            <strong>tavinha</strong>
+            <small>a assistente <span class="de">do</span> <span class="dr">dr. otávio</span></small>
+          </div>
+        </div>
+        <div class="mensagens">
+          <div class="msg ia">Olá, Ana! Boa notícia: a audiência do seu processo foi marcada para o dia 14, às 10h.</div>
+          <div class="msg pac">Que bom! Preciso levar algum documento?</div>
+          <div class="msg ia">Sim: RG e os comprovantes de renda que estão na sua pasta. <span class="dr">o dr. otávio</span> quer conversar antes. Tenho estes horários:<div class="horarios"><span>seg · 16h</span><span class="on">ter · 11h</span><span>qua · 15h</span></div></div>
+          <div class="msg pac">Terça às 11h.</div>
+          <div class="msg ia">Marcado! Te mando o lembrete e a lista de documentos na véspera.</div>
+        </div>
+      </div>
+      <p class="nota">exemplo · o nome da IA é o senhor quem escolhe</p>
+
+      <div class="notas">
+        <p><strong>Só ele:</strong> cada cliente tem a sua pasta, e a IA dele nunca vê a de outra pessoa.</p>
+        <p><strong>A qualquer hora:</strong> a dúvida das duas da manhã é respondida na hora, dentro do que o senhor orientou.</p>
+        <p><strong>O senhor no comando:</strong> quando aparece algo que precisa do senhor, a IA avisa e passa o caso adiante. Ela não dá parecer jurídico sozinha: informa, lembra e organiza, dentro do que o senhor definiu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="voz">
+    <div class="sec-in">
+      <p class="kicker">o senhor não digita mais nada</p>
+      <h2 class="titulo">o senhor fala, o n o ii escreve</h2>
+      <div class="filete"><span></span></div>
+      <p class="texto">No atendimento, presencial ou por vídeo, o n o ii escuta e prepara o andamento, o contrato, a peça e as orientações. O senhor confere, ajusta se quiser e assina. Tudo chega para o cliente, e a IA dele já passa a saber.</p>
+      <p class="texto">Fora do atendimento também: o senhor pede por voz para marcar um retorno ou mandar uma orientação, e está feito.</p>
+
+      <div class="ditado">
+        <div class="ditado-fala">
+          <div class="mic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></div>
+          <div>
+            <div class="onda" aria-hidden="true"><i style="height:6px"></i><i style="height:12px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:5px"></i><i style="height:10px"></i><i style="height:13px"></i><i style="height:7px"></i><i style="height:11px"></i><i style="height:4px"></i></div>
+            <p>“Processo da Ana: audiência marcada para o dia 14. Prepara a petição de juntada dos comprovantes de renda e marca reunião com ela antes da audiência.”</p>
+          </div>
+        </div>
+        <div class="ditado-saida">
+          <div class="bloco"><h4>andamento</h4><p>Audiência marcada para o dia 14, às 10h.</p></div>
+          <div class="bloco"><h4>peça</h4><p>Rascunho da petição de juntada dos comprovantes.</p></div>
+          <div class="bloco"><h4>documentos</h4><p>RG e comprovantes de renda solicitados à cliente.</p></div>
+          <div class="bloco"><h4>agenda</h4><p>Reunião antes da audiência.</p></div>
+          <span class="assinar">conferir e assinar</span>
+        </div>
+      </div>
+      <p class="nota">exemplo · nada sai sem a conferência e a assinatura do senhor</p>
+    </div>
+  </section>
+
+  <section class="sec" id="como">
+    <div class="sec-in">
+      <p class="kicker">como funciona</p>
+      <h2 class="titulo">do primeiro dia em diante</h2>
+      <div class="filete"><span></span></div>
+      <div class="tempo">
+        <div class="passo"><p class="quando">a conversa</p><p>O senhor nos conta como atende, quem faz parte da equipe e como gosta das coisas. Escolhe o nome da IA e o jeito como ela fala com os clientes.</p></div>
+        <div class="passo"><p class="quando">em até 7 dias</p><p>Entregamos o n o ii pronto: agenda, pastas dos clientes, reunião por vídeo, ditado, documentos e cobrança, tudo com a sua marca.</p></div>
+        <div class="passo"><p class="quando">os clientes entram</p><p>Cada cliente ganha a sua IA, que passa a conhecer o caso dele, lembrar do que precisa ser feito e marcar os horários.</p></div>
+        <div class="passo"><p class="quando">sempre</p><p>Nós cuidamos de tudo por trás: atualizações, segurança e ajustes. O senhor pede, a gente faz.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="conta">
+    <div class="sec-in largo">
+      <p class="kicker">a conta</p>
+      <h2 class="titulo">paga pouco, fatura muito mais</h2>
+      <div class="filete"><span></span></div>
+      <p class="texto">Com a IA de cada cliente, o senhor passa a oferecer um acompanhamento que nenhum colega oferece, e pode cobrar por ele. O próprio n o ii faz a cobrança.</p>
+      <div class="conta" style="margin-top:40px">
+        <div><p class="kicker">o senhor paga</p><span class="preco">R$ 1.290</span><p>pacote até 100 clientes, por mês</p></div>
+        <div><p class="kicker">o senhor cobra</p><span class="preco">R$ 12.000</span><p>40 clientes × R$ 300 de acompanhamento mensal, cobrados pelo n o ii</p></div>
+        <div><p class="kicker">sobra</p><span class="preco">R$ 10.710</span><p>todo mês, com o seu nome em tudo</p></div>
+      </div>
+      <p class="nota">exemplo · o valor é o senhor quem define</p>
+    </div>
+  </section>
+
+  <section class="sec" id="precos">
+    <div class="sec-in largo">
+      <p class="kicker">preço de fundador, garantido para sempre</p>
+      <h2 class="titulo">um pacote, um preço</h2>
+      <div class="filete"><span></span></div>
+      <p class="texto">O pacote traz os dois juntos: o d r . s h o w, que mostra o senhor para o mundo, e o n o ii, que organiza tudo por dentro. Quem entra agora paga o preço de fundador enquanto estiver com a gente.</p>
+      <div class="implant" style="margin-top:40px">
+        <span class="kicker" style="margin:0">implantação · paga uma vez</span>
+        <span class="preco">R$ 2.500</span>
+        <span class="riscado">preço cheio <s>R$ 6.000</s></span>
+      </div>
+      <div class="cartoes">
+        <div class="cartao">
+          <span class="qtd">até 30 clientes</span>
+          <h3>consultório</h3>
+          <span class="preco">R$ 690<small>/mês</small></span>
+          <span class="riscado">preço cheio <s>R$ 1.290</s></span>
+          <span class="linha-ouro"></span>
+          <span class="por">cerca de R$ 23 por cliente</span>
+        </div>
+        <div class="cartao destaque">
+          <span class="selo-dest">o mais escolhido</span>
+          <span class="qtd">até 100 clientes</span>
+          <h3>clínica</h3>
+          <span class="preco">R$ 1.290<small>/mês</small></span>
+          <span class="riscado">preço cheio <s>R$ 2.490</s></span>
+          <span class="linha-ouro"></span>
+          <span class="por">cerca de R$ 13 por cliente</span>
+        </div>
+        <div class="cartao">
+          <span class="qtd">até 300 clientes</span>
+          <h3>referência</h3>
+          <span class="preco">R$ 2.490<small>/mês</small></span>
+          <span class="riscado">preço cheio <s>R$ 4.990</s></span>
+          <span class="linha-ouro"></span>
+          <span class="por">cerca de R$ 8 por cliente</span>
+        </div>
+      </div>
+      <p class="texto" style="margin-top:36px">Clínica com vários profissionais ou sem limite de clientes: preço sob medida.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="garantias">
+    <div class="sec-in largo">
+      <p class="kicker">sem medo</p>
+      <h2 class="titulo">o que é seu, é seu</h2>
+      <div class="filete"><span></span></div>
+      <div class="garantias">
+        <div><h3>os seus clientes são sempre seus</h3><p>A lista, os históricos, os documentos e as conversas são do senhor. Se quiser sair, leva tudo.</p></div>
+        <div><h3>dados protegidos</h3><p>Cada cliente vê só o que é dele, e cada profissional só os seus clientes. Tudo guardado como pede a LGPD.</p></div>
+        <div><h3>se nós pararmos, o senhor fica com tudo</h3><p>O sistema, os dados e a sua IA passam para o seu nome, por um valor fixo combinado desde o primeiro dia.</p></div>
+        <div><h3>dentro das regras da sua profissão</h3><p>A IA orienta, lembra e acompanha, dentro do que o senhor definiu e das normas da OAB. Ela não dá parecer jurídico sozinha: informa, lembra e organiza, dentro do que o senhor definiu.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="fundadores">
+    <div class="sec-in">
+      <p class="kicker">beta tester fundador</p>
+      <h2 class="titulo">seja um dos 20 fundadores</h2>
+      <div class="filete"><span></span></div>
+      <p class="texto">Os primeiros ajudam a moldar a plataforma do jeito deles, e ficam com condições que ninguém mais vai ter: preço de fundador para sempre, selo de fundador no painel, canal direto com a Dra Lê e prioridade para as suas ideias.</p>
+
+      <form class="form" id="formVaga">
+        <div><label for="fNome">o seu nome</label><input id="fNome" type="text" placeholder="como o senhor gostaria de ser chamado"></div>
+        <div><label for="fEsp">especialidade</label><input id="fEsp" type="text" placeholder="ex.: família, trabalhista, empresarial"></div>
+        <div><label for="fCidade">cidade</label><input id="fCidade" type="text" placeholder="onde o senhor atende"></div>
+        <div><label for="fPac">quantos clientes ativos, mais ou menos?</label>
+          <select id="fPac"><option>até 30</option><option selected>até 100</option><option>até 300</option><option>mais de 300</option></select>
+        </div>
+        <button class="enviar" type="submit">quero a minha vaga</button>
+        <div class="pronto" id="pronto" hidden>
+          Copie o texto abaixo e envie para a Dra Lê em <strong>le@umbii.boo</strong>:
+          <pre id="msgVaga"></pre>
+          <button class="copiar" id="copiar" type="button">copiar</button>
+        </div>
+      </form>
+      <p class="presenca">vagas limitadas · quem entra agora paga o preço de fundador enquanto estiver com a gente</p>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="lema">deixa tudo com o n o ii, dr..</p>
+  <p class="texto" style="margin-bottom:36px">Para o senhor, só os agradecimentos: “eita que esse dotô é porreta!”</p>
+  <p class="nomes">n o ii</p>
+  <p class="data">núcleo organizacional, inteligente e interativo · para advogados</p>
+  <a class="cruzado" href="https://claude.ai/artifact/SeJv9gb1jA56nmdoB4WHhK" target="_blank" rel="noopener">e para mostrar o senhor ao mundo: d r . s h o w →</a>
+</footer>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function trocarNome(n) {
+    n = (n || '').trim(); if (!n) return;
+    document.querySelectorAll('.dr').forEach(function (el) {
+      var comArtigo = /^(o|a) /i.test(el.textContent);
+      var artigo = /^(dra\b|doutora\b)/i.test(n) ? 'a ' : 'o ';
+      el.textContent = (comArtigo ? artigo : '') + n;
+    });
+    var fem = /^(dra\b|doutora\b)/i.test(n);
+    document.querySelectorAll('.de').forEach(function (el) { el.textContent = fem ? 'da' : 'do'; });
+    var base = n.replace(/^(dra?\.?|doutora?)\s+/i, '').split(/\s+/)[0] || n;
+    var av = $('avatar');
+    if (av && !av.querySelector('img')) av.textContent = base.charAt(0);
+    var slug = n.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    document.querySelectorAll('.dominio').forEach(function (el) { el.textContent = 'ana@' + slug + '.com.br'; });
+    document.querySelectorAll('.site').forEach(function (el) { el.textContent = slug + '.com.br'; });
+  }
+  function irDemo() { var d = $('demo'); if (d) d.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+
+  var fn = $('formNome');
+  if (fn) fn.addEventListener('submit', function (e) { e.preventDefault(); trocarNome($('nome').value); irDemo(); });
+
+  var zona = $('zona'), inp = $('logo');
+  function usarLogo(f) {
+    if (!f || !/^image\//.test(f.type)) return;
+    var r = new FileReader();
+    r.onload = function () {
+      var av = $('avatar'); if (!av) return;
+      av.textContent = '';
+      var img = new Image(); img.src = r.result; img.alt = 'a sua logo'; av.appendChild(img);
+      var t = document.querySelector('.ingest-zone-title'); if (t) t.textContent = 'pronto. veja a sua logo aqui embaixo';
+      irDemo();
+    };
+    r.readAsDataURL(f);
+  }
+  if (inp) inp.addEventListener('change', function () { usarLogo(inp.files[0]); });
+  if (zona) {
+    ['dragenter', 'dragover'].forEach(function (t) { zona.addEventListener(t, function (e) { e.preventDefault(); zona.classList.add('over'); }); });
+    ['dragleave', 'drop'].forEach(function (t) { zona.addEventListener(t, function (e) { e.preventDefault(); zona.classList.remove('over'); }); });
+    zona.addEventListener('drop', function (e) { usarLogo(e.dataTransfer.files[0]); });
+  }
+
+  var fv = $('formVaga');
+  if (fv) fv.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) { return ($(id).value || '').trim() || '—'; };
+    var txt = 'olá, dra lê! quero uma vaga de fundador.\nnome: ' + v('fNome') + '\nespecialidade: ' + v('fEsp') + '\ncidade: ' + v('fCidade') + '\npacientes ativas: ' + v('fPac') + '\nproduto: ' + document.title;
+    $('msgVaga').textContent = txt;
+    $('pronto').hidden = false;
+  });
+  var cp = $('copiar');
+  if (cp) cp.addEventListener('click', function () {
+    var t = $('msgVaga');
+    var sel = function () { var r = document.createRange(); r.selectNodeContents(t); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(t.textContent).then(function () { cp.textContent = 'copiado'; }, sel); } catch (e) { sel(); }
+  });
+})();
+</script>
+
+</body></html>

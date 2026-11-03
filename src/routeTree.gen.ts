@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as ArtefatosRouteImport } from './routes/artefatos'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
 import { Route as FemeaRouteRouteImport } from './routes/femea/route'
@@ -55,6 +56,11 @@ const IndexRoute = IndexRouteImport.update({
 } as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatosRoute = ArtefatosRouteImport.update({
+  id: '/artefatos',
+  path: '/artefatos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -245,6 +251,7 @@ export interface FileRoutesByFullPath {
   '/menstruapp-bold': typeof MenstruappBoldRouteRouteWithChildren
   '/menstruapp-fofo': typeof MenstruappFofoRouteRouteWithChildren
   '/paciente': typeof PacienteRouteRouteWithChildren
+  '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/first': typeof FirstRoute
@@ -279,6 +286,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/first': typeof FirstRoute
@@ -320,6 +328,7 @@ export interface FileRoutesById {
   '/menstruapp-bold': typeof MenstruappBoldRouteRouteWithChildren
   '/menstruapp-fofo': typeof MenstruappFofoRouteRouteWithChildren
   '/paciente': typeof PacienteRouteRouteWithChildren
+  '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/first': typeof FirstRoute
@@ -361,6 +370,7 @@ export interface FileRouteTypes {
     | '/menstruapp-bold'
     | '/menstruapp-fofo'
     | '/paciente'
+    | '/artefatos'
     | '/auth'
     | '/calendario'
     | '/first'
@@ -395,6 +405,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/artefatos'
     | '/auth'
     | '/calendario'
     | '/first'
@@ -435,6 +446,7 @@ export interface FileRouteTypes {
     | '/menstruapp-bold'
     | '/menstruapp-fofo'
     | '/paciente'
+    | '/artefatos'
     | '/auth'
     | '/calendario'
     | '/first'
@@ -476,6 +488,7 @@ export interface RootRouteChildren {
   MenstruappBoldRouteRoute: typeof MenstruappBoldRouteRouteWithChildren
   MenstruappFofoRouteRoute: typeof MenstruappFofoRouteRouteWithChildren
   PacienteRouteRoute: typeof PacienteRouteRouteWithChildren
+  ArtefatosRoute: typeof ArtefatosRoute
   AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
   FirstRoute: typeof FirstRoute
@@ -499,6 +512,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefatos': {
+      id: '/artefatos'
+      path: '/artefatos'
+      fullPath: '/artefatos'
+      preLoaderRoute: typeof ArtefatosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -878,6 +898,7 @@ const rootRouteChildren: RootRouteChildren = {
   MenstruappBoldRouteRoute: MenstruappBoldRouteRouteWithChildren,
   MenstruappFofoRouteRoute: MenstruappFofoRouteRouteWithChildren,
   PacienteRouteRoute: PacienteRouteRouteWithChildren,
+  ArtefatosRoute: ArtefatosRoute,
   AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
   FirstRoute: FirstRoute,

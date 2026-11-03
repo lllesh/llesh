@@ -1,0 +1,528 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Terminal de Projetos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #f2f1ec;
+    --surface: #ffffff;
+    --surface-2: #ebe9e2;
+    --text: #454259;
+    --text-dim: #726e88;
+    --text-faint: #9d9aa2;
+    --border: #ddd9d0;
+    --accent: #6f78ab;
+    --accent-ink: #ffffff;
+    --accent-soft: #e4e5f2;
+    --down: #a8698a;
+    --down-soft: #f2e5ec;
+    --shadow: 0 1px 2px rgba(30, 28, 20, 0.06);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17161b;
+      --surface: #1f1e24;
+      --surface-2: #26252c;
+      --text: #f1efea;
+      --text-dim: #a5a3ac;
+      --text-faint: #726f79;
+      --border: #34323b;
+      --accent: #a7aeda;
+      --accent-ink: #17161b;
+      --accent-soft: #2b2c40;
+      --down: #d79fbb;
+      --down-soft: #3a2732;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17161b;
+    --surface: #1f1e24;
+    --surface-2: #26252c;
+    --text: #f1efea;
+    --text-dim: #a5a3ac;
+    --text-faint: #726f79;
+    --border: #34323b;
+    --accent: #a7aeda;
+    --accent-ink: #17161b;
+    --accent-soft: #2b2c40;
+    --down: #d79fbb;
+    --down-soft: #3a2732;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Manrope", system-ui, sans-serif;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    background: var(--bg);
+  }
+
+  .topbar {
+    flex: 0 0 auto;
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--bg);
+    padding: 20px 16px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 14px 20px;
+  }
+  .titleblock { flex: 1 1 220px; min-width: 0; }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(22px, 4vw, 28px);
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .sub {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  .sub strong { color: var(--text); font-variant-numeric: tabular-nums; }
+
+  .tier-counts {
+    display: flex;
+    gap: 6px;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    max-width: 260px;
+  }
+  .tier-chip {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 3px 6px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+
+  .search-row { flex: 1 1 100%; }
+  #search {
+    width: 100%;
+    font: inherit;
+    font-size: 14px;
+    padding: 9px 12px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+  }
+  #search::placeholder { color: var(--text-faint); }
+  #search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+  .legend {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 16px;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  #db-hint { color: var(--down); }
+
+  .viewport {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+  }
+  .spacer { position: absolute; top: 0; left: 0; width: 1px; }
+  .pool { position: absolute; top: 0; left: 0; right: 0; }
+
+  .row {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .row.project:hover { background: var(--surface); }
+
+  .row-header {
+    height: 44px;
+    align-items: flex-end;
+    padding-bottom: 6px;
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    background: var(--surface-2);
+  }
+  .row-header em { font-style: normal; color: var(--text-dim); margin-left: 6px; font-weight: 600; }
+
+  .buckets {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 2px;
+  }
+  .dot {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .dot::before {
+    content: "";
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--dc);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+  }
+  .dot:hover::before { width: 13px; height: 13px; }
+  .dot.active::before {
+    width: 14px;
+    height: 14px;
+    box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--dc);
+  }
+  .dot:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+  .row-divider {
+    flex: 0 0 auto;
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 7px;
+  }
+
+  .name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    letter-spacing: 0.07em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .name:hover { color: var(--accent); text-decoration: underline; }
+
+  .badge {
+    flex: 0 0 auto;
+    font-size: 10px;
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--text-dim);
+    background: var(--surface-2);
+    border-radius: 5px;
+    padding: 2px 5px;
+  }
+
+  .time {
+    flex: 0 0 auto;
+    font-size: 11px;
+    color: var(--text-faint);
+    font-variant-numeric: tabular-nums;
+    width: 52px;
+    text-align: right;
+  }
+
+  .ext {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-faint);
+    text-decoration: none;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+  .ext:hover { color: var(--accent); background: var(--accent-soft); }
+
+  .empty {
+    padding: 40px 16px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    .badge { display: none; }
+    .time { width: 38px; font-size: 10px; }
+    .tier-counts { display: none; }
+  }
+</style>
+
+<div class="app">
+  <div class="topbar">
+    <div class="titleblock">
+      <h1>Terminal de Projetos</h1>
+      <p class="sub"><strong id="stat-total">–</strong> projetos únicos (cópias já agrupadas)</p>
+    </div>
+    <div class="tier-counts" id="tier-counts"></div>
+    <div class="search-row">
+      <input id="search" type="search" placeholder="Buscar projeto pelo nome…" autocomplete="off" />
+    </div>
+  </div>
+  <div class="legend">
+    <span>clique numa bolinha pra colocar o projeto naquele balde — <strong style="color:#F48591">AA</strong> é o topo, <strong style="color:#C18EA9">F</strong> é o fim; sem balde fica no meio, por data</span>
+    <span id="db-hint" hidden>as marcações não estão salvando nesta visualização — abra o link publicado.</span>
+  </div>
+  <div id="viewport" class="viewport">
+    <div id="spacer" class="spacer"></div>
+    <div id="pool" class="pool"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var TIERS = ["AA", "A", "B", "C", "D", "E", "F"];
+  var TOP_TIERS = ["AA", "A", "B", "C"];
+  var BOTTOM_TIERS = ["D", "E", "F"];
+  var TIER_COLORS = {
+    AA: "#F48591", A: "#FA8D85", B: "#FEA283", C: "#FFB872",
+    D: "#8DA599", E: "#8D96C1", F: "#C18EA9"
+  };
+
+  var ROW_H = 44;
+  var allProjects = [];
+  var marksMap = {};
+  var rows = [];
+  var db = null;
+
+  var viewport = document.getElementById("viewport");
+  var spacer = document.getElementById("spacer");
+  var pool = document.getElementById("pool");
+  var searchInput = document.getElementById("search");
+  var statTotal = document.getElementById("stat-total");
+  var tierCounts = document.getElementById("tier-counts");
+  var dbHint = document.getElementById("db-hint");
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function relTime(ts) {
+    var diff = Math.max(0, Date.now() - ts);
+    var day = 86400000;
+    var days = Math.floor(diff / day);
+    if (days <= 0) return "hoje";
+    if (days === 1) return "1d";
+    if (days < 30) return days + "d";
+    var months = Math.floor(days / 30);
+    if (months < 12) return months + "m";
+    return Math.floor(months / 12) + "a";
+  }
+
+  function computeRows() {
+    var q = (searchInput.value || "").trim().toLowerCase();
+    var list = q ? allProjects.filter(function (p) { return p.n.toLowerCase().indexOf(q) !== -1; }) : allProjects;
+
+    var buckets = {};
+    for (var t = 0; t < TIERS.length; t++) buckets[TIERS[t]] = [];
+    var rest = [];
+
+    for (var i = 0; i < list.length; i++) {
+      var p = list[i];
+      var m = marksMap[p.i];
+      if (m && m.bucket && buckets[m.bucket]) buckets[m.bucket].push(p);
+      else rest.push(p);
+    }
+    TIERS.forEach(function (t) {
+      buckets[t].sort(function (a, b) { return (marksMap[b.i].ts || 0) - (marksMap[a.i].ts || 0); });
+    });
+    rest.sort(function (a, b) { return b.t - a.t; });
+
+    var out = [];
+    TOP_TIERS.forEach(function (t) {
+      if (!buckets[t].length) return;
+      out.push({ type: "header", label: "Balde " + t, count: buckets[t].length, tier: t });
+      buckets[t].forEach(function (p) { out.push({ type: "project", p: p }); });
+    });
+    out.push({ type: "header", label: q ? "Resultados sem balde" : "Sem balde · por data", count: rest.length });
+    rest.forEach(function (p) { out.push({ type: "project", p: p }); });
+    BOTTOM_TIERS.forEach(function (t) {
+      if (!buckets[t].length) return;
+      out.push({ type: "header", label: "Balde " + t, count: buckets[t].length, tier: t });
+      buckets[t].forEach(function (p) { out.push({ type: "project", p: p }); });
+    });
+    rows = out;
+
+    statTotal.textContent = allProjects.length;
+    tierCounts.innerHTML = TIERS.map(function (t) {
+      var n = buckets[t].length;
+      if (!n) return "";
+      return '<span class="tier-chip" style="border-color:' + TIER_COLORS[t] + ';color:' + TIER_COLORS[t] + '">' + t + " " + n + "</span>";
+    }).join("");
+
+    spacer.style.height = (rows.length * ROW_H) + "px";
+  }
+
+  function bucketDots(id, current) {
+    var html = '<div class="buckets" role="group">';
+    TIERS.forEach(function (t) {
+      var active = current === t;
+      html += '<button class="dot' + (active ? " active" : "") + '" style="--dc:' + TIER_COLORS[t] + '" data-id="' + id + '" data-bucket="' + t + '" aria-pressed="' + active + '" aria-label="Balde ' + t + '" title="Balde ' + t + '"></button>';
+    });
+    html += "</div>";
+    return html;
+  }
+
+  function rowHtml(row) {
+    if (row.type === "header") {
+      var bg = row.tier ? ' style="background:color-mix(in srgb, ' + TIER_COLORS[row.tier] + ' 18%, var(--surface-2))"' : "";
+      return '<div class="row row-header" style="height:' + ROW_H + 'px"' + bg + '>' +
+        escapeHtml(row.label) + '<em>' + row.count + '</em></div>';
+    }
+    var p = row.p;
+    var m = marksMap[p.i] || {};
+    var bucket = m.bucket || "";
+    return (
+      '<div class="row project" style="height:' + ROW_H + 'px" data-id="' + p.i + '">' +
+      bucketDots(p.i, bucket) +
+      '<span class="row-divider"></span>' +
+      '<a class="name" href="' + escapeHtml(p.u) + '" target="_blank" rel="noopener">' + escapeHtml(p.n) + "</a>" +
+      (p.f > 1 ? '<span class="badge">×' + p.f + "</span>" : "") +
+      '<span class="time">' + relTime(p.t) + "</span>" +
+      '<a class="ext" href="https://vercel.com/lellapp/' + encodeURIComponent(p.n) + '" target="_blank" rel="noopener" aria-label="Abrir no Vercel" title="Abrir no Vercel">↗</a>' +
+      "</div>"
+    );
+  }
+
+  function renderVisible() {
+    if (!rows.length) {
+      pool.innerHTML = '<div class="empty">Nenhum projeto encontrado.</div>';
+      pool.style.transform = "translateY(0px)";
+      return;
+    }
+    var scrollTop = viewport.scrollTop;
+    var viewH = viewport.clientHeight || 600;
+    var start = Math.max(0, Math.floor(scrollTop / ROW_H) - 10);
+    var end = Math.min(rows.length, Math.ceil((scrollTop + viewH) / ROW_H) + 10);
+    pool.style.transform = "translateY(" + (start * ROW_H) + "px)";
+    var html = "";
+    for (var i = start; i < end; i++) html += rowHtml(rows[i]);
+    pool.innerHTML = html;
+  }
+
+  var rafPending = false;
+  function scheduleRender() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(function () {
+      rafPending = false;
+      renderVisible();
+    });
+  }
+
+  viewport.addEventListener("scroll", scheduleRender);
+  window.addEventListener("resize", scheduleRender);
+
+  pool.addEventListener("click", function (e) {
+    var dot = e.target.closest(".dot");
+    if (!dot) return;
+    var id = dot.getAttribute("data-id");
+    var b = dot.getAttribute("data-bucket");
+    var cur = marksMap[id];
+    setBucket(id, cur && cur.bucket === b ? null : b);
+  });
+
+  var searchDebounce = null;
+  searchInput.addEventListener("input", function () {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(function () {
+      viewport.scrollTop = 0;
+      computeRows();
+      renderVisible();
+    }, 120);
+  });
+
+  function setBucket(id, bucket) {
+    var ts = Date.now();
+    if (!bucket) {
+      delete marksMap[id];
+    } else {
+      marksMap[id] = { bucket: bucket, ts: ts };
+    }
+    computeRows();
+    renderVisible();
+
+    if (!db) {
+      dbHint.hidden = false;
+      return;
+    }
+    var ref = db.collection("marks").doc(id);
+    if (!bucket) {
+      ref.delete().catch(function () {});
+    } else {
+      ref.set({ bucket: bucket, ts: ts }).catch(function () {});
+    }
+  }
+
+  function boot(projects) {
+    allProjects = projects;
+    computeRows();
+    renderVisible();
+  }
+
+  fetch("projects.json")
+    .then(function (r) { return r.json(); })
+    .then(function (data) { boot(data); })
+    .catch(function () { boot([]); });
+
+  function initDb() {
+    if (!window.claude || !window.claude.use) {
+      dbHint.hidden = false;
+      return;
+    }
+    window.claude.use("db").then(function (ns) {
+      if (!ns) { dbHint.hidden = false; return; }
+      db = ns;
+      db.collection("marks").onSnapshot(function (snap) {
+        var next = {};
+        snap.docs.forEach(function (doc) {
+          var d = doc.data();
+          if (d && d.bucket) next[doc.id] = d;
+        });
+        marksMap = next;
+        computeRows();
+        renderVisible();
+      }, function () { dbHint.hidden = false; });
+    }).catch(function () { dbHint.hidden = false; });
+  }
+  initDb();
+})();
+</script>
+
+</body></html>

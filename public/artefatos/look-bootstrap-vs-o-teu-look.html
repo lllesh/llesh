@@ -1,0 +1,221 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>look bootstrap vs. o teu look</title>
+<style>
+  :root{
+    --ground:#ffffff;
+    --ink:#14100e;
+    --ink-soft:#6b625c;
+    --hair:#efe9e4;
+    --accent:#c8452f;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ground:#12100f; --ink:#f4efec; --ink-soft:#a2968f; --hair:#2a2523; --accent:#e86b52; }
+  }
+  :root[data-theme="dark"]{ --ground:#12100f; --ink:#f4efec; --ink-soft:#a2968f; --hair:#2a2523; --accent:#e86b52; }
+  :root[data-theme="light"]{ --ground:#ffffff; --ink:#14100e; --ink-soft:#6b625c; --hair:#efe9e4; --accent:#c8452f; }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:"Avenir Next","Futura","Century Gothic",-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+    min-height:100dvh;
+  }
+  .wrap{ max-width:1180px; margin:0 auto; padding:56px 22px 80px; }
+
+  .eyebrow{
+    font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--ink-soft); margin:0 0 14px;
+  }
+  h1{
+    font-size:clamp(30px,5.2vw,52px); line-height:1.06; margin:0 0 14px;
+    font-weight:500; letter-spacing:-.02em; text-wrap:balance;
+  }
+  .lede{ font-size:17px; line-height:1.6; color:var(--ink-soft); max-width:56ch; margin:0 0 44px; }
+
+  .duo{ display:grid; gap:26px; grid-template-columns:1fr; }
+  @media (min-width:900px){ .duo{ grid-template-columns:1fr 1fr; } }
+
+  .demo-head{ display:flex; align-items:baseline; gap:10px; margin:0 0 12px; }
+  .demo-head h2{ font-size:16px; font-weight:600; margin:0; letter-spacing:-.01em; }
+  .demo-head span{ font-size:12px; color:var(--ink-soft); }
+
+  .frame{ border:1px solid var(--hair); border-radius:14px; overflow:hidden; }
+
+  /* ---------- painel 1: bootstrap de verdade ---------- */
+  .bs{
+    background:#fff; color:#212529;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:15px; line-height:1.5;
+  }
+  .bs-nav{
+    background:#f8f9fa; border-bottom:1px solid rgba(0,0,0,.08);
+    padding:12px 16px; display:flex; align-items:center; gap:18px; font-size:14px;
+  }
+  .bs-brand{ font-size:19px; font-weight:500; margin-right:auto; }
+  .bs-nav a{ color:#0d6efd; text-decoration:none; }
+  .bs-nav a.muted{ color:#6c757d; }
+  .bs-body{ padding:20px 16px 24px; display:flex; flex-direction:column; gap:16px; }
+  .bs h3{ font-size:26px; font-weight:500; margin:0 0 6px; }
+  .bs p{ margin:0; color:#212529; }
+  .bs .lead{ color:#6c757d; }
+  .bs-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .bs-btn{
+    background:#0d6efd; color:#fff; border:1px solid #0d6efd; border-radius:.375rem;
+    padding:.375rem .75rem; font-size:15px; cursor:pointer; font-family:inherit;
+  }
+  .bs-btn.sec{ background:#fff; color:#6c757d; border-color:#6c757d; }
+  .bs-btn:focus-visible{ outline:0; box-shadow:0 0 0 .25rem rgba(13,110,253,.35); }
+  .bs-card{
+    border:1px solid #dee2e6; border-radius:.375rem; background:#fff;
+    padding:14px 16px; flex:1 1 180px;
+  }
+  .bs-card h4{ margin:0 0 4px; font-size:16px; font-weight:500; }
+  .bs-card p{ font-size:14px; color:#6c757d; }
+  .bs-alert{
+    background:#cfe2ff; border:1px solid #b6d4fe; color:#084298;
+    border-radius:.375rem; padding:12px 16px; font-size:14px;
+  }
+  .bs-input{
+    border:1px solid #ced4da; border-radius:.375rem; padding:.375rem .75rem;
+    font-size:15px; font-family:inherit; width:100%;
+  }
+  .bs-badge{
+    display:inline-block; background:#198754; color:#fff; font-size:12px;
+    padding:.35em .65em; border-radius:.375rem; font-weight:700;
+  }
+
+  /* ---------- painel 2: o teu look ---------- */
+  .le{ background:#fff; color:#14100e; padding:22px 20px 26px; display:flex; flex-direction:column; gap:20px; }
+  .le-nav{ display:flex; align-items:center; gap:20px; font-size:13px; color:#8a807a; }
+  .le-brand{ font-size:15px; letter-spacing:.16em; color:#14100e; margin-right:auto; text-transform:lowercase; }
+  .le h3{ font-size:30px; font-weight:400; letter-spacing:-.02em; margin:0 0 6px; line-height:1.1; }
+  .le p{ margin:0; color:#8a807a; font-size:15px; line-height:1.6; }
+  .le-row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .le-btn{
+    background:#14100e; color:#fff; border:0; border-radius:999px;
+    padding:12px 26px; font-size:14px; font-family:inherit; cursor:pointer;
+    transition:transform .2s ease, opacity .2s ease;
+  }
+  .le-btn:hover{ transform:translateY(-2px); }
+  .le-btn.ghost{ background:#f5f1ee; color:#14100e; }
+  .le-btn:focus-visible{ outline:2px solid #14100e; outline-offset:3px; }
+  .le-cards{ display:flex; gap:12px; flex-wrap:wrap; }
+  .le-card{
+    flex:1 1 180px; background:#f7f4f1; border:0; border-radius:22px;
+    padding:18px 18px 20px;
+  }
+  .le-card h4{ margin:0 0 4px; font-size:15px; font-weight:500; }
+  .le-card p{ font-size:13px; }
+  .le-note{ font-size:13px; color:#8a807a; border-left:2px solid #14100e; padding-left:14px; }
+  .le-input{
+    border:0; border-bottom:1px solid #e6e0da; padding:10px 2px; font-size:15px;
+    font-family:inherit; width:100%; background:transparent;
+  }
+  .le-input:focus{ outline:0; border-bottom-color:#14100e; }
+  .le-pill{
+    display:inline-block; background:#14100e; color:#fff; font-size:11px;
+    letter-spacing:.1em; padding:6px 14px; border-radius:999px; text-transform:uppercase;
+  }
+
+  /* ---------- tabela ---------- */
+  .tabela{ margin-top:56px; }
+  .tabela h2{ font-size:20px; font-weight:500; margin:0 0 18px; letter-spacing:-.01em; }
+  .scroller{ overflow-x:auto; }
+  table{ border-collapse:collapse; width:100%; min-width:520px; font-size:14px; }
+  th,td{ text-align:left; padding:12px 14px; border-bottom:1px solid var(--hair); vertical-align:top; }
+  th{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); font-weight:500; }
+  td:first-child{ color:var(--ink-soft); width:26%; }
+  .mark{ color:var(--accent); }
+  footer{ margin-top:48px; font-size:14px; color:var(--ink-soft); line-height:1.7; }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">exemplo lado a lado</p>
+  <h1>o look bootstrap, e o teu</h1>
+  <p class="lede">Os dois blocos abaixo mostram o mesmo pedacinho de site. O da esquerda está com os valores reais do Bootstrap 5 — as mesmas cores, cantos e fontes que vêm na caixa. O da direita é do jeito que você faz.</p>
+
+  <div class="duo">
+    <section>
+      <div class="demo-head"><h2>Bootstrap 5</h2><span>direto da caixa</span></div>
+      <div class="frame">
+        <div class="bs">
+          <div class="bs-nav">
+            <span class="bs-brand">Minha Marca</span>
+            <a href="#bs">Início</a>
+            <a href="#bs" class="muted">Sobre</a>
+            <a href="#bs" class="muted">Contato</a>
+          </div>
+          <div class="bs-body" id="bs">
+            <div>
+              <h3>Bem-vindo</h3>
+              <p class="lead">Uma frase curta explicando o serviço para o visitante.</p>
+            </div>
+            <div class="bs-row">
+              <button class="bs-btn">Começar agora</button>
+              <button class="bs-btn sec">Saiba mais</button>
+            </div>
+            <div class="bs-row">
+              <div class="bs-card"><h4>Rápido</h4><p>Entrega em até dois dias úteis.</p></div>
+              <div class="bs-card"><h4>Seguro</h4><p>Pagamento protegido.</p></div>
+            </div>
+            <div class="bs-alert">Sua conta foi criada com sucesso.</div>
+            <input class="bs-input" placeholder="Seu e-mail" aria-label="Seu e-mail">
+            <div><span class="bs-badge">Ativo</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="demo-head"><h2>o teu</h2><span>branco, pílula, respiro</span></div>
+      <div class="frame">
+        <div class="le">
+          <div class="le-nav">
+            <span class="le-brand">minha marca</span>
+            <span>início</span><span>sobre</span><span>contato</span>
+          </div>
+          <div>
+            <h3>bem-vinda</h3>
+            <p>Uma frase curta explicando o serviço para o visitante.</p>
+          </div>
+          <div class="le-row">
+            <button class="le-btn">começar agora</button>
+            <button class="le-btn ghost">saiba mais</button>
+          </div>
+          <div class="le-cards">
+            <div class="le-card"><h4>rápido</h4><p>Entrega em até dois dias úteis.</p></div>
+            <div class="le-card"><h4>seguro</h4><p>Pagamento protegido.</p></div>
+          </div>
+          <p class="le-note">Sua conta foi criada.</p>
+          <input class="le-input" placeholder="seu e-mail" aria-label="seu e-mail">
+          <div><span class="le-pill">ativo</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="tabela">
+    <h2>onde exatamente muda</h2>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>peça</th><th>Bootstrap</th><th>o teu</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>botão</td><td>azul <span class="mark">#0d6efd</span>, canto 6px, halo azul no clique</td><td>pílula preenchida, preto no branco</td></tr>
+          <tr><td>card</td><td>borda cinza <span class="mark">#dee2e6</span> + sombrinha</td><td>bloco cheio, canto grande, zero borda</td></tr>
+          <tr><td>menu</td><td>faixa cinza <span class="mark">#f8f9fa</span> atravessando o topo</td><td>solto no branco, sem faixa</td></tr>
+          <tr><td>fonte</td><td>a do sistema (Helvetica / San Francisco)</td><td>a fonte do projeto, com caráter</td></tr>
+          <tr><td>aviso</td><td>caixa azul pastel com borda</td><td>linha fina e uma frase</td></tr>
+          <tr><td>campo</td><td>caixa com borda nos quatro lados</td><td>só um risquinho embaixo</td></tr>
+          <tr><td>etiqueta</td><td>verde <span class="mark">#198754</span>, retângulo, negrito</td><td>pílula preta, minúscula, espaçada</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>Os dois funcionam. O da esquerda parece painel de banco porque milhões de sites usam exatamente esses valores — e o olho reconhece. O da direita ninguém mais tem.</footer>
+</div>
+
+</body></html>
