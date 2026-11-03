@@ -1364,7 +1364,6 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     palco.appendChild(peca);
     setTimeout(pontoTexto, 120);
     if (t) t.style.visibility = 'hidden';
-    if (t) espalha(t);
     var leg = $('#legenda'); leg.style.left = ((E.lateral && innerWidth > 760) ? 244 : 0) + 'px';
     leg.innerHTML = '<b></b><span></span>';
     leg.querySelector('b').textContent = o.nome || '';
@@ -1930,7 +1929,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     var u=document.querySelector('#capa-lle .corpo'); if(u) u.style.setProperty('--umb', cor==='#000000' ? '#86868c' : 'color-mix(in srgb, '+cor+' 72%, #000)'); if(u) u.style.setProperty('--furo', cor);
     try{ var y0=window.scrollY; window.scrollTo(0,y0+1); requestAnimationFrame(function(){ window.scrollTo(0,y0); }); }catch(e){}
     var m=document.querySelector('meta[name="theme-color"]'), n=document.createElement('meta'); n.name='theme-color'; n.content=cor; if(m) m.remove(); document.head.appendChild(n); }
-  var cor='#FFFFFF'; try{ cor=localStorage.getItem('umbigo-cor-2')||'#FFFFFF'; }catch(e){} if(CORES.indexOf(cor)<0) cor='#FFFFFF'; aplica(cor); /* 15/10: fundo branco completo (já era FFFBF3) */ /* cor de início: o creme (01/10/2026, Dra Lê) */
+  var cor='#FFFFFF'; try{ localStorage.removeItem('umbigo-cor-2'); }catch(e){} if(CORES.indexOf(cor)<0) cor='#FFFFFF'; aplica(cor); /* 15/10: fundo branco completo (já era FFFBF3) */ /* cor de início: o creme (01/10/2026, Dra Lê) */
   window.__mudaCor=function(nova){ cor=nova; aplica(cor); try{ localStorage.setItem('umbigo-cor-2',cor); }catch(e){} };
   window.__proximaCor=function(){ return CORES[(CORES.indexOf(cor)+1)%CORES.length]; };
   window.__trocaCor=function(){ cor=CORES[(CORES.indexOf(cor)+1)%CORES.length]; try{ localStorage.setItem('umbigo-cor-2',cor); }catch(e){} location.reload(); };
