@@ -27,7 +27,7 @@ function Artefatos() {
           {itens.map((i) => (
             <a
               key={i.s}
-              href={`/artefatos/${i.s}.html`}
+              href={`/${i.s}`}
               className="truncate rounded-full bg-[#A9A59F] px-8 py-5 text-xl font-bold text-[#FFFBF3]"
             >
               {i.t} ↗
