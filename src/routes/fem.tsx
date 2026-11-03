@@ -121,7 +121,7 @@ function FemHome() {
 
   return (
     <main className="min-h-svh flex flex-col items-center justify-center px-6 py-8" style={{ background: BG, color: INK }}>
-      <div className="relative h-[150px] w-[260px] overflow-hidden"><img src={logo.url} alt="n o ii — núcleo organizado inteligente interativo" className="absolute left-1/2 top-1/2 w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 select-none" draggable={false} /></div>
+      <div className="relative flex h-[220px] w-[200px] items-center justify-center md:h-[200px] md:w-[300px]"><img src={logo.url} alt="fèm" className="h-[220px] w-auto max-w-none select-none md:h-[300px] md:rotate-90" style={{ filter: "drop-shadow(3px 3px 4px #CFCBC4) drop-shadow(-2px -2px 3px #FFFFFF)" }} draggable={false} /></div>
 
       {!logada ? (
         <form onSubmit={enviar} className="mt-8 flex w-full max-w-[420px] flex-col gap-4">
