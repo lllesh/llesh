@@ -110,9 +110,12 @@ function NoiiHome() {
       setPerms((s) => ({ ...s, [p]: true }));
     } catch (err) {
       const code = (err as GeolocationPositionError)?.code;
+      const name = (err as DOMException)?.name;
       if (p === "local" && code === 1)
         setAviso("o iPhone bloqueou o local. abre Ajustes › Privacidade › Serviços de Localização › Safari e escolhe “Perguntar”.");
       else if (p === "local") setAviso("não deu pra achar o local agora. tenta de novo");
+      else if (name === "NotFoundError" || name === "OverconstrainedError")
+        setAviso(p === "vídeo" ? "não achei câmera nesse aparelho" : "não achei microfone nesse aparelho");
       else setAviso(`${p} não autorizado`);
     }
   };
