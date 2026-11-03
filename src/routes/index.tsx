@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
-import logo from "@/assets/noii-logo-relevo.png.asset.json";
+import logo from "@/assets/llesh-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -9,11 +9,11 @@ export const Route = createFileRoute("/")({
       { title: "ll e.s h" },
       { property: "og:title", content: "ll e.s h" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#F6F4F1" },
     ],
   }),
-  component: NoiiHome,
+  component: LleshHome,
 });
 
 const INK = "#A9A59F";
@@ -34,7 +34,7 @@ function traduz(msg: string) {
   return "algo deu errado. tenta de novo";
 }
 
-function NoiiHome() {
+function LleshHome() {
   const [mode, setMode] = useState<"criar" | "entrar">("criar");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -108,12 +108,9 @@ function NoiiHome() {
       setPerms((s) => ({ ...s, [p]: true }));
     } catch (err) {
       const code = (err as GeolocationPositionError)?.code;
-      const name = (err as DOMException)?.name;
       if (p === "local" && code === 1)
         setAviso("o iPhone bloqueou o local. abre Ajustes › Privacidade › Serviços de Localização › Safari e escolhe “Perguntar”.");
       else if (p === "local") setAviso("não deu pra achar o local agora. tenta de novo");
-      else if (name === "NotFoundError" || name === "OverconstrainedError")
-        setAviso(p === "vídeo" ? "não achei câmera nesse aparelho" : "não achei microfone nesse aparelho");
       else setAviso(`${p} não autorizado`);
     }
   };
@@ -122,7 +119,7 @@ function NoiiHome() {
 
   return (
     <main className="min-h-svh flex flex-col items-center justify-center px-6 py-8" style={{ background: BG, color: INK }}>
-      <div className="relative h-[150px] w-[260px] overflow-hidden"><img src={logo.url} alt="n o ii — núcleo organizado inteligente interativo" className="absolute left-1/2 top-1/2 w-[640px] max-w-none -translate-x-1/2 -translate-y-1/2 select-none" draggable={false} /></div>
+      <div className="relative flex w-full items-center justify-center"><img src={logo.url} alt="ll e.s h" className="h-[114px] w-auto select-none" draggable={false} /></div>
 
       {!logada ? (
         <form onSubmit={enviar} className="mt-8 flex w-full max-w-[420px] flex-col gap-4">
