@@ -1,0 +1,195 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>b r a i n   d u m p</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Red+Hat+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap">
+<style>
+/* layout: uma coluna de leitura; cada gaveta é uma seção com título espaçado e fichas em grade */
+:root{
+  --bg:#EDEFEA; --surface:#F8F9F6; --ink:#1D2320; --ink-2:#56605A; --ink-3:#8A938D;
+  --line:#D5DAD3; --accent:#9A3B4B; --accent-soft:rgba(154,59,75,.08);
+  --f-label:"Red Hat Mono",ui-monospace,Menlo,monospace;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,sans-serif;
+  --f-quote:"Newsreader",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#151A18; --surface:#1D2421; --ink:#E8ECE7; --ink-2:#A9B2AC; --ink-3:#77817B;
+  --line:#2D3632; --accent:#E39AA6; --accent-soft:rgba(227,154,166,.10); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#151A18; --surface:#1D2421; --ink:#E8ECE7; --ink-2:#A9B2AC; --ink-3:#77817B;
+  --line:#2D3632; --accent:#E39AA6; --accent-soft:rgba(227,154,166,.10); color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,4vw,48px);padding-block:clamp(28px,5vw,64px) 80px;display:flex;flex-direction:column;gap:clamp(36px,5vw,56px)}
+
+header{display:flex;flex-direction:column;gap:18px}
+.title{font-family:var(--f-label);font-weight:500;font-size:clamp(1.6rem,4.5vw,2.6rem);letter-spacing:.42em;text-transform:lowercase;margin:0;line-height:1.2;text-wrap:balance}
+.lead{color:var(--ink-2);max-width:60ch;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0;padding:0;list-style:none}
+.chips a{display:inline-flex;align-items:baseline;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink-2);text-decoration:none;font-family:var(--f-label);font-size:.78rem;letter-spacing:.14em;text-transform:lowercase;background:var(--surface)}
+.chips a:hover,.chips a:focus-visible{border-color:var(--accent);color:var(--ink);outline:none}
+.chips b{font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums}
+.chips a.zero{opacity:.5}
+.status{font-family:var(--f-label);font-size:.72rem;letter-spacing:.14em;color:var(--ink-3);text-transform:lowercase}
+
+section{display:flex;flex-direction:column;gap:16px;scroll-margin-top:24px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.sec-head h2{margin:0;font-family:var(--f-label);font-weight:500;font-size:1rem;letter-spacing:.38em;text-transform:lowercase}
+.sec-head p{margin:0;color:var(--ink-3);font-size:.88rem}
+section.destaque .sec-head h2{color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card .nome{font-weight:600;font-size:1.05rem;overflow-wrap:anywhere}
+.card .nota{color:var(--ink-2);font-size:.92rem;overflow-wrap:anywhere}
+.card .dentro{font-family:var(--f-label);font-size:.7rem;letter-spacing:.12em;color:var(--ink-3);text-transform:lowercase}
+.card.favorito{border-color:var(--accent);background:var(--accent-soft)}
+.card.favorito .selo{font-family:var(--f-label);font-size:.68rem;letter-spacing:.16em;color:var(--accent);text-transform:lowercase}
+
+.frases{display:flex;flex-direction:column;gap:14px}
+.frase{margin:0;padding:4px 0 4px 18px;border-left:2px solid var(--accent);font-family:var(--f-quote);font-size:clamp(1.15rem,2.2vw,1.4rem);line-height:1.45;font-style:italic;max-width:65ch}
+.frase small{display:block;font-family:var(--f-body);font-style:normal;font-size:.85rem;color:var(--ink-3);margin-top:4px}
+
+.escrever{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(14px,2.5vw,22px);display:flex;flex-direction:column;gap:12px}
+.escrever label{font-family:var(--f-label);font-size:.78rem;letter-spacing:.3em;text-transform:lowercase;color:var(--ink-2)}
+.escrever textarea{width:100%;box-sizing:border-box;min-height:140px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:1.08rem;line-height:1.6;padding:14px 16px}
+.escrever textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.linha{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.linha select{font:inherit;font-size:.92rem;padding:9px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);max-width:100%}
+.btn{font-family:var(--f-label);font-size:.82rem;letter-spacing:.2em;text-transform:lowercase;padding:10px 20px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);cursor:pointer}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.dica{color:var(--ink-3);font-size:.85rem;margin:0}
+.aviso{font-family:var(--f-label);font-size:.75rem;letter-spacing:.12em;color:var(--accent);min-height:1em}
+.card .acoes{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:4px}
+.card .acoes select,.frase .acoes select{font:inherit;font-size:.78rem;padding:4px 6px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink-2);max-width:100%}
+.mini{font-family:var(--f-label);font-size:.7rem;letter-spacing:.1em;background:none;border:none;color:var(--ink-3);cursor:pointer;padding:4px 2px;text-transform:lowercase}
+.mini:hover,.mini:focus-visible{color:var(--accent)}
+.mini.confirma{color:var(--accent)}
+.frase .acoes{display:flex;gap:8px;align-items:center;margin-top:6px;font-style:normal}
+.vazio{color:var(--ink-3);font-size:.92rem;margin:0}
+.inicio{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:28px;color:var(--ink-2);max-width:60ch}
+.inicio strong{color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){.card,.frase{animation:entra .35s ease both}@keyframes entra{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1 class="title">b r a i n &nbsp; d u m p</h1>
+    <p class="lead">Tudo o que sai da cabeça da Dra. Lê, cada coisa na sua gaveta. Ela fala na conversa e o Claude separa aqui.</p>
+    <ul class="chips" id="chips"></ul>
+    <div class="status" id="status">carregando…</div>
+  </header>
+  <form class="escrever" id="form" autocomplete="off">
+    <label for="texto">e s c r e v a &nbsp; a q u i</label>
+    <textarea id="texto" placeholder="Escreva ou dite. Uma ideia por vez, ou várias de uma vez, uma por linha."></textarea>
+    <div class="linha">
+      <select id="gaveta" aria-label="gaveta"></select>
+      <button class="btn" id="guardar" type="submit">guardar</button>
+      <span class="aviso" id="aviso" role="status"></span>
+    </div>
+    <p class="dica">Se não souber a gaveta, deixe em "a classificar". Cada linha vira uma ficha. O Claude separa depois.</p>
+  </form>
+  <main id="gavetas" style="display:flex;flex-direction:column;gap:clamp(36px,5vw,56px)">
+    <div class="inicio" id="inicio"><strong>Ainda vazio.</strong> Comece falando na conversa: nomes, projetos, teorias, frases, pessoas. Cada coisa aparece aqui na gaveta certa, em segundos.</div>
+  </main>
+</div>
+
+<script>
+const GAVETAS = [
+  {id:"plataforma", nome:"nomes da plataforma", desc:"candidatos ao nome do guarda-chuva, o nome de tudo", destaque:true},
+  {id:"projeto", nome:"projetos", desc:"o que mora dentro da plataforma"},
+  {id:"subprojeto", nome:"subprojetos", desc:"o que mora dentro de cada projeto"},
+  {id:"peca", nome:"sites e peças", desc:"sites, apps, páginas, coisas menores"},
+  {id:"produto", nome:"produtos", desc:"o que se vende ou se entrega"},
+  {id:"persona", nome:"personas", desc:"para quem é"},
+  {id:"teoria", nome:"teorias", desc:"o corpo teórico"},
+  {id:"frase", nome:"frases para os livros", desc:"para guardar palavra por palavra", frases:true},
+  {id:"classificar", nome:"a classificar", desc:"ainda não sei onde mora, decidimos juntas"},
+];
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let itens = [];
+let DB = null;
+const opcoes = sel => GAVETAS.map(g => `<option value="${g.id}"${g.id === sel ? " selected" : ""}>${esc(g.nome)}</option>`).join("");
+const acoes = i => `<div class="acoes"><select data-mover="${esc(i.id)}" aria-label="mudar de gaveta">${opcoes(i.categoria)}</select><button type="button" class="mini" data-apagar="${esc(i.id)}">apagar</button></div>`;
+
+function render(){
+  const porGaveta = Object.fromEntries(GAVETAS.map(g => [g.id, []]));
+  for (const it of itens) (porGaveta[it.categoria] || porGaveta.classificar).push(it);
+  document.getElementById("chips").innerHTML = GAVETAS.map(g =>
+    `<li><a href="#${g.id}" class="${porGaveta[g.id].length ? "" : "zero"}">${esc(g.nome)} <b>${porGaveta[g.id].length}</b></a></li>`).join("");
+  const main = document.getElementById("gavetas");
+  if (!itens.length){ main.innerHTML = `<div class="inicio"><strong>Ainda vazio.</strong> Escreva na caixa acima ou fale na conversa: nomes, projetos, teorias, frases, pessoas. Cada coisa aparece aqui em segundos.</div>`; return; }
+  main.innerHTML = GAVETAS.map(g => {
+    const lista = porGaveta[g.id];
+    let corpo;
+    if (!lista.length) corpo = `<p class="vazio">nada aqui ainda</p>`;
+    else if (g.frases) corpo = `<div class="frases">${lista.map(i =>
+      `<blockquote class="frase">${esc(i.texto)}${i.nota ? `<small>${esc(i.nota)}</small>` : ""}${DB ? acoes(i) : ""}</blockquote>`).join("")}</div>`;
+    else corpo = `<div class="grid">${lista.map(i =>
+      `<article class="card${i.favorito ? " favorito" : ""}">
+        ${i.favorito ? `<span class="selo">favorito agora</span>` : ""}
+        <span class="nome">${esc(i.texto)}</span>
+        ${i.nota ? `<span class="nota">${esc(i.nota)}</span>` : ""}
+        ${i.dentro ? `<span class="dentro">dentro de: ${esc(i.dentro)}</span>` : ""}
+        ${DB ? acoes(i) : ""}
+      </article>`).join("")}</div>`;
+    return `<section id="${g.id}" class="${g.destaque ? "destaque" : ""}">
+      <div class="sec-head"><h2>${esc(g.nome)}</h2><p>${esc(g.desc)}</p></div>${corpo}</section>`;
+  }).join("");
+}
+
+const form = document.getElementById("form"), ta = document.getElementById("texto"),
+      selG = document.getElementById("gaveta"), btn = document.getElementById("guardar"), aviso = document.getElementById("aviso");
+selG.innerHTML = opcoes("classificar");
+btn.disabled = true;
+const avisar = t => { aviso.textContent = t; clearTimeout(avisar.t); avisar.t = setTimeout(() => aviso.textContent = "", 3500); };
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  if (!DB) return;
+  const linhas = ta.value.split("\n").map(s => s.trim()).filter(Boolean);
+  if (!linhas.length){ ta.focus(); return; }
+  btn.disabled = true;
+  try {
+    const base = Date.now();
+    for (let k = 0; k < linhas.length; k++){
+      await DB.collection("itens").add({ texto: linhas[k], categoria: selG.value, ordem: base + k, origem: "escrito", criado: new Date(base).toISOString() });
+    }
+    ta.value = "";
+    avisar(linhas.length === 1 ? "guardado" : `${linhas.length} guardados`);
+  } catch (err) {
+    avisar(err && err.code === "invalid_argument" ? "esta conta não pode escrever aqui" : "não guardou, tente de novo");
+  } finally { btn.disabled = false; ta.focus(); }
+});
+ta.addEventListener("keydown", e => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) form.requestSubmit(); });
+
+document.getElementById("gavetas").addEventListener("change", async e => {
+  const id = e.target.dataset && e.target.dataset.mover;
+  if (!id || !DB) return;
+  try { await DB.doc("itens/" + id).update({ categoria: e.target.value }); }
+  catch { avisar("não consegui mudar de gaveta"); }
+});
+document.getElementById("gavetas").addEventListener("click", async e => {
+  const b = e.target.closest("[data-apagar]");
+  if (!b || !DB) return;
+  if (!b.classList.contains("confirma")){ b.classList.add("confirma"); b.textContent = "apagar mesmo?"; setTimeout(() => { b.classList.remove("confirma"); b.textContent = "apagar"; }, 3000); return; }
+  try { await DB.doc("itens/" + b.dataset.apagar).delete(); }
+  catch { avisar("não consegui apagar"); }
+});
+
+(async () => {
+  render();
+  const st = document.getElementById("status");
+  const db = await claude.use("db");
+  if (!db){ st.textContent = "não consegui abrir os dados nesta tela"; return; }
+  DB = db; btn.disabled = false;
+  db.collection("itens").orderBy("ordem").onSnapshot(snap => {
+    itens = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
+    st.textContent = itens.length ? `${itens.length} ${itens.length === 1 ? "coisa" : "coisas"} · atualiza sozinho` : "esperando a primeira ideia";
+    render();
+  }, () => { st.textContent = "a conexão caiu, recarregue a página"; });
+})();
+</script>
+
+</body></html>

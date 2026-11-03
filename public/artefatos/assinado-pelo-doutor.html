@@ -1,0 +1,433 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Assinado pelo Doutor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Lora:wght@400;500&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+/* Layout: convite editorial em coluna central, creme, com muito respiro; títulos finos com serifa, etiquetas em máquina de escrever, linhas finas entre as partes. Só a paleta da Dra Lê. */
+:root {
+  --creme: #FFFBF3;
+  --rosa: #F48591;
+  --coral: #FA8D85;
+  --pessego: #FEA283;
+  --amarelo: #FFB872;
+  --salvia: #8DA599;
+  --lavanda: #8D96C1;
+  --malva: #C18EA9;
+  --cinza-claro: #D6D4CE;
+  --cinza: #C8C4B9;
+
+  --bg: var(--creme);
+  --texto: var(--lavanda);
+  --texto-suave: var(--salvia);
+  --linha: var(--cinza-claro);
+
+  --display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --corpo: 'Lora', Georgia, 'Times New Roman', serif;
+  --etiqueta: 'Courier Prime', 'Courier New', ui-monospace, monospace;
+
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+em, i { font-style: normal; }
+html, body { background: var(--bg); color: var(--texto); }
+body {
+  font-family: var(--corpo);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  padding-inline: 20px;
+}
+::selection { background: var(--malva); color: var(--creme); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--rosa); outline-offset: 4px; border-radius: 999px; }
+
+.coluna { max-width: 760px; margin: 0 auto; width: 100%; }
+.estreita { max-width: 560px; margin-inline: auto; }
+
+/* ---------- topo ---------- */
+.topo {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-block: 26px; border-bottom: 1px solid var(--linha);
+  max-width: 1100px; margin: 0 auto;
+}
+.marca { font-family: var(--display); font-weight: 500; font-size: 28px; letter-spacing: 0.01em; text-decoration: none; line-height: 1; }
+.marca span:nth-child(7n+1) { color: var(--rosa); }
+.marca span:nth-child(7n+2) { color: var(--coral); }
+.marca span:nth-child(7n+3) { color: var(--pessego); }
+.marca span:nth-child(7n+4) { color: var(--amarelo); }
+.marca span:nth-child(7n+5) { color: var(--salvia); }
+.marca span:nth-child(7n+6) { color: var(--lavanda); }
+.marca span:nth-child(7n+7) { color: var(--malva); }
+
+.pilula {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--etiqueta); font-weight: 700; font-size: 12px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--creme); background: var(--rosa); text-decoration: none;
+  padding: 12px 24px; border-radius: 999px; border: 0; cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+.pilula:hover { background: var(--coral); transform: translateY(-1px); }
+.pilula.grande { font-size: 13px; padding: 18px 34px; }
+
+.etiqueta {
+  font-family: var(--etiqueta); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+/* ---------- abertura ---------- */
+.abertura { text-align: center; padding-block: 120px 96px; }
+.abertura .etiqueta { display: block; margin-bottom: 40px; }
+h1 {
+  font-family: var(--display); font-weight: 300; color: var(--lavanda);
+  font-size: clamp(52px, 9vw, 108px); line-height: 0.98; letter-spacing: -0.01em;
+  margin: 0 0 36px; text-wrap: balance;
+}
+h1 em { font-style: normal; font-weight: 400; color: var(--rosa); }
+.lide {
+  font-style: normal; font-size: 19px; line-height: 1.65; color: var(--texto-suave);
+  max-width: 520px; margin: 0 auto 52px;
+}
+.nota-pe { margin-top: 30px; font-family: var(--etiqueta); font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--cinza); }
+
+/* ---------- partes ---------- */
+.parte { border-top: 1px solid var(--linha); padding-block: 112px 104px; }
+.parte > .etiqueta { display: block; text-align: center; margin-bottom: 28px; }
+h2 {
+  font-family: var(--display); font-weight: 300; color: var(--lavanda);
+  font-size: clamp(40px, 6vw, 64px); line-height: 1.04; text-align: center;
+  margin: 0 0 28px; text-wrap: balance;
+}
+h2 em { font-style: normal; font-weight: 400; color: var(--malva); }
+.parte > .intro { text-align: center; color: var(--texto-suave); max-width: 540px; margin: 0 auto 72px; }
+
+/* ---------- conversa da Márcia ---------- */
+.conversa {
+  max-width: 440px; margin: 0 auto;
+  border: 1px solid var(--linha); border-radius: 28px; background: var(--creme);
+  padding: 28px 22px 26px;
+}
+.conversa-topo { display: flex; align-items: center; gap: 14px; padding-bottom: 20px; border-bottom: 1px solid var(--linha); margin-bottom: 22px; }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%; flex: none;
+  background: var(--malva); color: var(--creme);
+  display: grid; place-items: center; font-family: var(--display); font-size: 24px; font-style: normal;
+}
+.conversa-topo strong { display: block; font-family: var(--display); font-weight: 500; font-size: 22px; line-height: 1.1; color: var(--lavanda); }
+.conversa-topo small { font-family: var(--etiqueta); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--salvia); }
+.mensagens { display: flex; flex-direction: column; gap: 12px; }
+.msg { max-width: 84%; padding: 12px 16px; border-radius: 20px; font-size: 15.5px; line-height: 1.5; }
+.msg.ia { background: var(--cinza-claro); color: var(--lavanda); border-bottom-left-radius: 6px; align-self: flex-start; }
+.msg.pac { background: var(--lavanda); color: var(--creme); border-bottom-right-radius: 6px; align-self: flex-end; }
+.horarios { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.horarios span { font-family: var(--etiqueta); font-size: 11px; letter-spacing: 0.14em; padding: 6px 12px; border-radius: 999px; background: var(--creme); color: var(--salvia); }
+.horarios span.escolhido { background: var(--salvia); color: var(--creme); }
+.legenda { text-align: center; margin-top: 22px; font-family: var(--etiqueta); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cinza); }
+
+/* ---------- lista do que é seu ---------- */
+.lista { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linha); }
+.lista li {
+  display: grid; grid-template-columns: 150px minmax(0,1fr); gap: 28px; align-items: baseline;
+  padding-block: 34px; border-bottom: 1px solid var(--linha);
+}
+.lista .tag {
+  justify-self: start;
+  font-family: var(--etiqueta); font-weight: 700; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--creme); padding: 7px 14px; border-radius: 999px; white-space: nowrap;
+}
+.lista h3 { font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1.15; color: var(--lavanda); margin: 0 0 8px; }
+.lista p { margin: 0; color: var(--texto-suave); font-size: 17px; }
+.c1 { background: var(--rosa); } .c2 { background: var(--coral); } .c3 { background: var(--pessego); }
+.c4 { background: var(--amarelo); } .c5 { background: var(--salvia); } .c6 { background: var(--lavanda); } .c7 { background: var(--malva); }
+
+/* ---------- agenda da cidade ---------- */
+.frase {
+  font-family: var(--display); font-style: normal; font-weight: 300;
+  font-size: clamp(30px, 4.6vw, 46px); line-height: 1.2; text-align: center; color: var(--rosa);
+  margin: 0 auto 72px; max-width: 640px; text-wrap: balance;
+}
+.tres { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 40px; }
+.tres div { text-align: center; }
+.tres .etiqueta { display: block; margin-bottom: 14px; }
+.tres h3 { font-family: var(--display); font-weight: 400; font-size: 26px; line-height: 1.2; color: var(--lavanda); margin: 0 0 10px; }
+.tres p { margin: 0; font-size: 16px; color: var(--texto-suave); }
+
+/* ---------- preços ---------- */
+.implantacao {
+  text-align: center; margin: 0 auto 64px; max-width: 520px;
+  padding-block: 32px; border-block: 1px solid var(--linha);
+}
+.implantacao .etiqueta { display: block; margin-bottom: 12px; }
+.valor { font-family: var(--display); font-weight: 400; font-size: 52px; line-height: 1; color: var(--lavanda); font-variant-numeric: tabular-nums; }
+.valor small { font-size: 20px; color: var(--salvia); }
+.cheio { display: block; margin-top: 10px; font-family: var(--etiqueta); font-size: 12px; letter-spacing: 0.16em; color: var(--cinza); }
+.cheio s { text-decoration-thickness: 1px; }
+
+.pacotes { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }
+.pacote {
+  border: 1px solid var(--linha); border-radius: 28px; padding: 36px 24px 32px; text-align: center;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.pacote.destaque { border: 2px solid var(--rosa); position: relative; }
+.pacote.destaque::before {
+  content: 'O mais escolhido'; position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  font-family: var(--etiqueta); font-weight: 700; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  background: var(--rosa); color: var(--creme); padding: 5px 14px; border-radius: 999px; white-space: nowrap;
+}
+.pacote h3 { font-family: var(--display); font-weight: 400; font-size: 28px; margin: 0; color: var(--lavanda); }
+.pacote .valor { font-size: 38px; white-space: nowrap; }
+.pacote .valor small { font-size: 16px; }
+.pacote .por { font-family: var(--etiqueta); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--salvia); }
+.clinica { text-align: center; margin-top: 40px; color: var(--texto-suave); font-style: normal; }
+
+/* ---------- a conta ---------- */
+.conta { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0; border-block: 1px solid var(--linha); }
+.conta div { text-align: center; padding: 40px 12px; }
+.conta div + div { border-left: 1px solid var(--linha); }
+.conta .etiqueta { display: block; margin-bottom: 14px; }
+.conta .valor { font-size: clamp(34px, 5vw, 50px); }
+.conta .sobra .valor { color: var(--rosa); }
+.conta p { margin: 12px 0 0; font-size: 14.5px; color: var(--texto-suave); line-height: 1.5; }
+.exemplo { text-align: center; margin-top: 26px; font-family: var(--etiqueta); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cinza); }
+
+/* ---------- garantias ---------- */
+.garantias { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 56px 48px; }
+.garantias h3 { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.15; margin: 14px 0 12px; color: var(--lavanda); }
+.garantias p { margin: 0; font-size: 16.5px; color: var(--texto-suave); }
+.garantias .tag { font-family: var(--etiqueta); font-weight: 700; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--creme); padding: 6px 12px; border-radius: 999px; }
+.tudo { margin: 16px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.tudo li { font-family: var(--etiqueta); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: var(--cinza-claro); color: var(--lavanda); }
+.comando { margin-top: 72px; text-align: center; font-style: normal; color: var(--texto-suave); max-width: 560px; margin-inline: auto; }
+
+/* ---------- fundadores ---------- */
+.fundadores { text-align: center; }
+.selo {
+  width: 132px; height: 132px; border-radius: 50%; margin: 0 auto 44px;
+  border: 1px solid var(--malva); display: grid; place-items: center; text-align: center;
+  font-family: var(--etiqueta); font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--malva); line-height: 1.8;
+}
+.selo b { display: block; font-family: var(--display); font-style: normal; font-weight: 400; font-size: 30px; letter-spacing: 0; text-transform: none; color: var(--rosa); line-height: 1; margin: 4px 0; }
+.beneficios { list-style: none; padding: 0; margin: 0 auto 64px; max-width: 520px; text-align: left; border-top: 1px solid var(--linha); }
+.beneficios li { display: flex; gap: 18px; align-items: baseline; padding-block: 18px; border-bottom: 1px solid var(--linha); font-size: 17px; color: var(--texto-suave); }
+.beneficios li::before { content: ''; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--amarelo); transform: translateY(-1px); }
+.beneficios li:nth-child(2)::before { background: var(--salvia); }
+.beneficios li:nth-child(3)::before { background: var(--lavanda); }
+.beneficios li:nth-child(4)::before { background: var(--malva); }
+.beneficios li:nth-child(5)::before { background: var(--rosa); }
+.contato { margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.email {
+  display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;
+  font-family: var(--etiqueta); font-size: 14px; letter-spacing: 0.12em; color: var(--lavanda);
+}
+.email code { font-family: inherit; user-select: all; }
+.copiar {
+  font-family: var(--etiqueta); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  background: transparent; color: var(--salvia); border: 1px solid var(--cinza-claro); border-radius: 999px; padding: 6px 14px; cursor: pointer;
+}
+.copiar:hover { color: var(--rosa); border-color: var(--rosa); }
+
+/* ---------- rodapé ---------- */
+.rodape { border-top: 1px solid var(--linha); padding-block: 96px 80px; text-align: center; }
+.rodape .marca { font-size: 44px; display: inline-block; margin-bottom: 20px; }
+.rodape p { margin: 0; font-style: normal; color: var(--texto-suave); }
+.rodape .etiqueta { display: block; margin-top: 28px; color: var(--cinza); font-size: 10.5px; }
+
+/* ---------- entrada suave ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .sobe { animation: sobe 900ms cubic-bezier(.2,.7,.2,1) both; }
+  .sobe.d1 { animation-delay: 120ms; } .sobe.d2 { animation-delay: 260ms; } .sobe.d3 { animation-delay: 400ms; }
+  @keyframes sobe { from { opacity: .001; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+}
+
+/* ---------- celular ---------- */
+@media (max-width: 760px) {
+  body { font-size: 17px; }
+  .abertura { padding-block: 84px 72px; }
+  .parte { padding-block: 84px 80px; }
+  .parte > .intro { margin-bottom: 52px; }
+  .lista li { grid-template-columns: minmax(0,1fr); gap: 14px; padding-block: 28px; }
+  .tres, .pacotes, .garantias { grid-template-columns: minmax(0,1fr); gap: 44px; }
+  .pacotes { gap: 30px; }
+  .conta { grid-template-columns: minmax(0,1fr); }
+  .conta div + div { border-left: 0; border-top: 1px solid var(--linha); }
+  .topo .pilula { padding: 10px 16px; font-size: 10.5px; letter-spacing: 0.2em; }
+}
+</style>
+
+<header class="topo">
+  <a class="marca" href="#inicio" aria-label="assinado"><span>a</span><span>s</span><span>s</span><span>i</span><span>n</span><span>a</span><span>d</span><span>o</span></a>
+  <a class="pilula" href="#fundadores">Ser fundador</a>
+</header>
+
+<main>
+  <section class="abertura coluna" id="inicio">
+    <span class="etiqueta sobe">Para médicos, dentistas, nutricionistas e advogados</span>
+    <h1 class="sobe d1">O seu consultório inteiro, <em>com o seu nome.</em></h1>
+    <p class="lide sobe d2">Site, aplicativo, agenda, e-mail e uma inteligência artificial para cada paciente. Tudo com a sua marca. Nós cuidamos de tudo por trás.</p>
+    <div class="sobe d3">
+      <a class="pilula grande" href="#fundadores">Quero a minha vaga</a>
+      <p class="nota-pe">20 vagas de fundador · preço garantido para sempre</p>
+    </div>
+  </section>
+
+  <section class="parte coluna" id="ia">
+    <span class="etiqueta">A inteligência artificial com o nome que o senhor escolher</span>
+    <h2>Cada paciente com a <em>sua própria IA</em></h2>
+    <p class="intro">Ela conhece só a história daquela paciente: os exames, o tratamento, as orientações do senhor. Lembra, acompanha, marca a consulta. E não sabe nada de mais ninguém.</p>
+
+    <div class="conversa" role="img" aria-label="Exemplo de conversa entre uma paciente e a Márcia, a IA do Dr. Marcos">
+      <div class="conversa-topo">
+        <div class="avatar" aria-hidden="true">M</div>
+        <div>
+          <strong>Márcia</strong>
+          <small>A assistente do Dr. Marcos</small>
+        </div>
+      </div>
+      <div class="mensagens">
+        <div class="msg ia">Bom dia, Ana! Amanhã é o dia do seu ultrassom, às 8h. Lembra que precisa estar com a bexiga cheia?</div>
+        <div class="msg pac">Obrigada! Depois preciso mostrar o resultado para o doutor.</div>
+        <div class="msg ia">Claro. O Dr. Marcos tem estes horários na semana que vem:
+          <div class="horarios"><span>Ter · 14h</span><span class="escolhido">Qua · 10h</span><span>Sex · 16h</span></div>
+        </div>
+        <div class="msg pac">Quarta às 10h, por favor.</div>
+        <div class="msg ia">Pronto, marcado! Vou te lembrar na véspera.</div>
+      </div>
+    </div>
+    <p class="legenda">Exemplo · o nome da IA é o senhor quem escolhe</p>
+  </section>
+
+  <section class="parte coluna" id="pacote">
+    <span class="etiqueta">O que é seu</span>
+    <h2>Tudo num lugar só, <em>tudo assinado pelo senhor</em></h2>
+    <p class="intro">Sem a nossa marca em lugar nenhum. O paciente só vê o seu nome.</p>
+
+    <ul class="lista">
+      <li><span class="tag c1">Site e app</span><div><h3>Site e aplicativo com o seu nome</h3><p>Um site bonito de verdade e um aplicativo que a paciente instala no celular. Com a sua logo, as suas cores e o seu domínio.</p></div></li>
+      <li><span class="tag c2">IA pessoal</span><div><h3>Uma IA para cada paciente</h3><p>Com o nome que o senhor escolher. Conhece o caso de cada uma, responde a qualquer hora e avisa o senhor quando precisa.</p></div></li>
+      <li><span class="tag c3">Caso</span><div><h3>Acompanhamento do caso</h3><p>Tratamento, exames, tarefas e lembretes, tudo à mão da paciente. No escritório de advocacia, o cliente acompanha o processo, os prazos e os documentos.</p></div></li>
+      <li><span class="tag c4">Agenda</span><div><h3>Agenda completa, com WhatsApp</h3><p>A paciente marca sozinha, 24 horas. Confirmação e remarcação por WhatsApp e e-mail. Aparece no Google, no Instagram e num QR Code no consultório.</p></div></li>
+      <li><span class="tag c5">E-mail</span><div><h3>E-mail com o seu domínio</h3><p>Para o senhor e para as suas pacientes: ana@drmarcos.com.br. Quem recebe um e-mail assim sente que faz parte da sua clínica.</p></div></li>
+      <li><span class="tag c6">Comunidade</span><div><h3>A sua comunidade</h3><p>Um espaço para as suas pacientes, com conteúdo, avisos e conversas, dentro do seu aplicativo.</p></div></li>
+    </ul>
+  </section>
+
+  <section class="parte coluna" id="agenda">
+    <span class="etiqueta">A agenda da cidade</span>
+    <h2>O senhor pode ser <em>o dono da agenda toda</em></h2>
+    <p class="frase">“Todo mundo marca com todo mundo, mas é tudo na agenda do Dr. Marcos.”</p>
+
+    <div class="tres">
+      <div><span class="etiqueta">Aberta</span><h3>Qualquer pessoa marca</h3><p>A agenda fica aberta para quem ainda não é paciente. É uma porta de entrada funcionando o dia inteiro.</p></div>
+      <div><span class="etiqueta">Sublocação</span><h3>Outros profissionais dentro</h3><p>A nutricionista, a psicóloga, o colega das sextas. O senhor cobra o que quiser de quem quiser.</p></div>
+      <div><span class="etiqueta">Cidade</span><h3>O nome que todos veem</h3><p>Na cidade pequena, a agenda do senhor vira a agenda de todos. Propaganda todo dia, sem pagar anúncio.</p></div>
+    </div>
+  </section>
+
+  <section class="parte coluna" id="precos">
+    <span class="etiqueta">Preço de fundador, garantido para sempre</span>
+    <h2>Um pacote, <em>um preço</em></h2>
+    <p class="intro">Quem entra agora paga o preço de fundador enquanto estiver com a gente. Quem chegar depois paga o preço cheio.</p>
+
+    <div class="implantacao">
+      <span class="etiqueta">Implantação · paga uma vez</span>
+      <div class="valor">R$ 2.500</div>
+      <span class="cheio">Preço cheio <s>R$ 6.000</s></span>
+    </div>
+
+    <div class="pacotes">
+      <div class="pacote">
+        <span class="etiqueta">Até 30 pacientes</span>
+        <h3>Consultório</h3>
+        <div class="valor">R$ 690<small>/mês</small></div>
+        <span class="cheio">Preço cheio <s>R$ 1.290</s></span>
+        <span class="por">cerca de R$ 23 por paciente</span>
+      </div>
+      <div class="pacote destaque">
+        <span class="etiqueta">Até 100 pacientes</span>
+        <h3>Clínica</h3>
+        <div class="valor">R$ 1.290<small>/mês</small></div>
+        <span class="cheio">Preço cheio <s>R$ 2.490</s></span>
+        <span class="por">cerca de R$ 13 por paciente</span>
+      </div>
+      <div class="pacote">
+        <span class="etiqueta">Até 300 pacientes</span>
+        <h3>Referência</h3>
+        <div class="valor">R$ 2.490<small>/mês</small></div>
+        <span class="cheio">Preço cheio <s>R$ 4.990</s></span>
+        <span class="por">cerca de R$ 8 por paciente</span>
+      </div>
+    </div>
+    <p class="clinica">Clínica com vários profissionais ou sem limite de pacientes: preço sob medida.</p>
+  </section>
+
+  <section class="parte coluna" id="conta">
+    <span class="etiqueta">A conta</span>
+    <h2>O senhor paga pouco, <em>e fatura muito mais</em></h2>
+    <p class="intro">Com a IA, o senhor passa a oferecer um acompanhamento que nenhum colega oferece, e cobra por ele.</p>
+
+    <div class="conta">
+      <div><span class="etiqueta">O senhor paga</span><div class="valor">R$ 1.290</div><p>Pacote até 100 pacientes, por mês</p></div>
+      <div><span class="etiqueta">O senhor cobra</span><div class="valor">R$ 12.000</div><p>40 pacientes × R$ 300 de acompanhamento por mês</p></div>
+      <div class="sobra"><span class="etiqueta">Sobra</span><div class="valor">R$ 10.710</div><p>Todo mês, com o seu nome em tudo</p></div>
+    </div>
+    <p class="exemplo">Exemplo ilustrativo · o valor do acompanhamento é o senhor quem define</p>
+  </section>
+
+  <section class="parte coluna" id="garantias">
+    <span class="etiqueta">Sem medo</span>
+    <h2>O que é seu, <em>é seu</em></h2>
+    <p class="intro">Tudo o que o senhor constrói com a gente continua sendo seu, aconteça o que acontecer.</p>
+
+    <div class="garantias">
+      <div><span class="tag c5">Pacientes</span><h3>Os seus pacientes são sempre seus</h3><p>A lista, os históricos e os dados são do senhor. Se quiser sair, leva tudo com o senhor.</p></div>
+      <div><span class="tag c4">Agenda</span><h3>A agenda é sua enquanto estiver com a gente</h3><p>E, se quiser, o senhor pode comprá-la e ficar com ela para sempre, por um valor fechado no contrato.</p></div>
+      <div><span class="tag c1">Se nós pararmos</span><h3>O senhor fica com tudo</h3><p>Por um valor fixo, combinado desde o primeiro dia, passa para o seu nome:</p>
+        <ul class="tudo"><li>Site</li><li>Aplicativo</li><li>Domínio</li><li>E-mails</li><li>Dados</li><li>A sua IA</li></ul>
+      </div>
+      <div><span class="tag c6">Normas</span><h3>Dentro das regras do seu conselho</h3><p>Site e IA seguem as normas de publicidade do CFM, CFO, CFN e OAB, e protegem os dados como pede a LGPD.</p></div>
+    </div>
+    <p class="comando">A IA orienta, lembra e acompanha, dentro do que o senhor definiu. Ela não diagnostica nem prescreve. O senhor continua no comando.</p>
+  </section>
+
+  <section class="parte coluna fundadores" id="fundadores">
+    <span class="etiqueta">Beta tester fundador</span>
+    <h2>Seja um dos <em>20 fundadores</em></h2>
+    <p class="intro">Os primeiros ajudam a moldar a plataforma, do jeito deles, e ficam com condições que ninguém mais vai ter.</p>
+
+    <div class="selo" aria-hidden="true"><div>Membro<b>Fundador</b>Nº 01</div></div>
+
+    <ul class="beneficios">
+      <li>Preço de fundador para sempre, enquanto estiver com a gente</li>
+      <li>Selo de Fundador no seu painel</li>
+      <li>Canal direto com a Dra Lê</li>
+      <li>As suas ideias entram primeiro na plataforma</li>
+      <li>Implantação com prioridade</li>
+    </ul>
+
+    <a class="pilula grande" href="#fundadores">Quero a minha vaga</a>
+    <div class="contato">
+      <span class="etiqueta">Para reservar, fale com a Dra Lê</span>
+      <span class="email"><code id="email">le@umbii.boo</code><button class="copiar" id="copiar" type="button">Copiar</button></span>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <span class="marca"><span>a</span><span>s</span><span>s</span><span>i</span><span>n</span><span>a</span><span>d</span><span>o</span></span>
+  <p>O seu consultório inteiro, com o seu nome. Nós cuidamos de tudo por trás.</p>
+  <span class="etiqueta">Uma plataforma da Dra Lê</span>
+</footer>
+
+<script>
+  (function () {
+    var b = document.getElementById('copiar');
+    var t = document.getElementById('email');
+    b.addEventListener('click', function () {
+      var ok = function () { b.textContent = 'Copiado'; setTimeout(function () { b.textContent = 'Copiar'; }, 1800); };
+      var selecionar = function () { var r = document.createRange(); r.selectNodeContents(t); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+      try { navigator.clipboard.writeText(t.textContent).then(ok, selecionar); } catch (e) { selecionar(); }
+    });
+  })();
+</script>
+
+</body></html>

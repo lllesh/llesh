@@ -1,0 +1,123 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>Entrada — Little Weave</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --fundo:#FFFBF3;
+  --papel:#FFFDF8;
+  --tinta:#5B1030;
+  --tinta-suave:#8A4A62;
+  --linha:#E9DED8;
+  --rosa:#F48591;
+  --verde:#8DA599;
+  --roxo:#8D96C1;
+  --laranja:#FFB872;
+  --sombra-1:rgba(91,16,48,0.08);
+  --sombra-2:rgba(255,255,255,0.9);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --fundo:#241016; --papel:#2C141C; --tinta:#F6E4EA; --tinta-suave:#D9AFC0;
+    --linha:#452230; --sombra-1:rgba(0,0,0,0.4); --sombra-2:rgba(255,255,255,0.03);
+  }
+}
+:root[data-theme="dark"]{
+  --fundo:#241016; --papel:#2C141C; --tinta:#F6E4EA; --tinta-suave:#D9AFC0;
+  --linha:#452230; --sombra-1:rgba(0,0,0,0.4); --sombra-2:rgba(255,255,255,0.03);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--fundo); color:var(--tinta);
+  font-family:"EB Garamond",Garamond,"Iowan Old Style",serif;
+  font-size:21px; line-height:1.5; text-align:center;
+  padding:clamp(40px,9vw,120px) clamp(28px,12vw,140px) 96px;
+}
+.envelope{max-width:600px;margin:0 auto;}
+.rotulo{
+  font-size:14px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--tinta-suave); margin:0 0 10px;
+}
+h1{
+  font-weight:500; font-style:italic; font-size:clamp(32px,5vw,44px);
+  margin:0 0 6px; text-wrap:balance;
+}
+.sub{ font-size:19px; color:var(--tinta-suave); margin:0 auto 48px; max-width:46ch; }
+
+.lista{ display:grid; gap:24px; }
+
+.cartao{
+  background:var(--papel); border-radius:20px;
+  padding:30px 32px; box-shadow:8px 8px 20px var(--sombra-1), -8px -8px 20px var(--sombra-2);
+  border-left:4px solid var(--cor,var(--roxo));
+  display:grid; gap:10px; justify-items:center;
+}
+.cartao .topo{ display:flex; flex-direction:column; align-items:center; gap:6px; }
+.cartao h2{ margin:0; font-size:23px; font-weight:500; }
+.cartao .link{
+  font-family:ui-monospace,"SF Mono",monospace; font-size:14px;
+  color:var(--cor,var(--roxo)); word-break:break-all;
+}
+.cartao p{ margin:0; font-size:18px; max-width:40ch; }
+.cartao .exemplo{
+  font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--tinta-suave); opacity:0.75;
+}
+
+.rodape{
+  margin-top:48px; padding-top:24px; border-top:1px solid var(--linha);
+  font-size:16px; color:var(--tinta-suave);
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .cartao{ animation: sobe 0.45s ease-out both; }
+  .cartao:nth-child(2){ animation-delay:0.05s; }
+  .cartao:nth-child(3){ animation-delay:0.1s; }
+}
+@keyframes sobe{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+</style>
+
+<div class="envelope">
+  <p class="rotulo">exemplo — pendente do que você mandar</p>
+  <h1>Entrada — Little Weave</h1>
+  <p class="sub">Um cartão pra cada link. Isso aqui é exemplo — me manda o link e o texto certo de cada um que eu troco.</p>
+
+  <div class="lista">
+
+    <div class="cartao" style="--cor:var(--rosa)">
+      <div class="topo">
+        <h2>Conversar</h2>
+        <span class="exemplo">exemplo</span>
+      </div>
+      <p>Aqui você conversa com a bonequinha. Conta o que está sentindo, pergunta o que quiser — ela escuta e responde.</p>
+      <span class="link">littleeve.org</span>
+    </div>
+
+    <div class="cartao" style="--cor:var(--verde)">
+      <div class="topo">
+        <h2>Fazer cadastro</h2>
+        <span class="exemplo">exemplo</span>
+      </div>
+      <p>Aqui você cria sua conta — com e-mail ou com o Google. É só uma vez.</p>
+      <span class="link">littleeve.org/cadastro</span>
+    </div>
+
+    <div class="cartao" style="--cor:var(--laranja)">
+      <div class="topo">
+        <h2>Mandar exame</h2>
+        <span class="exemplo">exemplo</span>
+      </div>
+      <p>Aqui você envia a foto ou o PDF do seu exame. Fica guardado só com você.</p>
+      <span class="link">littleeve.org/exame</span>
+    </div>
+
+  </div>
+
+  <p class="rodape">São 3 exemplos pra você ver o formato. Manda os links de verdade e o texto de cada um que eu ajusto tudo.</p>
+</div>
+
+</body></html>

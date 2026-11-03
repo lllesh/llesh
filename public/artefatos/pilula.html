@@ -1,0 +1,114 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>P Í L U L A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;800&display=swap">
+<style>
+/* layout: a página do veenus.quest — fundo branco, preto, títulos enormes, blocos arredondados como as fotos de lá, um vermelho só */
+:root{
+  --bg:#ffffff; --fg:#000000; --muted:#737373; --line:#dbdbdb; --bloco:#0a0a0a; --vermelho:#d8143a; --no-bloco:#ffffff;
+  --display:"Inter Tight","Switzer",system-ui,sans-serif; --body:"Inter Tight","Switzer",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;margin:0}
+.pag{max-width:1040px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:clamp(40px,8vw,96px)}
+.marca{font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(56px,12vw,128px);line-height:.88;letter-spacing:-.05em;margin:28px 0 0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--vermelho)}
+.lead{max-width:60ch;font-size:clamp(18px,2.2vw,22px);line-height:1.45;margin:32px 0 0;color:var(--fg)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,64px);line-height:.95;letter-spacing:-.04em;margin:0;text-wrap:balance}
+section{margin-top:clamp(64px,10vw,120px)}
+.versoes{display:grid;gap:20px;margin-top:36px}
+.versao{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr);gap:24px;align-items:end;background:var(--bloco);color:var(--no-bloco);border-radius:22px;padding:clamp(24px,4vw,44px);text-decoration:none;min-height:220px;transition:transform .25s ease}
+.versao:hover{transform:translateY(-3px)}
+.versao:focus-visible{outline:3px solid var(--vermelho);outline-offset:4px}
+.versao .nome{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.6vw,48px);line-height:.95;letter-spacing:-.04em;overflow-wrap:anywhere}
+.versao .papel{display:inline-block;margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--vermelho)}
+.versao p{margin:0;font-size:16px;line-height:1.55;color:#d9d9d9;min-width:0}
+.versao.acesa{background:var(--vermelho)}
+.versao.acesa .papel{color:var(--no-bloco)}
+.versao.acesa p{color:#fff3f5}
+.listas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:36px}
+.lista h3{margin:0 0 14px;font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.lista ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.lista li{font-size:16px;line-height:1.45;padding-top:12px;border-top:1px solid var(--line)}
+.lista li b{font-weight:600}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.links a{display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:999px;border:1.5px solid var(--fg);color:var(--fg);text-decoration:none;font-weight:600;font-size:15px}
+.links a:hover{background:var(--fg);color:var(--bg)}
+.links a:focus-visible{outline:3px solid var(--vermelho);outline-offset:3px}
+footer{margin-top:clamp(64px,10vw,120px);padding-top:20px;border-top:1px solid var(--line);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:760px){.versao{grid-template-columns:1fr;min-height:0}.listas{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.versao{transition:none}}
+</style>
+
+<main class="pag">
+  <div class="marca">V È E N U S · relatório do terminal · 28/09/2026</div>
+  <h1>pílula<em>.</em></h1>
+  <p class="lead">Um lugar para escrever direto na tela, sem caixa, e pôr foto, vídeo e site no meio do texto. Cada pílula é um mundo: fecha uma, abre outra. Este terminal fez o projeto do zero e hoje ele vive em três versões, cada uma com o seu próprio banco dentro do u m b ii . b o o.</p>
+
+  <section>
+    <h2>as três versões</h2>
+    <div class="versoes">
+      <a class="versao acesa" href="https://pil.umbii.boo">
+        <div><div class="nome">pil.umbii.boo</div><span class="papel">a nova · em uso</span></div>
+        <p>A cara do 1.le.pen: coluna de bolinhas à esquerda. A primeira bolinha é a grávida, gordinha, de borda escura, e guarda todos os controles. Da segunda em diante é a história: cada bolinha abre a tela colorida da capa, onde se escreve direto.</p>
+      </a>
+      <a class="versao" href="https://pilula.umbii.boo">
+        <div><div class="nome">pilula.umbii.boo</div><span class="papel">a original</span></div>
+        <p>Pílulas cinza na lateral, uma embaixo da outra, arrastáveis. Tela creme com o jeito de escrever do typefaces. Barra em pé à esquerda com o pontinho para abrir e fechar. Foto que aumenta, muda de lugar, gira livre e espelha.</p>
+      </a>
+      <a class="versao" href="https://2.pilula.umbii.boo">
+        <div><div class="nome">2.pilula.umbii.boo</div><span class="papel">a cópia</span></div>
+        <p>Igual à original por dentro, com dados separados. Está pronta para ser mudada do jeito que a Dra Lê for explicar.</p>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>onde estamos</h2>
+    <div class="listas">
+      <div class="lista">
+        <h3>feito</h3>
+        <ul>
+          <li><b>Escrever sem caixa</b>, grandão, com as fontes do typefaces e a Figtree da capa</li>
+          <li><b>Controles</b>: tamanho, linhas, letras, alinhar, largura, fonte e peso</li>
+          <li><b>Foto e vídeo</b> no texto: aumentar, mudar de lugar, girar livre, espelhar</li>
+          <li><b>Site</b> no texto, abrindo na lateral</li>
+          <li><b>Passar de pílula</b> com dois dedos para o lado</li>
+          <li><b>Nada se perde</b>: histórico de uma versão por minuto e cópia no navegador</li>
+          <li><b>Só a dona entra</b>, com e-mail e senha</li>
+        </ul>
+      </div>
+      <div class="lista">
+        <h3>em andamento</h3>
+        <ul>
+          <li><b>pil.umbii.boo</b>: ajustes finos do desenho com a Dra Lê, bolinha por bolinha</li>
+          <li><b>PDF V È E N U S</b> das três versões, na mesa como P Í L U L A</li>
+        </ul>
+      </div>
+      <div class="lista">
+        <h3>falta</h3>
+        <ul>
+          <li><b>2.pilula</b>: a Dra Lê explicar o que muda nela</li>
+          <li><b>Pílulas antigas do le.pilula</b>: virar bolinhas no pil.umbii.boo, se ela quiser</li>
+          <li><b>Entrada por plano</b>: trocar para a porta que confere o plano Platinum, quando os planos entrarem</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>links</h2>
+    <div class="links">
+      <a href="https://pil.umbii.boo">pil.umbii.boo</a>
+      <a href="https://pilula.umbii.boo">pilula.umbii.boo</a>
+      <a href="https://2.pilula.umbii.boo">2.pilula.umbii.boo</a>
+      <a href="https://le.pilula.umbii.boo">le.pilula.umbii.boo · leva para o pil</a>
+    </div>
+  </section>
+
+  <footer>terminal P Í L U L A · pastas em ~/Documents/T E R M I N A L</footer>
+</main>
+
+</body></html>

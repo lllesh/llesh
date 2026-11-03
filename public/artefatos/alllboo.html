@@ -1,0 +1,84 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>A L L L B O O</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;900&display=swap">
+<style>
+/* Layout: one black column in the veenus.quest voice — giant tight type, white on black, blood-red pills */
+:root{
+  --bg:#000; --fg:#fff; --mute:#8a8a8a; --line:#222; --red:#d10a1e; --blue:#09f;
+  --display:"Inter Tight","Switzer","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--display);font-weight:500;margin:0;padding-inline:16px;padding-block:0 96px}
+main{max-width:980px;margin:0 auto;display:grid;gap:120px}
+header{padding-top:96px;display:grid;gap:28px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--mute)}
+h1{font-size:clamp(56px,13vw,140px);font-weight:900;letter-spacing:-.04em;line-height:.9;margin:0;text-wrap:balance}
+h1 span{color:var(--red)}
+.lede{font-size:clamp(20px,3vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.2;max-width:22ch;margin:0}
+section{display:grid;gap:36px}
+h2{font-size:clamp(36px,6vw,55px);font-weight:900;letter-spacing:-.04em;line-height:1;margin:0}
+.pill{display:inline-block;background:var(--red);color:var(--fg);font-size:12px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;padding:10px 18px;border-radius:999px;justify-self:start}
+.pill.ghost{background:transparent;border:1.5px solid var(--fg)}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+li{border-top:1px solid var(--line);padding-block:26px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:baseline}
+li:last-child{border-bottom:1px solid var(--line)}
+li p{margin:0;font-size:18px;line-height:1.5;max-width:60ch}
+li b{font-weight:900;font-size:22px;letter-spacing:-.02em;display:block;margin-bottom:6px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.tag.red{color:var(--red)}
+a{color:var(--fg);text-decoration-color:var(--red);text-underline-offset:4px}
+.empty{font-size:18px;line-height:1.5;color:var(--mute);margin:0;max-width:60ch}
+footer{border-top:1px solid var(--line);padding-top:32px;font-size:12px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+@media (max-width:560px){li{grid-template-columns:1fr}}
+</style>
+
+<main>
+  <header>
+    <div class="eyebrow">Relatório do terminal · 28 . 09 . 2026</div>
+    <h1>a l l l<br><span>b o o</span></h1>
+    <p class="lede">Terminal aberto hoje. Nenhum projeto começou ainda: a Dra Lê está explicando o que vai para o ar.</p>
+  </header>
+
+  <section>
+    <span class="pill">Que projeto é</span>
+    <h2>Ainda sem nome.</h2>
+    <ul>
+      <li><div><b>Pedido do dia</b><p>“É hoje que eu preciso colocar isso no ar.” O site ainda não foi dito. O terminal está esperando a explicação completa (regra 17).</p></div><span class="tag red">Esperando</span></li>
+      <li><div><b>Pasta, domínio e projeto no Vercel</b><p>Nenhum criado. Quando o nome vier, os três terão exatamente o mesmo nome.</p></div><span class="tag">Nada criado</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="pill">O que já foi feito</span>
+    <h2>Uma resposta.</h2>
+    <ul>
+      <li><div><b>Dá para rodar qualquer site dentro do Ghost?</b><p>Em parte. Site de vitrine vira tema do Ghost e fica igual. Tudo que tem a pasta <code>api/</code> (como a porta de entrar) não roda lá, só no Vercel. O login de membros do Ghost é por link ou código no e-mail, sem senha, o que vai contra a regra de entrar só com e-mail e senha.</p></div><span class="tag">Respondido</span></li>
+      <li><div><b>Caminho sugerido</b><p>Ghost cuida de blog e newsletter. O site de verdade continua no Vercel, com a porta de entrar e o banco dentro do projeto único do Supabase.</p></div><span class="tag">Sugerido</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="pill">Em andamento</span>
+    <ul>
+      <li><div><b>Esperando a Dra Lê dizer qual site vai para o Ghost</b><p>E o que ele precisa fazer.</p></div><span class="tag red">Agora</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="pill">O que falta</span>
+    <ul>
+      <li><div><b>Tudo do projeto</b><p>Criar pasta, projeto e domínio com o mesmo nome, colocar no ar, apagar o endereço .vercel.app e fazer a conferência completa: favicon, avatar, og:image, porta de entrar só para le@umbii.boo e banco fechado.</p></div><span class="tag">Depois</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="pill ghost">Links</span>
+    <p class="empty">Nenhum endereço no ar ainda neste terminal. O estilo desta página foi copiado de <a href="https://veenus.quest">veenus.quest</a>.</p>
+  </section>
+
+  <footer>Terminal A L L L B O O</footer>
+</main>
+
+</body></html>

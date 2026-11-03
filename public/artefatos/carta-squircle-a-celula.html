@@ -1,0 +1,289 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>carta-squircle · a célula</title>
+<style>
+  :root{
+    --creme:#F5F1E8;
+    --creme-2:#EFEADD;
+    --ink:#161513;
+    --muted:#87806F;
+    --line:#E2DCCC;
+    --shape:#141210;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{min-height:100dvh}
+  body{
+    background:var(--creme);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;flex-direction:column;align-items:center;
+    padding:28px 20px calc(28px + env(safe-area-inset-bottom));
+    min-height:100dvh;
+    gap:22px;
+  }
+  header{text-align:center;max-width:420px;display:flex;flex-direction:column;gap:6px;margin-top:6px}
+  header .kick{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  header h1{font-size:19px;font-weight:600;letter-spacing:-.01em}
+  header p{font-size:13.5px;line-height:1.5;color:var(--muted)}
+
+  .stage{
+    width:100%;max-width:440px;
+    aspect-ratio:1/1.05;
+    background:var(--creme);
+    border:1px solid var(--line);
+    border-radius:26px;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .stage svg{width:100%;height:100%}
+  #shape{fill:var(--shape);transition:none}
+
+  .panel{
+    width:100%;max-width:440px;
+    background:var(--creme-2);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:20px 20px 22px;
+    display:flex;flex-direction:column;gap:20px;
+  }
+  .ctrl{display:flex;flex-direction:column;gap:11px}
+  .ctrl .row{display:flex;justify-content:space-between;align-items:baseline}
+  .ctrl label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink)}
+  .ctrl .val{font-size:14px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;
+    width:100%;height:6px;border-radius:999px;
+    background:linear-gradient(var(--line),var(--line));
+    outline:none;cursor:pointer;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--shape);
+    border:3px solid var(--creme);
+    box-shadow:0 2px 6px rgba(0,0,0,.18);
+    cursor:grab;
+  }
+  input[type=range]::-webkit-slider-thumb:active{cursor:grabbing}
+  input[type=range]::-moz-range-thumb{
+    width:26px;height:26px;border-radius:50%;
+    background:var(--shape);border:3px solid var(--creme);
+    box-shadow:0 2px 6px rgba(0,0,0,.18);cursor:grab;
+  }
+
+  .measure{
+    display:flex;gap:10px;width:100%;max-width:440px;
+  }
+  .measure .chip{
+    flex:1;text-align:center;
+    background:var(--creme-2);border:1px solid var(--line);
+    border-radius:16px;padding:12px 8px;
+  }
+  .measure .chip b{display:block;font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+  .measure .chip span{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+  .presets{display:flex;gap:8px;width:100%;max-width:440px;flex-wrap:wrap;justify-content:center}
+  .presets button{
+    font:inherit;font-size:12.5px;font-weight:600;
+    padding:9px 15px;border-radius:999px;cursor:pointer;
+    background:var(--creme-2);color:var(--ink);
+    border:1px solid var(--line);transition:transform .12s ease, background .12s ease;
+  }
+  .presets button:hover{transform:translateY(-1px)}
+  .presets button:active{transform:translateY(0)}
+  .presets button.on{background:var(--shape);color:var(--creme);border-color:var(--shape)}
+
+  .save-btn{
+    width:100%;max-width:440px;
+    font:inherit;font-size:14px;font-weight:600;
+    padding:15px;border-radius:16px;cursor:pointer;
+    background:var(--shape);color:var(--creme);border:none;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:transform .12s ease, opacity .12s ease;
+  }
+  .save-btn:hover{transform:translateY(-1px)}
+  .save-btn:active{transform:translateY(0);opacity:.9}
+
+  .saved-wrap{width:100%;max-width:440px;display:none;flex-direction:column;gap:12px}
+  .saved-wrap.show{display:flex}
+  .saved-head{display:flex;justify-content:space-between;align-items:baseline}
+  .saved-head .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+  .saved-head button{font:inherit;font-size:12px;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .saved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .saved-card{
+    background:var(--creme-2);border:1px solid var(--line);border-radius:16px;
+    padding:12px 10px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;
+  }
+  .saved-card .del{position:absolute;top:6px;right:8px;font-size:15px;line-height:1;color:var(--muted);background:none;border:none;cursor:pointer;padding:2px}
+  .saved-card svg{width:64px;height:70px}
+  .saved-card .lab{font-size:10.5px;font-weight:600;color:var(--muted);text-align:center;font-variant-numeric:tabular-nums;line-height:1.35}
+  .saved-card .acts{display:flex;gap:6px;width:100%}
+  .saved-card .acts button{
+    flex:1;font:inherit;font-size:10.5px;font-weight:600;padding:6px 0;border-radius:9px;cursor:pointer;
+    border:1px solid var(--line);background:var(--creme);color:var(--ink);
+  }
+  .saved-card .acts button.use{background:var(--shape);color:var(--creme);border-color:var(--shape)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header>
+  <div class="kick">iô.io · a célula</div>
+  <h1>carta-squircle</h1>
+  <p>Puxe os controles até a forma ficar com a alma do seu squircle, só que em pé. Quando bater, me mande os dois números.</p>
+</header>
+
+<div class="stage">
+  <svg id="svg" viewBox="0 0 440 460" preserveAspectRatio="xMidYMid meet">
+    <path id="shape" d=""/>
+  </svg>
+</div>
+
+<div class="measure">
+  <div class="chip"><b id="mRatio">1 : 1,40</b><span>proporção</span></div>
+  <div class="chip"><b id="mN">3,28</b><span>barriga (n)</span></div>
+</div>
+
+<div class="panel">
+  <div class="ctrl">
+    <div class="row"><label>altura</label><span class="val" id="vAlt">em pé</span></div>
+    <input id="sAlt" type="range" min="100" max="200" value="140">
+  </div>
+  <div class="ctrl">
+    <div class="row"><label>barriga</label><span class="val" id="vBar">média</span></div>
+    <input id="sBar" type="range" min="250" max="460" value="328">
+  </div>
+</div>
+
+<div class="presets" id="presets">
+  <button data-r="140" data-n="328">o seu, em pé</button>
+  <button data-r="150" data-n="300">um pouco mais</button>
+  <button data-r="170" data-n="290">bem alto</button>
+  <button data-r="100" data-n="328">quadrado (original)</button>
+</div>
+
+<button class="save-btn" id="saveBtn">＋ salvar esta forma</button>
+
+<div class="saved-wrap" id="savedWrap">
+  <div class="saved-head">
+    <span class="t">salvas · <span id="savedCount">0</span></span>
+    <button id="clearAll">limpar tudo</button>
+  </div>
+  <div class="saved-grid" id="savedGrid"></div>
+</div>
+
+<script>
+  const svg = document.getElementById('svg');
+  const shape = document.getElementById('shape');
+  const sAlt = document.getElementById('sAlt');
+  const sBar = document.getElementById('sBar');
+  const mRatio = document.getElementById('mRatio');
+  const mN = document.getElementById('mN');
+  const vAlt = document.getElementById('vAlt');
+  const vBar = document.getElementById('vBar');
+  const VB = 440, VBH = 460, PAD = 34;
+
+  function superPath(w, h, n){
+    const a=w/2, b=h/2, cx=VB/2, cy=VBH/2, steps=200;
+    let d="";
+    for(let i=0;i<=steps;i++){
+      const t=2*Math.PI*i/steps;
+      const ct=Math.cos(t), st=Math.sin(t);
+      const x=cx + a*Math.sign(ct)*Math.pow(Math.abs(ct),2/n);
+      const y=cy + b*Math.sign(st)*Math.pow(Math.abs(st),2/n);
+      d += (i===0?"M":"L") + x.toFixed(2) + " " + y.toFixed(2);
+    }
+    return d + "Z";
+  }
+  const fmt = x => x.toFixed(2).replace('.',',');
+
+  function render(){
+    const r = +sAlt.value/100;      // height / width, 1.0 .. 2.0
+    const n = +sBar.value/100;      // exponent 2.5 .. 4.6
+    // fit into viewbox keeping ratio r = h/w
+    const maxW = VB - PAD*2, maxH = VBH - PAD*2;
+    let w = maxW, h = w*r;
+    if(h > maxH){ h = maxH; w = h/r; }
+    shape.setAttribute('d', superPath(w, h, n));
+    mRatio.textContent = "1 : " + fmt(r);
+    mN.textContent = fmt(n);
+    vAlt.textContent = r < 1.05 ? "quadrado" : r < 1.45 ? "em pé" : r < 1.7 ? "bem em pé" : "alto";
+    vBar.textContent = n < 2.8 ? "cheia" : n < 3.6 ? "média" : "reta";
+    document.querySelectorAll('#presets button').forEach(b=>{
+      b.classList.toggle('on', +b.dataset.r===+sAlt.value && +b.dataset.n===+sBar.value);
+    });
+  }
+  sAlt.addEventListener('input', render);
+  sBar.addEventListener('input', render);
+  document.querySelectorAll('#presets button').forEach(b=>{
+    b.addEventListener('click', ()=>{ sAlt.value=b.dataset.r; sBar.value=b.dataset.n; render(); });
+  });
+
+  // ---- salvar várias formas ----
+  const saveBtn = document.getElementById('saveBtn');
+  const savedWrap = document.getElementById('savedWrap');
+  const savedGrid = document.getElementById('savedGrid');
+  const savedCount = document.getElementById('savedCount');
+  const clearAll = document.getElementById('clearAll');
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem('cs_saved')||'[]'); } catch(e){ saved = []; }
+
+  function persist(){ try{ localStorage.setItem('cs_saved', JSON.stringify(saved)); }catch(e){} }
+
+  // path for a fixed 120x126 thumb / download box
+  function pathFor(r, n, W, H, pad){
+    const maxW=W-pad*2, maxH=H-pad*2;
+    let w=maxW, h=w*r; if(h>maxH){ h=maxH; w=h/r; }
+    const a=w/2,b=h/2,cx=W/2,cy=H/2,steps=200; let d="";
+    for(let i=0;i<=steps;i++){
+      const t=2*Math.PI*i/steps, ct=Math.cos(t), st=Math.sin(t);
+      const x=cx+a*Math.sign(ct)*Math.pow(Math.abs(ct),2/n);
+      const y=cy+b*Math.sign(st)*Math.pow(Math.abs(st),2/n);
+      d+=(i===0?"M":"L")+x.toFixed(2)+" "+y.toFixed(2);
+    }
+    return d+"Z";
+  }
+  function svgString(r,n){
+    const W=600,H=Math.round(600*r),pad=30;
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'"><path fill="#141210" d="'+pathFor(r,n,W,H,pad)+'"/></svg>';
+  }
+  function download(r,n,idx){
+    const blob=new Blob([svgString(r,n)],{type:'image/svg+xml'});
+    const url=URL.createObjectURL(blob), a=document.createElement('a');
+    a.href=url; a.download='carta-squircle-'+idx+'.svg'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+
+  function renderSaved(){
+    savedWrap.classList.toggle('show', saved.length>0);
+    savedCount.textContent = saved.length;
+    savedGrid.innerHTML = '';
+    saved.forEach((s,i)=>{
+      const card=document.createElement('div'); card.className='saved-card';
+      card.innerHTML =
+        '<button class="del" title="apagar">×</button>'+
+        '<svg viewBox="0 0 120 126"><path fill="#141210" d="'+pathFor(s.r,s.n,120,126,12)+'"/></svg>'+
+        '<div class="lab">#'+(i+1)+'<br>1 : '+fmt(s.r)+' · n '+fmt(s.n)+'</div>'+
+        '<div class="acts"><button class="use">usar</button><button class="dl">baixar</button></div>';
+      card.querySelector('.del').onclick=()=>{ saved.splice(i,1); persist(); renderSaved(); };
+      card.querySelector('.use').onclick=()=>{ sAlt.value=Math.round(s.r*100); sBar.value=Math.round(s.n*100); render(); window.scrollTo({top:0,behavior:'smooth'}); };
+      card.querySelector('.dl').onclick=()=>download(s.r,s.n,i+1);
+      savedGrid.appendChild(card);
+    });
+  }
+  saveBtn.addEventListener('click', ()=>{
+    saved.push({ r:+sAlt.value/100, n:+sBar.value/100 });
+    persist(); renderSaved();
+    saveBtn.textContent='✓ salva! (veja embaixo)';
+    savedWrap.scrollIntoView({behavior:'smooth', block:'center'});
+    const first = savedGrid.lastElementChild;
+    if(first){ first.style.outline='2px solid var(--shape)'; setTimeout(()=>first.style.outline='none',1200); }
+    setTimeout(()=>saveBtn.textContent='＋ salvar esta forma', 1400);
+  });
+  clearAll.addEventListener('click', ()=>{ saved=[]; persist(); renderSaved(); });
+
+  render();
+  renderSaved();
+</script>
+
+</body></html>

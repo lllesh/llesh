@@ -1,0 +1,507 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Assinado pelo Doutor 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Courier+Prime:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;500&display=swap">
+<style>
+/* Layout: cópia fiel das duas referências. Topo e abertura = identity-extractor (washi, sumi, pílula ferrugem, campo com botão preto, área tracejada). Partes seguintes = dr-show (convite: títulos Cormorant finos, filete dourado com ponto, texto Lora, cartões claros, formulário). Sem itálico. */
+:root {
+  --washi: #F4EFE6;
+  --sumi: #0A0A0A;
+  --hairline: rgba(10,10,10,0.20);
+  --ferrugem: #C2562A;
+  --ferrugem-texto: #FFF8F1;
+
+  --carvao: hsl(30 10% 25%);
+  --apagado: hsl(30 10% 45%);
+  --ouro: hsl(42 50% 75%);
+  --borda: hsl(35 20% 88%);
+  --cartao: hsl(40 40% 98%);
+  --campo: hsl(35 25% 90%);
+  --marrom: hsl(30 15% 35%);
+
+  --display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --baskerville: 'Libre Baskerville', Georgia, serif;
+  --lora: 'Lora', Georgia, serif;
+  --mono: 'Courier Prime', 'Courier New', ui-monospace, monospace;
+
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+em, i { font-style: normal; }
+html, body { background: var(--washi); color: var(--sumi); }
+body { font-family: var(--baskerville); -webkit-font-smoothing: antialiased; font-variant-numeric: lining-nums; }
+*::selection { background: var(--sumi); color: var(--washi); }
+a { color: inherit; }
+:focus-visible { outline: 1.5px solid var(--ferrugem); outline-offset: 3px; }
+
+/* ================= identity-extractor ================= */
+.nav {
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 40px; border-bottom: 1px solid var(--hairline);
+}
+.brand, .nav-links a {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--sumi); text-decoration: none;
+}
+.nav-links a { opacity: .75; transition: opacity 150ms ease, color 150ms ease; }
+.nav-links a:hover { opacity: 1; color: var(--ferrugem); }
+.nav-center { position: absolute; left: 50%; transform: translateX(-50%); }
+.start {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ferrugem-texto); background: var(--ferrugem);
+  border: 1px solid rgba(10,10,10,0.18); border-radius: 999px; padding: 6px 16px; text-decoration: none;
+  transition: opacity 150ms ease;
+}
+.start:hover { opacity: .9; }
+
+.hero {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 96px 40px 64px; max-width: 760px; margin: 0 auto; width: 100%;
+}
+.eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(10,10,10,0.55); margin-bottom: 36px;
+}
+.headline {
+  font-family: var(--display); font-weight: 300; font-size: clamp(56px, 9vw, 112px);
+  line-height: 0.98; letter-spacing: -0.01em; margin: 0 0 28px; text-wrap: balance;
+}
+.headline em { font-weight: 500; }
+.lede {
+  font-family: var(--baskerville); font-size: 16px; line-height: 1.55;
+  color: rgba(10,10,10,0.72); max-width: 480px; margin: 0 0 48px;
+}
+.ingest { width: 100%; max-width: 680px; display: flex; flex-direction: column; gap: 16px; }
+.ingest-row {
+  display: flex; align-items: center; width: 100%;
+  background: rgba(249,246,240,0.55); border: 1px solid rgba(10,10,10,0.18); border-radius: 999px;
+  padding: 4px 4px 4px 0;
+  box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.7), inset 0 -1px 0 0 rgba(10,10,10,0.04), 0 10px 30px -16px rgba(10,10,10,0.22), 0 1px 2px 0 rgba(10,10,10,0.05);
+}
+.ingest-prefix {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(10,10,10,0.55); padding: 0 16px 0 20px; border-right: 1px solid rgba(10,10,10,0.12);
+  white-space: nowrap; line-height: 49px;
+}
+.ingest-input {
+  flex: 1; min-width: 0; font-family: var(--mono); font-size: 14px; letter-spacing: 0.02em;
+  color: var(--sumi); background: transparent; border: 0; padding: 14px 18px; outline: none;
+}
+.ingest-input::placeholder { color: rgba(10,10,10,0.45); }
+.ingest-go {
+  flex: none; height: 49px; padding: 0 22px; border: 0; border-radius: 999px; cursor: pointer;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--washi); background: var(--sumi);
+  box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.12), 0 6px 18px -8px rgba(10,10,10,0.5);
+  transition: opacity 150ms ease;
+}
+.ingest-go:hover { opacity: .88; }
+.ingest-zone {
+  display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
+  background: rgba(249,246,240,0.4); border: 1px dashed rgba(10,10,10,0.3); border-radius: 28px;
+  padding: 32px 24px; box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.5);
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+.ingest-zone:hover, .ingest-zone.over { background: rgba(249,246,240,0.8); border-color: rgba(10,10,10,0.5); }
+.ingest-zone-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(10,10,10,0.55); }
+.ingest-zone-title { font-family: var(--display); font-size: 22px; line-height: 1.15; color: var(--sumi); }
+.ingest-zone-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(10,10,10,0.55); }
+.ingest-zone-meta u { text-underline-offset: 3px; }
+.ingest-zone input { display: none; }
+.foot-meta { margin-top: 28px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(10,10,10,0.45); }
+
+.how { border-top: 1px solid var(--hairline); padding: 64px 40px 96px; max-width: 760px; margin: 0 auto; width: 100%; }
+.how-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(10,10,10,0.55); margin-bottom: 28px; }
+.how-list { list-style: none; margin: 0; padding: 0; }
+.how-list li {
+  display: grid; grid-template-columns: 56px 1fr 2fr; align-items: baseline; gap: 24px;
+  padding: 22px 0; border-bottom: 1px solid var(--hairline);
+  font-family: var(--display); font-size: 22px; line-height: 1.2;
+}
+.how-list .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: rgba(10,10,10,0.55); }
+.how-list .dim { font-family: var(--baskerville); font-size: 14px; line-height: 1.6; color: rgba(10,10,10,0.65); }
+
+/* ================= dr-show ================= */
+.convite { color: var(--carvao); font-family: var(--lora); }
+.sec { padding: 96px 24px; border-top: 1px solid var(--borda); }
+.sec-in { max-width: 672px; margin: 0 auto; text-align: center; }
+.sec-in.largo { max-width: 896px; }
+.kicker { font-family: var(--display); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--apagado); margin: 0 0 16px; }
+.titulo { font-family: var(--display); font-weight: 300; font-size: clamp(40px, 6vw, 56px); line-height: 1.08; color: var(--carvao); margin: 0; text-wrap: balance; }
+.filete { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 28px auto 32px; }
+.filete::before, .filete::after { content: ''; width: 48px; height: 1px; background: var(--ouro); }
+.filete span { width: 4px; height: 4px; border-radius: 50%; background: var(--ouro); }
+.texto { font-size: 15px; line-height: 1.85; color: var(--apagado); margin: 0 auto; max-width: 560px; }
+.texto + .texto { margin-top: 16px; }
+
+/* conversa */
+.conversa {
+  max-width: 420px; margin: 48px auto 0; text-align: left;
+  background: rgba(252,250,246,0.6); border: 1px solid hsl(35 20% 88% / .6); padding: 28px 24px;
+}
+.conversa-topo { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--borda); }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%; flex: none; overflow: hidden;
+  border: 1px solid var(--ouro); display: grid; place-items: center;
+  font-family: var(--display); font-size: 22px; color: var(--carvao); background: var(--cartao);
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.conversa-topo strong { display: block; font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.1; color: var(--carvao); }
+.conversa-topo small { font-family: var(--display); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--apagado); }
+.mensagens { display: flex; flex-direction: column; gap: 12px; }
+.msg { max-width: 86%; padding: 11px 15px; font-size: 14px; line-height: 1.6; }
+.msg.ia { align-self: flex-start; background: var(--washi); color: var(--carvao); border: 1px solid var(--borda); }
+.msg.pac { align-self: flex-end; background: var(--marrom); color: var(--washi); }
+.horarios { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.horarios span { font-family: var(--display); font-size: 13px; letter-spacing: 0.08em; padding: 4px 10px; border: 1px solid var(--borda); background: var(--cartao); }
+.horarios span.on { border-color: var(--marrom); color: var(--washi); background: var(--marrom); }
+.nota { margin-top: 18px; font-family: var(--display); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--apagado); }
+
+/* linha do tempo */
+.tempo { margin-top: 8px; }
+.passo { padding: 8px 0; }
+.passo .quando { font-family: var(--display); font-size: 16px; letter-spacing: 0.06em; color: var(--apagado); margin: 0 0 12px; }
+.passo p { margin: 0 auto; max-width: 560px; font-size: 15px; line-height: 1.85; color: var(--carvao); opacity: .9; }
+.passo + .passo::before { content: ''; display: block; width: 1px; height: 64px; background: hsl(42 50% 75% / .5); margin: 8px auto 28px; }
+
+/* citação */
+.citacao { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 3.4vw, 30px); line-height: 1.4; color: var(--carvao); margin: 0 auto; max-width: 600px; }
+.autor { margin-top: 16px; font-family: var(--display); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--apagado); }
+
+/* notas gentis */
+.notas { margin: 48px auto 0; max-width: 560px; display: flex; flex-direction: column; gap: 14px; }
+.notas p { margin: 0; font-size: 14px; line-height: 1.8; color: var(--apagado); }
+.notas strong { font-weight: 500; color: var(--carvao); }
+
+/* cartões */
+.cartoes { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; margin-top: 16px; text-align: center; }
+.cartao { background: rgba(252,250,246,0.5); border: 1px solid hsl(35 20% 88% / .6); padding: 36px 20px 32px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.cartao.destaque { border-color: var(--ouro); background: var(--cartao); }
+.cartao h3 { font-family: var(--display); font-weight: 400; font-size: 26px; margin: 0; color: var(--carvao); }
+.cartao .qtd { font-family: var(--display); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--apagado); }
+.preco { font-family: var(--display); font-weight: 300; font-size: 44px; line-height: 1; color: var(--carvao); white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
+.preco small { font-size: 16px; color: var(--apagado); }
+.riscado { font-size: 13px; color: var(--apagado); }
+.riscado s { text-decoration-color: var(--ouro); }
+.linha-ouro { width: 32px; height: 1px; background: var(--ouro); margin: 6px 0; }
+.cartao .por { font-size: 13px; color: var(--apagado); }
+.selo-dest { font-family: var(--display); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--marrom); }
+.implant { margin: 0 auto 48px; display: inline-flex; flex-direction: column; align-items: center; gap: 8px; }
+
+/* a conta */
+.conta { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); margin-top: 16px; border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda); }
+.conta div { padding: 36px 12px; }
+.conta div + div { border-left: 1px solid var(--borda); }
+.conta .preco { font-size: clamp(34px, 5vw, 46px); }
+.conta .kicker { margin-bottom: 14px; }
+.conta p { margin: 12px 0 0; font-size: 13px; line-height: 1.6; color: var(--apagado); }
+
+/* garantias */
+.garantias { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 48px 40px; margin-top: 16px; text-align: center; }
+.garantias h3 { font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.25; margin: 0 0 12px; color: var(--carvao); }
+.garantias p { margin: 0; font-size: 14px; line-height: 1.8; color: var(--apagado); }
+
+/* formulário */
+.form { max-width: 420px; margin: 40px auto 0; text-align: left; display: flex; flex-direction: column; gap: 22px; }
+.form label { display: block; font-family: var(--display); font-size: 15px; letter-spacing: 0.02em; color: var(--carvao); margin-bottom: 8px; }
+.form input, .form select {
+  width: 100%; font-family: var(--lora); font-size: 14px; color: var(--carvao);
+  background: rgba(244,239,230,0.5); border: 1px solid var(--campo); padding: 10px 12px; border-radius: 0; outline: none;
+}
+.form input::placeholder { color: hsl(30 10% 45% / .6); }
+.form input:focus, .form select:focus { border-color: var(--marrom); }
+.enviar {
+  margin-top: 8px; width: 100%; border: 0; cursor: pointer; padding: 14px 16px;
+  font-family: var(--display); font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--washi); background: var(--marrom); transition: opacity 150ms ease;
+}
+.enviar:hover { opacity: .9; }
+.pronto { margin-top: 8px; border: 1px solid var(--ouro); background: var(--cartao); padding: 20px; font-size: 14px; line-height: 1.7; color: var(--carvao); }
+.pronto pre { white-space: pre-wrap; font-family: var(--lora); font-size: 13px; color: var(--apagado); margin: 12px 0; }
+.copiar { font-family: var(--display); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; background: transparent; border: 1px solid var(--marrom); color: var(--marrom); padding: 8px 14px; cursor: pointer; }
+.presenca { margin-top: 28px; font-size: 13px; color: var(--apagado); text-align: center; }
+
+.rodape { border-top: 1px solid hsl(35 20% 88% / .3); padding: 64px 24px; text-align: center; }
+.rodape .nomes { font-family: var(--display); font-weight: 300; font-size: 30px; color: var(--carvao); margin: 0 0 8px; }
+.rodape .data { font-family: var(--display); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--apagado); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sobe { animation: sobe 1s ease both; }
+  .d1 { animation-delay: .1s } .d2 { animation-delay: .25s } .d3 { animation-delay: .4s }
+  @keyframes sobe { from { opacity: .001; transform: translateY(12px) } to { opacity: 1; transform: none } }
+}
+
+@media (max-width: 640px) {
+  .nav { padding: 18px 20px; }
+  .nav-links { display: none; }
+  .nav-center { position: static; transform: none; }
+  .hero { padding: 56px 20px 48px; }
+  .how { padding: 48px 20px 72px; }
+  .how-list li { grid-template-columns: 40px 1fr; }
+  .how-list .dim { grid-column: 2; }
+  .ingest-prefix { display: none; }
+  .ingest-input { padding-left: 20px; }
+  .ingest-go { padding: 0 16px; }
+  .sec { padding: 72px 20px; }
+  .cartoes, .garantias, .conta { grid-template-columns: minmax(0,1fr); }
+  .conta div + div { border-left: 0; border-top: 1px solid var(--borda); }
+}
+</style>
+
+<div class="page">
+  <nav class="nav">
+    <a class="brand" href="#inicio">Assinado</a>
+    <div class="nav-center"><a class="start" href="#fundadores">// Ser fundador</a></div>
+    <div class="nav-links"><a href="#precos">Preços</a></div>
+  </nav>
+
+  <header class="hero" id="inicio">
+    <div class="eyebrow sobe">// Para médicos, dentistas, nutricionistas e advogados</div>
+    <h1 class="headline sobe d1">O seu consultório, <em>com o seu nome.</em></h1>
+    <p class="lede sobe d2">Site, aplicativo, agenda, e-mail e uma inteligência artificial para cada paciente. Tudo com a sua marca. Nós cuidamos de tudo por trás.</p>
+
+    <div class="ingest sobe d3">
+      <form class="ingest-row" id="formNome">
+        <span class="ingest-prefix">Nome /</span>
+        <input class="ingest-input" id="nome" type="text" placeholder="digite o seu nome, ex.: Dr. Marcos" autocomplete="off" aria-label="O seu nome">
+        <button class="ingest-go" type="submit">[ Ver o meu → ]</button>
+      </form>
+      <label class="ingest-zone" id="zona" for="logo">
+        <span class="ingest-zone-eyebrow">// A sua logo</span>
+        <span class="ingest-zone-title">Arraste a sua logo e veja como fica</span>
+        <span class="ingest-zone-meta">— ou <u>clique para escolher</u> · PNG · JPG · SVG</span>
+        <input id="logo" type="file" accept="image/*">
+      </label>
+    </div>
+    <p class="foot-meta">20 vagas de fundador · preço garantido para sempre</p>
+  </header>
+
+  <section class="how" id="pacote">
+    <div class="how-eyebrow">// O que é seu</div>
+    <ul class="how-list">
+      <li><span class="num">01</span><span>Site e aplicativo</span><span class="dim">Com a sua logo, as suas cores e o seu domínio. A paciente instala o aplicativo no celular.</span></li>
+      <li><span class="num">02</span><span>Uma IA para cada paciente</span><span class="dim">Com o nome que o senhor escolher. Conhece só o caso daquela paciente e responde a qualquer hora.</span></li>
+      <li><span class="num">03</span><span>Acompanhamento do caso</span><span class="dim">Tratamento, exames, tarefas e lembretes. No escritório, o processo, os prazos e os documentos.</span></li>
+      <li><span class="num">04</span><span>Agenda com WhatsApp</span><span class="dim">A paciente marca sozinha, 24 horas. Confirmação e remarcação por WhatsApp e e-mail.</span></li>
+      <li><span class="num">05</span><span>E-mail com o seu domínio</span><span class="dim">Para o senhor e para as suas pacientes: <span class="dominio">ana@drmarcos.com.br</span>.</span></li>
+      <li><span class="num">06</span><span>A sua comunidade</span><span class="dim">Um espaço para as suas pacientes, com conteúdo, avisos e conversas.</span></li>
+    </ul>
+  </section>
+</div>
+
+<main class="convite">
+  <section class="sec" id="ia">
+    <div class="sec-in">
+      <p class="kicker">Cada paciente com a sua</p>
+      <h2 class="titulo">A sua própria IA</h2>
+      <div class="filete"><span></span></div>
+      <p class="texto">Ela conhece só a história daquela paciente: os exames, o tratamento, as orientações do senhor. Lembra, acompanha e marca a consulta. E não sabe nada de mais ninguém.</p>
+
+      <div class="conversa" id="demo">
+        <div class="conversa-topo">
+          <div class="avatar" id="avatar">M</div>
+          <div>
+            <strong id="nomeIA">Márcia</strong>
+            <small>A assistente do <span class="dr">Dr. Marcos</span></small>
+          </div>
+        </div>
+        <div class="mensagens">
+          <div class="msg ia">Bom dia, Ana! Amanhã é o dia do seu ultrassom, às 8h. Lembra que precisa estar com a bexiga cheia?</div>
+          <div class="msg pac">Obrigada! Depois preciso mostrar o resultado.</div>
+          <div class="msg ia">Claro. <span class="dr">O Dr. Marcos</span> tem estes horários na semana que vem:
+            <div class="horarios"><span>Ter · 14h</span><span class="on">Qua · 10h</span><span>Sex · 16h</span></div>
+          </div>
+          <div class="msg pac">Quarta às 10h, por favor.</div>
+          <div class="msg ia">Pronto, marcado! Vou te lembrar na véspera.</div>
+        </div>
+      </div>
+      <p class="nota">Exemplo · o nome da IA é o senhor quem escolhe</p>
+    </div>
+  </section>
+
+  <section class="sec" id="como">
+    <div class="sec-in">
+      <p class="kicker">Como funciona</p>
+      <h2 class="titulo">Do primeiro dia em diante</h2>
+      <div class="filete"><span></span></div>
+      <div class="tempo">
+        <div class="passo"><p class="quando">A conversa</p><p>O senhor nos conta quem é, como atende e como gosta das coisas. Manda a logo, as fotos e escolhe o nome da sua IA.</p></div>
+        <div class="passo"><p class="quando">Em até 7 dias</p><p>Entregamos o site, o aplicativo, a agenda, o e-mail e a IA, tudo com o seu nome, pronto para usar.</p></div>
+        <div class="passo"><p class="quando">As pacientes entram</p><p>Cada paciente ganha a sua IA, que passa a conhecer o caso dela, lembrar dos exames e marcar as consultas.</p></div>
+        <div class="passo"><p class="quando">Sempre</p><p>Nós cuidamos de tudo por trás. O senhor pede, a gente ajusta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="agenda">
+    <div class="sec-in">
+      <p class="kicker">A agenda da cidade</p>
+      <h2 class="titulo">O dono da agenda toda</h2>
+      <div class="filete"><span></span></div>
+      <p class="citacao">“Todo mundo marca com todo mundo, mas é tudo na agenda do <span class="dr">Dr. Marcos</span>.”</p>
+      <div class="notas">
+        <p><strong>Aberta:</strong> qualquer pessoa marca, mesmo quem ainda não é paciente. Aparece no Google, no Instagram e num QR Code no consultório.</p>
+        <p><strong>Sublocação:</strong> a nutricionista, a psicóloga, o colega das sextas. O senhor cobra o que quiser de quem quiser.</p>
+        <p><strong>Cidade:</strong> na cidade pequena, a sua agenda vira a agenda de todos. Propaganda todo dia, sem pagar anúncio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="precos">
+    <div class="sec-in largo">
+      <p class="kicker">Preço de fundador, para sempre</p>
+      <h2 class="titulo">Um pacote, um preço</h2>
+      <div class="filete"><span></span></div>
+      <div class="implant">
+        <span class="kicker" style="margin:0">Implantação · paga uma vez</span>
+        <span class="preco">R$ 2.500</span>
+        <span class="riscado">Preço cheio <s>R$ 6.000</s></span>
+      </div>
+      <div class="cartoes">
+        <div class="cartao">
+          <span class="qtd">Até 30 pacientes</span>
+          <h3>Consultório</h3>
+          <span class="preco">R$ 690<small>/mês</small></span>
+          <span class="riscado">Preço cheio <s>R$ 1.290</s></span>
+          <span class="linha-ouro"></span>
+          <span class="por">cerca de R$ 23 por paciente</span>
+        </div>
+        <div class="cartao destaque">
+          <span class="selo-dest">O mais escolhido</span>
+          <span class="qtd">Até 100 pacientes</span>
+          <h3>Clínica</h3>
+          <span class="preco">R$ 1.290<small>/mês</small></span>
+          <span class="riscado">Preço cheio <s>R$ 2.490</s></span>
+          <span class="linha-ouro"></span>
+          <span class="por">cerca de R$ 13 por paciente</span>
+        </div>
+        <div class="cartao">
+          <span class="qtd">Até 300 pacientes</span>
+          <h3>Referência</h3>
+          <span class="preco">R$ 2.490<small>/mês</small></span>
+          <span class="riscado">Preço cheio <s>R$ 4.990</s></span>
+          <span class="linha-ouro"></span>
+          <span class="por">cerca de R$ 8 por paciente</span>
+        </div>
+      </div>
+      <p class="texto" style="margin-top:36px">Clínica com vários profissionais ou sem limite de pacientes: preço sob medida.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="conta">
+    <div class="sec-in largo">
+      <p class="kicker">A conta</p>
+      <h2 class="titulo">Paga pouco, fatura muito mais</h2>
+      <div class="filete"><span></span></div>
+      <div class="conta">
+        <div><p class="kicker">O senhor paga</p><span class="preco">R$ 1.290</span><p>Pacote até 100 pacientes, por mês</p></div>
+        <div><p class="kicker">O senhor cobra</p><span class="preco">R$ 12.000</span><p>40 pacientes × R$ 300 de acompanhamento</p></div>
+        <div><p class="kicker">Sobra</p><span class="preco">R$ 10.710</span><p>Todo mês, com o seu nome em tudo</p></div>
+      </div>
+      <p class="nota">Exemplo · o valor do acompanhamento é o senhor quem define</p>
+    </div>
+  </section>
+
+  <section class="sec" id="garantias">
+    <div class="sec-in largo">
+      <p class="kicker">Sem medo</p>
+      <h2 class="titulo">O que é seu, é seu</h2>
+      <div class="filete"><span></span></div>
+      <div class="garantias">
+        <div><h3>Os seus pacientes são sempre seus</h3><p>A lista, os históricos e os dados são do senhor. Se quiser sair, leva tudo.</p></div>
+        <div><h3>A agenda é sua enquanto estiver com a gente</h3><p>E, se quiser, o senhor pode comprá-la e ficar com ela para sempre, por um valor fechado no contrato.</p></div>
+        <div><h3>Se nós pararmos, o senhor fica com tudo</h3><p>Site, aplicativo, domínio, e-mails, dados e a sua IA passam para o seu nome, por um valor fixo combinado desde o primeiro dia.</p></div>
+        <div><h3>Dentro das regras do seu conselho</h3><p>Site e IA seguem as normas de publicidade do CFM, CFO, CFN e OAB, e protegem os dados como pede a LGPD.</p></div>
+      </div>
+      <p class="texto" style="margin-top:48px">A IA orienta, lembra e acompanha, dentro do que o senhor definiu. Ela não diagnostica nem prescreve. O senhor continua no comando.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="fundadores">
+    <div class="sec-in">
+      <p class="kicker">Beta tester fundador</p>
+      <h2 class="titulo">Seja um dos 20 fundadores</h2>
+      <div class="filete"><span></span></div>
+      <p class="texto">Preço de fundador para sempre. Selo de Fundador no seu painel. Canal direto com a Dra Lê. As suas ideias entram primeiro na plataforma.</p>
+
+      <form class="form" id="formVaga">
+        <div><label for="fNome">O seu nome</label><input id="fNome" type="text" placeholder="Como o senhor gostaria de ser chamado"></div>
+        <div><label for="fEsp">Especialidade</label><input id="fEsp" type="text" placeholder="Ex.: ginecologia, nutrição, direito de família"></div>
+        <div><label for="fCidade">Cidade</label><input id="fCidade" type="text" placeholder="Onde o senhor atende"></div>
+        <div><label for="fPac">Quantas pacientes ativas, mais ou menos?</label>
+          <select id="fPac"><option>Até 30</option><option selected>Até 100</option><option>Até 300</option><option>Mais de 300</option></select>
+        </div>
+        <button class="enviar" type="submit">Quero a minha vaga</button>
+        <div class="pronto" id="pronto" hidden>
+          Copie o texto abaixo e envie para a Dra Lê em <strong>le@umbii.boo</strong>:
+          <pre id="msgVaga"></pre>
+          <button class="copiar" id="copiar" type="button">Copiar</button>
+        </div>
+      </form>
+      <p class="presenca">Vagas limitadas. Quem entra agora paga o preço de fundador enquanto estiver com a gente.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="nomes">Assinado</p>
+  <p class="data">O seu consultório, com o seu nome</p>
+</footer>
+
+<script>
+(function () {
+  var DR = 'Dr. Marcos';
+  function trocarNome(n) {
+    n = (n || '').trim(); if (!n) return;
+    document.querySelectorAll('.dr').forEach(function (el) {
+      var comO = /^O /.test(el.textContent);
+      el.textContent = (comO ? 'O ' : '') + n;
+    });
+    var base = n.replace(/^(dra?\.?|doutora?)\s+/i, '').split(/\s+/)[0] || n;
+    document.getElementById('nomeIA').textContent = 'Márcia';
+    if (!document.querySelector('#avatar img')) document.getElementById('avatar').textContent = base.charAt(0).toUpperCase();
+    var slug = n.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    document.querySelectorAll('.dominio').forEach(function (el) { el.textContent = 'ana@' + slug + '.com.br'; });
+    DR = n;
+  }
+  document.getElementById('formNome').addEventListener('submit', function (e) {
+    e.preventDefault();
+    trocarNome(document.getElementById('nome').value);
+    document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  var zona = document.getElementById('zona'), inp = document.getElementById('logo');
+  function usarLogo(f) {
+    if (!f || !/^image\//.test(f.type)) return;
+    var r = new FileReader();
+    r.onload = function () {
+      var av = document.getElementById('avatar'); av.textContent = '';
+      var img = new Image(); img.src = r.result; img.alt = 'A sua logo'; av.appendChild(img);
+      document.querySelector('.ingest-zone-title').textContent = 'Pronto. Veja a sua logo na conversa abaixo';
+      document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+    r.readAsDataURL(f);
+  }
+  inp.addEventListener('change', function () { usarLogo(inp.files[0]); });
+  ['dragenter', 'dragover'].forEach(function (t) { zona.addEventListener(t, function (e) { e.preventDefault(); zona.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (t) { zona.addEventListener(t, function (e) { e.preventDefault(); zona.classList.remove('over'); }); });
+  zona.addEventListener('drop', function (e) { usarLogo(e.dataTransfer.files[0]); });
+
+  document.getElementById('formVaga').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) { return document.getElementById(id).value.trim() || '—'; };
+    var txt = 'Olá, Dra Lê! Quero uma vaga de fundador.\nNome: ' + v('fNome') + '\nEspecialidade: ' + v('fEsp') + '\nCidade: ' + v('fCidade') + '\nPacientes ativas: ' + v('fPac');
+    document.getElementById('msgVaga').textContent = txt;
+    document.getElementById('pronto').hidden = false;
+  });
+  document.getElementById('copiar').addEventListener('click', function () {
+    var b = this, t = document.getElementById('msgVaga');
+    var sel = function () { var r = document.createRange(); r.selectNodeContents(t); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(t.textContent).then(function () { b.textContent = 'Copiado'; }, sel); } catch (e) { sel(); }
+  });
+})();
+</script>
+
+</body></html>

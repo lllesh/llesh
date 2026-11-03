@@ -1,0 +1,96 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>A C E S S O · relatório</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root { --fundo: #FFFFFF; --tinta: #000000; --sangue: #E5174A; --azul: #0099FF; --areia: #EFE9DF; --creme: #FBF6EE; --cinza: #8A857C; color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { background: var(--fundo); }
+body { margin: 0; font-family: "Inter", system-ui, -apple-system, sans-serif; color: var(--tinta); -webkit-font-smoothing: antialiased; }
+main { max-width: 1320px; margin: 0 auto; padding-inline: 20px; padding-block: 64px 160px; }
+.capa { position: relative; overflow: hidden; border-radius: 28px; min-height: 560px; padding: 72px 56px 56px; display: flex; flex-direction: column; justify-content: flex-end;
+  background: radial-gradient(120% 90% at 50% 40%, #FBF6EE 0%, #EFE9DF 55%, #D9D2C6 100%); }
+.capa::before { content: ""; position: absolute; left: -10%; right: -10%; top: 46%; height: 190px; border-radius: 50%;
+  background: linear-gradient(90deg, #C8103E, #E5174A 40%, #F0506F 70%, #C8103E); transform: rotate(-4deg); filter: saturate(1.1); box-shadow: 0 60px 90px -30px rgba(229,23,74,.45); }
+.capa > * { position: relative; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: var(--tinta); }
+h1 { margin: 20px 0 0; font-size: clamp(56px, 11vw, 150px); font-weight: 900; line-height: .86; letter-spacing: -.04em; text-wrap: balance; }
+.lead { margin: 28px 0 0; max-width: 640px; font-size: 20px; font-weight: 500; line-height: 1.5; letter-spacing: -.01em; }
+section { margin-top: 128px; }
+h2 { margin: 0 0 40px; font-size: clamp(40px, 6vw, 80px); font-weight: 900; line-height: .95; letter-spacing: -.04em; }
+h2 span { color: var(--sangue); }
+.pilulas { display: flex; flex-direction: column; gap: 14px; }
+.pilula { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; min-height: 76px; padding: 18px 34px; border-radius: 999px; background: var(--tinta); color: var(--fundo); text-decoration: none; transition: transform .2s ease; }
+.pilula:hover { transform: translateY(-2px); }
+.pilula:focus-visible { outline: 3px solid var(--azul); outline-offset: 4px; }
+.pilula.sangue { background: var(--sangue); }
+.pilula .nome { flex: 1 1 260px; font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+.pilula .o-que { flex: 2 1 320px; font-size: 15px; font-weight: 500; opacity: .85; }
+.lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.lista li { display: flex; gap: 18px; align-items: baseline; padding: 22px 30px; border-radius: 28px; background: var(--creme); font-size: 18px; line-height: 1.5; font-weight: 500; letter-spacing: -.01em; }
+.lista li b { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 30px; padding: 0 14px; border-radius: 999px; background: var(--tinta); color: var(--fundo); font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.lista li b.v { background: var(--sangue); }
+.lista li b.a { background: var(--azul); }
+.pe { margin-top: 128px; font-size: 12px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: var(--cinza); }
+@media (max-width: 700px) {
+  main { padding-block: 24px 120px; }
+  .capa { min-height: 460px; padding: 48px 24px 32px; }
+  .pilula { border-radius: 32px; padding: 22px 26px; }
+  .lista li { flex-direction: column; gap: 10px; padding: 22px; }
+  section { margin-top: 96px; }
+}
+@media (prefers-reduced-motion: reduce) { .pilula { transition: none; } }
+</style>
+<main>
+  <div class="capa">
+    <div class="eyebrow">terminal · a c e s s o · 28/09/2026</div>
+    <h1>quem acessa o quê</h1>
+    <p class="lead">Controle de acesso da plataforma: planos, sites e quem entra onde. Mais o banco de modelos do Elfsight e as cópias da página de cadastro.</p>
+  </div>
+
+  <section>
+    <h2>no <span>ar</span></h2>
+    <div class="pilulas">
+      <a class="pilula sangue" href="https://planos.umbii.boo" target="_blank" rel="noopener"><span class="nome">planos.umbii.boo</span><span class="o-que">controle: os planos em colunas, sites acesos ou apagados, arrastar para ordenar, aplicar na plataforma</span></a>
+      <a class="pilula" href="https://bloquinhos.umbii.boo" target="_blank" rel="noopener"><span class="nome">bloquinhos.umbii.boo</span><span class="o-que">a mesma decisão em bloquinhos coloridos: planos nas colunas, sites nas linhas</span></a>
+      <a class="pilula" href="https://planilha.umbii.boo" target="_blank" rel="noopener"><span class="nome">planilha.umbii.boo</span><span class="o-que">a mesma decisão como planilha de verdade (A, B, C…) e botão para baixar .xlsx</span></a>
+      <a class="pilula sangue" href="https://modelos.umbii.boo" target="_blank" rel="noopener"><span class="nome">modelos.umbii.boo</span><span class="o-que">banco com os 36 modelos do Elfsight e a ferramentinha para criar e editar tabelas de preço</span></a>
+      <a class="pilula" href="https://enter.umbig.ooo" target="_blank" rel="noopener"><span class="nome">enter.umbig.ooo</span><span class="o-que">cópia do cadastro com todos os textos da página de entrar editáveis pela dona (?editar)</span></a>
+      <a class="pilula" href="https://acesso.umbii.boo" target="_blank" rel="noopener"><span class="nome">acesso.umbii.boo</span><span class="o-que">cópia do cadastro.umbii.boo, com banco próprio</span></a>
+      <a class="pilula" href="https://backup.acesso.umbii.boo" target="_blank" rel="noopener"><span class="nome">backup.acesso.umbii.boo</span><span class="o-que">a primeira página de controle, guardada como backup</span></a>
+    </div>
+  </section>
+
+  <section>
+    <h2>o que já <span>foi feito</span></h2>
+    <ul class="lista">
+      <li><b>feito</b>Rascunho de planos no schema plataforma (rascunho, historico, função aplicar) — as três páginas de decisão usam o mesmo rascunho.</li>
+      <li><b>feito</b>Os 7 planos da Dra Lê com nome e cor: Grama, Blue, Lilá, Rosa, Sangue, Mel e Ouro; 5 sites no rascunho.</li>
+      <li><b>feito</b>36 modelos do Elfsight importados: 16 tabelas de preço, 2 calendários e 3 FAQs copiados no nosso código; os outros como foto do original.</li>
+      <li><b>feito</b>PDF M O D E L O S na mesa com todos os links, no modelo V E R C E L.</li>
+      <li><b>feito</b>Cada cópia com schema e bucket próprios dentro do mesmo projeto do Supabase; todas as páginas só abrem para le@umbii.boo.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>em <span>andamento</span></h2>
+    <ul class="lista">
+      <li><b class="v">esperando</b>Conta da Giovanna: o terminal S T A R T cuida do cadastro (nome livre + e-mail nome@iiiii.boo); quando a conta existir, eu libero o acesso só ao cadastro.umbii.boo.</li>
+      <li><b class="v">esperando</b>A decisão dos planos ainda é rascunho: nada foi aplicado; na plataforma de verdade só existe o Platinum.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>o que <span>falta</span></h2>
+    <ul class="lista">
+      <li><b class="a">falta</b>Apagar o .vercel.app de planos, bloquinhos e planilha quando a Dra Lê disser que terminou os ajustes.</li>
+      <li><b class="a">falta</b>Aplicar a decisão dos planos na plataforma (botão “aplicar na plataforma”), quando ela decidir.</li>
+      <li><b class="a">falta</b>Preços e o que cada plano acessa (as assinaturas).</li>
+    </ul>
+  </section>
+
+  <div class="pe">v è n u s · terminal a c e s s o</div>
+</main>
+
+</body></html>

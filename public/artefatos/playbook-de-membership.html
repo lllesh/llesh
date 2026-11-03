@@ -1,0 +1,296 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>Playbook de Membership</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#FFFBF3;
+    --surface:#FFFFFF;
+    --ink:#2B2420;
+    --ink-soft:#6B5F55;
+    --rule:#E8DFD2;
+    --coral:#F48591;
+    --peach:#FA8D85;
+    --apricot:#FEA283;
+    --amber:#FFB872;
+    --sage:#8DA599;
+    --periwinkle:#8D96C1;
+    --mauve:#C18EA9;
+    --shadow: 0 1px 2px rgba(43,36,32,.05), 0 14px 34px -20px rgba(43,36,32,.22);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211C18; --surface:#2A2420; --ink:#F6EFE4; --ink-soft:#C9BCAC; --rule:#453B33;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 14px 34px -20px rgba(0,0,0,.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211C18; --surface:#2A2420; --ink:#F6EFE4; --ink-soft:#C9BCAC; --rule:#453B33;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 14px 34px -20px rgba(0,0,0,.55);
+  }
+  *{ box-sizing:border-box; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Work Sans', system-ui, sans-serif; line-height:1.6; }
+  .wrap{ max-width: 860px; margin:0 auto; padding: 56px 24px 100px; }
+
+  .doc-head{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;
+    padding-bottom:22px; border-bottom:2px solid var(--ink); margin-bottom:34px;
+  }
+  .doc-head .k{ font-size:11px; text-transform:uppercase; letter-spacing:.09em; color:var(--ink-soft); }
+  .doc-head .v{ font-family:'IBM Plex Mono', monospace; font-size:13px; margin-top:3px; }
+
+  h1{
+    font-family:'EB Garamond', Georgia, serif; font-weight:700; font-size: clamp(34px,5vw,50px);
+    line-height:1.08; margin: 0 0 12px; text-wrap:balance;
+  }
+  .subtitle{ color:var(--ink-soft); font-size:16px; max-width:56ch; margin:0 0 40px; }
+
+  h2{
+    font-family:'EB Garamond', Georgia, serif; font-weight:700; font-size:28px; margin: 0 0 6px; text-wrap:balance;
+  }
+  .sec-num{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);
+    letter-spacing:.05em; margin-bottom:6px; display:block;
+  }
+  section{ margin-bottom:56px; }
+  .lede{ color:var(--ink-soft); font-size:15px; max-width:60ch; margin:0 0 26px; }
+
+  /* Type table */
+  .types{ display:flex; flex-direction:column; gap:14px; }
+  .type-row{
+    background:var(--surface); border-radius:14px; box-shadow:var(--shadow);
+    padding:20px 22px; border-left:4px solid var(--accent);
+    display:grid; grid-template-columns: 1fr 1fr; gap:18px;
+  }
+  @media (max-width:600px){ .type-row{ grid-template-columns:1fr; } }
+  .type-row h3{ font-family:'EB Garamond', Georgia, serif; font-size:19px; font-weight:600; margin:0 0 4px; }
+  .type-row .example{ font-size:12.5px; color:var(--ink-soft); margin:0 0 8px; }
+  .type-row p{ font-size:13.5px; color:var(--ink-soft); margin:0; }
+  .type-row .col-r{ border-left:1px dashed var(--rule); padding-left:18px; }
+  @media (max-width:600px){ .type-row .col-r{ border-left:none; padding-left:0; border-top:1px dashed var(--rule); padding-top:12px; } }
+  .lbl{ font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); display:block; margin-bottom:4px; }
+
+  /* Stat callouts */
+  .stats{ display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:12px; margin: 20px 0 28px; }
+  .stat{ background:var(--surface); border-radius:12px; box-shadow:var(--shadow); padding:16px 18px; }
+  .stat .n{ font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; color:var(--accent); }
+  .stat .l{ font-size:12px; color:var(--ink-soft); margin-top:2px; }
+
+  /* Hack list */
+  .hack{ display:flex; gap:16px; padding:18px 0; border-top:1px solid var(--rule); }
+  .hack:last-child{ padding-bottom:0; }
+  .hack-n{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--accent); font-weight:600;
+    flex:0 0 26px;
+  }
+  .hack h4{ font-family:'EB Garamond', Georgia, serif; font-size:18px; font-weight:600; margin:0 0 4px; }
+  .hack p{ font-size:13.5px; color:var(--ink-soft); margin:0; max-width:58ch; }
+  .hack .figure{ font-family:'IBM Plex Mono', monospace; color:var(--ink); font-weight:600; }
+
+  /* Alert box */
+  .alert{
+    background: color-mix(in srgb, var(--coral) 14%, var(--surface));
+    border-radius:14px; padding:22px 24px; box-shadow:var(--shadow);
+  }
+  .alert h3{ font-family:'EB Garamond', Georgia, serif; font-style:italic; font-size:19px; margin:0 0 8px; }
+  .alert p{ font-size:13.5px; color:var(--ink-soft); margin:0 0 8px; }
+  .alert p:last-child{ margin-bottom:0; }
+
+  /* Recommendation */
+  .reco{
+    background:var(--surface); border-radius:16px; box-shadow:var(--shadow);
+    padding:28px 28px 24px; border-left:4px solid var(--sage);
+  }
+  .reco h3{ font-family:'EB Garamond', Georgia, serif; font-weight:600; font-size:21px; margin:0 0 4px; }
+  .reco .tag{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--sage); font-weight:600; }
+  .reco ul{ margin:14px 0 0; padding-left:20px; }
+  .reco li{ font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; }
+  .reco li .figure{ font-family:'IBM Plex Mono', monospace; color:var(--ink); font-weight:600; }
+
+  footer{
+    margin-top:60px; padding-top:20px; border-top:1px solid var(--rule);
+    font-size:11.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  footer a{ color:var(--ink-soft); }
+</style>
+
+<div class="wrap">
+
+  <div class="doc-head">
+    <div>
+      <span class="k">Dossiê</span>
+      <div class="v">Playbook de Membership</div>
+    </div>
+    <div>
+      <span class="k">Preparado para</span>
+      <div class="v">Clube LetPay</div>
+    </div>
+    <div>
+      <span class="k">Data</span>
+      <div class="v">08 set 2026</div>
+    </div>
+  </div>
+
+  <h1>O mundo dos clubes de vantagens e membership</h1>
+  <p class="subtitle">Um levantamento dos modelos que já existem, como cada um ganha dinheiro de verdade, e os mecanismos psicológicos comprovados que fazem gente pagar mensalidade — e continuar pagando.</p>
+
+  <section>
+    <span class="sec-num">01 — Taxonomia</span>
+    <h2>Os 6 tipos de clube que já existem</h2>
+    <p class="lede">Quase todo clube do mundo é uma variação de um destes seis modelos. Vale saber em qual você está pisando, porque cada um ganha dinheiro de um jeito diferente.</p>
+
+    <div class="types">
+      <div class="type-row" style="--accent:var(--sage)">
+        <div>
+          <h3>Clube de atacado</h3>
+          <p class="example">Costco, Sam's Club</p>
+          <p>Produto quase sem margem — o lucro real é a mensalidade em si.</p>
+        </div>
+        <div class="col-r">
+          <span class="lbl">Como ganha dinheiro</span>
+          <p>A Costco faturou US$ 222,7 bi em 2022 com só US$ 5,5 bi de lucro líquido — e US$ 4,3 bi vieram só da taxa de adesão. A mensalidade não é um extra: é praticamente o lucro inteiro do negócio.</p>
+        </div>
+      </div>
+
+      <div class="type-row" style="--accent:var(--periwinkle)">
+        <div>
+          <h3>Coalizão de pontos</h3>
+          <p class="example">Livelo, Smiles, Dotz</p>
+          <p>Várias empresas dividem um mesmo programa de pontos.</p>
+        </div>
+        <div class="col-r">
+          <span class="lbl">Como ganha dinheiro</span>
+          <p>Cada parceiro paga pra "comprar" pontos e distribuir pro cliente dele; o operador do programa lucra na diferença entre o que cobra do parceiro e o que paga quando o ponto é resgatado — e ainda mais quando o ponto nunca é resgatado.</p>
+        </div>
+      </div>
+
+      <div class="type-row" style="--accent:var(--amber)">
+        <div>
+          <h3>Cashback</h3>
+          <p class="example">Méliuz e similares</p>
+          <p>Você ganha % de volta comprando em lojas parceiras.</p>
+        </div>
+        <div class="col-r">
+          <span class="lbl">Como ganha dinheiro</span>
+          <p>A loja parceira paga comissão de afiliado pela venda; o clube repassa uma fatia como cashback e fica com o resto. Zero custo pra loja além da comissão que já pagaria de qualquer forma.</p>
+        </div>
+      </div>
+
+      <div class="type-row" style="--accent:var(--mauve)">
+        <div>
+          <h3>Assinatura em camadas</h3>
+          <p class="example">Netflix, Spotify, SaaS em geral</p>
+          <p>Preço sobe conforme o nível de acesso.</p>
+        </div>
+        <div class="col-r">
+          <span class="lbl">Como ganha dinheiro</span>
+          <p>Receita recorrente pura. O nível mais caro raramente é o mais vendido — ele existe pra fazer o nível do meio parecer razoável (efeito âncora).</p>
+        </div>
+      </div>
+
+      <div class="type-row" style="--accent:var(--coral)">
+        <div>
+          <h3>Clube de status/comunidade</h3>
+          <p class="example">Soho House e clubes privados</p>
+          <p>O que se vende é pertencimento, não desconto.</p>
+        </div>
+        <div class="col-r">
+          <span class="lbl">Como ganha dinheiro</span>
+          <p>Mensalidade alta, benefício tangível baixo — o valor é social/emocional. Funciona por escassez: nem todo mundo entra.</p>
+        </div>
+      </div>
+
+      <div class="type-row" style="--accent:var(--apricot)">
+        <div>
+          <h3>Clube financeiro</h3>
+          <p class="example">Nubank Ultravioleta, XP</p>
+          <p>Anuidade isenta se você já movimenta/investe o suficiente.</p>
+        </div>
+        <div class="col-r">
+          <span class="lbl">Como ganha dinheiro</span>
+          <p>A instituição já ganha em cima do seu dinheiro parado ou movimentado — isentar a anuidade de quem já é lucrativo custa pouco e prende o cliente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-num">02 — Números que sustentam a tese</span>
+    <h2>Por que clube funciona, em dado real</h2>
+    <div class="stats">
+      <div class="stat" style="--accent:var(--coral)"><div class="n">80%</div><div class="l">das vendas da Sephora vêm de quem é do Beauty Insider</div></div>
+      <div class="stat" style="--accent:var(--amber)"><div class="n">41%</div><div class="l">das vendas dos EUA da Starbucks vêm do programa de fidelidade</div></div>
+      <div class="stat" style="--accent:var(--sage)"><div class="n">60% × 30%</div><div class="l">chance de gastar mais: membro pago vs. membro do plano grátis</div></div>
+      <div class="stat" style="--accent:var(--periwinkle)"><div class="n">5–30%</div><div class="l">dos pontos emitidos em programas de fidelidade nunca são resgatados (breakage)</div></div>
+      <div class="stat" style="--accent:var(--mauve)"><div class="n">2–3×</div><div class="l">mais engajamento em programa com gamificação, vs. sem</div></div>
+      <div class="stat" style="--accent:var(--apricot)"><div class="n">20–30%</div><div class="l">de desconto típico numa oferta de "founding member"</div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-num">03 — Mecânica</span>
+    <h2>Os hacks psicológicos comprovados</h2>
+    <p class="lede">Nenhum clube grande sobrevive só no desconto. Sobrevive nisto:</p>
+
+    <div class="hacks">
+      <div class="hack">
+        <span class="hack-n">01</span>
+        <div><h4>Aversão à perda de status</h4><p>Depois que a pessoa alcança um nível (ouro, VIP, o que for), o medo de <em>perder</em> aquele nível motiva mais do que o desejo original de conquistá-lo. Manter dá mais medo do que subir dá vontade.</p></div>
+      </div>
+      <div class="hack">
+        <span class="hack-n">02</span>
+        <div><h4>Efeito do progresso presenteado</h4><p>Gente que já começa com <span class="figure">10% da barra preenchida</span> (mesmo sem ter feito nada ainda) se esforça mais pra terminar do que quem começa do zero. Dar um "empurrão inicial" de graça na indicação, no cadastro, no que for, aumenta conclusão.</p></div>
+      </div>
+      <div class="hack">
+        <span class="hack-n">03</span>
+        <div><h4>Ancoragem de preço</h4><p>O tier mais caro quase nunca é o mais vendido — a função dele é fazer o tier do meio (ou o de lançamento) parecer óbvio por comparação. Ter uma opção cara e pouco vendida não é desperdício, é estratégia.</p></div>
+      </div>
+      <div class="hack">
+        <span class="hack-n">04</span>
+        <div><h4>Surpresa vale mais que anúncio</h4><p>Um benefício <em>não anunciado</em> entregue de surpresa gera mais satisfação e lealdade do que o mesmo benefício prometido de antemão — a previsibilidade mata parte do encanto.</p></div>
+      </div>
+      <div class="hack">
+        <span class="hack-n">05</span>
+        <div><h4>Gamificação com risco</h4><p>Badges, sequências (streaks) e progresso visível multiplicam engajamento — mas o estudo mais recente (2026) mostra que gamificação mal calibrada pode <em>desmotivar</em> quem já está longe da meta. Progresso tem que parecer alcançável, não distante.</p></div>
+      </div>
+      <div class="hack">
+        <span class="hack-n">06</span>
+        <div><h4>Breakage é receita — e é uma armadilha</h4><p>Ponto que expira sem ser usado vira lucro puro pra quem opera o programa. Mas depender disso é frágil: quando o engajamento melhora, o resgate sobe e o custo explode de repente. Programas fortes tratam breakage como consequência, não como meta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-num">04 — Regulação</span>
+    <h2>O que a lei brasileira já não deixa mais fazer</h2>
+    <div class="alert">
+      <h3>Cancelamento tem que ser fácil — isso está virando lei</h3>
+      <p>O PL 4.983/2026, em tramitação na Câmara, obriga que assinatura digital possa ser cancelada a qualquer momento, por qualquer canal, com efeito imediato — e classifica como prática abusiva qualquer menu escondido, exigência de ligação telefônica, ou oferta insistente pra segurar o cancelamento.</p>
+      <p>Já é entendimento do Procon que dificultar cancelamento é abusivo mesmo antes da lei passar. Construir o Clube LetPay com cancelamento de um clique, desde o início, poupa retrabalho e problema — e combina com a régua de "ninguém é obrigado a nada" que você já definiu pro desconto de mensalidade.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="sec-num">05 — Síntese</span>
+    <h2>Onde o Clube LetPay já se encaixa</h2>
+    <p class="lede">Boa notícia: sem ter estudado nada disso formalmente, você já desenhou um clube que mistura os pedaços certos dos modelos que funcionam.</p>
+
+    <div class="reco">
+      <span class="tag">Diagnóstico</span>
+      <h3>Um híbrido de cashback + assinatura em camadas + clube financeiro</h3>
+      <ul>
+        <li><span class="figure">Desconto progressivo por conta paga</span> é puro modelo cashback — a mesma lógica do Méliuz, só que a "loja parceira" é a concessionária de luz/água.</li>
+        <li><span class="figure">Oferta de lançamento travada por 2 anos</span> é founding member pricing no manual — 20 a 30% de desconto é o padrão do mercado; seu ~90% de desconto (R$17 vs. R$177) é bem mais agressivo, o que é coerente com "atrair rápido no início".</li>
+        <li><span class="figure">Indicação dando 1 mês grátis</span> já usa o efeito do progresso presenteado — considere mostrar pro indicado que ele "já começa" com algo, não só quem indicou.</li>
+        <li><span class="figure">Tiers R$17/177/277/377</span> são ancoragem de preço clássica — funcionam mesmo que quase ninguém compre os mais caros.</li>
+        <li>O que falta explorar: um elemento de <span class="figure">status/comunidade</span> (o clube de Soho House) — hoje o clube inteiro é transacional (desconto, cashback). Um selo, um nível "fundador" visível, ou acesso a algo que dinheiro não compra sozinho, aprofundaria a lealdade além do desconto.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Fontes consultadas: Membership.io, Subi.co, ResearchAndMarkets (mercado de fidelidade no Brasil), Let's Talk Loyalty, OpenLoyalty, Brierley, Exchange Solutions, Medium/Quboid (economia de breakage), Meio&Mensagem e IstoÉ Dinheiro (Sam's Club/Costco no Brasil), Câmara dos Deputados (PL 4.983/2026).
+  </footer>
+
+</div>
+
+</body></html>

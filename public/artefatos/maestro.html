@@ -1,0 +1,241 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Maestro</title>
+<style>
+  :root{
+    --bg:#14151b;
+    --panel:#1b1d26;
+    --panel-2:#20222d;
+    --line:#2c2f3c;
+    --ink:#eae7e0;
+    --ink-dim:#9497a6;
+    --ink-faint:#5c5f70;
+    --busy:#FA8D85;
+    --idle:#8DA599;
+    --accent:#8D96C1;
+    --gold:#FFB872;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    padding:40px 16px 64px;
+    min-height:100%;
+  }
+  .wrap{max-width:920px;margin:0 auto;}
+
+  header{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:20px;
+    margin-bottom:28px;
+  }
+  h1{
+    font-family:'Fraunces',Georgia,serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-style:italic;
+    font-size:clamp(32px,6vw,46px);
+    letter-spacing:0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+  .tag{
+    color:var(--ink-dim);
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .stamp{
+    color:var(--ink-faint);
+    font-size:12px;
+  }
+
+  .summary{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+    margin-bottom:32px;
+    font-size:13px;
+    color:var(--ink-dim);
+  }
+  .summary b{color:var(--ink);font-weight:600;}
+  .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;position:relative;top:-1px;}
+  .dot.busy{background:var(--busy);box-shadow:0 0 8px color-mix(in srgb, var(--busy) 70%, transparent);}
+  .dot.idle{background:var(--idle);}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13.5px;
+  }
+  thead th{
+    text-align:left;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    font-weight:500;
+    padding:0 14px 10px;
+    border-bottom:1px solid var(--line);
+  }
+  tbody tr{
+    border-bottom:1px solid var(--line);
+  }
+  tbody tr:hover{background:var(--panel);}
+  tbody td{
+    padding:14px 14px;
+    vertical-align:top;
+    color:var(--ink);
+  }
+  td.name{
+    font-weight:600;
+    letter-spacing:0.03em;
+    white-space:nowrap;
+    color:var(--accent);
+  }
+  td.status{white-space:nowrap;}
+  .status-label{
+    display:inline-flex;
+    align-items:center;
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    border-radius:20px;
+    border:1px solid var(--line);
+  }
+  .status-label.busy{color:var(--busy);border-color:color-mix(in srgb, var(--busy) 40%, var(--line));}
+  .status-label.idle{color:var(--idle);border-color:color-mix(in srgb, var(--idle) 30%, var(--line));}
+  td.topic{color:var(--ink);line-height:1.5;max-width:380px;}
+  td.topic .none{color:var(--ink-faint);font-style:italic;}
+  td.age{color:var(--ink-dim);white-space:nowrap;font-size:12.5px;}
+
+  .note{
+    margin-top:32px;
+    padding:16px 18px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+    border-radius:4px;
+    font-size:13px;
+    color:var(--ink-dim);
+    line-height:1.6;
+  }
+  .note b{color:var(--ink);}
+
+  @media (max-width:640px){
+    table, thead, tbody, tr, td{display:block;width:100%;}
+    thead{display:none;}
+    tbody tr{padding:14px 0;border-bottom:1px solid var(--line);}
+    tbody td{padding:2px 0;}
+    td.name{font-size:15px;}
+    td.topic{max-width:none;}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>maestro</h1>
+      <div class="tag">painel de terminais &middot; visão geral</div>
+    </div>
+    <div class="stamp">20 set 2026 &middot; 11 sessões</div>
+  </header>
+
+  <div class="summary">
+    <span><span class="dot busy"></span><b>1</b> ocupada</span>
+    <span><span class="dot idle"></span><b>10</b> paradas</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>terminal</th>
+        <th>status</th>
+        <th>assunto</th>
+        <th>ativo há</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">S A A S</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">Levantamento das assinaturas SaaS dela (Envato, Artlist, Claude, ChatGPT, Google One/Gemini, Gamma, Craft) — valores, datas de pagamento e renovação, publicado numa planilha no Vercel.</td>
+        <td class="age">12h</td>
+      </tr>
+      <tr>
+        <td class="name">leticiapiccolo&#8209;91</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">Tratamento de fotos — aplicando filtro quente/vintage/saturado retrô nas fotos que ela manda.</td>
+        <td class="age">8h</td>
+      </tr>
+      <tr>
+        <td class="name">leticiapiccolo&#8209;c4</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">Projeto "Kitchen" (pasta <code>umbigo-kitchen</code>) — <span class="none">só esqueleto, aguardando ela explicar a ideia.</span></td>
+        <td class="age">1min</td>
+      </tr>
+      <tr>
+        <td class="name">leticiapiccolo&#8209;76</td>
+        <td class="status"><span class="status-label busy">busy</span></td>
+        <td class="topic"><span class="none">ocupada processando algo — não respondeu ainda.</span></td>
+        <td class="age">2min</td>
+      </tr>
+      <tr>
+        <td class="name">B E S T&#8209;S E L L E R</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">Transformar o conhecimento/conversas acumuladas dela em livros com potencial de best-seller — organizando estratégia (posicionamento, publicação, lançamento) antes de escrever.</td>
+        <td class="age">35s</td>
+      </tr>
+      <tr>
+        <td class="name">U M B I G O</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">umbig.ooo — app de diário/calendário por voz. Hoje: bugs de cor/altura/sombra das cartas, login real no Supabase, upload de foto, gestos de fechar, animação de entrada das capas.</td>
+        <td class="age">1d</td>
+      </tr>
+      <tr>
+        <td class="name">P R O J E T O S</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">"Terminal de Projetos" — painel em tutti.town listando os ~2561 projetos dela, com sistema de baldes coloridos (AA a F) pra priorizar/organizar.</td>
+        <td class="age">13h</td>
+      </tr>
+      <tr>
+        <td class="name">1 7 . J E</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">"whole again" (17.je) — app pessoal de cartinhas/frases coloridas com login por PIN e Supabase, em polimento visual (cores, tipografia, layout).</td>
+        <td class="age">18h</td>
+      </tr>
+      <tr>
+        <td class="name">O . F R U T O</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">"theories" (lelllo.eu) — catálogo de fontes com carrossel de cartas 3D (flip, pinch), tema preto/vinho, virando a coleção "frutos".</td>
+        <td class="age">23h</td>
+      </tr>
+      <tr>
+        <td class="name">&Ocirc; . I N K</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">Domínio ô.ink (Vercel + Cloudflare) — resolveu um NXDOMAIN de cache DNS, aguardando o próximo passo.</td>
+        <td class="age">1min</td>
+      </tr>
+      <tr>
+        <td class="name">N O III N K</td>
+        <td class="status"><span class="status-label idle">idle</span></td>
+        <td class="topic">noii.ink — app de cartinhas com upload de foto pro Supabase, ajuste fino do visual das cartas (tamanho, moldura, cantos).</td>
+        <td class="age">1d</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>Sobre e-mail / Ghost / temas / agenda:</b> nenhum dos 11 terminais ativos agora menciona esses assuntos — pode ser que já tenham fechado, ou estejam numa janela que não aparece nessa lista.
+  </div>
+</div>
+
+</body></html>
