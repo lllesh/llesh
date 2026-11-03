@@ -4,7 +4,6 @@ const SITES = [
   { nome: "ee.cards", href: "/sites/ee-cards/index.html", cor: "bg-primary" },
   { nome: "leticia.ink", href: "/sites/leticia.ink/index.html", cor: "bg-secondary" },
   { nome: "leticia.land", href: "/sites/leticia.land/index.html", cor: "bg-accent" },
-  { nome: "umbigo", href: "/sites/umbigo/index.html", cor: "bg-primary" },
   { nome: "pulse", href: "/sites/pulse/index.html", cor: "bg-secondary" },
   { nome: "pro", href: "/sites/noiipro/index.html", cor: "bg-accent" },
   { nome: "hospital", href: "/sites/hospital/index.html", cor: "bg-primary" },
