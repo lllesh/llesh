@@ -16,6 +16,7 @@ import { Route as ArtefatosRouteImport } from './routes/artefatos'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
 import { Route as EcossistemaRouteImport } from './routes/ecossistema'
+import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as FemRouteImport } from './routes/fem'
 import { Route as FemeaRouteRouteImport } from './routes/femea/route'
 import { Route as FertifyRouteRouteImport } from './routes/fertify/route'
@@ -88,6 +89,11 @@ const CalendarioRoute = CalendarioRouteImport.update({
 const EcossistemaRoute = EcossistemaRouteImport.update({
   id: '/ecossistema',
   path: '/ecossistema',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrarRoute = EntrarRouteImport.update({
+  id: '/entrar',
+  path: '/entrar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FemRoute = FemRouteImport.update({
@@ -298,6 +304,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
+  '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
@@ -340,6 +347,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
+  '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
@@ -389,6 +397,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
+  '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
@@ -438,6 +447,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/ecossistema'
+    | '/entrar'
     | '/fem'
     | '/first'
     | '/fitmail'
@@ -480,6 +490,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/ecossistema'
+    | '/entrar'
     | '/fem'
     | '/first'
     | '/fitmail'
@@ -528,6 +539,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/ecossistema'
+    | '/entrar'
     | '/fem'
     | '/first'
     | '/fitmail'
@@ -577,6 +589,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
   EcossistemaRoute: typeof EcossistemaRoute
+  EntrarRoute: typeof EntrarRoute
   FemRoute: typeof FemRoute
   FirstRoute: typeof FirstRoute
   FitmailRoute: typeof FitmailRoute
@@ -638,6 +651,13 @@ declare module '@tanstack/react-router' {
       path: '/ecossistema'
       fullPath: '/ecossistema'
       preLoaderRoute: typeof EcossistemaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrar': {
+      id: '/entrar'
+      path: '/entrar'
+      fullPath: '/entrar'
+      preLoaderRoute: typeof EntrarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fem': {
@@ -1043,6 +1063,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
   EcossistemaRoute: EcossistemaRoute,
+  EntrarRoute: EntrarRoute,
   FemRoute: FemRoute,
   FirstRoute: FirstRoute,
   FitmailRoute: FitmailRoute,
