@@ -12,6 +12,36 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SlugRouteImport } from './routes/$slug'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as ArtefatoAcessoRelatorioRouteImport } from './routes/artefato-acesso-relatorio'
+import { Route as ArtefatoAirbnBestRouteImport } from './routes/artefato-airbn-best'
+import { Route as ArtefatoAlllbooRouteImport } from './routes/artefato-alllboo'
+import { Route as ArtefatoArtefatosRecentesRouteImport } from './routes/artefato-artefatos-recentes'
+import { Route as ArtefatoAsVezesRouteImport } from './routes/artefato-as-vezes'
+import { Route as ArtefatoAssinadoPeloDoutorRouteImport } from './routes/artefato-assinado-pelo-doutor'
+import { Route as ArtefatoAssinadoPeloDoutor2RouteImport } from './routes/artefato-assinado-pelo-doutor-2'
+import { Route as ArtefatoBestRouteImport } from './routes/artefato-best'
+import { Route as ArtefatoBraindumpRouteImport } from './routes/artefato-braindump'
+import { Route as ArtefatoCangaLinksRouteImport } from './routes/artefato-canga-links'
+import { Route as ArtefatoCartaSquircleACelulaRouteImport } from './routes/artefato-carta-squircle-a-celula'
+import { Route as ArtefatoCartaoBrancoLeleRouteImport } from './routes/artefato-cartao-branco-lele'
+import { Route as ArtefatoEntradaLittleWeaveRouteImport } from './routes/artefato-entrada-little-weave'
+import { Route as ArtefatoFluxoDoCadastroRouteImport } from './routes/artefato-fluxo-do-cadastro'
+import { Route as ArtefatoFotosUmbiiBooRouteImport } from './routes/artefato-fotos-umbii-boo'
+import { Route as ArtefatoFotosVeenusQuestRouteImport } from './routes/artefato-fotos-veenus-quest'
+import { Route as ArtefatoIndiceGhostRouteImport } from './routes/artefato-indice-ghost'
+import { Route as ArtefatoLookBootstrapVsOTeuLookRouteImport } from './routes/artefato-look-bootstrap-vs-o-teu-look'
+import { Route as ArtefatoMaestroRouteImport } from './routes/artefato-maestro'
+import { Route as ArtefatoMailLleShRouteImport } from './routes/artefato-mail-lle-sh'
+import { Route as ArtefatoMinhasAssinaturasRouteImport } from './routes/artefato-minhas-assinaturas'
+import { Route as ArtefatoNoIiAdvogadosRouteImport } from './routes/artefato-no-ii-advogados'
+import { Route as ArtefatoPathRouteImport } from './routes/artefato-path'
+import { Route as ArtefatoPilulaRouteImport } from './routes/artefato-pilula'
+import { Route as ArtefatoPlaybookDeMembershipRouteImport } from './routes/artefato-playbook-de-membership'
+import { Route as ArtefatoTarefasBraeeInRouteImport } from './routes/artefato-tarefas-braee-in'
+import { Route as ArtefatoTudoDeHojeRouteImport } from './routes/artefato-tudo-de-hoje'
+import { Route as ArtefatoUmRecadoRouteImport } from './routes/artefato-um-recado'
+import { Route as ArtefatoVeenusAgoraRouteImport } from './routes/artefato-veenus-agora'
+import { Route as ArtefatoVeenusComentadosFluidoRouteImport } from './routes/artefato-veenus-comentados-fluido'
 import { Route as ArtefatosRouteImport } from './routes/artefatos'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
@@ -33,6 +63,14 @@ import { Route as PacienteRouteRouteImport } from './routes/paciente/route'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as RedefinirRouteImport } from './routes/redefinir'
 import { Route as SaudeRouteImport } from './routes/saude'
+import { Route as SiteEeCardsRouteImport } from './routes/site-ee-cards'
+import { Route as SiteHospitalRouteImport } from './routes/site-hospital'
+import { Route as SiteLeticiaInkRouteImport } from './routes/site-leticia-ink'
+import { Route as SiteLeticiaLandRouteImport } from './routes/site-leticia-land'
+import { Route as SiteLleRouteImport } from './routes/site-lle'
+import { Route as SiteMediciiiiishRouteImport } from './routes/site-mediciiiiish'
+import { Route as SiteProRouteImport } from './routes/site-pro'
+import { Route as SitePulseRouteImport } from './routes/site-pulse'
 import { Route as SitesRouteImport } from './routes/sites'
 import { Route as AuthenticatedMenstruappRouteImport } from './routes/_authenticated/menstruapp'
 import { Route as FemeaIndexRouteImport } from './routes/femea/index'
@@ -73,6 +111,167 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArtefatoAcessoRelatorioRoute = ArtefatoAcessoRelatorioRouteImport.update({
+  id: '/artefato-acesso-relatorio',
+  path: '/artefato-acesso-relatorio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoAirbnBestRoute = ArtefatoAirbnBestRouteImport.update({
+  id: '/artefato-airbn-best',
+  path: '/artefato-airbn-best',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoAlllbooRoute = ArtefatoAlllbooRouteImport.update({
+  id: '/artefato-alllboo',
+  path: '/artefato-alllboo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoArtefatosRecentesRoute =
+  ArtefatoArtefatosRecentesRouteImport.update({
+    id: '/artefato-artefatos-recentes',
+    path: '/artefato-artefatos-recentes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoAsVezesRoute = ArtefatoAsVezesRouteImport.update({
+  id: '/artefato-as-vezes',
+  path: '/artefato-as-vezes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoAssinadoPeloDoutorRoute =
+  ArtefatoAssinadoPeloDoutorRouteImport.update({
+    id: '/artefato-assinado-pelo-doutor',
+    path: '/artefato-assinado-pelo-doutor',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoAssinadoPeloDoutor2Route =
+  ArtefatoAssinadoPeloDoutor2RouteImport.update({
+    id: '/artefato-assinado-pelo-doutor-2',
+    path: '/artefato-assinado-pelo-doutor-2',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoBestRoute = ArtefatoBestRouteImport.update({
+  id: '/artefato-best',
+  path: '/artefato-best',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoBraindumpRoute = ArtefatoBraindumpRouteImport.update({
+  id: '/artefato-braindump',
+  path: '/artefato-braindump',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoCangaLinksRoute = ArtefatoCangaLinksRouteImport.update({
+  id: '/artefato-canga-links',
+  path: '/artefato-canga-links',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoCartaSquircleACelulaRoute =
+  ArtefatoCartaSquircleACelulaRouteImport.update({
+    id: '/artefato-carta-squircle-a-celula',
+    path: '/artefato-carta-squircle-a-celula',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoCartaoBrancoLeleRoute =
+  ArtefatoCartaoBrancoLeleRouteImport.update({
+    id: '/artefato-cartao-branco-lele',
+    path: '/artefato-cartao-branco-lele',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoEntradaLittleWeaveRoute =
+  ArtefatoEntradaLittleWeaveRouteImport.update({
+    id: '/artefato-entrada-little-weave',
+    path: '/artefato-entrada-little-weave',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoFluxoDoCadastroRoute = ArtefatoFluxoDoCadastroRouteImport.update({
+  id: '/artefato-fluxo-do-cadastro',
+  path: '/artefato-fluxo-do-cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoFotosUmbiiBooRoute = ArtefatoFotosUmbiiBooRouteImport.update({
+  id: '/artefato-fotos-umbii-boo',
+  path: '/artefato-fotos-umbii-boo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoFotosVeenusQuestRoute =
+  ArtefatoFotosVeenusQuestRouteImport.update({
+    id: '/artefato-fotos-veenus-quest',
+    path: '/artefato-fotos-veenus-quest',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoIndiceGhostRoute = ArtefatoIndiceGhostRouteImport.update({
+  id: '/artefato-indice-ghost',
+  path: '/artefato-indice-ghost',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoLookBootstrapVsOTeuLookRoute =
+  ArtefatoLookBootstrapVsOTeuLookRouteImport.update({
+    id: '/artefato-look-bootstrap-vs-o-teu-look',
+    path: '/artefato-look-bootstrap-vs-o-teu-look',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoMaestroRoute = ArtefatoMaestroRouteImport.update({
+  id: '/artefato-maestro',
+  path: '/artefato-maestro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoMailLleShRoute = ArtefatoMailLleShRouteImport.update({
+  id: '/artefato-mail-lle-sh',
+  path: '/artefato-mail-lle-sh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoMinhasAssinaturasRoute =
+  ArtefatoMinhasAssinaturasRouteImport.update({
+    id: '/artefato-minhas-assinaturas',
+    path: '/artefato-minhas-assinaturas',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoNoIiAdvogadosRoute = ArtefatoNoIiAdvogadosRouteImport.update({
+  id: '/artefato-no-ii-advogados',
+  path: '/artefato-no-ii-advogados',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoPathRoute = ArtefatoPathRouteImport.update({
+  id: '/artefato-path',
+  path: '/artefato-path',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoPilulaRoute = ArtefatoPilulaRouteImport.update({
+  id: '/artefato-pilula',
+  path: '/artefato-pilula',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoPlaybookDeMembershipRoute =
+  ArtefatoPlaybookDeMembershipRouteImport.update({
+    id: '/artefato-playbook-de-membership',
+    path: '/artefato-playbook-de-membership',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArtefatoTarefasBraeeInRoute = ArtefatoTarefasBraeeInRouteImport.update({
+  id: '/artefato-tarefas-braee-in',
+  path: '/artefato-tarefas-braee-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoTudoDeHojeRoute = ArtefatoTudoDeHojeRouteImport.update({
+  id: '/artefato-tudo-de-hoje',
+  path: '/artefato-tudo-de-hoje',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoUmRecadoRoute = ArtefatoUmRecadoRouteImport.update({
+  id: '/artefato-um-recado',
+  path: '/artefato-um-recado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoVeenusAgoraRoute = ArtefatoVeenusAgoraRouteImport.update({
+  id: '/artefato-veenus-agora',
+  path: '/artefato-veenus-agora',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtefatoVeenusComentadosFluidoRoute =
+  ArtefatoVeenusComentadosFluidoRouteImport.update({
+    id: '/artefato-veenus-comentados-fluido',
+    path: '/artefato-veenus-comentados-fluido',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ArtefatosRoute = ArtefatosRouteImport.update({
   id: '/artefatos',
   path: '/artefatos',
@@ -176,6 +375,46 @@ const RedefinirRoute = RedefinirRouteImport.update({
 const SaudeRoute = SaudeRouteImport.update({
   id: '/saude',
   path: '/saude',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteEeCardsRoute = SiteEeCardsRouteImport.update({
+  id: '/site-ee-cards',
+  path: '/site-ee-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteHospitalRoute = SiteHospitalRouteImport.update({
+  id: '/site-hospital',
+  path: '/site-hospital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteLeticiaInkRoute = SiteLeticiaInkRouteImport.update({
+  id: '/site-leticia-ink',
+  path: '/site-leticia-ink',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteLeticiaLandRoute = SiteLeticiaLandRouteImport.update({
+  id: '/site-leticia-land',
+  path: '/site-leticia-land',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteLleRoute = SiteLleRouteImport.update({
+  id: '/site-lle',
+  path: '/site-lle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteMediciiiiishRoute = SiteMediciiiiishRouteImport.update({
+  id: '/site-mediciiiiish',
+  path: '/site-mediciiiiish',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteProRoute = SiteProRouteImport.update({
+  id: '/site-pro',
+  path: '/site-pro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitePulseRoute = SitePulseRouteImport.update({
+  id: '/site-pulse',
+  path: '/site-pulse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitesRoute = SitesRouteImport.update({
@@ -312,6 +551,36 @@ export interface FileRoutesByFullPath {
   '/menstruapp-fofo': typeof MenstruappFofoRouteRouteWithChildren
   '/paciente': typeof PacienteRouteRouteWithChildren
   '/$slug': typeof SlugRoute
+  '/artefato-acesso-relatorio': typeof ArtefatoAcessoRelatorioRoute
+  '/artefato-airbn-best': typeof ArtefatoAirbnBestRoute
+  '/artefato-alllboo': typeof ArtefatoAlllbooRoute
+  '/artefato-artefatos-recentes': typeof ArtefatoArtefatosRecentesRoute
+  '/artefato-as-vezes': typeof ArtefatoAsVezesRoute
+  '/artefato-assinado-pelo-doutor': typeof ArtefatoAssinadoPeloDoutorRoute
+  '/artefato-assinado-pelo-doutor-2': typeof ArtefatoAssinadoPeloDoutor2Route
+  '/artefato-best': typeof ArtefatoBestRoute
+  '/artefato-braindump': typeof ArtefatoBraindumpRoute
+  '/artefato-canga-links': typeof ArtefatoCangaLinksRoute
+  '/artefato-carta-squircle-a-celula': typeof ArtefatoCartaSquircleACelulaRoute
+  '/artefato-cartao-branco-lele': typeof ArtefatoCartaoBrancoLeleRoute
+  '/artefato-entrada-little-weave': typeof ArtefatoEntradaLittleWeaveRoute
+  '/artefato-fluxo-do-cadastro': typeof ArtefatoFluxoDoCadastroRoute
+  '/artefato-fotos-umbii-boo': typeof ArtefatoFotosUmbiiBooRoute
+  '/artefato-fotos-veenus-quest': typeof ArtefatoFotosVeenusQuestRoute
+  '/artefato-indice-ghost': typeof ArtefatoIndiceGhostRoute
+  '/artefato-look-bootstrap-vs-o-teu-look': typeof ArtefatoLookBootstrapVsOTeuLookRoute
+  '/artefato-maestro': typeof ArtefatoMaestroRoute
+  '/artefato-mail-lle-sh': typeof ArtefatoMailLleShRoute
+  '/artefato-minhas-assinaturas': typeof ArtefatoMinhasAssinaturasRoute
+  '/artefato-no-ii-advogados': typeof ArtefatoNoIiAdvogadosRoute
+  '/artefato-path': typeof ArtefatoPathRoute
+  '/artefato-pilula': typeof ArtefatoPilulaRoute
+  '/artefato-playbook-de-membership': typeof ArtefatoPlaybookDeMembershipRoute
+  '/artefato-tarefas-braee-in': typeof ArtefatoTarefasBraeeInRoute
+  '/artefato-tudo-de-hoje': typeof ArtefatoTudoDeHojeRoute
+  '/artefato-um-recado': typeof ArtefatoUmRecadoRoute
+  '/artefato-veenus-agora': typeof ArtefatoVeenusAgoraRoute
+  '/artefato-veenus-comentados-fluido': typeof ArtefatoVeenusComentadosFluidoRoute
   '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
@@ -328,6 +597,14 @@ export interface FileRoutesByFullPath {
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
+  '/site-ee-cards': typeof SiteEeCardsRoute
+  '/site-hospital': typeof SiteHospitalRoute
+  '/site-leticia-ink': typeof SiteLeticiaInkRoute
+  '/site-leticia-land': typeof SiteLeticiaLandRoute
+  '/site-lle': typeof SiteLleRoute
+  '/site-mediciiiiish': typeof SiteMediciiiiishRoute
+  '/site-pro': typeof SiteProRoute
+  '/site-pulse': typeof SitePulseRoute
   '/sites': typeof SitesRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
   '/femea/$slug': typeof FemeaSlugRoute
@@ -357,6 +634,36 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$slug': typeof SlugRoute
+  '/artefato-acesso-relatorio': typeof ArtefatoAcessoRelatorioRoute
+  '/artefato-airbn-best': typeof ArtefatoAirbnBestRoute
+  '/artefato-alllboo': typeof ArtefatoAlllbooRoute
+  '/artefato-artefatos-recentes': typeof ArtefatoArtefatosRecentesRoute
+  '/artefato-as-vezes': typeof ArtefatoAsVezesRoute
+  '/artefato-assinado-pelo-doutor': typeof ArtefatoAssinadoPeloDoutorRoute
+  '/artefato-assinado-pelo-doutor-2': typeof ArtefatoAssinadoPeloDoutor2Route
+  '/artefato-best': typeof ArtefatoBestRoute
+  '/artefato-braindump': typeof ArtefatoBraindumpRoute
+  '/artefato-canga-links': typeof ArtefatoCangaLinksRoute
+  '/artefato-carta-squircle-a-celula': typeof ArtefatoCartaSquircleACelulaRoute
+  '/artefato-cartao-branco-lele': typeof ArtefatoCartaoBrancoLeleRoute
+  '/artefato-entrada-little-weave': typeof ArtefatoEntradaLittleWeaveRoute
+  '/artefato-fluxo-do-cadastro': typeof ArtefatoFluxoDoCadastroRoute
+  '/artefato-fotos-umbii-boo': typeof ArtefatoFotosUmbiiBooRoute
+  '/artefato-fotos-veenus-quest': typeof ArtefatoFotosVeenusQuestRoute
+  '/artefato-indice-ghost': typeof ArtefatoIndiceGhostRoute
+  '/artefato-look-bootstrap-vs-o-teu-look': typeof ArtefatoLookBootstrapVsOTeuLookRoute
+  '/artefato-maestro': typeof ArtefatoMaestroRoute
+  '/artefato-mail-lle-sh': typeof ArtefatoMailLleShRoute
+  '/artefato-minhas-assinaturas': typeof ArtefatoMinhasAssinaturasRoute
+  '/artefato-no-ii-advogados': typeof ArtefatoNoIiAdvogadosRoute
+  '/artefato-path': typeof ArtefatoPathRoute
+  '/artefato-pilula': typeof ArtefatoPilulaRoute
+  '/artefato-playbook-de-membership': typeof ArtefatoPlaybookDeMembershipRoute
+  '/artefato-tarefas-braee-in': typeof ArtefatoTarefasBraeeInRoute
+  '/artefato-tudo-de-hoje': typeof ArtefatoTudoDeHojeRoute
+  '/artefato-um-recado': typeof ArtefatoUmRecadoRoute
+  '/artefato-veenus-agora': typeof ArtefatoVeenusAgoraRoute
+  '/artefato-veenus-comentados-fluido': typeof ArtefatoVeenusComentadosFluidoRoute
   '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
@@ -373,6 +680,14 @@ export interface FileRoutesByTo {
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
+  '/site-ee-cards': typeof SiteEeCardsRoute
+  '/site-hospital': typeof SiteHospitalRoute
+  '/site-leticia-ink': typeof SiteLeticiaInkRoute
+  '/site-leticia-land': typeof SiteLeticiaLandRoute
+  '/site-lle': typeof SiteLleRoute
+  '/site-mediciiiiish': typeof SiteMediciiiiishRoute
+  '/site-pro': typeof SiteProRoute
+  '/site-pulse': typeof SitePulseRoute
   '/sites': typeof SitesRoute
   '/menstruapp': typeof AuthenticatedMenstruappRoute
   '/femea/$slug': typeof FemeaSlugRoute
@@ -409,6 +724,36 @@ export interface FileRoutesById {
   '/menstruapp-fofo': typeof MenstruappFofoRouteRouteWithChildren
   '/paciente': typeof PacienteRouteRouteWithChildren
   '/$slug': typeof SlugRoute
+  '/artefato-acesso-relatorio': typeof ArtefatoAcessoRelatorioRoute
+  '/artefato-airbn-best': typeof ArtefatoAirbnBestRoute
+  '/artefato-alllboo': typeof ArtefatoAlllbooRoute
+  '/artefato-artefatos-recentes': typeof ArtefatoArtefatosRecentesRoute
+  '/artefato-as-vezes': typeof ArtefatoAsVezesRoute
+  '/artefato-assinado-pelo-doutor': typeof ArtefatoAssinadoPeloDoutorRoute
+  '/artefato-assinado-pelo-doutor-2': typeof ArtefatoAssinadoPeloDoutor2Route
+  '/artefato-best': typeof ArtefatoBestRoute
+  '/artefato-braindump': typeof ArtefatoBraindumpRoute
+  '/artefato-canga-links': typeof ArtefatoCangaLinksRoute
+  '/artefato-carta-squircle-a-celula': typeof ArtefatoCartaSquircleACelulaRoute
+  '/artefato-cartao-branco-lele': typeof ArtefatoCartaoBrancoLeleRoute
+  '/artefato-entrada-little-weave': typeof ArtefatoEntradaLittleWeaveRoute
+  '/artefato-fluxo-do-cadastro': typeof ArtefatoFluxoDoCadastroRoute
+  '/artefato-fotos-umbii-boo': typeof ArtefatoFotosUmbiiBooRoute
+  '/artefato-fotos-veenus-quest': typeof ArtefatoFotosVeenusQuestRoute
+  '/artefato-indice-ghost': typeof ArtefatoIndiceGhostRoute
+  '/artefato-look-bootstrap-vs-o-teu-look': typeof ArtefatoLookBootstrapVsOTeuLookRoute
+  '/artefato-maestro': typeof ArtefatoMaestroRoute
+  '/artefato-mail-lle-sh': typeof ArtefatoMailLleShRoute
+  '/artefato-minhas-assinaturas': typeof ArtefatoMinhasAssinaturasRoute
+  '/artefato-no-ii-advogados': typeof ArtefatoNoIiAdvogadosRoute
+  '/artefato-path': typeof ArtefatoPathRoute
+  '/artefato-pilula': typeof ArtefatoPilulaRoute
+  '/artefato-playbook-de-membership': typeof ArtefatoPlaybookDeMembershipRoute
+  '/artefato-tarefas-braee-in': typeof ArtefatoTarefasBraeeInRoute
+  '/artefato-tudo-de-hoje': typeof ArtefatoTudoDeHojeRoute
+  '/artefato-um-recado': typeof ArtefatoUmRecadoRoute
+  '/artefato-veenus-agora': typeof ArtefatoVeenusAgoraRoute
+  '/artefato-veenus-comentados-fluido': typeof ArtefatoVeenusComentadosFluidoRoute
   '/artefatos': typeof ArtefatosRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
@@ -425,6 +770,14 @@ export interface FileRoutesById {
   '/portfolio': typeof PortfolioRoute
   '/redefinir': typeof RedefinirRoute
   '/saude': typeof SaudeRoute
+  '/site-ee-cards': typeof SiteEeCardsRoute
+  '/site-hospital': typeof SiteHospitalRoute
+  '/site-leticia-ink': typeof SiteLeticiaInkRoute
+  '/site-leticia-land': typeof SiteLeticiaLandRoute
+  '/site-lle': typeof SiteLleRoute
+  '/site-mediciiiiish': typeof SiteMediciiiiishRoute
+  '/site-pro': typeof SiteProRoute
+  '/site-pulse': typeof SitePulseRoute
   '/sites': typeof SitesRoute
   '/_authenticated/menstruapp': typeof AuthenticatedMenstruappRoute
   '/femea/$slug': typeof FemeaSlugRoute
@@ -461,6 +814,36 @@ export interface FileRouteTypes {
     | '/menstruapp-fofo'
     | '/paciente'
     | '/$slug'
+    | '/artefato-acesso-relatorio'
+    | '/artefato-airbn-best'
+    | '/artefato-alllboo'
+    | '/artefato-artefatos-recentes'
+    | '/artefato-as-vezes'
+    | '/artefato-assinado-pelo-doutor'
+    | '/artefato-assinado-pelo-doutor-2'
+    | '/artefato-best'
+    | '/artefato-braindump'
+    | '/artefato-canga-links'
+    | '/artefato-carta-squircle-a-celula'
+    | '/artefato-cartao-branco-lele'
+    | '/artefato-entrada-little-weave'
+    | '/artefato-fluxo-do-cadastro'
+    | '/artefato-fotos-umbii-boo'
+    | '/artefato-fotos-veenus-quest'
+    | '/artefato-indice-ghost'
+    | '/artefato-look-bootstrap-vs-o-teu-look'
+    | '/artefato-maestro'
+    | '/artefato-mail-lle-sh'
+    | '/artefato-minhas-assinaturas'
+    | '/artefato-no-ii-advogados'
+    | '/artefato-path'
+    | '/artefato-pilula'
+    | '/artefato-playbook-de-membership'
+    | '/artefato-tarefas-braee-in'
+    | '/artefato-tudo-de-hoje'
+    | '/artefato-um-recado'
+    | '/artefato-veenus-agora'
+    | '/artefato-veenus-comentados-fluido'
     | '/artefatos'
     | '/auth'
     | '/calendario'
@@ -477,6 +860,14 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/redefinir'
     | '/saude'
+    | '/site-ee-cards'
+    | '/site-hospital'
+    | '/site-leticia-ink'
+    | '/site-leticia-land'
+    | '/site-lle'
+    | '/site-mediciiiiish'
+    | '/site-pro'
+    | '/site-pulse'
     | '/sites'
     | '/menstruapp'
     | '/femea/$slug'
@@ -506,6 +897,36 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$slug'
+    | '/artefato-acesso-relatorio'
+    | '/artefato-airbn-best'
+    | '/artefato-alllboo'
+    | '/artefato-artefatos-recentes'
+    | '/artefato-as-vezes'
+    | '/artefato-assinado-pelo-doutor'
+    | '/artefato-assinado-pelo-doutor-2'
+    | '/artefato-best'
+    | '/artefato-braindump'
+    | '/artefato-canga-links'
+    | '/artefato-carta-squircle-a-celula'
+    | '/artefato-cartao-branco-lele'
+    | '/artefato-entrada-little-weave'
+    | '/artefato-fluxo-do-cadastro'
+    | '/artefato-fotos-umbii-boo'
+    | '/artefato-fotos-veenus-quest'
+    | '/artefato-indice-ghost'
+    | '/artefato-look-bootstrap-vs-o-teu-look'
+    | '/artefato-maestro'
+    | '/artefato-mail-lle-sh'
+    | '/artefato-minhas-assinaturas'
+    | '/artefato-no-ii-advogados'
+    | '/artefato-path'
+    | '/artefato-pilula'
+    | '/artefato-playbook-de-membership'
+    | '/artefato-tarefas-braee-in'
+    | '/artefato-tudo-de-hoje'
+    | '/artefato-um-recado'
+    | '/artefato-veenus-agora'
+    | '/artefato-veenus-comentados-fluido'
     | '/artefatos'
     | '/auth'
     | '/calendario'
@@ -522,6 +943,14 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/redefinir'
     | '/saude'
+    | '/site-ee-cards'
+    | '/site-hospital'
+    | '/site-leticia-ink'
+    | '/site-leticia-land'
+    | '/site-lle'
+    | '/site-mediciiiiish'
+    | '/site-pro'
+    | '/site-pulse'
     | '/sites'
     | '/menstruapp'
     | '/femea/$slug'
@@ -557,6 +986,36 @@ export interface FileRouteTypes {
     | '/menstruapp-fofo'
     | '/paciente'
     | '/$slug'
+    | '/artefato-acesso-relatorio'
+    | '/artefato-airbn-best'
+    | '/artefato-alllboo'
+    | '/artefato-artefatos-recentes'
+    | '/artefato-as-vezes'
+    | '/artefato-assinado-pelo-doutor'
+    | '/artefato-assinado-pelo-doutor-2'
+    | '/artefato-best'
+    | '/artefato-braindump'
+    | '/artefato-canga-links'
+    | '/artefato-carta-squircle-a-celula'
+    | '/artefato-cartao-branco-lele'
+    | '/artefato-entrada-little-weave'
+    | '/artefato-fluxo-do-cadastro'
+    | '/artefato-fotos-umbii-boo'
+    | '/artefato-fotos-veenus-quest'
+    | '/artefato-indice-ghost'
+    | '/artefato-look-bootstrap-vs-o-teu-look'
+    | '/artefato-maestro'
+    | '/artefato-mail-lle-sh'
+    | '/artefato-minhas-assinaturas'
+    | '/artefato-no-ii-advogados'
+    | '/artefato-path'
+    | '/artefato-pilula'
+    | '/artefato-playbook-de-membership'
+    | '/artefato-tarefas-braee-in'
+    | '/artefato-tudo-de-hoje'
+    | '/artefato-um-recado'
+    | '/artefato-veenus-agora'
+    | '/artefato-veenus-comentados-fluido'
     | '/artefatos'
     | '/auth'
     | '/calendario'
@@ -573,6 +1032,14 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/redefinir'
     | '/saude'
+    | '/site-ee-cards'
+    | '/site-hospital'
+    | '/site-leticia-ink'
+    | '/site-leticia-land'
+    | '/site-lle'
+    | '/site-mediciiiiish'
+    | '/site-pro'
+    | '/site-pulse'
     | '/sites'
     | '/_authenticated/menstruapp'
     | '/femea/$slug'
@@ -609,6 +1076,36 @@ export interface RootRouteChildren {
   MenstruappFofoRouteRoute: typeof MenstruappFofoRouteRouteWithChildren
   PacienteRouteRoute: typeof PacienteRouteRouteWithChildren
   SlugRoute: typeof SlugRoute
+  ArtefatoAcessoRelatorioRoute: typeof ArtefatoAcessoRelatorioRoute
+  ArtefatoAirbnBestRoute: typeof ArtefatoAirbnBestRoute
+  ArtefatoAlllbooRoute: typeof ArtefatoAlllbooRoute
+  ArtefatoArtefatosRecentesRoute: typeof ArtefatoArtefatosRecentesRoute
+  ArtefatoAsVezesRoute: typeof ArtefatoAsVezesRoute
+  ArtefatoAssinadoPeloDoutorRoute: typeof ArtefatoAssinadoPeloDoutorRoute
+  ArtefatoAssinadoPeloDoutor2Route: typeof ArtefatoAssinadoPeloDoutor2Route
+  ArtefatoBestRoute: typeof ArtefatoBestRoute
+  ArtefatoBraindumpRoute: typeof ArtefatoBraindumpRoute
+  ArtefatoCangaLinksRoute: typeof ArtefatoCangaLinksRoute
+  ArtefatoCartaSquircleACelulaRoute: typeof ArtefatoCartaSquircleACelulaRoute
+  ArtefatoCartaoBrancoLeleRoute: typeof ArtefatoCartaoBrancoLeleRoute
+  ArtefatoEntradaLittleWeaveRoute: typeof ArtefatoEntradaLittleWeaveRoute
+  ArtefatoFluxoDoCadastroRoute: typeof ArtefatoFluxoDoCadastroRoute
+  ArtefatoFotosUmbiiBooRoute: typeof ArtefatoFotosUmbiiBooRoute
+  ArtefatoFotosVeenusQuestRoute: typeof ArtefatoFotosVeenusQuestRoute
+  ArtefatoIndiceGhostRoute: typeof ArtefatoIndiceGhostRoute
+  ArtefatoLookBootstrapVsOTeuLookRoute: typeof ArtefatoLookBootstrapVsOTeuLookRoute
+  ArtefatoMaestroRoute: typeof ArtefatoMaestroRoute
+  ArtefatoMailLleShRoute: typeof ArtefatoMailLleShRoute
+  ArtefatoMinhasAssinaturasRoute: typeof ArtefatoMinhasAssinaturasRoute
+  ArtefatoNoIiAdvogadosRoute: typeof ArtefatoNoIiAdvogadosRoute
+  ArtefatoPathRoute: typeof ArtefatoPathRoute
+  ArtefatoPilulaRoute: typeof ArtefatoPilulaRoute
+  ArtefatoPlaybookDeMembershipRoute: typeof ArtefatoPlaybookDeMembershipRoute
+  ArtefatoTarefasBraeeInRoute: typeof ArtefatoTarefasBraeeInRoute
+  ArtefatoTudoDeHojeRoute: typeof ArtefatoTudoDeHojeRoute
+  ArtefatoUmRecadoRoute: typeof ArtefatoUmRecadoRoute
+  ArtefatoVeenusAgoraRoute: typeof ArtefatoVeenusAgoraRoute
+  ArtefatoVeenusComentadosFluidoRoute: typeof ArtefatoVeenusComentadosFluidoRoute
   ArtefatosRoute: typeof ArtefatosRoute
   AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
@@ -625,6 +1122,14 @@ export interface RootRouteChildren {
   PortfolioRoute: typeof PortfolioRoute
   RedefinirRoute: typeof RedefinirRoute
   SaudeRoute: typeof SaudeRoute
+  SiteEeCardsRoute: typeof SiteEeCardsRoute
+  SiteHospitalRoute: typeof SiteHospitalRoute
+  SiteLeticiaInkRoute: typeof SiteLeticiaInkRoute
+  SiteLeticiaLandRoute: typeof SiteLeticiaLandRoute
+  SiteLleRoute: typeof SiteLleRoute
+  SiteMediciiiiishRoute: typeof SiteMediciiiiishRoute
+  SiteProRoute: typeof SiteProRoute
+  SitePulseRoute: typeof SitePulseRoute
   SitesRoute: typeof SitesRoute
 }
 
@@ -649,6 +1154,216 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-acesso-relatorio': {
+      id: '/artefato-acesso-relatorio'
+      path: '/artefato-acesso-relatorio'
+      fullPath: '/artefato-acesso-relatorio'
+      preLoaderRoute: typeof ArtefatoAcessoRelatorioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-airbn-best': {
+      id: '/artefato-airbn-best'
+      path: '/artefato-airbn-best'
+      fullPath: '/artefato-airbn-best'
+      preLoaderRoute: typeof ArtefatoAirbnBestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-alllboo': {
+      id: '/artefato-alllboo'
+      path: '/artefato-alllboo'
+      fullPath: '/artefato-alllboo'
+      preLoaderRoute: typeof ArtefatoAlllbooRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-artefatos-recentes': {
+      id: '/artefato-artefatos-recentes'
+      path: '/artefato-artefatos-recentes'
+      fullPath: '/artefato-artefatos-recentes'
+      preLoaderRoute: typeof ArtefatoArtefatosRecentesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-as-vezes': {
+      id: '/artefato-as-vezes'
+      path: '/artefato-as-vezes'
+      fullPath: '/artefato-as-vezes'
+      preLoaderRoute: typeof ArtefatoAsVezesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-assinado-pelo-doutor': {
+      id: '/artefato-assinado-pelo-doutor'
+      path: '/artefato-assinado-pelo-doutor'
+      fullPath: '/artefato-assinado-pelo-doutor'
+      preLoaderRoute: typeof ArtefatoAssinadoPeloDoutorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-assinado-pelo-doutor-2': {
+      id: '/artefato-assinado-pelo-doutor-2'
+      path: '/artefato-assinado-pelo-doutor-2'
+      fullPath: '/artefato-assinado-pelo-doutor-2'
+      preLoaderRoute: typeof ArtefatoAssinadoPeloDoutor2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-best': {
+      id: '/artefato-best'
+      path: '/artefato-best'
+      fullPath: '/artefato-best'
+      preLoaderRoute: typeof ArtefatoBestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-braindump': {
+      id: '/artefato-braindump'
+      path: '/artefato-braindump'
+      fullPath: '/artefato-braindump'
+      preLoaderRoute: typeof ArtefatoBraindumpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-canga-links': {
+      id: '/artefato-canga-links'
+      path: '/artefato-canga-links'
+      fullPath: '/artefato-canga-links'
+      preLoaderRoute: typeof ArtefatoCangaLinksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-carta-squircle-a-celula': {
+      id: '/artefato-carta-squircle-a-celula'
+      path: '/artefato-carta-squircle-a-celula'
+      fullPath: '/artefato-carta-squircle-a-celula'
+      preLoaderRoute: typeof ArtefatoCartaSquircleACelulaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-cartao-branco-lele': {
+      id: '/artefato-cartao-branco-lele'
+      path: '/artefato-cartao-branco-lele'
+      fullPath: '/artefato-cartao-branco-lele'
+      preLoaderRoute: typeof ArtefatoCartaoBrancoLeleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-entrada-little-weave': {
+      id: '/artefato-entrada-little-weave'
+      path: '/artefato-entrada-little-weave'
+      fullPath: '/artefato-entrada-little-weave'
+      preLoaderRoute: typeof ArtefatoEntradaLittleWeaveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-fluxo-do-cadastro': {
+      id: '/artefato-fluxo-do-cadastro'
+      path: '/artefato-fluxo-do-cadastro'
+      fullPath: '/artefato-fluxo-do-cadastro'
+      preLoaderRoute: typeof ArtefatoFluxoDoCadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-fotos-umbii-boo': {
+      id: '/artefato-fotos-umbii-boo'
+      path: '/artefato-fotos-umbii-boo'
+      fullPath: '/artefato-fotos-umbii-boo'
+      preLoaderRoute: typeof ArtefatoFotosUmbiiBooRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-fotos-veenus-quest': {
+      id: '/artefato-fotos-veenus-quest'
+      path: '/artefato-fotos-veenus-quest'
+      fullPath: '/artefato-fotos-veenus-quest'
+      preLoaderRoute: typeof ArtefatoFotosVeenusQuestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-indice-ghost': {
+      id: '/artefato-indice-ghost'
+      path: '/artefato-indice-ghost'
+      fullPath: '/artefato-indice-ghost'
+      preLoaderRoute: typeof ArtefatoIndiceGhostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-look-bootstrap-vs-o-teu-look': {
+      id: '/artefato-look-bootstrap-vs-o-teu-look'
+      path: '/artefato-look-bootstrap-vs-o-teu-look'
+      fullPath: '/artefato-look-bootstrap-vs-o-teu-look'
+      preLoaderRoute: typeof ArtefatoLookBootstrapVsOTeuLookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-maestro': {
+      id: '/artefato-maestro'
+      path: '/artefato-maestro'
+      fullPath: '/artefato-maestro'
+      preLoaderRoute: typeof ArtefatoMaestroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-mail-lle-sh': {
+      id: '/artefato-mail-lle-sh'
+      path: '/artefato-mail-lle-sh'
+      fullPath: '/artefato-mail-lle-sh'
+      preLoaderRoute: typeof ArtefatoMailLleShRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-minhas-assinaturas': {
+      id: '/artefato-minhas-assinaturas'
+      path: '/artefato-minhas-assinaturas'
+      fullPath: '/artefato-minhas-assinaturas'
+      preLoaderRoute: typeof ArtefatoMinhasAssinaturasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-no-ii-advogados': {
+      id: '/artefato-no-ii-advogados'
+      path: '/artefato-no-ii-advogados'
+      fullPath: '/artefato-no-ii-advogados'
+      preLoaderRoute: typeof ArtefatoNoIiAdvogadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-path': {
+      id: '/artefato-path'
+      path: '/artefato-path'
+      fullPath: '/artefato-path'
+      preLoaderRoute: typeof ArtefatoPathRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-pilula': {
+      id: '/artefato-pilula'
+      path: '/artefato-pilula'
+      fullPath: '/artefato-pilula'
+      preLoaderRoute: typeof ArtefatoPilulaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-playbook-de-membership': {
+      id: '/artefato-playbook-de-membership'
+      path: '/artefato-playbook-de-membership'
+      fullPath: '/artefato-playbook-de-membership'
+      preLoaderRoute: typeof ArtefatoPlaybookDeMembershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-tarefas-braee-in': {
+      id: '/artefato-tarefas-braee-in'
+      path: '/artefato-tarefas-braee-in'
+      fullPath: '/artefato-tarefas-braee-in'
+      preLoaderRoute: typeof ArtefatoTarefasBraeeInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-tudo-de-hoje': {
+      id: '/artefato-tudo-de-hoje'
+      path: '/artefato-tudo-de-hoje'
+      fullPath: '/artefato-tudo-de-hoje'
+      preLoaderRoute: typeof ArtefatoTudoDeHojeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-um-recado': {
+      id: '/artefato-um-recado'
+      path: '/artefato-um-recado'
+      fullPath: '/artefato-um-recado'
+      preLoaderRoute: typeof ArtefatoUmRecadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-veenus-agora': {
+      id: '/artefato-veenus-agora'
+      path: '/artefato-veenus-agora'
+      fullPath: '/artefato-veenus-agora'
+      preLoaderRoute: typeof ArtefatoVeenusAgoraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artefato-veenus-comentados-fluido': {
+      id: '/artefato-veenus-comentados-fluido'
+      path: '/artefato-veenus-comentados-fluido'
+      fullPath: '/artefato-veenus-comentados-fluido'
+      preLoaderRoute: typeof ArtefatoVeenusComentadosFluidoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/artefatos': {
@@ -796,6 +1511,62 @@ declare module '@tanstack/react-router' {
       path: '/saude'
       fullPath: '/saude'
       preLoaderRoute: typeof SaudeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-ee-cards': {
+      id: '/site-ee-cards'
+      path: '/site-ee-cards'
+      fullPath: '/site-ee-cards'
+      preLoaderRoute: typeof SiteEeCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-hospital': {
+      id: '/site-hospital'
+      path: '/site-hospital'
+      fullPath: '/site-hospital'
+      preLoaderRoute: typeof SiteHospitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-leticia-ink': {
+      id: '/site-leticia-ink'
+      path: '/site-leticia-ink'
+      fullPath: '/site-leticia-ink'
+      preLoaderRoute: typeof SiteLeticiaInkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-leticia-land': {
+      id: '/site-leticia-land'
+      path: '/site-leticia-land'
+      fullPath: '/site-leticia-land'
+      preLoaderRoute: typeof SiteLeticiaLandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-lle': {
+      id: '/site-lle'
+      path: '/site-lle'
+      fullPath: '/site-lle'
+      preLoaderRoute: typeof SiteLleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-mediciiiiish': {
+      id: '/site-mediciiiiish'
+      path: '/site-mediciiiiish'
+      fullPath: '/site-mediciiiiish'
+      preLoaderRoute: typeof SiteMediciiiiishRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-pro': {
+      id: '/site-pro'
+      path: '/site-pro'
+      fullPath: '/site-pro'
+      preLoaderRoute: typeof SiteProRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-pulse': {
+      id: '/site-pulse'
+      path: '/site-pulse'
+      fullPath: '/site-pulse'
+      preLoaderRoute: typeof SitePulseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sites': {
@@ -1099,6 +1870,36 @@ const rootRouteChildren: RootRouteChildren = {
   MenstruappFofoRouteRoute: MenstruappFofoRouteRouteWithChildren,
   PacienteRouteRoute: PacienteRouteRouteWithChildren,
   SlugRoute: SlugRoute,
+  ArtefatoAcessoRelatorioRoute: ArtefatoAcessoRelatorioRoute,
+  ArtefatoAirbnBestRoute: ArtefatoAirbnBestRoute,
+  ArtefatoAlllbooRoute: ArtefatoAlllbooRoute,
+  ArtefatoArtefatosRecentesRoute: ArtefatoArtefatosRecentesRoute,
+  ArtefatoAsVezesRoute: ArtefatoAsVezesRoute,
+  ArtefatoAssinadoPeloDoutorRoute: ArtefatoAssinadoPeloDoutorRoute,
+  ArtefatoAssinadoPeloDoutor2Route: ArtefatoAssinadoPeloDoutor2Route,
+  ArtefatoBestRoute: ArtefatoBestRoute,
+  ArtefatoBraindumpRoute: ArtefatoBraindumpRoute,
+  ArtefatoCangaLinksRoute: ArtefatoCangaLinksRoute,
+  ArtefatoCartaSquircleACelulaRoute: ArtefatoCartaSquircleACelulaRoute,
+  ArtefatoCartaoBrancoLeleRoute: ArtefatoCartaoBrancoLeleRoute,
+  ArtefatoEntradaLittleWeaveRoute: ArtefatoEntradaLittleWeaveRoute,
+  ArtefatoFluxoDoCadastroRoute: ArtefatoFluxoDoCadastroRoute,
+  ArtefatoFotosUmbiiBooRoute: ArtefatoFotosUmbiiBooRoute,
+  ArtefatoFotosVeenusQuestRoute: ArtefatoFotosVeenusQuestRoute,
+  ArtefatoIndiceGhostRoute: ArtefatoIndiceGhostRoute,
+  ArtefatoLookBootstrapVsOTeuLookRoute: ArtefatoLookBootstrapVsOTeuLookRoute,
+  ArtefatoMaestroRoute: ArtefatoMaestroRoute,
+  ArtefatoMailLleShRoute: ArtefatoMailLleShRoute,
+  ArtefatoMinhasAssinaturasRoute: ArtefatoMinhasAssinaturasRoute,
+  ArtefatoNoIiAdvogadosRoute: ArtefatoNoIiAdvogadosRoute,
+  ArtefatoPathRoute: ArtefatoPathRoute,
+  ArtefatoPilulaRoute: ArtefatoPilulaRoute,
+  ArtefatoPlaybookDeMembershipRoute: ArtefatoPlaybookDeMembershipRoute,
+  ArtefatoTarefasBraeeInRoute: ArtefatoTarefasBraeeInRoute,
+  ArtefatoTudoDeHojeRoute: ArtefatoTudoDeHojeRoute,
+  ArtefatoUmRecadoRoute: ArtefatoUmRecadoRoute,
+  ArtefatoVeenusAgoraRoute: ArtefatoVeenusAgoraRoute,
+  ArtefatoVeenusComentadosFluidoRoute: ArtefatoVeenusComentadosFluidoRoute,
   ArtefatosRoute: ArtefatosRoute,
   AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
@@ -1115,6 +1916,14 @@ const rootRouteChildren: RootRouteChildren = {
   PortfolioRoute: PortfolioRoute,
   RedefinirRoute: RedefinirRoute,
   SaudeRoute: SaudeRoute,
+  SiteEeCardsRoute: SiteEeCardsRoute,
+  SiteHospitalRoute: SiteHospitalRoute,
+  SiteLeticiaInkRoute: SiteLeticiaInkRoute,
+  SiteLeticiaLandRoute: SiteLeticiaLandRoute,
+  SiteLleRoute: SiteLleRoute,
+  SiteMediciiiiishRoute: SiteMediciiiiishRoute,
+  SiteProRoute: SiteProRoute,
+  SitePulseRoute: SitePulseRoute,
   SitesRoute: SitesRoute,
 }
 export const routeTree = rootRouteImport
