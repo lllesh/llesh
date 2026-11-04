@@ -764,7 +764,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     var pt = lg.querySelector('.ponto'), a = pt.getBoundingClientRect(), alvo = $('#bola').getBoundingClientRect();
     // a bolinha que voa: começa do tamanho e no lugar do ponto da logo
     var v = document.createElement('div'); v.className = 'voo';
-    v.style.cssText = 'position:fixed;z-index:60;left:0;top:0;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:3px 4px 5px rgba(0,0,0,.28);pointer-events:none;visibility:hidden';
+    v.style.cssText = 'position:fixed;z-index:60;left:0;top:0;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:3px 4px 5px rgba(0,0,0,.28);pointer-events:none;visibility:hidden;opacity:.65';
     /* 04/11/2026 (Dra Lê): o pontinho do umbigo fica guardado aqui, INVISÍVEL por enquanto; para trazê-lo de volta, basta tirar o display:none */
     v.innerHTML = '<i style="display:none;position:absolute;left:50%;top:62%;width:16%;aspect-ratio:1;border-radius:50%;background:#fff;box-shadow:inset 0 1.5px 2.5px rgba(0,0,0,.4);translate:-50% -50%"></i>';
     var d0 = a.width * .55, x0 = a.left + a.width * .395 - 20, y0 = a.top + a.height * .395 - 20, s0 = d0 / 40;
@@ -776,11 +776,11 @@ html,body,#palco .fundo{transition:background-color .5s ease}
       var meio = Math.max(20, y0 - 60);
       v.animate([
         { transform: 'translate(' + x0 + 'px,' + y0 + 'px) scale(' + s0 + ') rotate(0deg)' },
-        { transform: 'translate(' + (x0 + (x1 - x0) * .35) + 'px,' + meio + 'px) scale(' + (s0 + (1.4 - s0) * .5) + ') rotate(200deg)', offset: .3 },
-        { transform: 'translate(' + (x0 + (x1 - x0) * .8) + 'px,' + (y1 - innerHeight * .25) + 'px) scale(1.35) rotate(330deg)', offset: .62 },
-        { transform: 'translate(' + x1 + 'px,' + (y1 + 10) + 'px) scale(1.7,1.05) rotate(360deg)', offset: .84 },
-        { transform: 'translate(' + x1 + 'px,' + (y1 - 6) + 'px) scale(1.3,1.5) rotate(360deg)', offset: .93 },
-        { transform: 'translate(' + x1 + 'px,' + y1 + 'px) scale(1.4) rotate(360deg)' }
+        { transform: 'translate(' + (x0 + (x1 - x0) * .35) + 'px,' + meio + 'px) scale(' + (s0 + (1 - s0) * .3) + ') rotate(200deg)', offset: .3 },
+        { transform: 'translate(' + (x0 + (x1 - x0) * .8) + 'px,' + (y1 - innerHeight * .25) + 'px) scale(' + (s0 + (1 - s0) * .7) + ') rotate(330deg)', offset: .62 },
+        { transform: 'translate(' + x1 + 'px,' + (y1 + 10) + 'px) scale(1.25,.75) rotate(360deg)', offset: .84 },
+        { transform: 'translate(' + x1 + 'px,' + (y1 - 6) + 'px) scale(.92,1.1) rotate(360deg)', offset: .93 },
+        { transform: 'translate(' + x1 + 'px,' + y1 + 'px) scale(1) rotate(360deg)' }
       ], { duration: 1150, easing: 'cubic-bezier(.35,.1,.45,1)', fill: 'forwards' }).onfinish = function () {
         app.classList.add('solta'); v.remove(); pt.style.visibility = ''; delete lg.dataset.voando;
         window.__soltaBola && window.__soltaBola(x1 + 20, y1 + 20);
@@ -1001,6 +1001,8 @@ html,body,#palco .fundo{transition:background-color .5s ease}
   function topo() { return innerWidth <= 760 ? 144 : 200 } // 08/10/2026: no celular as fotos começam abaixo da logo maior (antes 84)
   // Solo e List (06/10/2026) moram na mesma área do Grid
   function grade() { return E.vista === 'grid' || E.vista === 'solo' || E.vista === 'list' }
+  // 04/11/2026 (Dra Lê): cada coisa é uma CARTINHA, na proporção sagrada 400/710
+  function RR(o) { return 400 / 710 }
   function layoutGrid() {
     var W = vg.clientWidth - PADE - PADD; gridW = vg.clientWidth;
     app.classList.toggle('arrumado', !!E.arrumado);
@@ -1015,7 +1017,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
       var y = topo(); LINHAS = [];
       var Ws = Math.min(W, 760), x0 = PADE + (W - Ws) / 2;
       for (var i = 0; i < LISTA.length; i++) {
-        var o = LISTA[i], r = Math.max(.2, Math.min(o.r, 6)); o._gr = r;
+        var o = LISTA[i], r = Math.max(.2, Math.min(RR(o), 6)); o._gr = r;
         if (E.vista === 'solo') { var VH = vg.clientHeight, hh = Math.min(VH * (E.soloK || .72), Ws / r), ww = hh * r; if (ww > Ws) { ww = Ws; hh = ww / r } var yy = (i === 0 ? 0 : y) + (VH - hh) / 2; LINHAS.push({ y: yy, h: hh, c: [[o, PADE + (W - ww) / 2, ww]] }); y = (i === 0 ? 0 : y) + VH }  // 07/10/2026: uma por tela
         else { LINHAS.push({ y: y, h: 64, c: [[o, x0, 64]], lista: true, x: x0, w: Ws }); y += 64 + 12 }
       }
@@ -1029,7 +1031,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
       LINHAS.push({ y: y, h: h, c: cel }); y += h + GAP; ln = []; soma = 0;
     }
     for (var i = 0; i < LISTA.length; i++) {
-      var o = LISTA[i], r = Math.max(.2, Math.min(o.r, 6)); o._gr = r;
+      var o = LISTA[i], r = Math.max(.2, Math.min(RR(o), 6)); o._gr = r;
       var hNova = (W - GAP * ln.length) / (soma + r);
       if (ln.length && hNova < H) poe((W - GAP * (ln.length - 1)) / soma);
       ln.push(o); soma += r;
@@ -1181,7 +1183,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
       if (p) { x = p[0]; y = p[1] }
       else if (o.cx != null) { x = o.cx; y = o.cy }
       else { x = (livre % COLN) * PASSO; y = y0 + Math.floor(livre / COLN) * PASSO; livre++ }
-      var r = Math.max(.25, Math.min(o.r, 5)), k = (E.tam && E.tam[o.id]) || 1, w = (r >= 1 ? CAIXA : CAIXA * r) * k, h = (r >= 1 ? CAIXA / r : CAIXA) * k;
+      var r = Math.max(.25, Math.min(RR(o), 5)), k = (E.tam && E.tam[o.id]) || 1, w = (r >= 1 ? CAIXA : CAIXA * r) * k, h = (r >= 1 ? CAIXA / r : CAIXA) * k;
       CPOS.push({ o: o, x: x + (CAIXA - w / k) / 2, y: y + (CAIXA - h / k) / 2, w: w, h: h, k: k });
     });
   }
@@ -1312,10 +1314,10 @@ html,body,#palco .fundo{transition:background-color .5s ease}
       for (var k in TAM) { TAM[k] = [TAM[k][0] * enc, TAM[k][1] * enc] }
       LISTA.filter(function (o) { return !o.grande }).forEach(function (o, i) {
         // cada foto cai do mesmo tamanho que ela tem na tela (o tamanho do grid)
-        var tam = TAM[o.id], w = tam ? tam[0] : base * Math.sqrt(o.r || 1), h = tam ? tam[1] : base / Math.sqrt(o.r || 1);
-        if (E.fisTam) { var bb = W * E.fisTam, rr = Math.max(.5, Math.min(o.r || 1, 2)); w = bb * Math.sqrt(rr); h = bb / Math.sqrt(rr) }
+        var tam = TAM[o.id], w = tam ? tam[0] : base * Math.sqrt(RR(o)), h = tam ? tam[1] : base / Math.sqrt(RR(o));
+        if (E.fisTam) { var bb = W * E.fisTam, rr = Math.max(.5, Math.min(RR(o), 2)); w = bb * Math.sqrt(rr); h = bb / Math.sqrt(rr) }
         var b = M.Bodies.rectangle(MG + 40 + Math.random() * Math.max(10, W - 2 * MG - 80), -h - i * 70 - Math.random() * 80, w, h,
-          { chamfer: { radius: 12 }, restitution: .25, friction: .6, angle: (Math.random() - .5) * .8 });
+          { chamfer: { radius: Math.min(w, h) * .125 }, restitution: .25, friction: .6, angle: (Math.random() - .5) * .8 });
         var el = document.createElement('div'); el.className = 'f'; el.style.width = w + 'px'; el.style.height = h + 'px';
         var im = new Image(); im.src = o.t; im.draggable = false; el.appendChild(im);
         if (o.tipo === 'v') { var fv = document.createElement('video'); fv.className = 'toca'; fv.src = o.o; fv.muted = true; fv.loop = true; fv.playsInline = true; fv.autoplay = true; fv.setAttribute('muted', ''); fv.setAttribute('playsinline', ''); el.appendChild(fv); var fp = fv.play(); if (fp && fp.catch) fp.catch(function () {}) }
@@ -1332,6 +1334,8 @@ html,body,#palco .fundo{transition:background-color .5s ease}
         FIS.els.forEach(function (x) { var b = x[0]; x[1].style.transform = 'translate(' + (b.position.x - x[2] / 2) + 'px,' + (b.position.y - x[3] / 2) + 'px) rotate(' + b.angle + 'rad)' });
         FIS.raf = requestAnimationFrame(pinta);
       })();
+      // 04/11/2026 (Dra Lê): a pinça só cresce/encolhe as coisas vivas no lugar, sem recomeçar o motor
+      window.__escalaFisica = function (k) { if (!FIS.eng || !FIS.els.length || k === 1) return !!FIS.eng; FIS.els.forEach(function (x) { M.Body.scale(x[0], k, k); x[2] *= k; x[3] *= k; x[1].style.width = x[2] + 'px'; x[1].style.height = x[3] + 'px' }); return true };
     });
   }
 
@@ -1442,7 +1446,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     if (!aberto || document.getElementById('escreve')) return;
     var id = aberto.id, j = leEscrito(TXT[id]) || { t: '', x: 50, y: 50, s: 7.5 };
     var ed = document.createElement('div'); ed.id = 'escreve';
-    ed.innerHTML = '<textarea spellcheck="false"></textarea><a class="pronto">pronto</a>';
+    ed.innerHTML = '<textarea spellcheck="false"></textarea><a class="pronto">PRONTO</a>';
     var ta = ed.querySelector('textarea'); ta.value = j.t;
     ed.__salva = function () { j.t = ta.value.replace(/\s+$/, ''); ed.remove(); guardaEscrito(id, j.t ? JSON.stringify(j) : ''); if (peca) poeEscrito(peca, TXT[id]); liga2() };
     ed.querySelector('.pronto').onclick = function (e) { e.stopPropagation(); ed.__salva() };
@@ -1756,7 +1760,7 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     var fila = 1, raf = 0, acum = 1;
     function aplicaZoom() {
       var f = fila; fila = 1; raf = 0;
-      if (E.efeito === 'physics' && E.fisTam) { E.fisTam = Math.max(.06, Math.min(.26, E.fisTam * f)) }
+      if (E.efeito === 'physics' && E.fisTam) { var nf = Math.max(.06, Math.min(.26, E.fisTam * f)), kf = nf / E.fisTam; E.fisTam = nf; guarda(); if (window.__escalaFisica && window.__escalaFisica(kf)) return }
       // 08/10/2026: no "uma por vez", fechar a pinça sai para a grade (fotos grandes); abrir a pinça na grade no máximo entra no "uma por vez"
       else if (E.vista === 'solo') { if (f < 1) { acum *= f; if (acum < .82) { acum = 1; E.bola = 'g'; guarda(); window.__aplicaBola && window.__aplicaBola(); return } } else acum = 1; E.soloK = Math.max(.2, Math.min(1, (E.soloK || .72) * f)) }
       else if (E.vista === 'infinity') { E.alturaInf = Math.max(40, Math.min(280, E.alturaInf * f)); guarda(); layoutInf(); pintaInf(); return }
@@ -2326,14 +2330,15 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 #escreve{position:fixed;inset:0;z-index:300;background:var(--fundo,#FFFBF3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:12vh 10vw}
 #escreve textarea{width:min(720px,80vw);flex:1;max-height:56vh;border:0;background:transparent;resize:none;outline:none;text-align:center;
   font:400 clamp(22px,3vw,34px)/1.3 'Distro Heavy',Inter,sans-serif;color:#1d1d1f;caret-color:#1d1d1f}
-#escreve .pronto{font:500 15px Inter,-apple-system,sans-serif;color:#8a8a8e;cursor:pointer;padding:10px 26px}
+#escreve .pronto{font:600 13px Inter,-apple-system,sans-serif;color:#FFFBF3;background:#1d1d1f;border-radius:999px;cursor:pointer;padding:14px 34px;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;line-height:1;box-shadow:0 6px 18px rgba(0,0,0,.18)}
 </style>
 <style id="mesas-novas">
 /* 08/10/2026 (Dra Lê): o pontinho solto bem menor e sem o pulinho no lugar (ele passeia); no celular a logo maior, mais para baixo e para a direita */
-#bola.livre{width:56px!important;height:56px!important}
+#bola.livre{width:40px!important;height:40px!important;opacity:.65}
 #bola.livre .flutua,#bola.livre .corpo{animation:none!important}
 /* 04/11/2026: na casa (centro inferior) a bolinha fica PARADA, sem flutuar nem respirar, a pedido da Dra Lê (joystick) */
-#bola.livre.casa .flutua,#bola.livre.casa .corpo{animation:none!important}
+/* 04/11/2026 (tarde): na casa ela fica no lugar, mas VIVA, flutuando de leve como a logo lá em cima */
+#bola.livre.casa .flutua,#bola.livre .flutua{animation:logoFlutua 1.6s ease-in-out infinite!important}
 @media (max-width:760px){
   #app #bt-lateral-topo{left:34px!important;top:48px!important}
   #bt-lateral-topo .logo-fora{height:58px!important}
@@ -2403,6 +2408,23 @@ html.na-cima body>*:not(.pg):not(script):not(style){transform:translateY(100vh)}
     else if(onde==='dir'&&dx>80&&Math.abs(dx)>2*Math.abs(dy)) vai('main');
     else if(onde==='cima'&&dy<-80&&Math.abs(dy)>2*Math.abs(dx)) vai('main');
   },{passive:true});
+})();
+</script>
+
+<!-- 04/11/2026 (Dra Lê): a cor do fogo/rastro é AUTOMÁTICA, pelo modo; o seletor foi embora.
+     A curva da cartinha acompanha o tamanho (50px para 400px de largura). -->
+<style>#fumaca-ponto,#fumaca{display:none!important}
+.t,#fisica .f,#palco .peca{border-radius:var(--rc,12px)!important}
+.t img,.t video,#fisica .f img,#fisica .f video{object-fit:cover;width:100%;height:100%}</style>
+<script>
+(function () {
+  var app = document.getElementById('app'), COR = { infinity: [1, 1, 1], physics: [193 / 255, 142 / 255, 169 / 255], grade: [141 / 255, 150 / 255, 193 / 255] };
+  function modo() { if (app.classList.contains('ef-physics')) return 'physics'; if (app.classList.contains('vista-infinity') || app.classList.contains('vista-canvas')) return 'infinity'; return 'grade' }
+  function cor() { var c = COR[modo()], f = window.lleFumaca || (window.lleFumaca = { forca: 1 }); f.r = c[0]; f.g = c[1]; f.b = c[2] }
+  new MutationObserver(cor).observe(app, { attributes: true, attributeFilter: ['class'] });
+  setInterval(cor, 500); cor();
+  function curva() { document.querySelectorAll('.t,#fisica .f,#palco .peca').forEach(function (e) { var w = e.offsetWidth; if (w) e.style.setProperty('--rc', (w * .125).toFixed(1) + 'px') }); setTimeout(function () { requestAnimationFrame(curva) }, 120) }
+  curva();
 })();
 </script>
 </body>
