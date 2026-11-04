@@ -18,6 +18,24 @@ const PAGINAS = [
   { nome: "portfolio", href: "/portfolio" },
   { nome: "ecossistema", href: "/ecossistema" },
   { nome: "fèm", href: "/fem" },
+  { nome: "lift", href: "/lift" },
+  { nome: "fertify alertas", href: "/fertify/alertas" },
+  { nome: "fertify arquivos", href: "/fertify/arquivos" },
+  { nome: "fertify calendario", href: "/fertify/calendario" },
+  { nome: "fertify ciclos", href: "/fertify/ciclos" },
+  { nome: "fertify configuracoes", href: "/fertify/configuracoes" },
+  { nome: "fertify crm", href: "/fertify/crm" },
+  { nome: "fertify exames", href: "/fertify/exames" },
+  { nome: "fertify fertilistas", href: "/fertify/fertilistas" },
+  { nome: "fertify medicacoes", href: "/fertify/medicacoes" },
+  { nome: "fertify mensagens", href: "/fertify/mensagens" },
+  { nome: "fertify pacientes", href: "/fertify/pacientes" },
+  { nome: "fertify procedimentos", href: "/fertify/procedimentos" },
+  { nome: "fertify protocolos", href: "/fertify/protocolos" },
+  { nome: "fertify tarefas", href: "/fertify/tarefas" },
+  { nome: "fertify templates", href: "/fertify/templates" },
+  { nome: "fertify ultrassons", href: "/fertify/ultrassons" },
+  { nome: "terminal", href: "/terminal/index.html" },
 ];
 
 const SITES = [
@@ -47,12 +65,16 @@ export const Route = createFileRoute("/sites")({
   component: Sites,
 });
 
-function Grupo({ titulo, itens, cor }: { titulo: string; itens: { nome: string; href: string }[]; cor: string }) {
+function Sites() {
+  const todas = [
+    ...PAGINAS,
+    ...SITES.map((x) => ({ nome: `site ${x.nome}`, href: x.href })),
+    ...ARTEFATOS.map((a) => ({ nome: `artefato ${a.t}`, href: `/${a.s}` })),
+  ];
   return (
-    <section className="mx-auto mt-14 max-w-5xl first:mt-0">
-      <h2 className="mb-5 text-xl font-black uppercase tracking-widest text-muted-foreground">{titulo}</h2>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {itens.map((s, i) => (
+    <main className="min-h-screen bg-background p-10">
+      <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2">
+        {todas.map((s, i) => (
           <a
             key={s.href + s.nome}
             href={s.href}
@@ -62,17 +84,6 @@ function Grupo({ titulo, itens, cor }: { titulo: string; itens: { nome: string; 
           </a>
         ))}
       </div>
-    </section>
-  );
-}
-
-function Sites() {
-  return (
-    <main className="min-h-screen bg-background p-10">
-      <h1 className="text-5xl font-black tracking-tight text-foreground">sites & artefatos</h1>
-      <Grupo titulo="app" itens={PAGINAS} cor="bg-primary" />
-      <Grupo titulo="sites" itens={SITES} cor="bg-secondary" />
-      <Grupo titulo="artefatos" itens={ARTEFATOS.map((a) => ({ nome: a.t, href: `/${a.s}` }))} cor="bg-accent" />
     </main>
   );
 }
