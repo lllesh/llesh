@@ -957,3 +957,40 @@
   --alarm: oklch(0.55 0.196 32);
 
 }
+
+/* ===== Elevador infinito ===== */
+:root {
+  --elev-bg: oklch(0.17 0.004 60);
+  --elev-ink: oklch(0.985 0.012 85);
+  --elev-ink-2: oklch(0.72 0.01 70);
+  --elev-steel-1: oklch(0.86 0.005 250);
+  --elev-steel-2: oklch(0.66 0.006 250);
+  --elev-steel-3: oklch(0.45 0.006 250);
+  --elev-glow: oklch(0.78 0.15 30);
+  --elev-display: oklch(0.12 0.003 60);
+}
+.elev-steel {
+  background:
+    repeating-linear-gradient(90deg, color-mix(in oklab, var(--elev-steel-1) 70%, transparent) 0 1px, transparent 1px 3px),
+    linear-gradient(110deg, var(--elev-steel-2), var(--elev-steel-1) 35%, var(--elev-steel-2) 55%, var(--elev-steel-1) 80%, var(--elev-steel-3));
+}
+.elev-btn {
+  background: radial-gradient(circle at 35% 30%, var(--elev-steel-1), var(--elev-steel-2) 60%, var(--elev-steel-3));
+  box-shadow: inset 0 -2px 4px color-mix(in oklab, var(--elev-display) 40%, transparent), 0 2px 4px color-mix(in oklab, var(--elev-display) 50%, transparent);
+  color: var(--elev-display);
+}
+.elev-btn[data-on="true"] {
+  background: var(--elev-display);
+  color: var(--elev-glow);
+  box-shadow: 0 0 0 2px var(--elev-glow), 0 0 18px color-mix(in oklab, var(--elev-glow) 60%, transparent);
+}
+@keyframes elev-shake { 0%,100%{transform:translate(0,0)} 25%{transform:translate(0.6px,-0.8px)} 50%{transform:translate(-0.6px,0.5px)} 75%{transform:translate(0.4px,0.9px)} }
+@keyframes elev-shaft-up { from { background-position: 0 0; } to { background-position: 0 var(--elev-shaft-h, 480px); } }
+@keyframes elev-shaft-down { from { background-position: 0 var(--elev-shaft-h, 480px); } to { background-position: 0 0; } }
+.elev-shaft {
+  background:
+    linear-gradient(180deg, transparent 0 46%, color-mix(in oklab, var(--elev-glow) 55%, transparent) 46% 47%, var(--elev-display) 47% 60%, transparent 60%),
+    repeating-linear-gradient(180deg, transparent 0 22px, color-mix(in oklab, var(--elev-ink) 10%, transparent) 22px 24px);
+  background-size: 100% 480px, 100% 48px;
+  background-color: var(--elev-display);
+}

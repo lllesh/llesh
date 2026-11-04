@@ -16,6 +16,7 @@ import { Route as ArtefatosRouteImport } from './routes/artefatos'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
 import { Route as EcossistemaRouteImport } from './routes/ecossistema'
+import { Route as ElevadorRouteImport } from './routes/elevador'
 import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as FemRouteImport } from './routes/fem'
 import { Route as FemeaRouteRouteImport } from './routes/femea/route'
@@ -89,6 +90,11 @@ const CalendarioRoute = CalendarioRouteImport.update({
 const EcossistemaRoute = EcossistemaRouteImport.update({
   id: '/ecossistema',
   path: '/ecossistema',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ElevadorRoute = ElevadorRouteImport.update({
+  id: '/elevador',
+  path: '/elevador',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntrarRoute = EntrarRouteImport.update({
@@ -304,6 +310,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
+  '/elevador': typeof ElevadorRoute
   '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
@@ -347,6 +354,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
+  '/elevador': typeof ElevadorRoute
   '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
@@ -397,6 +405,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
+  '/elevador': typeof ElevadorRoute
   '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
@@ -447,6 +456,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/ecossistema'
+    | '/elevador'
     | '/entrar'
     | '/fem'
     | '/first'
@@ -490,6 +500,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/ecossistema'
+    | '/elevador'
     | '/entrar'
     | '/fem'
     | '/first'
@@ -539,6 +550,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendario'
     | '/ecossistema'
+    | '/elevador'
     | '/entrar'
     | '/fem'
     | '/first'
@@ -589,6 +601,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CalendarioRoute: typeof CalendarioRoute
   EcossistemaRoute: typeof EcossistemaRoute
+  ElevadorRoute: typeof ElevadorRoute
   EntrarRoute: typeof EntrarRoute
   FemRoute: typeof FemRoute
   FirstRoute: typeof FirstRoute
@@ -651,6 +664,13 @@ declare module '@tanstack/react-router' {
       path: '/ecossistema'
       fullPath: '/ecossistema'
       preLoaderRoute: typeof EcossistemaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/elevador': {
+      id: '/elevador'
+      path: '/elevador'
+      fullPath: '/elevador'
+      preLoaderRoute: typeof ElevadorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entrar': {
@@ -1063,6 +1083,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CalendarioRoute: CalendarioRoute,
   EcossistemaRoute: EcossistemaRoute,
+  ElevadorRoute: ElevadorRoute,
   EntrarRoute: EntrarRoute,
   FemRoute: FemRoute,
   FirstRoute: FirstRoute,
