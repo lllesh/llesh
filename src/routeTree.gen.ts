@@ -47,12 +47,12 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CalendarioRouteImport } from './routes/calendario'
 import { Route as EcossistemaRouteImport } from './routes/ecossistema'
 import { Route as ElevadorRouteImport } from './routes/elevador'
-import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as FemRouteImport } from './routes/fem'
 import { Route as FemeaRouteRouteImport } from './routes/femea/route'
 import { Route as FertifyRouteRouteImport } from './routes/fertify/route'
 import { Route as FirstRouteImport } from './routes/first'
 import { Route as FitmailRouteImport } from './routes/fitmail'
+import { Route as InRouteImport } from './routes/in'
 import { Route as LiftRouteImport } from './routes/lift'
 import { Route as LleshRouteImport } from './routes/llesh'
 import { Route as LleshIleshRouteImport } from './routes/llesh-ilesh'
@@ -297,11 +297,6 @@ const ElevadorRoute = ElevadorRouteImport.update({
   path: '/elevador',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EntrarRoute = EntrarRouteImport.update({
-  id: '/entrar',
-  path: '/entrar',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const FemRoute = FemRouteImport.update({
   id: '/fem',
   path: '/fem',
@@ -325,6 +320,11 @@ const FirstRoute = FirstRouteImport.update({
 const FitmailRoute = FitmailRouteImport.update({
   id: '/fitmail',
   path: '/fitmail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InRoute = InRouteImport.update({
+  id: '/in',
+  path: '/in',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LiftRoute = LiftRouteImport.update({
@@ -586,10 +586,10 @@ export interface FileRoutesByFullPath {
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
   '/elevador': typeof ElevadorRoute
-  '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/in': typeof InRoute
   '/lift': typeof LiftRoute
   '/llesh': typeof LleshRoute
   '/llesh-ilesh': typeof LleshIleshRoute
@@ -669,10 +669,10 @@ export interface FileRoutesByTo {
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
   '/elevador': typeof ElevadorRoute
-  '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/in': typeof InRoute
   '/lift': typeof LiftRoute
   '/llesh': typeof LleshRoute
   '/llesh-ilesh': typeof LleshIleshRoute
@@ -759,10 +759,10 @@ export interface FileRoutesById {
   '/calendario': typeof CalendarioRoute
   '/ecossistema': typeof EcossistemaRoute
   '/elevador': typeof ElevadorRoute
-  '/entrar': typeof EntrarRoute
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/in': typeof InRoute
   '/lift': typeof LiftRoute
   '/llesh': typeof LleshRoute
   '/llesh-ilesh': typeof LleshIleshRoute
@@ -849,10 +849,10 @@ export interface FileRouteTypes {
     | '/calendario'
     | '/ecossistema'
     | '/elevador'
-    | '/entrar'
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/in'
     | '/lift'
     | '/llesh'
     | '/llesh-ilesh'
@@ -932,10 +932,10 @@ export interface FileRouteTypes {
     | '/calendario'
     | '/ecossistema'
     | '/elevador'
-    | '/entrar'
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/in'
     | '/lift'
     | '/llesh'
     | '/llesh-ilesh'
@@ -1021,10 +1021,10 @@ export interface FileRouteTypes {
     | '/calendario'
     | '/ecossistema'
     | '/elevador'
-    | '/entrar'
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/in'
     | '/lift'
     | '/llesh'
     | '/llesh-ilesh'
@@ -1111,10 +1111,10 @@ export interface RootRouteChildren {
   CalendarioRoute: typeof CalendarioRoute
   EcossistemaRoute: typeof EcossistemaRoute
   ElevadorRoute: typeof ElevadorRoute
-  EntrarRoute: typeof EntrarRoute
   FemRoute: typeof FemRoute
   FirstRoute: typeof FirstRoute
   FitmailRoute: typeof FitmailRoute
+  InRoute: typeof InRoute
   LiftRoute: typeof LiftRoute
   LleshRoute: typeof LleshRoute
   LleshIleshRoute: typeof LleshIleshRoute
@@ -1401,13 +1401,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ElevadorRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/entrar': {
-      id: '/entrar'
-      path: '/entrar'
-      fullPath: '/entrar'
-      preLoaderRoute: typeof EntrarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/fem': {
       id: '/fem'
       path: '/fem'
@@ -1441,6 +1434,13 @@ declare module '@tanstack/react-router' {
       path: '/fitmail'
       fullPath: '/fitmail'
       preLoaderRoute: typeof FitmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/in': {
+      id: '/in'
+      path: '/in'
+      fullPath: '/in'
+      preLoaderRoute: typeof InRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lift': {
@@ -1905,10 +1905,10 @@ const rootRouteChildren: RootRouteChildren = {
   CalendarioRoute: CalendarioRoute,
   EcossistemaRoute: EcossistemaRoute,
   ElevadorRoute: ElevadorRoute,
-  EntrarRoute: EntrarRoute,
   FemRoute: FemRoute,
   FirstRoute: FirstRoute,
   FitmailRoute: FitmailRoute,
+  InRoute: InRoute,
   LiftRoute: LiftRoute,
   LleshRoute: LleshRoute,
   LleshIleshRoute: LleshIleshRoute,

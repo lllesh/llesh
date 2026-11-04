@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/llesh-logo.png.asset.json";
 
-export const Route = createFileRoute("/entrar")({
+export const Route = createFileRoute("/in")({
   head: () => ({
     meta: [
       { title: "ll e.s h" },
