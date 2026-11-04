@@ -765,7 +765,8 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     // a bolinha que voa: começa do tamanho e no lugar do ponto da logo
     var v = document.createElement('div'); v.className = 'voo';
     v.style.cssText = 'position:fixed;z-index:60;left:0;top:0;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:3px 4px 5px rgba(0,0,0,.28);pointer-events:none;visibility:hidden';
-    v.innerHTML = '<i style="position:absolute;left:50%;top:62%;width:16%;aspect-ratio:1;border-radius:50%;background:#fff;box-shadow:inset 0 1.5px 2.5px rgba(0,0,0,.4);translate:-50% -50%"></i>';
+    /* 04/11/2026 (Dra Lê): o pontinho do umbigo fica guardado aqui, INVISÍVEL por enquanto; para trazê-lo de volta, basta tirar o display:none */
+    v.innerHTML = '<i style="display:none;position:absolute;left:50%;top:62%;width:16%;aspect-ratio:1;border-radius:50%;background:#fff;box-shadow:inset 0 1.5px 2.5px rgba(0,0,0,.4);translate:-50% -50%"></i>';
     var d0 = a.width * .55, x0 = a.left + a.width * .395 - 20, y0 = a.top + a.height * .395 - 20, s0 = d0 / 40;
     // 04/11/2026: a bolinha aterrissa no CENTRO INFERIOR (casa do joystick), a pedido da Dra Lê
     var x1 = innerWidth / 2 - 20, y1 = innerHeight - 70;
@@ -859,9 +860,9 @@ html,body,#palco .fundo{transition:background-color .5s ease}
   // dá para pegar, arrastar e jogar; toque rápido troca a vista
   (function () {
     var b = $('#bola'), R = 28, x = 0, y = 0, vx = 0, vy = 0, ang = Math.random() * 6.28, pega = null, hist = [], viva = false, t0 = 0, ult = 0, casa = false;
-    // 04/11/2026: CASA do joystick = centro inferior da tela. A bolinha aterrissa ali e fica no lugar,
-    // respirando e se mexendo de leve (a flutuação/respiração vem do CSS). Só sai do lugar quando a pessoa pega nela;
-    // depois disso ela volta ao passeio livre de sempre.
+    // 04/11/2026: CASA do joystick = centro inferior da tela. A bolinha aterrissa ali e fica no lugar.
+    // 04/11/2026 (Dra Lê): POR ENQUANTO ela fica SEMPRE PARADA na casa — mesmo depois de pega e usada;
+    // o passeio livre fica guardado no código para um momento futuro.
     var ATRITO = .99, ATRITO_RAPIDO = .965, REST = .86, FORCA = matchMedia('(prefers-reduced-motion: reduce)').matches ? .004 : .013;
     function casaX() { return innerWidth / 2 }
     function casaY() { return innerHeight - 50 }
@@ -900,6 +901,8 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     function solta() {
       if (!pega) return; var andou = pega.andou; pega = null;
       if (andou) { b.__arrastou = Date.now(); var a = hist[0], z = hist[hist.length - 1], ms = Math.max(16, z[2] - a[2]); vx = (z[0] - a[0]) / ms * 16.67; vy = (z[1] - a[1]) / ms * 16.67 }
+      // 04/11/2026 (Dra Lê): por enquanto a bolinha volta SEMPRE para a casa (centro inferior) e fica PARADA, sem passear
+      casa = true; b.classList.add('casa'); vx = 0; vy = 0;
     }
     b.addEventListener('pointerup', solta); b.addEventListener('pointercancel', solta);
     b.addEventListener('click', function (e) { if (b.__arrastou && Date.now() - b.__arrastou < 400) { e.stopImmediatePropagation(); e.preventDefault() } }, true);
