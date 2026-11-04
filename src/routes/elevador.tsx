@@ -136,7 +136,7 @@ function Elevador() {
   };
 
   const fechado = fase === "fechando" || fase === "viajando";
-  const andar = ANDARES[atual];
+  const andar = ANDARES[atual] ?? "";
 
   return (
     <main className="fixed inset-0 overflow-hidden" style={{ background: "var(--elev-bg)", color: "var(--elev-ink)" }}>
