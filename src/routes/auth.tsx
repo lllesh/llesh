@@ -3,11 +3,16 @@ import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 
+// Depois de entrar/criar conta, a pessoa volta para o andar de onde veio (ex.: primeiro andar do elevador).
+const alvoSeguro = (pedir?: string | null) =>
+  pedir && pedir.startsWith("/") && !pedir.startsWith("//") ? pedir : "/menstruapp";
+const pedirDe = () => new URLSearchParams(window.location.search).get("redirect");
+
 export const Route = createFileRoute("/auth")({
   ssr: false,
   beforeLoad: async () => {
     const { data } = await supabase.auth.getUser();
-    if (data.user) throw redirect({ to: "/menstruapp" });
+    if (data.user) throw redirect({ href: alvoSeguro(pedirDe()) });
   },
   head: () => ({
     meta: [
@@ -24,6 +29,7 @@ export const Route = createFileRoute("/auth")({
 
 function AuthScreen() {
   const navigate = useNavigate();
+  const pedir = pedirDe();
   const [mode, setMode] = useState<"entrar" | "criar">("entrar");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +37,7 @@ function AuthScreen() {
   const [notice, setNotice] = useState<string | null>(null);
 
   const goHome = async () => {
-    await navigate({ to: "/menstruapp" });
+    await navigate({ href: alvoSeguro(pedir) });
   };
 
   const handleEmail = async (event: React.FormEvent) => {
