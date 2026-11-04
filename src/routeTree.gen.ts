@@ -23,6 +23,7 @@ import { Route as FemeaRouteRouteImport } from './routes/femea/route'
 import { Route as FertifyRouteRouteImport } from './routes/fertify/route'
 import { Route as FirstRouteImport } from './routes/first'
 import { Route as FitmailRouteImport } from './routes/fitmail'
+import { Route as LiftRouteImport } from './routes/lift'
 import { Route as LleshRouteImport } from './routes/llesh'
 import { Route as LleshIleshRouteImport } from './routes/llesh-ilesh'
 import { Route as LleshSlideRouteImport } from './routes/llesh-slide'
@@ -125,6 +126,11 @@ const FirstRoute = FirstRouteImport.update({
 const FitmailRoute = FitmailRouteImport.update({
   id: '/fitmail',
   path: '/fitmail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiftRoute = LiftRouteImport.update({
+  id: '/lift',
+  path: '/lift',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LleshRoute = LleshRouteImport.update({
@@ -315,6 +321,7 @@ export interface FileRoutesByFullPath {
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/lift': typeof LiftRoute
   '/llesh': typeof LleshRoute
   '/llesh-ilesh': typeof LleshIleshRoute
   '/llesh-slide': typeof LleshSlideRoute
@@ -359,6 +366,7 @@ export interface FileRoutesByTo {
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/lift': typeof LiftRoute
   '/llesh': typeof LleshRoute
   '/llesh-ilesh': typeof LleshIleshRoute
   '/llesh-slide': typeof LleshSlideRoute
@@ -410,6 +418,7 @@ export interface FileRoutesById {
   '/fem': typeof FemRoute
   '/first': typeof FirstRoute
   '/fitmail': typeof FitmailRoute
+  '/lift': typeof LiftRoute
   '/llesh': typeof LleshRoute
   '/llesh-ilesh': typeof LleshIleshRoute
   '/llesh-slide': typeof LleshSlideRoute
@@ -461,6 +470,7 @@ export interface FileRouteTypes {
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/lift'
     | '/llesh'
     | '/llesh-ilesh'
     | '/llesh-slide'
@@ -505,6 +515,7 @@ export interface FileRouteTypes {
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/lift'
     | '/llesh'
     | '/llesh-ilesh'
     | '/llesh-slide'
@@ -555,6 +566,7 @@ export interface FileRouteTypes {
     | '/fem'
     | '/first'
     | '/fitmail'
+    | '/lift'
     | '/llesh'
     | '/llesh-ilesh'
     | '/llesh-slide'
@@ -606,6 +618,7 @@ export interface RootRouteChildren {
   FemRoute: typeof FemRoute
   FirstRoute: typeof FirstRoute
   FitmailRoute: typeof FitmailRoute
+  LiftRoute: typeof LiftRoute
   LleshRoute: typeof LleshRoute
   LleshIleshRoute: typeof LleshIleshRoute
   LleshSlideRoute: typeof LleshSlideRoute
@@ -713,6 +726,13 @@ declare module '@tanstack/react-router' {
       path: '/fitmail'
       fullPath: '/fitmail'
       preLoaderRoute: typeof FitmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lift': {
+      id: '/lift'
+      path: '/lift'
+      fullPath: '/lift'
+      preLoaderRoute: typeof LiftRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/llesh': {
@@ -1088,6 +1108,7 @@ const rootRouteChildren: RootRouteChildren = {
   FemRoute: FemRoute,
   FirstRoute: FirstRoute,
   FitmailRoute: FitmailRoute,
+  LiftRoute: LiftRoute,
   LleshRoute: LleshRoute,
   LleshIleshRoute: LleshIleshRoute,
   LleshSlideRoute: LleshSlideRoute,

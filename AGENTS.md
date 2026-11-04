@@ -12,3 +12,5 @@
 - Keep the reproductive-health dashboard desktop-first, with a collapsible left rail and a mobile bottom navigation, so both form factors feel native.
 
 - Single shared backend: every app (menstruapp and future siblings) writes to `public.checkins` (tagged by `app` + `tipo`, payload in `dados` jsonb) linked to `public.pessoas`; files go to private bucket `checkins` under `<user_id>/...`. Why: one database feeds all front-ends.
+
+- Prédio `ll e.s h`: a raiz `/` é o térreo (a experiência original servida de `public/sites/lle/index.html`); o lift fica em `/lift`; `/llesh` e `/elevador` só redirecionam. Andar no lift e brincar nos andares é livre; entrar de verdade num andar exige sessão — sem ela, `/auth?redirect=<andar>` e o cadastro devolve a pessoa ao andar. Why: o prédio é a marca, o lift é a navegação.
