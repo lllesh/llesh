@@ -2329,9 +2329,8 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 /* 08/10/2026 (Dra Lê): o pontinho solto bem menor e sem o pulinho no lugar (ele passeia); no celular a logo maior, mais para baixo e para a direita */
 #bola.livre{width:56px!important;height:56px!important}
 #bola.livre .flutua,#bola.livre .corpo{animation:none!important}
-/* 04/11/2026: na casa (centro inferior) a bolinha respira e flutua no lugar, a pedido da Dra Lê */
-#bola.livre.casa .flutua{animation:umbFlutua 1.6s ease-in-out infinite!important}
-#bola.livre.casa .corpo{animation:umbRespira 1.6s ease-in-out infinite!important}
+/* 04/11/2026: na casa (centro inferior) a bolinha fica PARADA, sem flutuar nem respirar, a pedido da Dra Lê (joystick) */
+#bola.livre.casa .flutua,#bola.livre.casa .corpo{animation:none!important}
 @media (max-width:760px){
   #app #bt-lateral-topo{left:34px!important;top:48px!important}
   #bt-lateral-topo .logo-fora{height:58px!important}
