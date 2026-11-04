@@ -767,7 +767,8 @@ html,body,#palco .fundo{transition:background-color .5s ease}
     v.style.cssText = 'position:fixed;z-index:60;left:0;top:0;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:3px 4px 5px rgba(0,0,0,.28);pointer-events:none;visibility:hidden';
     v.innerHTML = '<i style="position:absolute;left:50%;top:62%;width:16%;aspect-ratio:1;border-radius:50%;background:#fff;box-shadow:inset 0 1.5px 2.5px rgba(0,0,0,.4);translate:-50% -50%"></i>';
     var d0 = a.width * .55, x0 = a.left + a.width * .395 - 20, y0 = a.top + a.height * .395 - 20, s0 = d0 / 40;
-    var x1 = innerWidth / 2 - 20, y1 = innerHeight - 40 - 34 - Math.max(16, innerHeight * .04);
+    // 04/11/2026: a bolinha aterrissa no CENTRO INFERIOR (casa do joystick), a pedido da Dra Lê
+    var x1 = innerWidth / 2 - 20, y1 = innerHeight - 70;
     setTimeout(function () {
       document.body.appendChild(v); v.style.transform = 'translate(' + x0 + 'px,' + y0 + 'px) scale(' + s0 + ')'; v.style.visibility = 'visible';
       pt.style.visibility = 'hidden';
@@ -857,12 +858,21 @@ html,body,#palco .fundo{transition:background-color .5s ease}
   // a bolinha solta FLUTUA pela página (o mesmo jeito das bolinhas do luig.app): passeia devagar, bate nas bordas e volta,
   // dá para pegar, arrastar e jogar; toque rápido troca a vista
   (function () {
-    var b = $('#bola'), R = 28, x = 0, y = 0, vx = 0, vy = 0, ang = Math.random() * 6.28, pega = null, hist = [], viva = false, t0 = 0, ult = 0;
+    var b = $('#bola'), R = 28, x = 0, y = 0, vx = 0, vy = 0, ang = Math.random() * 6.28, pega = null, hist = [], viva = false, t0 = 0, ult = 0, casa = false;
+    // 04/11/2026: CASA do joystick = centro inferior da tela. A bolinha aterrissa ali e fica no lugar,
+    // respirando e se mexendo de leve (a flutuação/respiração vem do CSS). Só sai do lugar quando a pessoa pega nela;
+    // depois disso ela volta ao passeio livre de sempre.
     var ATRITO = .99, ATRITO_RAPIDO = .965, REST = .86, FORCA = matchMedia('(prefers-reduced-motion: reduce)').matches ? .004 : .013;
+    function casaX() { return innerWidth / 2 }
+    function casaY() { return innerHeight - 50 }
     function poe() { b.style.transform = 'translate(' + (x - R) + 'px,' + (y - R) + 'px)' }
     function passo(t) {
       if (!viva) return; var dt = ult ? Math.min(3, (t - ult) / 16.67) : 1; ult = t;
       if (!pega) {
+        if (casa) {
+          // no comecinho ela fica presa no centro inferior: respira, mexe de leve, mas não passeia
+          x += (casaX() - x) * .14 * dt; y += (casaY() - y) * .14 * dt; vx = 0; vy = 0; poe();
+        } else {
         // 08/10/2026: passeia devagar pela página, mudando de rumo aos pouquinhos (um arremesso vai freando até voltar ao passeio)
         ang += (Math.random() - .5) * .12 * dt; vx += Math.cos(ang) * .03 * dt; vy += Math.sin(ang) * .03 * dt;
         var vel = Math.hypot(vx, vy), at = vel > 2 ? ATRITO_RAPIDO : .985; vx *= Math.pow(at, dt); vy *= Math.pow(at, dt);
@@ -872,16 +882,17 @@ html,body,#palco .fundo{transition:background-color .5s ease}
         if (x - R < 0) { x = R; vx = Math.abs(vx) * REST } if (x + R > W) { x = W - R; vx = -Math.abs(vx) * REST }
         if (y - R < 0) { y = R; vy = Math.abs(vy) * REST } if (y + R > H) { y = H - R; vy = -Math.abs(vy) * REST }
         poe();
+        }
       }
       requestAnimationFrame(passo);
     }
-    window.__recolheBola = function () { viva = false; ult = 0; pega = null; b.classList.remove('livre'); b.style.transform = ''; return { x: x, y: y } };
-    window.__soltaBola = function (cx, cy) { x = cx; y = cy; vx = 0; vy = 0; b.classList.add('livre'); poe(); if (!viva) { viva = true; requestAnimationFrame(passo) } };
+    window.__recolheBola = function () { viva = false; ult = 0; pega = null; casa = false; b.classList.remove('livre', 'casa'); b.style.transform = ''; return { x: x, y: y } };
+    window.__soltaBola = function (cx, cy) { x = cx; y = cy; vx = 0; vy = 0; casa = true; b.classList.add('livre', 'casa'); poe(); if (!viva) { viva = true; requestAnimationFrame(passo) } };
     var tmSeg = 0;
     b.addEventListener('pointerdown', function () { b.classList.remove('solto'); b.classList.add('aperta'); clearTimeout(tmSeg); tmSeg = setTimeout(function () { if (pega && !pega.andou) b.classList.add('segura') }, 280) });
     function largou() { clearTimeout(tmSeg); b.classList.remove('aperta', 'segura'); void b.offsetWidth; b.classList.add('solto'); setTimeout(function () { b.classList.remove('solto') }, 650) }
     b.addEventListener('pointerup', largou); b.addEventListener('pointercancel', largou);
-    b.addEventListener('pointerdown', function (e) { pega = { x0: e.clientX, y0: e.clientY, dx: x - e.clientX, dy: y - e.clientY, andou: false }; hist = [[e.clientX, e.clientY, performance.now()]]; try { b.setPointerCapture(e.pointerId) } catch (_) {} });
+    b.addEventListener('pointerdown', function (e) { casa = false; b.classList.remove('casa'); pega = { x0: e.clientX, y0: e.clientY, dx: x - e.clientX, dy: y - e.clientY, andou: false }; hist = [[e.clientX, e.clientY, performance.now()]]; try { b.setPointerCapture(e.pointerId) } catch (_) {} });
     b.addEventListener('pointermove', function (e) {
       if (!pega) return; if (Math.hypot(e.clientX - pega.x0, e.clientY - pega.y0) > 6) { pega.andou = true; b.classList.remove('segura') }
       x = e.clientX + pega.dx; y = e.clientY + pega.dy; poe(); hist.push([e.clientX, e.clientY, performance.now()]); if (hist.length > 6) hist.shift();
@@ -2318,6 +2329,9 @@ html,body,#palco .fundo{transition:background-color .5s ease}
 /* 08/10/2026 (Dra Lê): o pontinho solto bem menor e sem o pulinho no lugar (ele passeia); no celular a logo maior, mais para baixo e para a direita */
 #bola.livre{width:56px!important;height:56px!important}
 #bola.livre .flutua,#bola.livre .corpo{animation:none!important}
+/* 04/11/2026: na casa (centro inferior) a bolinha respira e flutua no lugar, a pedido da Dra Lê */
+#bola.livre.casa .flutua{animation:umbFlutua 1.6s ease-in-out infinite!important}
+#bola.livre.casa .corpo{animation:umbRespira 1.6s ease-in-out infinite!important}
 @media (max-width:760px){
   #app #bt-lateral-topo{left:34px!important;top:48px!important}
   #bt-lateral-topo .logo-fora{height:58px!important}
