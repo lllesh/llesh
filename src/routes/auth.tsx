@@ -34,6 +34,9 @@ function AuthScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [etapa, setEtapa] = useState(0);
+  const [nome, setNome] = useState("");
+  const [aceite, setAceite] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
 
   const goHome = async () => {
@@ -42,6 +45,15 @@ function AuthScreen() {
 
   const handleEmail = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (mode === "criar" && etapa < 3) {
+      setNotice(null);
+      setEtapa(etapa + 1);
+      return;
+    }
+    if (mode === "criar" && !aceite) {
+      setNotice("autoriza pra continuar");
+      return;
+    }
     setBusy(true);
     setNotice(null);
     try {
@@ -56,7 +68,7 @@ function AuthScreen() {
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: window.location.origin },
+          options: { emailRedirectTo: window.location.origin, data: { nome } },
         });
         if (error) {
           setNotice(error.message);
@@ -73,6 +85,8 @@ function AuthScreen() {
     }
   };
 
+  const campo =
+    "h-[64px] w-full rounded-full bg-foreground px-9 font-display text-[24px] font-medium lowercase tracking-[-0.01em] text-porcelain outline-none placeholder:text-porcelain/40";
   const pillBase =
     "flex h-[64px] w-full items-center justify-center rounded-full font-display text-[26px] font-black lowercase leading-none tracking-[-0.02em] transition-opacity disabled:opacity-60";
 
@@ -86,30 +100,80 @@ function AuthScreen() {
 
 
         <form onSubmit={handleEmail} className="mt-4 flex flex-col gap-4">
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="e-mail"
-            aria-label="e-mail"
-            className="h-[64px] w-full rounded-full bg-foreground px-9 font-display text-[24px] font-medium lowercase tracking-[-0.01em] text-porcelain outline-none placeholder:text-porcelain/40"
-          />
-          <input
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="senha"
-            aria-label="senha"
-            className="h-[64px] w-full rounded-full bg-foreground px-9 font-display text-[24px] font-medium lowercase tracking-[-0.01em] text-porcelain outline-none placeholder:text-porcelain/40"
-          />
+          {mode === "criar" && (
+            <div className="mb-2 flex items-center justify-center gap-3" aria-label={`etapa ${etapa + 1} de 4`}>
+              {[0, 1, 2, 3].map((i) => (
+                <span
+                  key={i}
+                  className={cn(
+                    "h-3 rounded-full bg-foreground transition-all",
+                    i === etapa ? "w-10" : "w-3",
+                    i > etapa && "opacity-20",
+                  )}
+                />
+              ))}
+            </div>
+          )}
+          {mode === "criar" && etapa === 0 && (
+            <input
+              key="nome"
+              autoFocus
+              required
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              placeholder="seu nome"
+              aria-label="nome"
+              className={campo}
+            />
+          )}
+          {(mode === "entrar" || etapa === 1) && (
+            <input
+              key="email"
+              autoFocus={mode === "criar"}
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="e-mail"
+              aria-label="e-mail"
+              className={campo}
+            />
+          )}
+          {(mode === "entrar" || etapa === 2) && (
+            <input
+              key="senha"
+              autoFocus={mode === "criar"}
+              type="password"
+              required
+              minLength={6}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="senha"
+              aria-label="senha"
+              className={campo}
+            />
+          )}
+          {mode === "criar" && etapa === 3 && (
+            <button
+              type="button"
+              onClick={() => setAceite(!aceite)}
+              aria-pressed={aceite}
+              className={cn(
+                "flex h-[64px] w-full items-center gap-4 rounded-full bg-foreground px-6 font-display text-[22px] font-bold lowercase text-porcelain",
+              )}
+            >
+              <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-porcelain text-foreground", !aceite && "opacity-30")}>
+                {aceite ? "✓" : ""}
+              </span>
+              autorizo guardar meus dados
+            </button>
+          )}
           <button
             type="submit"
             disabled={busy}
             className={cn(pillBase, "bg-coral text-porcelain hover:opacity-90")}
           >
-            {mode === "entrar" ? "entrar" : "criar"}
+            {mode === "entrar" ? "entrar" : etapa < 3 ? "→" : "criar"}
           </button>
         </form>
 
@@ -117,8 +181,13 @@ function AuthScreen() {
           type="button"
           disabled={busy}
           onClick={() => {
-            setMode(mode === "entrar" ? "criar" : "entrar");
             setNotice(null);
+            if (mode === "criar" && etapa > 0) {
+              setEtapa(etapa - 1);
+              return;
+            }
+            setEtapa(0);
+            setMode(mode === "entrar" ? "criar" : "entrar");
           }}
           className="mt-2 self-center font-display text-[18px] font-bold lowercase tracking-[0.04em] text-foreground/60 hover:text-foreground"
         >
