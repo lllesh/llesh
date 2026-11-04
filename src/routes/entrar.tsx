@@ -121,7 +121,7 @@ function LleshEntrar() {
 
   return (
     <main className="min-h-svh flex flex-col items-center justify-center px-6 py-8" style={{ background: BG, color: INK }}>
-      <div className="relative flex w-full items-center justify-center"><img src={logo.url} alt="ll e.s h" className="h-[114px] w-auto select-none" draggable={false} /></div>
+      <div className="relative flex h-[180px] w-full items-center justify-center overflow-hidden"><img src={logo.url} alt="ll e.s h" className="h-[205px] w-auto max-w-none select-none" draggable={false} /></div>
 
       {!logada ? (
         <form onSubmit={enviar} className="mt-8 flex w-full max-w-[420px] flex-col gap-4">
